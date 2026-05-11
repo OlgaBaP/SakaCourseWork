@@ -1,0 +1,298 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Кулинарная гладь"
+    },
+    {
+      "id": 2,
+      "name": "Вискоза"
+    },
+    {
+      "id": 3,
+      "name": "Бифлекс"
+    },
+    {
+      "id": 4,
+      "name": "Флис"
+    },
+    {
+      "id": 5,
+      "name": "Футер"
+    },
+    {
+      "id": 6,
+      "name": "Интерлок"
+    },
+    {
+      "id": 7,
+      "name": "Капитоний"
+    },
+    {
+      "id": 8,
+      "name": "Кашкорсе"
+    },
+    {
+      "id": 9,
+      "name": "Пике"
+    },
+    {
+      "id": 10,
+      "name": "Рибана"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "Кулинарная гладь",
+      "categoryId": 1,
+      "category": "Кулинарная гладь",
+      "price": 11.4,
+      "color": "Синий",
+      "image": "assets/images/products/product-cotton-jersey-blue.png",
+      "description": "Мягкое трикотажное полотно для футболок, платьев и детской одежды.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "180 см",
+      "density": "180 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 2,
+      "title": "Кулинарная гладь",
+      "categoryId": 1,
+      "category": "Кулинарная гладь",
+      "price": 13,
+      "color": "Белый",
+      "image": "assets/images/products/product-cotton-jersey-white.png",
+      "description": "Базовая хлопковая кулирная гладь для легкой повседневной одежды.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "180 см",
+      "density": "185 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 3,
+      "title": "Кулинарная гладь",
+      "categoryId": 1,
+      "category": "Кулинарная гладь",
+      "price": 13.84,
+      "color": "Оранжевый",
+      "image": "assets/images/products/product-cotton-jersey-orange.png",
+      "description": "Яркое трикотажное полотно для футболок, топов и летних изделий.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "180 см",
+      "density": "180 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 4,
+      "title": "Кулинарная гладь",
+      "categoryId": 1,
+      "category": "Кулинарная гладь",
+      "price": 12.2,
+      "color": "Зеленый",
+      "image": "assets/images/products/product-cotton-jersey-green.png",
+      "description": "Эластичное полотно приятного зеленого оттенка для базовой одежды.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "180 см",
+      "density": "180 г/м²",
+      "quality": "Компакт пенье",
+      "inStock": true
+    },
+    {
+      "id": 5,
+      "title": "Кулинарная гладь",
+      "categoryId": 1,
+      "category": "Кулинарная гладь",
+      "price": 12.8,
+      "color": "Серый",
+      "image": "assets/images/products/product-cotton-jersey-grey.png",
+      "description": "Серая кулирная гладь для футболок, лонгсливов и домашней одежды.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "180 см",
+      "density": "190 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 6,
+      "title": "Вискоза",
+      "categoryId": 2,
+      "category": "Вискоза",
+      "price": 15.6,
+      "color": "Розовый",
+      "image": "assets/images/products/product-viscose-pink.png",
+      "description": "Легкая вискозная ткань для платьев, блузок и летней одежды.",
+      "composition": "92% вискоза, 8% эластан",
+      "width": "170 см",
+      "density": "200 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 7,
+      "title": "Бифлекс",
+      "categoryId": 3,
+      "category": "Бифлекс",
+      "price": 18.9,
+      "color": "Фиолетовый",
+      "image": "assets/images/products/product-biflex-purple.png",
+      "description": "Эластичная ткань для спортивной одежды, купальников и костюмов.",
+      "composition": "82% полиэстер, 18% эластан",
+      "width": "150 см",
+      "density": "230 г/м²",
+      "quality": "Премиум",
+      "inStock": true
+    },
+    {
+      "id": 8,
+      "title": "Флис",
+      "categoryId": 4,
+      "category": "Флис",
+      "price": 14.5,
+      "color": "Красный",
+      "image": "assets/images/products/product-fleece-red.png",
+      "description": "Мягкий теплый флис для толстовок, пледов и детской одежды.",
+      "composition": "100% полиэстер",
+      "width": "160 см",
+      "density": "280 г/м²",
+      "quality": "Антипиллинг",
+      "inStock": true
+    },
+    {
+      "id": 9,
+      "title": "Футер диагональ",
+      "categoryId": 5,
+      "category": "Футер",
+      "price": 16.7,
+      "color": "Синий",
+      "image": "assets/images/products/product-footer-diagonal-blue.png",
+      "description": "Плотный футер с диагональным плетением для костюмов и худи.",
+      "composition": "80% хлопок, 20% полиэстер",
+      "width": "185 см",
+      "density": "300 г/м²",
+      "quality": "Компакт пенье",
+      "inStock": true
+    },
+    {
+      "id": 10,
+      "title": "Футер 3-х нитка",
+      "categoryId": 5,
+      "category": "Футер",
+      "price": 17.4,
+      "color": "Серый",
+      "image": "assets/images/products/product-footer-three-thread-grey.png",
+      "description": "Теплый футер трехнитка для свитшотов, брюк и спортивных костюмов.",
+      "composition": "80% хлопок, 20% полиэстер",
+      "width": "185 см",
+      "density": "320 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 11,
+      "title": "Френч терри",
+      "categoryId": 5,
+      "category": "Футер",
+      "price": 15.9,
+      "color": "Светло-серый",
+      "image": "assets/images/products/product-french-terry-light-grey.png",
+      "description": "Мягкий трикотаж с петельчатой изнанкой для комфортной одежды.",
+      "composition": "85% хлопок, 15% полиэстер",
+      "width": "180 см",
+      "density": "260 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 12,
+      "title": "Интерлок",
+      "categoryId": 6,
+      "category": "Интерлок",
+      "price": 13.6,
+      "color": "Белый",
+      "image": "assets/images/products/product-interlock-white.png",
+      "description": "Гладкое плотное полотно для детских вещей, белья и домашнего текстиля.",
+      "composition": "100% хлопок",
+      "width": "175 см",
+      "density": "220 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 13,
+      "title": "Капитоний",
+      "categoryId": 7,
+      "category": "Капитоний",
+      "price": 19.2,
+      "color": "Зеленый",
+      "image": "assets/images/products/product-kapitoniy-green.png",
+      "description": "Объемное утепленное полотно для теплых костюмов и детских изделий.",
+      "composition": "70% хлопок, 30% полиэстер",
+      "width": "180 см",
+      "density": "300 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 14,
+      "title": "Кашкорсе",
+      "categoryId": 8,
+      "category": "Кашкорсе",
+      "price": 10.9,
+      "color": "Черный",
+      "image": "assets/images/products/product-kashkorse-black.png",
+      "description": "Эластичное полотно для манжет, поясов, воротников и облегающих изделий.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "110 см",
+      "density": "240 г/м²",
+      "quality": "Компакт пенье",
+      "inStock": true
+    },
+    {
+      "id": 15,
+      "title": "Пике",
+      "categoryId": 9,
+      "category": "Пике",
+      "price": 12.4,
+      "color": "Синий",
+      "image": "assets/images/products/product-pique-blue.png",
+      "description": "Фактурная ткань для футболок поло, школьной формы и легкой одежды.",
+      "composition": "100% хлопок",
+      "width": "180 см",
+      "density": "200 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": 16,
+      "title": "Рибана",
+      "categoryId": 10,
+      "category": "Рибана",
+      "price": 9.8,
+      "color": "Бежевый",
+      "image": "assets/images/products/product-ribana-beige.png",
+      "description": "Растяжимое трикотажное полотно для отделки и базовых изделий.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "120 см",
+      "density": "230 г/м²",
+      "quality": "Карде",
+      "inStock": true
+    }
+  ],
+  "cart": [],
+  "orders": [],
+  "priceRequests": [],
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@mail.com",
+      "password": "123456",
+      "role": "admin"
+    }
+  ]
+}
