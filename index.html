@@ -69,6 +69,19 @@
           <a class="header-circle header-circle--eye" href="#">
             <img src="assets/images/icons/icon-eye.svg" />
           </a>
+
+          <button
+            class="burger-button"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            aria-controls="mobile-menu-home"
+            data-burger-button
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
 
         <nav class="site-header__nav">
@@ -345,6 +358,101 @@
         </div>
       </footer>
     </div>
+
+    <div class="mobile-menu" id="mobile-menu-home" aria-hidden="true" data-mobile-menu>
+      <button
+        class="mobile-menu__overlay"
+        type="button"
+        aria-label="Закрыть меню"
+        data-mobile-menu-close
+      ></button>
+      <nav class="mobile-menu__panel" aria-label="Мобильная навигация">
+        <div class="mobile-menu__header">
+          <a class="mobile-menu__logo" href="#">
+            <img src="assets/images/logos/saka-logo.png" alt="Saka Holding" />
+          </a>
+          <button
+            class="mobile-menu__close"
+            type="button"
+            aria-label="Закрыть меню"
+            data-mobile-menu-close
+          ></button>
+        </div>
+
+        <div class="mobile-menu__brands" aria-label="Партнерские логотипы">
+          <img src="assets/images/logos/partner-saka.png" alt="Saka" />
+          <img src="assets/images/logos/partner-eros.png" alt="Eros" />
+          <img src="assets/images/logos/partner-tortex.png" alt="Tortex" />
+        </div>
+
+        <div class="mobile-menu__meta">
+          <p>Производитель турецкого трикотажного полотна</p>
+          <div>
+            <span><b>RU</b> / EN</span>
+            <span>Dark / Light</span>
+          </div>
+          <a class="mobile-menu__eye" href="#" aria-label="Версия для слабовидящих">
+            <img src="assets/images/icons/icon-eye.svg" alt="" />
+          </a>
+        </div>
+
+        <div class="mobile-menu__nav">
+          <a class="mobile-menu__link mobile-menu__link--active" href="#">Главная</a>
+          <a class="mobile-menu__link mobile-menu__link--catalog" href="pages/catalog.html">Каталог</a>
+          <a class="mobile-menu__link" href="pages/about.html">О компании</a>
+          <a class="mobile-menu__link" href="#">Корзина</a>
+          <a class="mobile-menu__link" href="#">Доставка и оплата</a>
+          <a class="mobile-menu__link" href="#">Контакты</a>
+        </div>
+
+        <a class="mobile-menu__phone" href="tel:+375333536608">
+          <img src="assets/images/icons/icon-phone.svg" alt="" />
+          <span>+375 33 353 66 08</span>
+        </a>
+
+        <div class="mobile-menu__actions">
+          <a class="mobile-menu__cart" href="#" aria-label="Корзина">
+            <img src="assets/images/icons/icon-cart.svg" alt="" />
+            <span>3</span>
+          </a>
+          <a class="mobile-menu__login" href="#">
+            <img src="assets/images/icons/icon-user.svg" alt="" />
+            <span>Войти</span>
+          </a>
+        </div>
+
+        <a class="mobile-menu__sale" href="#">Акции</a>
+
+        <div class="mobile-menu__categories">
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-kulir.svg" alt="" />
+            <span>Кулинарная гладь</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-footer.svg" alt="" />
+            <span>Футер</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-ribana.svg" alt="" />
+            <span>Кашкорсе, рибана</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-pique.svg" alt="" />
+            <span>Пике</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-interlock.svg" alt="" />
+            <span>Интерлок</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-kapitoniy.svg" alt="" />
+            <span>Капитоний</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+
     <script type="module" src="js/pages/home.js"></script>
+    <script type="module" src="js/common/burger-menu.js"></script>
   </body>
 </html>

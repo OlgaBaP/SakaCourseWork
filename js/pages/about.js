@@ -54,7 +54,8 @@ function updateReviewsControls() {
   prevReviewsButton.hidden = !hasExtraReviews;
   nextReviewsButton.hidden = !hasExtraReviews;
   prevReviewsButton.disabled = activeReviewIndex === 0;
-  nextReviewsButton.disabled = activeReviewIndex + reviewsPerPage >= reviews.length;
+  nextReviewsButton.disabled =
+    activeReviewIndex + reviewsPerPage >= reviews.length;
 }
 
 function showPrevReviews() {
@@ -66,7 +67,10 @@ function showNextReviews() {
   const lastPageIndex =
     Math.floor((reviews.length - 1) / reviewsPerPage) * reviewsPerPage;
 
-  activeReviewIndex = Math.min(activeReviewIndex + reviewsPerPage, lastPageIndex);
+  activeReviewIndex = Math.min(
+    activeReviewIndex + reviewsPerPage,
+    lastPageIndex,
+  );
   renderReviews();
 }
 
