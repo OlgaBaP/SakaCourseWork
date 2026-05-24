@@ -38,6 +38,11 @@ async function getCart() {
   return checkResponse(response);
 }
 
+async function getReviews() {
+  const response = await fetch(`${API_URL}/reviews`);
+  return checkResponse(response);
+}
+
 async function addToCart(product) {
   const response = await fetch(
     `${API_URL}/cart`,
@@ -73,6 +78,15 @@ async function createPriceRequest(requestData) {
   return checkResponse(response);
 }
 
+async function createReview(reviewData) {
+  const response = await fetch(
+    `${API_URL}/reviews`,
+    createRequestOptions("POST", reviewData),
+  );
+
+  return checkResponse(response);
+}
+
 async function registerUser(userData) {
   const response = await fetch(
     `${API_URL}/users`,
@@ -99,10 +113,12 @@ export {
   getProductById,
   getCategories,
   getCart,
+  getReviews,
   addToCart,
   removeCartItem,
   createOrder,
   createPriceRequest,
+  createReview,
   registerUser,
   loginUser,
 };

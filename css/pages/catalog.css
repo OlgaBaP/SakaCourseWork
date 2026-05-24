@@ -603,20 +603,26 @@ button {
   width: 200px;
   height: 53px;
   padding: 0 25px;
-  background: var(--color-dark);
-  color: var(--color-white);
+  border-radius: 100px;
+  background: var(--color-gold);
+  color: var(--color-dark);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.334;
-  letter-spacing: 0.28px;
+  letter-spacing: 0.35px;
+  transition: background 0.2s ease;
+}
+
+.product-card__button:hover {
+  background: var(--color-dark-gold);
 }
 
 .product-card__button::after {
   content: "";
   width: 18px;
   height: 18px;
-  border-top: 2px solid var(--color-white);
-  border-right: 2px solid var(--color-white);
+  border-top: 2px solid var(--color-dark);
+  border-right: 2px solid var(--color-dark);
   transform: rotate(45deg);
 }
 
