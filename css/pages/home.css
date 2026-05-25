@@ -1032,8 +1032,10 @@ input {
     height: 6px;
     margin-left: 5px;
     background:
-      linear-gradient(45deg, transparent 50%, currentColor 50%) left / 6px 6px no-repeat,
-      linear-gradient(-45deg, transparent 50%, currentColor 50%) right / 6px 6px no-repeat;
+      linear-gradient(45deg, transparent 50%, currentColor 50%) left / 6px 6px
+        no-repeat,
+      linear-gradient(-45deg, transparent 50%, currentColor 50%) right / 6px 6px
+        no-repeat;
     vertical-align: 2px;
   }
 

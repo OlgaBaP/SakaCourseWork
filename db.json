@@ -317,7 +317,17 @@
   ],
   "cart": [],
   "orders": [],
-  "priceRequests": [],
+  "priceRequests": [
+    {
+      "name": "Оля",
+      "phone": "+375 33 35 00024",
+      "email": "jfeodkc@gmail.com",
+      "productId": "1",
+      "productTitle": "Кулинарная гладь",
+      "createdAt": "2026-05-24T21:20:56.381Z",
+      "id": "2LDCq0iB2Zo"
+    }
+  ],
   "users": [
     {
       "id": "1",
