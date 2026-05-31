@@ -568,7 +568,38 @@
       "id": "oMyWwrdX5Fc"
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": "_2sda9fg2G4",
+      "productId": 1,
+      "title": "Кулинарная гладь",
+      "price": 11.4,
+      "image": "assets/images/products/product-cotton-jersey-blue.png",
+      "color": "Синий",
+      "width": "180 см",
+      "quantity": 1
+    },
+    {
+      "id": "ncy1_H-BUws",
+      "productId": 5,
+      "title": "Кулинарная гладь",
+      "price": 12.8,
+      "image": "assets/images/products/product-cotton-jersey-grey.png",
+      "color": "Серый",
+      "width": "180 см",
+      "quantity": 1
+    },
+    {
+      "id": "eHTA25SrmfQ",
+      "productId": 19,
+      "title": "Футер 3-х нитка с начесом",
+      "price": 18.6,
+      "image": "assets/images/products/product-footer-three-thread-brushed-blue.png",
+      "color": "Синий",
+      "width": "185 см",
+      "quantity": 1
+    }
+  ],
   "orders": [],
   "priceRequests": [
     {
@@ -579,15 +610,6 @@
       "productTitle": "Кулинарная гладь",
       "createdAt": "2026-05-24T21:20:56.381Z",
       "id": "2LDCq0iB2Zo"
-    },
-    {
-      "name": "Оля",
-      "phone": "375 33 35 000 17",
-      "email": "olgap41@gmail.com",
-      "productId": "1",
-      "productTitle": "Кулинарная гладь",
-      "createdAt": "2026-05-30T14:36:35.026Z",
-      "id": "tdTOrZeGVnk"
     },
     {
       "name": "Оля",
@@ -615,6 +637,14 @@
       "productTitle": "Кулинарная гладь",
       "createdAt": "2026-05-31T13:59:48.985Z",
       "id": "nfk1Ftsos-A"
+    },
+    {
+      "name": "Ваня",
+      "phone": "+375333544435",
+      "email": "olgapi41@gmail.com",
+      "source": "Главная страница",
+      "createdAt": "2026-05-31T16:34:31.991Z",
+      "id": "xfRpq1_aT_Q"
     }
   ],
   "users": [
@@ -625,6 +655,5 @@
       "password": "123456",
       "role": "admin"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }

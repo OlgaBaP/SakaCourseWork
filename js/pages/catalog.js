@@ -10,9 +10,14 @@ const sortSelect = document.querySelector("[data-sort-select]");
 const mobileColorSelect = document.querySelector("[data-mobile-color-select]");
 const resetButton = document.querySelector("[data-reset-button]");
 const filterCount = document.querySelector("[data-filter-count]");
+const pagination = document.querySelector("[data-catalog-pagination]");
+const paginationPrev = document.querySelector("[data-pagination-prev]");
+const paginationNext = document.querySelector("[data-pagination-next]");
 const params = new URLSearchParams(window.location.search);
+const ITEMS_PER_PAGE = 9;
 
 let products = [];
+let currentPage = 1;
 
 const colorMap = {
   Бежевый: "#d8c0a2",
@@ -55,7 +60,7 @@ function createFilterOption(name, value) {
     <span class="filter-option__mark" aria-hidden="true"></span>
   `;
 
-  label.querySelector("input").addEventListener("change", renderProducts);
+  label.querySelector("input").addEventListener("change", resetPageAndRender);
 
   return label;
 }
@@ -72,7 +77,7 @@ function createColorOption(color) {
 
   const swatch = label.querySelector(".color-option__swatch");
   swatch.style.setProperty("--swatch-color", colorMap[color] || "#ffffff");
-  label.querySelector("input").addEventListener("change", renderProducts);
+  label.querySelector("input").addEventListener("change", resetPageAndRender);
 
   return label;
 }
@@ -192,16 +197,44 @@ function updateFilterCount() {
     checkedFilters + (hasSearch ? 1 : 0) + (hasMobileColor ? 1 : 0);
 }
 
+function updatePagination(totalItems) {
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+
+  pagination.hidden = totalPages <= 1;
+
+  if (pagination.hidden) {
+    return;
+  }
+
+  paginationPrev.disabled = currentPage === 1;
+  paginationNext.disabled = currentPage === totalPages;
+}
+
 function renderProducts() {
   const filteredProducts = getFilteredProducts();
+  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const safePage = totalPages === 0 ? 1 : Math.min(currentPage, totalPages);
+  const startIndex = (safePage - 1) * ITEMS_PER_PAGE;
+  const paginatedProducts = filteredProducts.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE,
+  );
+
+  currentPage = safePage;
 
   productsList.innerHTML = "";
-  filteredProducts.forEach((product) => {
+  paginatedProducts.forEach((product) => {
     productsList.append(renderProductCard(product));
   });
 
   emptyMessage.hidden = filteredProducts.length > 0;
+  updatePagination(filteredProducts.length);
   updateFilterCount();
+}
+
+function resetPageAndRender() {
+  currentPage = 1;
+  renderProducts();
 }
 
 function resetFilters() {
@@ -215,7 +248,23 @@ function resetFilters() {
       input.checked = false;
     });
 
-  renderProducts();
+  resetPageAndRender();
+}
+
+function showPreviousPage() {
+  if (currentPage > 1) {
+    currentPage -= 1;
+    renderProducts();
+  }
+}
+
+function showNextPage() {
+  const totalPages = Math.ceil(getFilteredProducts().length / ITEMS_PER_PAGE);
+
+  if (currentPage < totalPages) {
+    currentPage += 1;
+    renderProducts();
+  }
 }
 
 async function initCatalog() {
@@ -230,9 +279,11 @@ async function initCatalog() {
   }
 }
 
-searchInput.addEventListener("input", renderProducts);
-sortSelect.addEventListener("change", renderProducts);
-mobileColorSelect.addEventListener("change", renderProducts);
+searchInput.addEventListener("input", resetPageAndRender);
+sortSelect.addEventListener("change", resetPageAndRender);
+mobileColorSelect.addEventListener("change", resetPageAndRender);
 resetButton.addEventListener("click", resetFilters);
+paginationPrev.addEventListener("click", showPreviousPage);
+paginationNext.addEventListener("click", showNextPage);
 
 initCatalog();
