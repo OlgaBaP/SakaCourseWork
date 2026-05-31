@@ -213,8 +213,7 @@ async function initCatalog() {
     products = await getProducts();
     renderFilters();
     renderProducts();
-  } catch (error) {
-    console.error("Catalog loading error:", error);
+  } catch {
     emptyMessage.hidden = false;
     emptyMessage.textContent = "Не удалось загрузить товары";
   }

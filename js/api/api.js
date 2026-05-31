@@ -60,6 +60,15 @@ async function removeCartItem(id) {
   return checkResponse(response);
 }
 
+async function updateCartItem(id, data) {
+  const response = await fetch(
+    `${API_URL}/cart/${id}`,
+    createRequestOptions("PATCH", data),
+  );
+
+  return checkResponse(response);
+}
+
 async function createOrder(orderData) {
   const response = await fetch(
     `${API_URL}/orders`,
@@ -116,6 +125,7 @@ export {
   getReviews,
   addToCart,
   removeCartItem,
+  updateCartItem,
   createOrder,
   createPriceRequest,
   createReview,

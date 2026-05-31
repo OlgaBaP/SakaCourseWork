@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/pages/product.css" />
+    <link rel="stylesheet" href="../css/common/cart.css" />
   </head>
 
   <body>
@@ -58,11 +59,11 @@
             <img src="../assets/images/icons/icon-search.svg" alt="" />
           </a>
 
-          <a class="cart-link" href="#" aria-label="Корзина">
+          <a class="cart-link" href="#" aria-label="Корзина" data-cart-open>
             <span class="header-circle">
               <img src="../assets/images/icons/icon-cart.svg" alt="" />
             </span>
-            <span class="cart-link__count">3</span>
+            <span class="cart-link__count" data-cart-count>0</span>
           </a>
 
           <a class="login-link" href="#">
@@ -108,7 +109,7 @@
             >Каталог <span></span
           ></a>
           <a href="about.html">О компании</a>
-          <a href="#">Корзина</a>
+          <a href="#" data-cart-open>Корзина</a>
           <a href="#">Доставка и оплата</a>
           <a href="#">Контакты</a>
         </nav>
@@ -158,12 +159,17 @@
                   ></div>
                 </div>
                 <div class="cart-visual" aria-label="Добавить в корзину">
-                  <span class="cart-visual__quantity">10</span>
-                  <button class="cart-visual__button" type="button">
+                  <span class="cart-visual__quantity">1</span>
+                  <button
+                    class="cart-visual__button"
+                    type="button"
+                    data-product-cart-button
+                  >
                     <span>Добавить в корзину</span>
                     <img src="../assets/images/icons/icon-cart.svg" alt="" />
                   </button>
                 </div>
+                <p class="cart-visual__message" data-product-cart-message hidden></p>
               </div>
 
               <section class="product-specs" aria-labelledby="specs-title">
@@ -180,45 +186,7 @@
               Рассчитайте стоимость ткани, ответив на три вопроса
             </h2>
 
-            <div class="calculator-panel">
-              <article class="calculator-card">
-                <div class="calculator-card__form">
-                  <h3>1. Выберите необходимую ткань</h3>
-                  <div class="calculator-field">Выберите ткань</div>
-                  <h3>2. Введите общее количество рулонов</h3>
-                  <div class="counter-row">
-                    <button type="button" disabled>-</button>
-                    <span>Кол-во рулонов...</span>
-                    <button type="button" disabled>+</button>
-                  </div>
-                  <h3>3. Введите общее количество пачек</h3>
-                  <div class="counter-row">
-                    <button type="button" disabled>-</button>
-                    <span>10</span>
-                    <button type="button" disabled>+</button>
-                  </div>
-                </div>
-                <div class="calculator-card__prices">
-                  <dl>
-                    <div>
-                      <dt>Цена за КГ:</dt>
-                      <dd>10 P</dd>
-                    </div>
-                    <div>
-                      <dt>Цена за МЕТР:</dt>
-                      <dd>11 P</dd>
-                    </div>
-                    <div>
-                      <dt>Общая сумма:</dt>
-                      <dd>11 P</dd>
-                    </div>
-                  </dl>
-                </div>
-                <div class="calculator-card__preview">
-                  <span>Выберите ткань...</span>
-                </div>
-              </article>
-
+            <div class="calculator-panel" data-calculator>
               <article class="calculator-card">
                 <div class="calculator-card__form">
                   <h3>1. Выберите необходимую ткань</h3>
@@ -227,30 +195,74 @@
                   </div>
                   <h3>2. Введите общее количество рулонов</h3>
                   <div class="counter-row">
-                    <button type="button" disabled>-</button>
-                    <span>Кол-во рулонов...</span>
-                    <button type="button" disabled>+</button>
+                    <button
+                      type="button"
+                      data-calculator-step="rolls"
+                      data-calculator-direction="-1"
+                      aria-label="Уменьшить количество рулонов"
+                    >
+                      -
+                    </button>
+                    <input
+                      class="counter-row__input"
+                      type="number"
+                      min="0"
+                      value="0"
+                      inputmode="numeric"
+                      aria-label="Количество рулонов"
+                      data-calculator-rolls
+                    />
+                    <button
+                      type="button"
+                      data-calculator-step="rolls"
+                      data-calculator-direction="1"
+                      aria-label="Увеличить количество рулонов"
+                    >
+                      +
+                    </button>
                   </div>
                   <h3>3. Введите общее количество пачек</h3>
                   <div class="counter-row">
-                    <button type="button" disabled>-</button>
-                    <span>10</span>
-                    <button type="button" disabled>+</button>
+                    <button
+                      type="button"
+                      data-calculator-step="packs"
+                      data-calculator-direction="-1"
+                      aria-label="Уменьшить количество пачек"
+                    >
+                      -
+                    </button>
+                    <input
+                      class="counter-row__input"
+                      type="number"
+                      min="0"
+                      value="0"
+                      inputmode="numeric"
+                      aria-label="Количество пачек"
+                      data-calculator-packs
+                    />
+                    <button
+                      type="button"
+                      data-calculator-step="packs"
+                      data-calculator-direction="1"
+                      aria-label="Увеличить количество пачек"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
                 <div class="calculator-card__prices">
                   <dl>
                     <div>
                       <dt>Цена за КГ:</dt>
-                      <dd>10 P</dd>
+                      <dd data-calculator-price>0 ₽</dd>
                     </div>
                     <div>
-                      <dt>Цена за МЕТР:</dt>
-                      <dd>11 P</dd>
+                      <dt>Общая масса:</dt>
+                      <dd data-calculator-weight>0 кг</dd>
                     </div>
                     <div>
                       <dt>Общая сумма:</dt>
-                      <dd>11 P</dd>
+                      <dd data-calculator-sum>0 ₽</dd>
                     </div>
                   </dl>
                 </div>
@@ -262,23 +274,18 @@
                 />
               </article>
 
-              <button class="calculator-add" type="button">
-                <span>Добавить товар</span>
-                <span aria-hidden="true">+</span>
-              </button>
-
               <div class="calculator-total">
                 <div>
-                  <span>Общее количество рулонов:</span>
-                  <strong>10</strong>
+                  <span>Выбранная ткань:</span>
+                  <strong data-calculator-total-product>Кулинарная гладь</strong>
                 </div>
                 <div>
-                  <span>Общее количество пачек:</span>
-                  <strong>24</strong>
+                  <span>Общая масса:</span>
+                  <strong data-calculator-total-weight>0 кг</strong>
                 </div>
                 <div class="calculator-total__sum">
-                  <span>Итоговая сумма за все позиции:</span>
-                  <strong>100 P</strong>
+                  <span>Итоговая стоимость:</span>
+                  <strong data-calculator-total-sum>0 ₽</strong>
                 </div>
               </div>
             </div>
@@ -441,7 +448,7 @@
             <a href="about.html">О компании</a>
             <a href="#">Доставка и оплата</a>
             <a href="#">Контакты</a>
-            <a href="#">Корзина</a>
+            <a href="#" data-cart-open>Корзина</a>
           </nav>
 
           <div class="site-footer__contacts">
@@ -512,7 +519,7 @@
             >Каталог</a
           >
           <a class="mobile-menu__link" href="about.html">О компании</a>
-          <a class="mobile-menu__link" href="#">Корзина</a>
+          <a class="mobile-menu__link" href="#" data-cart-open>Корзина</a>
           <a class="mobile-menu__link" href="#">Доставка и оплата</a>
           <a class="mobile-menu__link" href="#">Контакты</a>
         </div>
@@ -523,9 +530,9 @@
         </a>
 
         <div class="mobile-menu__actions">
-          <a class="mobile-menu__cart" href="#" aria-label="Корзина">
+          <a class="mobile-menu__cart" href="#" aria-label="Корзина" data-cart-open>
             <img src="../assets/images/icons/icon-cart.svg" alt="" />
-            <span>3</span>
+            <span data-cart-count>0</span>
           </a>
           <a class="mobile-menu__login" href="#">
             <img src="../assets/images/icons/icon-user.svg" alt="" />
@@ -565,6 +572,7 @@
     </div>
 
     <script type="module" src="../js/pages/product.js"></script>
+    <script type="module" src="../js/common/cart.js"></script>
     <script type="module" src="../js/common/burger-menu.js"></script>
   </body>
 </html>

@@ -485,6 +485,18 @@ button:disabled {
   height: 24px;
 }
 
+.cart-visual__message {
+  margin: 10px 0 0;
+  color: var(--color-dark-gold);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.334;
+}
+
+.cart-visual__message.is-error {
+  color: #c83a3a;
+}
+
 .product-specs {
   margin-top: 101px;
 }
@@ -556,7 +568,8 @@ button:disabled {
 }
 
 .calculator-field,
-.counter-row span {
+.counter-row span,
+.counter-row__input {
   display: flex;
   align-items: center;
   min-height: 62px;
@@ -607,6 +620,20 @@ button:disabled {
 
 .counter-row span {
   border-radius: 0;
+}
+
+.counter-row__input {
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  text-align: center;
+}
+
+.counter-row__input::-webkit-outer-spin-button,
+.counter-row__input::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
 }
 
 .calculator-card__prices dl {
@@ -1332,5 +1359,357 @@ button:disabled {
     height: 24px;
     border-radius: 50%;
     object-fit: cover;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1399px) {
+  .section-container {
+    width: min(100% - 78px, 960px);
+  }
+
+  .page {
+    min-height: 0;
+  }
+
+  .product-main {
+    padding-top: 48px;
+  }
+
+  .product-layout {
+    grid-template-columns: minmax(320px, 420px) minmax(280px, 1fr);
+    gap: 32px;
+  }
+
+  .product-gallery__main {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .product-gallery__thumbs {
+    grid-template-columns: repeat(4, minmax(64px, 1fr));
+    gap: 14px;
+  }
+
+  .product-thumb {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .product-title {
+    margin-top: 18px;
+  }
+
+  .cart-visual {
+    width: 100%;
+  }
+
+  .cart-visual__quantity {
+    width: 82px;
+  }
+
+  .cart-visual__button {
+    flex: 1;
+    width: auto;
+  }
+
+  .product-specs {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+
+  .product-specs dl {
+    grid-template-columns: 180px 1fr;
+  }
+
+  .calculator-section {
+    margin-top: 80px;
+  }
+
+  .calculator-section h2 {
+    width: min(100%, 559px);
+  }
+
+  .calculator-panel {
+    width: 100%;
+    padding: 32px;
+  }
+
+  .calculator-card {
+    grid-template-columns: minmax(0, 1fr) 170px 240px;
+    gap: 24px;
+    padding: 28px;
+  }
+
+  .calculator-card__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .calculator-total {
+    grid-template-columns: 1fr 1fr 1.3fr;
+    width: 100%;
+  }
+
+  .calculator-total__sum strong {
+    font-size: 44px;
+  }
+
+  .colors-section {
+    margin-top: 100px;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(4, 130px);
+    justify-content: space-between;
+    gap: 48px 28px;
+  }
+
+  .request-form {
+    width: 100%;
+    padding: 36px 32px;
+  }
+
+  .request-form__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .request-form__button {
+    width: 100%;
+  }
+
+  .site-footer {
+    height: auto;
+    min-height: 380px;
+  }
+
+  .site-footer__inner {
+    width: min(100% - 78px, 960px);
+    height: auto;
+    padding-bottom: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-container {
+    width: calc(100% - 32px);
+  }
+
+  .page {
+    min-height: 0;
+  }
+
+  .product-main {
+    padding-top: 32px;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 28px;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+  }
+
+  .product-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .product-gallery__main {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    aspect-ratio: 1;
+  }
+
+  .product-gallery__thumbs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .product-thumb {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    aspect-ratio: 1;
+  }
+
+  .product-title {
+    margin-top: 0;
+    font-size: 28px;
+  }
+
+  .product-price span {
+    font-size: 24px;
+  }
+
+  .product-color__swatches {
+    width: 100%;
+  }
+
+  .cart-visual {
+    width: 100%;
+  }
+
+  .cart-visual__quantity {
+    width: 64px;
+  }
+
+  .cart-visual__button {
+    flex: 1;
+    width: auto;
+    padding: 0 20px;
+    font-size: 13px;
+  }
+
+  .product-specs {
+    margin-top: 0;
+  }
+
+  .product-specs dl {
+    grid-template-columns: minmax(112px, 0.7fr) 1fr;
+    column-gap: 10px;
+  }
+
+  .calculator-section {
+    margin-top: 64px;
+  }
+
+  .calculator-section h2 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  .calculator-panel {
+    width: 100%;
+    padding: 20px 14px 24px;
+    border-radius: 12px;
+  }
+
+  .calculator-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    min-height: 0;
+    padding: 20px 14px;
+  }
+
+  .calculator-card h3 {
+    font-size: 16px;
+  }
+
+  .calculator-field,
+  .counter-row__input {
+    padding: 0 14px;
+  }
+
+  .calculator-card__prices dl {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 0;
+  }
+
+  .calculator-card__image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    aspect-ratio: 1;
+  }
+
+  .calculator-total {
+    grid-template-columns: 1fr;
+    width: 100%;
+    min-height: 0;
+    padding: 24px 18px;
+  }
+
+  .calculator-total strong {
+    font-size: 22px;
+  }
+
+  .calculator-total__sum strong {
+    font-size: 34px;
+  }
+
+  .colors-section {
+    margin-top: 70px;
+  }
+
+  .colors-section h2 {
+    margin-bottom: 28px;
+    font-size: 22px;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 18px;
+  }
+
+  .palette-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+
+  .request-section {
+    margin-top: 70px;
+  }
+
+  .request-form {
+    width: 100%;
+    min-height: 0;
+    padding: 28px 16px;
+    border-radius: 12px;
+  }
+
+  .request-form h2 {
+    font-size: 22px;
+  }
+
+  .request-form > p {
+    font-size: 15px;
+  }
+
+  .request-form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .request-form input {
+    padding: 0 20px;
+  }
+
+  .request-form__button {
+    width: 100%;
+  }
+
+  .site-footer {
+    height: auto;
+    margin-top: 56px;
+  }
+
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    width: calc(100% - 32px);
+    height: auto;
+    padding: 34px 0 40px;
+  }
+
+  .site-logo--footer {
+    margin-bottom: 36px;
+  }
+
+  .site-footer__contacts {
+    align-items: flex-start;
+    margin-top: 0;
+  }
+
+  .phone-link--footer {
+    margin-bottom: 28px;
+  }
+
+  .site-footer__contacts p {
+    text-align: left;
   }
 }

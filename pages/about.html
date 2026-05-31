@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/pages/about.css" />
+    <link rel="stylesheet" href="../css/common/cart.css" />
   </head>
 
   <body>
@@ -58,11 +59,11 @@
             <img src="../assets/images/icons/icon-search.svg" alt="" />
           </a>
 
-          <a class="cart-link" href="#" aria-label="Корзина">
+          <a class="cart-link" href="#" aria-label="Корзина" data-cart-open>
             <span class="header-circle">
               <img src="../assets/images/icons/icon-cart.svg" alt="" />
             </span>
-            <span class="cart-link__count">3</span>
+            <span class="cart-link__count" data-cart-count>0</span>
           </a>
 
           <a class="login-link" href="#">
@@ -106,7 +107,7 @@
           <a href="../index.html">Главная</a>
           <a class="nav-catalog" href="catalog.html">Каталог <span></span></a>
           <a class="nav-link--active" href="about.html">О компании</a>
-          <a href="#">Корзина</a>
+          <a href="#" data-cart-open>Корзина</a>
           <a href="#">Доставка и оплата</a>
           <a href="#">Контакты</a>
         </nav>
@@ -361,7 +362,7 @@
             <a href="about.html">О компании</a>
             <a href="#">Доставка и оплата</a>
             <a href="#">Контакты</a>
-            <a href="#">Корзина</a>
+            <a href="#" data-cart-open>Корзина</a>
           </nav>
 
           <div class="site-footer__contacts">
@@ -436,7 +437,7 @@
             href="about.html"
             >О компании</a
           >
-          <a class="mobile-menu__link" href="#">Корзина</a>
+          <a class="mobile-menu__link" href="#" data-cart-open>Корзина</a>
           <a class="mobile-menu__link" href="#">Доставка и оплата</a>
           <a class="mobile-menu__link" href="#">Контакты</a>
         </div>
@@ -447,9 +448,9 @@
         </a>
 
         <div class="mobile-menu__actions">
-          <a class="mobile-menu__cart" href="#" aria-label="Корзина">
+          <a class="mobile-menu__cart" href="#" aria-label="Корзина" data-cart-open>
             <img src="../assets/images/icons/icon-cart.svg" alt="" />
-            <span>3</span>
+            <span data-cart-count>0</span>
           </a>
           <a class="mobile-menu__login" href="#">
             <img src="../assets/images/icons/icon-user.svg" alt="" />
@@ -524,6 +525,7 @@
     </div>
 
     <script type="module" src="../js/pages/about.js"></script>
+    <script type="module" src="../js/common/cart.js"></script>
     <script type="module" src="../js/common/burger-menu.js"></script>
   </body>
 </html>

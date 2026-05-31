@@ -1,4 +1,5 @@
 import { createPriceRequest, getProductById, getProducts } from "../api/api.js";
+import { addProductToCart } from "../common/cart.js";
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
@@ -13,8 +14,23 @@ const thumbnailsList = document.querySelector("[data-product-thumbnails]");
 const productColor = document.querySelector("[data-product-color]");
 const productColors = document.querySelector("[data-product-colors]");
 const productSpecs = document.querySelector("[data-product-specs]");
+const addToCartButton = document.querySelector("[data-product-cart-button]");
+const addToCartMessage = document.querySelector("[data-product-cart-message]");
+const calculator = document.querySelector("[data-calculator]");
 const calculatorProduct = document.querySelector("[data-calculator-product]");
 const calculatorImage = document.querySelector("[data-calculator-image]");
+const calculatorRolls = document.querySelector("[data-calculator-rolls]");
+const calculatorPacks = document.querySelector("[data-calculator-packs]");
+const calculatorPrice = document.querySelector("[data-calculator-price]");
+const calculatorWeight = document.querySelector("[data-calculator-weight]");
+const calculatorSum = document.querySelector("[data-calculator-sum]");
+const calculatorTotalProduct = document.querySelector(
+  "[data-calculator-total-product]",
+);
+const calculatorTotalWeight = document.querySelector(
+  "[data-calculator-total-weight]",
+);
+const calculatorTotalSum = document.querySelector("[data-calculator-total-sum]");
 
 const requestForm = document.querySelector("[data-request-form]");
 const nameInput = document.querySelector("[data-request-name]");
@@ -26,6 +42,9 @@ const emailError = document.querySelector("[data-error-email]");
 const requestMessage = document.querySelector("[data-request-message]");
 
 let currentProduct = null;
+
+const ROLL_WEIGHT = 20;
+const PACK_WEIGHT = 2;
 
 const colorMap = {
   Бежевый: "#d8c0a2",
@@ -42,7 +61,11 @@ const colorMap = {
 };
 
 function formatPrice(price) {
-  return `${String(price).replace(".", ",")} P`;
+  return new Intl.NumberFormat("ru-RU", {
+    style: "currency",
+    currency: "RUB",
+    maximumFractionDigits: 2,
+  }).format(Number(price) || 0);
 }
 
 function getImagePath(image) {
@@ -51,6 +74,11 @@ function getImagePath(image) {
   }
 
   return image.startsWith("http") ? image : `../${image}`;
+}
+
+function getNumericProductId(id) {
+  const numberId = Number(id);
+  return Number.isNaN(numberId) ? id : numberId;
 }
 
 function showProductNotFound() {
@@ -135,6 +163,29 @@ function renderSpecs(product) {
   });
 }
 
+function getPositiveInteger(value) {
+  const number = Math.floor(Number(value));
+  return Number.isFinite(number) && number > 0 ? number : 0;
+}
+
+function updateCalculator() {
+  if (!currentProduct) {
+    return;
+  }
+
+  const rolls = getPositiveInteger(calculatorRolls.value);
+  const packs = getPositiveInteger(calculatorPacks.value);
+  const price = Number(currentProduct.price) || 0;
+  const weight = rolls * ROLL_WEIGHT + packs * PACK_WEIGHT;
+  const total = weight * price;
+
+  calculatorPrice.textContent = formatPrice(price);
+  calculatorWeight.textContent = `${weight} кг`;
+  calculatorSum.textContent = formatPrice(total);
+  calculatorTotalWeight.textContent = `${weight} кг`;
+  calculatorTotalSum.textContent = formatPrice(total);
+}
+
 function renderProduct(product, products) {
   const sameCategoryProducts = products.filter(
     (item) => item.category === product.category,
@@ -159,11 +210,66 @@ function renderProduct(product, products) {
   renderSpecs(product);
 
   calculatorProduct.textContent = product.title;
+  calculatorTotalProduct.textContent = product.title;
   calculatorImage.src = getImagePath(product.image);
   calculatorImage.alt = `${product.title} ${product.color}`;
+  updateCalculator();
 
   productMessage.hidden = true;
   productContent.hidden = false;
+}
+
+function normalizeCounterValue(input) {
+  if (input.value === "") {
+    return;
+  }
+
+  input.value = String(getPositiveInteger(input.value));
+}
+
+function handleCalculatorInput(event) {
+  normalizeCounterValue(event.target);
+  updateCalculator();
+}
+
+function handleCalculatorStep(event) {
+  const button = event.target.closest("[data-calculator-step]");
+
+  if (!button) {
+    return;
+  }
+
+  const input =
+    button.dataset.calculatorStep === "rolls" ? calculatorRolls : calculatorPacks;
+  const direction = Number(button.dataset.calculatorDirection);
+  const nextValue = getPositiveInteger(input.value) + direction;
+
+  input.value = String(Math.max(0, nextValue));
+  updateCalculator();
+}
+
+function showAddToCartMessage(text, isError = false) {
+  addToCartMessage.textContent = text;
+  addToCartMessage.hidden = false;
+  addToCartMessage.classList.toggle("is-error", isError);
+}
+
+async function handleAddToCart() {
+  if (!currentProduct) {
+    return;
+  }
+
+  addToCartButton.disabled = true;
+  addToCartMessage.hidden = true;
+
+  try {
+    await addProductToCart(currentProduct);
+    showAddToCartMessage("Товар добавлен в корзину");
+  } catch {
+    showAddToCartMessage("Не удалось добавить товар в корзину", true);
+  } finally {
+    addToCartButton.disabled = false;
+  }
 }
 
 function showFieldError(input, errorElement, message) {
@@ -243,7 +349,7 @@ async function handleRequestSubmit(event) {
     name: nameInput.value.trim(),
     phone: phoneInput.value.trim(),
     email: emailInput.value.trim(),
-    productId: currentProduct.id,
+    productId: getNumericProductId(currentProduct.id),
     productTitle: currentProduct.title,
     createdAt: new Date().toISOString(),
   };
@@ -279,6 +385,10 @@ async function initProductPage() {
   }
 }
 
+addToCartButton.addEventListener("click", handleAddToCart);
+calculatorRolls.addEventListener("input", handleCalculatorInput);
+calculatorPacks.addEventListener("input", handleCalculatorInput);
+calculator.addEventListener("click", handleCalculatorStep);
 requestForm.addEventListener("submit", handleRequestSubmit);
 
 initProductPage();
