@@ -2304,3 +2304,253 @@ input {
     text-align: left;
   }
 }
+
+.site-footer {
+  position: relative;
+  height: 474px;
+  overflow: hidden;
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+.site-footer__inner {
+  position: relative;
+  display: block;
+  width: 1160px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.site-footer__brand,
+.site-footer__contacts {
+  display: contents;
+}
+
+.site-logo--footer,
+.site-logo--footer img {
+  width: 120px;
+  height: 64px;
+}
+
+.site-logo--footer {
+  position: absolute;
+  top: 73px;
+  left: 0;
+  margin: 0;
+}
+
+.site-logo--footer img {
+  object-fit: contain;
+}
+
+.site-footer__nav {
+  position: absolute;
+  top: 85px;
+  left: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 220px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer__nav h2 {
+  margin: 0 0 22px;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.514;
+  letter-spacing: 0.32px;
+}
+
+.site-footer__nav a {
+  margin: 0;
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.514;
+  letter-spacing: 0.28px;
+}
+
+.phone-link--footer {
+  position: absolute;
+  top: 276px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.334;
+  letter-spacing: 0.4px;
+}
+
+.phone-link--footer img {
+  width: 24px;
+  height: 24px;
+}
+
+.site-footer__social {
+  position: absolute;
+  top: 368px;
+  left: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin: 0;
+}
+
+.site-footer__social p {
+  width: 120px;
+  margin: 0 18px 0 0;
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.514;
+  letter-spacing: 0.32px;
+}
+
+.site-footer__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 36px;
+  margin: 0;
+}
+
+.site-footer__social img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.site-footer__contacts p {
+  position: absolute;
+  right: 0;
+  bottom: 53px;
+  width: 660px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.514;
+  letter-spacing: 0.28px;
+  text-align: right;
+}
+
+.site-footer__inner::before,
+.site-footer__inner::after,
+.site-footer__contacts::before {
+  content: none;
+}
+
+@media (min-width: 480px) and (max-width: 1399px) {
+  .site-footer {
+    height: 732px;
+  }
+
+  .site-footer__inner {
+    width: min(620px, calc(100% - 78px));
+  }
+
+  .site-logo--footer {
+    top: 60px;
+    left: 0;
+  }
+
+  .site-footer__nav {
+    top: 72px;
+    left: 160px;
+  }
+
+  .phone-link--footer {
+    top: 496px;
+    left: 0;
+    right: auto;
+  }
+
+  .site-footer__inner::before {
+    content: "";
+    position: absolute;
+    top: 570px;
+    left: 50%;
+    width: 100vw;
+    height: 1px;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .site-footer__social {
+    top: 626px;
+    left: 0;
+  }
+
+  .site-footer__contacts p {
+    top: 612px;
+    right: 0;
+    bottom: auto;
+    width: 234px;
+  }
+}
+
+@media (max-width: 479px) {
+  .site-footer {
+    height: 1070px;
+  }
+
+  .site-footer__inner {
+    width: min(300px, calc(100% - 60px));
+  }
+
+  .site-logo--footer {
+    top: 50px;
+    left: 0;
+  }
+
+  .site-footer__nav {
+    top: 144px;
+    left: 0;
+  }
+
+  .phone-link--footer {
+    top: 753px;
+    left: 0;
+    right: auto;
+  }
+
+  .site-footer__inner::before {
+    content: "";
+    position: absolute;
+    top: 830px;
+    left: 50%;
+    width: 100vw;
+    height: 1px;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .site-footer__social {
+    top: 860px;
+    left: 0;
+    align-items: center;
+  }
+
+  .site-footer__social p {
+    width: 140px;
+    margin-right: 0;
+  }
+
+  .site-footer__contacts p {
+    top: 994px;
+    left: 0;
+    right: auto;
+    bottom: auto;
+    width: 259px;
+    text-align: left;
+  }
+}

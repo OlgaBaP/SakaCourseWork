@@ -570,31 +570,21 @@
   ],
   "cart": [
     {
-      "id": "_2sda9fg2G4",
-      "productId": 1,
-      "title": "Кулинарная гладь",
-      "price": 11.4,
-      "image": "assets/images/products/product-cotton-jersey-blue.png",
-      "color": "Синий",
-      "width": "180 см",
+      "id": "4eUDUSo0ZVY",
+      "productId": 6,
+      "title": "Вискоза",
+      "price": 15.6,
+      "image": "assets/images/products/product-viscose-pink.png",
+      "color": "Розовый",
+      "width": "170 см",
       "quantity": 1
     },
     {
-      "id": "ncy1_H-BUws",
-      "productId": 5,
-      "title": "Кулинарная гладь",
-      "price": 12.8,
-      "image": "assets/images/products/product-cotton-jersey-grey.png",
-      "color": "Серый",
-      "width": "180 см",
-      "quantity": 1
-    },
-    {
-      "id": "eHTA25SrmfQ",
-      "productId": 19,
-      "title": "Футер 3-х нитка с начесом",
-      "price": 18.6,
-      "image": "assets/images/products/product-footer-three-thread-brushed-blue.png",
+      "id": "0PY_iBqUQMU",
+      "productId": 9,
+      "title": "Футер диагональ",
+      "price": 16.7,
+      "image": "assets/images/products/product-footer-diagonal-blue.png",
       "color": "Синий",
       "width": "185 см",
       "quantity": 1
@@ -655,5 +645,6 @@
       "password": "123456",
       "role": "admin"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
