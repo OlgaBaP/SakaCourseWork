@@ -1,5 +1,6 @@
 import { createPriceRequest, getProductById, getProducts } from "../api/api.js";
 import { addProductToCart } from "../common/cart.js";
+import { validateRequestFields } from "../common/request-validation.js";
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
@@ -296,59 +297,46 @@ function clearRequestMessage() {
   requestMessage.classList.remove("is-error");
 }
 
-function isBelarusPhone(phone) {
-  const digits = phone.replace(/\D/g, "");
-  return /^375(25|29|33|44)\d{7}$/.test(digits);
-}
-
-function isEmailValid(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
 function validateForm() {
-  const name = nameInput.value.trim();
-  const phone = phoneInput.value.trim();
-  const email = emailInput.value.trim();
-  let isValid = true;
+  const validation = validateRequestFields({
+    name: nameInput.value,
+    phone: phoneInput.value,
+    email: emailInput.value,
+  });
 
   clearFieldError(nameInput, nameError);
   clearFieldError(phoneInput, phoneError);
   clearFieldError(emailInput, emailError);
   clearRequestMessage();
 
-  if (name.length < 2) {
-    showFieldError(nameInput, nameError, "Введите имя");
-    isValid = false;
+  if (validation.errors.name) {
+    showFieldError(nameInput, nameError, validation.errors.name);
   }
 
-  if (!isBelarusPhone(phone)) {
-    showFieldError(
-      phoneInput,
-      phoneError,
-      "Введите белорусский номер телефона",
-    );
-    isValid = false;
+  if (validation.errors.phone) {
+    showFieldError(phoneInput, phoneError, validation.errors.phone);
   }
 
-  if (!isEmailValid(email)) {
-    showFieldError(emailInput, emailError, "Введите корректный E-mail");
-    isValid = false;
+  if (validation.errors.email) {
+    showFieldError(emailInput, emailError, validation.errors.email);
   }
 
-  return isValid;
+  return validation;
 }
 
 async function handleRequestSubmit(event) {
   event.preventDefault();
 
-  if (!currentProduct || !validateForm()) {
+  const validation = validateForm();
+
+  if (!currentProduct || !validation.isValid) {
     return;
   }
 
   const requestData = {
-    name: nameInput.value.trim(),
-    phone: phoneInput.value.trim(),
-    email: emailInput.value.trim(),
+    name: validation.values.name,
+    phone: validation.values.phone,
+    email: validation.values.email,
     productId: getNumericProductId(currentProduct.id),
     productTitle: currentProduct.title,
     createdAt: new Date().toISOString(),

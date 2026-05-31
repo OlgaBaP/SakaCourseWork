@@ -39,6 +39,34 @@
     {
       "id": "10",
       "name": "Рибана"
+    },
+    {
+      "id": "11",
+      "name": "Селаник"
+    },
+    {
+      "id": "12",
+      "name": "Велюр"
+    },
+    {
+      "id": "13",
+      "name": "Махра"
+    },
+    {
+      "id": "14",
+      "name": "Лапша"
+    },
+    {
+      "id": "15",
+      "name": "Лакоста"
+    },
+    {
+      "id": "16",
+      "name": "Супрем"
+    },
+    {
+      "id": "17",
+      "name": "Джерси"
     }
   ],
   "products": [
@@ -281,6 +309,231 @@
       "density": "230 г/м²",
       "quality": "Карде",
       "inStock": true
+    },
+    {
+      "id": "17",
+      "title": "Футер 2-х нитка",
+      "categoryId": 5,
+      "category": "Футер",
+      "price": 14.7,
+      "color": "Черный",
+      "image": "assets/images/products/product-footer-two-thread-black.png",
+      "description": "Плотное трикотажное полотно для худи, свитшотов и спортивной одежды.",
+      "composition": "80% хлопок, 20% полиэстер",
+      "width": "185 см",
+      "density": "280 г/м²",
+      "quality": "Компакт пенье",
+      "inStock": true
+    },
+    {
+      "id": "18",
+      "title": "Футер 2-х нитка",
+      "categoryId": 5,
+      "category": "Футер",
+      "price": 14.3,
+      "color": "Серый",
+      "image": "assets/images/products/product-footer-two-thread-grey.png",
+      "description": "Мягкий футер для повседневных костюмов, брюк и легких толстовок.",
+      "composition": "82% хлопок, 18% полиэстер",
+      "width": "185 см",
+      "density": "275 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": "19",
+      "title": "Футер 3-х нитка с начесом",
+      "categoryId": 5,
+      "category": "Футер",
+      "price": 18.6,
+      "color": "Синий",
+      "image": "assets/images/products/product-footer-three-thread-brushed-blue.png",
+      "description": "Теплый футер с мягким начесом для зимних комплектов и верхнего трикотажа.",
+      "composition": "75% хлопок, 25% полиэстер",
+      "width": "185 см",
+      "density": "340 г/м²",
+      "quality": "Компакт пенье",
+      "inStock": true
+    },
+    {
+      "id": "20",
+      "title": "Футер петля",
+      "categoryId": 5,
+      "category": "Футер",
+      "price": 16.4,
+      "color": "Зеленый",
+      "image": "assets/images/products/product-footer-loop-green.png",
+      "description": "Футер с петлей для комфортных костюмов, худи и детской одежды.",
+      "composition": "85% хлопок, 15% полиэстер",
+      "width": "180 см",
+      "density": "300 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": "21",
+      "title": "Селаник",
+      "categoryId": 11,
+      "category": "Селаник",
+      "price": 15.2,
+      "color": "Бежевый",
+      "image": "assets/images/products/product-selanik-beige.png",
+      "description": "Фактурное полотно для джемперов, костюмов и уютной повседневной одежды.",
+      "composition": "70% хлопок, 25% полиэстер, 5% эластан",
+      "width": "175 см",
+      "density": "260 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": "22",
+      "title": "Селаник",
+      "categoryId": 11,
+      "category": "Селаник",
+      "price": 15.5,
+      "color": "Серый",
+      "image": "assets/images/products/product-selanik-grey.png",
+      "description": "Практичный серый селаник для теплых комплектов и базовых изделий.",
+      "composition": "70% хлопок, 25% полиэстер, 5% эластан",
+      "width": "175 см",
+      "density": "265 г/м²",
+      "quality": "Компакт пенье",
+      "inStock": true
+    },
+    {
+      "id": "23",
+      "title": "Велюр",
+      "categoryId": 12,
+      "category": "Велюр",
+      "price": 17.9,
+      "color": "Синий",
+      "image": "assets/images/products/product-velour-blue.png",
+      "description": "Мягкий велюр с благородным блеском для костюмов и домашней одежды.",
+      "composition": "80% хлопок, 20% полиэстер",
+      "width": "180 см",
+      "density": "240 г/м²",
+      "quality": "Премиум",
+      "inStock": true
+    },
+    {
+      "id": "24",
+      "title": "Велюр",
+      "categoryId": 12,
+      "category": "Велюр",
+      "price": 18.1,
+      "color": "Коричневый",
+      "image": "assets/images/products/product-velour-brown.png",
+      "description": "Плотный коричневый велюр для уютных коллекций и детского ассортимента.",
+      "composition": "80% хлопок, 20% полиэстер",
+      "width": "180 см",
+      "density": "245 г/м²",
+      "quality": "Премиум",
+      "inStock": true
+    },
+    {
+      "id": "25",
+      "title": "Махра",
+      "categoryId": 13,
+      "category": "Махра",
+      "price": 13.8,
+      "color": "Белый",
+      "image": "assets/images/products/product-mahra-white.png",
+      "description": "Белая махра для полотенец, халатов и изделий с высокой впитываемостью.",
+      "composition": "100% хлопок",
+      "width": "160 см",
+      "density": "320 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": "26",
+      "title": "Махра",
+      "categoryId": 13,
+      "category": "Махра",
+      "price": 14.1,
+      "color": "Розовый",
+      "image": "assets/images/products/product-mahra-pink.png",
+      "description": "Нежная розовая махра для детских изделий, халатов и домашнего текстиля.",
+      "composition": "100% хлопок",
+      "width": "160 см",
+      "density": "315 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": "27",
+      "title": "Лапша",
+      "categoryId": 14,
+      "category": "Лапша",
+      "price": 12.6,
+      "color": "Бежевый",
+      "image": "assets/images/products/product-lapsha-beige.png",
+      "description": "Эластичное полотно лапша для водолазок, платьев и облегающих изделий.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "150 см",
+      "density": "230 г/м²",
+      "quality": "Компакт пенье",
+      "inStock": true
+    },
+    {
+      "id": "28",
+      "title": "Лапша",
+      "categoryId": 14,
+      "category": "Лапша",
+      "price": 12.9,
+      "color": "Черный",
+      "image": "assets/images/products/product-lapsha-black.png",
+      "description": "Черная лапша для базовых коллекций, топов и облегающих платьев.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "150 см",
+      "density": "235 г/м²",
+      "quality": "Компакт пенье",
+      "inStock": true
+    },
+    {
+      "id": "29",
+      "title": "Лакоста",
+      "categoryId": 15,
+      "category": "Лакоста",
+      "price": 13.4,
+      "color": "Зеленый",
+      "image": "assets/images/products/product-lacoste-green.png",
+      "description": "Фактурная лакоста для поло, школьной формы и повседневной одежды.",
+      "composition": "100% хлопок",
+      "width": "180 см",
+      "density": "210 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": "30",
+      "title": "Супрем",
+      "categoryId": 16,
+      "category": "Супрем",
+      "price": 11.7,
+      "color": "Белый",
+      "image": "assets/images/products/product-supreme-white.png",
+      "description": "Тонкое гладкое полотно для футболок, белья и легких летних изделий.",
+      "composition": "95% хлопок, 5% эластан",
+      "width": "170 см",
+      "density": "160 г/м²",
+      "quality": "Пенье",
+      "inStock": true
+    },
+    {
+      "id": "31",
+      "title": "Джерси",
+      "categoryId": 17,
+      "category": "Джерси",
+      "price": 16.8,
+      "color": "Синий",
+      "image": "assets/images/products/product-jersey-blue.png",
+      "description": "Эластичный джерси для платьев, костюмов и изделий с мягкой посадкой.",
+      "composition": "65% вискоза, 30% полиэстер, 5% эластан",
+      "width": "175 см",
+      "density": "250 г/м²",
+      "quality": "Премиум",
+      "inStock": true
     }
   ],
   "reviews": [
@@ -344,6 +597,24 @@
       "productTitle": "Кулинарная гладь",
       "createdAt": "2026-05-31T12:44:05.676Z",
       "id": "mbIJ0911Gsc"
+    },
+    {
+      "name": "Олечка",
+      "phone": "+375333433323",
+      "email": "olgapir241@gmail.com",
+      "productId": 1,
+      "productTitle": "Кулинарная гладь",
+      "createdAt": "2026-05-31T13:53:13.413Z",
+      "id": "DJ_XCQPifJQ"
+    },
+    {
+      "name": "Настя",
+      "phone": "+375333544434",
+      "email": "hdskz4201@gmail.com",
+      "productId": 1,
+      "productTitle": "Кулинарная гладь",
+      "createdAt": "2026-05-31T13:59:48.985Z",
+      "id": "nfk1Ftsos-A"
     }
   ],
   "users": [

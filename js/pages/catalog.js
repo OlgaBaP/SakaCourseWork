@@ -10,6 +10,7 @@ const sortSelect = document.querySelector("[data-sort-select]");
 const mobileColorSelect = document.querySelector("[data-mobile-color-select]");
 const resetButton = document.querySelector("[data-reset-button]");
 const filterCount = document.querySelector("[data-filter-count]");
+const params = new URLSearchParams(window.location.search);
 
 let products = [];
 
@@ -25,6 +26,7 @@ const colorMap = {
   Синий: "#275fba",
   Фиолетовый: "#7350a8",
   Черный: "#1d1d1d",
+  Коричневый: "#7a4c34",
 };
 
 function getUniqueValues(items, key) {
@@ -111,7 +113,15 @@ function getFilteredProducts() {
   const selectedMobileColor = mobileColorSelect.value;
 
   const filteredProducts = products.filter((product) => {
-    const isSearchMatch = product.title.toLowerCase().includes(searchValue);
+    const searchableText = [
+      product.title,
+      product.category,
+      product.color,
+      product.quality,
+    ]
+      .join(" ")
+      .toLowerCase();
+    const isSearchMatch = searchableText.includes(searchValue);
     const isCategoryMatch =
       selectedCategories.length === 0 ||
       selectedCategories.includes(product.category);
@@ -212,6 +222,7 @@ async function initCatalog() {
   try {
     products = await getProducts();
     renderFilters();
+    searchInput.value = params.get("search") || "";
     renderProducts();
   } catch {
     emptyMessage.hidden = false;

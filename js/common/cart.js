@@ -87,10 +87,14 @@ function createCartModal() {
 }
 
 function openCartModal() {
+  keepCartModalOpen();
+  loadCart(true);
+}
+
+function keepCartModalOpen() {
   cartModal.classList.add(CART_MODAL_OPENED_CLASS);
   cartModal.setAttribute("aria-hidden", "false");
   document.body.classList.add(BODY_LOCK_CLASS);
-  loadCart(true);
 }
 
 function closeCartModal() {
@@ -167,10 +171,18 @@ async function loadCart(shouldRender = false) {
   }
 }
 
+async function refreshCart(shouldKeepOpen = false) {
+  await loadCart(shouldKeepOpen);
+
+  if (shouldKeepOpen) {
+    keepCartModalOpen();
+  }
+}
+
 async function changeCartItemQuantity(itemId, nextQuantity) {
   const quantity = Math.max(1, nextQuantity);
   await updateCartItem(itemId, { quantity });
-  await loadCart(true);
+  await refreshCart(true);
 }
 
 async function handleCartAction(event) {
@@ -180,8 +192,18 @@ async function handleCartAction(event) {
     return;
   }
 
+  event.preventDefault();
+  event.stopPropagation();
+
   const cartItem = button.closest("[data-cart-item-id]");
-  const item = cartItems.find((cartProduct) => cartProduct.id === cartItem.dataset.cartItemId);
+
+  if (!cartItem) {
+    return;
+  }
+
+  const item = cartItems.find((cartProduct) => {
+    return cartProduct.id === cartItem.dataset.cartItemId;
+  });
 
   if (!item) {
     return;
@@ -200,10 +222,11 @@ async function handleCartAction(event) {
 
     if (button.dataset.cartAction === "remove") {
       await removeCartItem(item.id);
-      await loadCart(true);
+      await refreshCart(true);
     }
   } catch {
     setCartMessage("Не удалось обновить корзину");
+    keepCartModalOpen();
   } finally {
     button.disabled = false;
   }
@@ -233,7 +256,7 @@ async function addProductToCart(product) {
     });
   }
 
-  await loadCart(cartModal.classList.contains(CART_MODAL_OPENED_CLASS));
+  await refreshCart(cartModal.classList.contains(CART_MODAL_OPENED_CLASS));
 }
 
 function bindCartEvents() {
@@ -247,7 +270,10 @@ function bindCartEvents() {
   });
 
   cartModal.addEventListener("click", (event) => {
-    if (event.target.closest("[data-cart-close]")) {
+    const closeButton = event.target.closest("[data-cart-close]");
+
+    if (closeButton && cartModal.contains(closeButton)) {
+      event.preventDefault();
       closeCartModal();
     }
   });

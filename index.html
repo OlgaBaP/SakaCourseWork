@@ -23,27 +23,46 @@
           </a>
 
           <div class="brand-marks">
-            <img
-              class="brand-marks__item brand-marks__item--saka"
-              src="assets/images/logos/partner-saka.png"
-            />
-            <img
-              class="brand-marks__item brand-marks__item--eros"
-              src="assets/images/logos/partner-eros.png"
-            />
-            <img
-              class="brand-marks__item brand-marks__item--tortex"
-              src="assets/images/logos/partner-tortex.png"
-            />
+            <span class="brand-marks__item brand-marks__item--saka">
+              <img src="assets/images/logos/partner-saka.png" alt="" />
+            </span>
+            <span class="brand-marks__item brand-marks__item--eros">
+              <img src="assets/images/logos/partner-eros.png" alt="" />
+            </span>
+            <span class="brand-marks__item brand-marks__item--tortex">
+              <img src="assets/images/logos/partner-tortex.png" alt="" />
+            </span>
           </div>
 
           <p class="site-header__tagline">
             Производитель турецкого трикотажного полотна
           </p>
 
-          <a class="header-circle header-circle--search" href="#">
+          <a
+            class="header-circle header-circle--search"
+            href="#"
+            aria-label="Поиск"
+            data-header-search-toggle
+          >
             <img src="assets/images/icons/icon-search.svg" />
           </a>
+          <form
+            class="header-search"
+            action="pages/catalog.html"
+            data-header-search-form
+            hidden
+          >
+            <input
+              type="search"
+              name="search"
+              placeholder="Поиск"
+              autocomplete="off"
+              data-header-search-input
+            />
+            <button type="submit" aria-label="Найти">
+              <img src="assets/images/icons/icon-search.svg" alt="" />
+            </button>
+          </form>
 
           <a class="cart-link" href="#" aria-label="Корзина" data-cart-open>
             <span class="header-circle">
@@ -134,7 +153,7 @@
         <section class="hero-section">
           <div class="hero-card">
             <div class="hero-card__content">
-              <h1 id="hero-title">
+              <h1 id="hero-title" data-hero-title>
                 Большой выбор качественных тканей<br />для производства и пошива
                 одежды
               </h1>
@@ -145,17 +164,22 @@
               <div class="hero-slider">
                 <span
                   class="hero-slider__line hero-slider__line--active"
+                  data-hero-slide="0"
                 ></span>
-                <span class="hero-slider__line"></span>
-                <span class="hero-slider__line"></span>
-                <span class="hero-slider__line"></span>
-                <span class="hero-slider__line"></span>
-                <span class="hero-slider__counter"><b>01</b> / 05</span>
+                <span class="hero-slider__line" data-hero-slide="1"></span>
+                <span class="hero-slider__line" data-hero-slide="2"></span>
+                <span class="hero-slider__line" data-hero-slide="3"></span>
+                <span class="hero-slider__line" data-hero-slide="4"></span>
+                <span class="hero-slider__counter" data-hero-counter
+                  ><b>01</b> / 05</span
+                >
               </div>
             </div>
             <img
               class="hero-card__image"
               src="assets/images/banners/hero-fabrics.png"
+              alt=""
+              data-hero-image
             />
           </div>
         </section>
@@ -299,10 +323,17 @@
               Просто оставьте заявку на сайте и мы свяжемся с вами в ближайшее
               время
             </p>
-            <form class="request-form">
+            <form class="request-form" data-request-form novalidate>
               <label>
                 <span class="visually-hidden">Ваше имя</span>
-                <input type="text" name="name" placeholder="Ваше имя" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Ваше имя"
+                  autocomplete="name"
+                  data-request-name
+                />
+                <span class="field-error" data-error-name hidden></span>
               </label>
               <label>
                 <span class="visually-hidden">Телефон</span>
@@ -310,16 +341,31 @@
                   type="tel"
                   name="phone"
                   placeholder="+375 (__) ___-__-__"
+                  autocomplete="tel"
+                  data-request-phone
                 />
+                <span class="field-error" data-error-phone hidden></span>
               </label>
               <label>
                 <span class="visually-hidden">Ваш E-mail</span>
-                <input type="email" name="email" placeholder="Ваш E-mail" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="example@gmail.com"
+                  autocomplete="email"
+                  data-request-email
+                />
+                <span class="field-error" data-error-email hidden></span>
               </label>
               <button class="button button--submit" type="submit">
                 <span>Отправить</span>
                 <img src="assets/images/icons/icon-arrow-right.svg" />
               </button>
+              <div class="request-form__hints">
+                <span>Телефон вводите в формате +375 (__) ___-__-__</span>
+                <span>E-mail вводите в формате example@gmail.com</span>
+              </div>
+              <p class="request-form__message" data-request-message hidden></p>
             </form>
           </div>
         </section>
@@ -333,9 +379,19 @@
             </a>
             <div class="site-footer__social">
               <p>Напишите нам, <br />мы онлайн:</p>
-              <a href="#"><img src="assets/images/icons/icon-vk.svg" /></a>
-              <a href="#"
-                ><img src="assets/images/icons/icon-whatsapp.svg"
+              <a
+                href="https://vk.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="VK"
+                ><img src="assets/images/icons/icon-vk.svg" alt=""
+              /></a>
+              <a
+                href="https://wa.me/375333536608"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                ><img src="assets/images/icons/icon-whatsapp.svg" alt=""
               /></a>
             </div>
           </div>
@@ -427,7 +483,12 @@
         </a>
 
         <div class="mobile-menu__actions">
-          <a class="mobile-menu__cart" href="#" aria-label="Корзина" data-cart-open>
+          <a
+            class="mobile-menu__cart"
+            href="#"
+            aria-label="Корзина"
+            data-cart-open
+          >
             <img src="assets/images/icons/icon-cart.svg" alt="" />
             <span data-cart-count>0</span>
           </a>

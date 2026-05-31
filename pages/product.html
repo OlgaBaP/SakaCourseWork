@@ -30,21 +30,15 @@
           </a>
 
           <div class="brand-marks" aria-label="Партнерские логотипы">
-            <img
-              class="brand-marks__item brand-marks__item--saka"
-              src="../assets/images/logos/partner-saka.png"
-              alt="Saka"
-            />
-            <img
-              class="brand-marks__item brand-marks__item--eros"
-              src="../assets/images/logos/partner-eros.png"
-              alt="Eros"
-            />
-            <img
-              class="brand-marks__item brand-marks__item--tortex"
-              src="../assets/images/logos/partner-tortex.png"
-              alt="Tortex"
-            />
+            <span class="brand-marks__item brand-marks__item--saka">
+              <img src="../assets/images/logos/partner-saka.png" alt="Saka" />
+            </span>
+            <span class="brand-marks__item brand-marks__item--eros">
+              <img src="../assets/images/logos/partner-eros.png" alt="Eros" />
+            </span>
+            <span class="brand-marks__item brand-marks__item--tortex">
+              <img src="../assets/images/logos/partner-tortex.png" alt="Tortex" />
+            </span>
           </div>
 
           <p class="site-header__tagline">
@@ -54,10 +48,23 @@
           <a
             class="header-circle header-circle--search"
             href="#"
+            data-header-search-toggle
             aria-label="Поиск"
           >
             <img src="../assets/images/icons/icon-search.svg" alt="" />
           </a>
+          <form class="header-search" action="catalog.html" data-header-search-form hidden>
+            <input
+              type="search"
+              name="search"
+              placeholder="Поиск"
+              autocomplete="off"
+              data-header-search-input
+            />
+            <button type="submit" aria-label="Найти">
+              <img src="../assets/images/icons/icon-search.svg" alt="" />
+            </button>
+          </form>
 
           <a class="cart-link" href="#" aria-label="Корзина" data-cart-open>
             <span class="header-circle">
@@ -373,6 +380,10 @@
               <p>
                 Оставьте заявку на сайте и мы свяжемся с вами в ближайшее время
               </p>
+              <div class="request-form__hints">
+                <span>Телефон вводите в формате +375 (__) ___-__-__</span>
+                <span>E-mail вводите в формате example@gmail.com</span>
+              </div>
               <div class="request-form__row">
                 <label>
                   <input
@@ -433,10 +444,10 @@
             </a>
             <div class="site-footer__social">
               <p>Напишите нам, <br />мы онлайн:</p>
-              <a href="#" aria-label="VK">
+              <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="VK">
                 <img src="../assets/images/icons/icon-vk.svg" alt="" />
               </a>
-              <a href="#" aria-label="WhatsApp">
+              <a href="https://wa.me/375333536608" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                 <img src="../assets/images/icons/icon-whatsapp.svg" alt="" />
               </a>
             </div>

@@ -60,6 +60,7 @@ input {
 }
 
 .site-header__top {
+  position: relative;
   display: flex;
   align-items: flex-start;
   height: 110px;
@@ -75,9 +76,11 @@ input {
 }
 
 .site-logo img {
-  width: 120px;
-  height: 64px;
+  width: 178px;
+  height: 104px;
+  max-width: none;
   object-fit: cover;
+  transform: translate(-32px, -19px);
 }
 
 .brand-marks {
@@ -88,17 +91,47 @@ input {
 }
 
 .brand-marks__item {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
   height: 48px;
-  object-fit: cover;
+  overflow: hidden;
+}
+
+.brand-marks__item img {
+  position: absolute;
+  display: block;
+  max-width: none;
 }
 
 .brand-marks__item--saka {
   width: 52px;
 }
 
+.brand-marks__item--saka img {
+  top: -125px;
+  left: -80px;
+  width: 213px;
+  height: 299px;
+}
+
 .brand-marks__item--eros,
 .brand-marks__item--tortex {
   width: 47px;
+}
+
+.brand-marks__item--eros img {
+  top: -19px;
+  left: -35px;
+  width: 123px;
+  height: 88px;
+}
+
+.brand-marks__item--tortex img {
+  top: -20px;
+  left: -37px;
+  width: 125px;
+  height: 88px;
 }
 
 .site-header__tagline {
@@ -128,6 +161,53 @@ input {
 .header-circle--search {
   margin: 11px 0 0 69px;
   background: var(--color-white);
+}
+
+.header-search {
+  position: absolute;
+  top: 29px;
+  left: 786px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 190px;
+  height: 40px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 100px;
+  background: var(--color-white);
+}
+
+.header-search[hidden] {
+  display: none;
+}
+
+.header-search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 0 0 18px;
+  border: 0;
+  outline: none;
+  color: var(--color-dark);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.header-search button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+}
+
+.header-search button img {
+  width: 18px;
+  height: 18px;
 }
 
 .header-circle--eye {
@@ -339,7 +419,7 @@ input {
   width: 1160px;
   height: 460px;
   margin: 0 auto;
-  overflow: visible;
+  overflow: hidden;
   border-radius: 16px;
   background:
     linear-gradient(
@@ -367,10 +447,15 @@ input {
 }
 
 .hero-card__image {
-  width: 517px;
-  height: 550px;
-  margin-top: -67px;
-  object-fit: contain;
+  display: block;
+  flex: 1 1 auto;
+  width: 520px;
+  height: 100%;
+  max-width: 576px;
+  margin: 0 0 0 auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0 16px 16px 0;
 }
 
 .button {
@@ -410,7 +495,10 @@ input {
 .hero-slider__line {
   width: 30px;
   height: 3px;
+  border: 0;
+  padding: 0;
   background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
 }
 
 .hero-slider__line--active {
@@ -611,14 +699,14 @@ input {
 }
 
 .request-section {
-  height: 374px;
+  min-height: 404px;
 }
 
 .request-card {
   width: 1160px;
-  height: 330px;
+  min-height: 360px;
   margin: 0 auto;
-  padding-top: 50px;
+  padding: 50px 0 34px;
   border-radius: 16px;
   background:
     linear-gradient(
@@ -655,15 +743,21 @@ input {
   display: grid;
   grid-template-columns: 237px 236px 237px 282px;
   gap: 16px;
+  align-items: start;
   width: 1040px;
   margin: 0 auto;
+}
+
+.request-form label {
+  display: grid;
+  gap: 8px;
 }
 
 .request-form input {
   width: 100%;
   height: 59px;
   padding: 0 40px;
-  border: 0;
+  border: 1px solid transparent;
   border-radius: 16px;
   outline: none;
   background: rgba(255, 255, 255, 0.05);
@@ -677,6 +771,47 @@ input {
 .request-form input::placeholder {
   color: var(--color-white);
   opacity: 1;
+}
+
+.request-form input.input-error {
+  border-color: #ff8f8f;
+}
+
+.field-error {
+  color: #ffb4b4;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.334;
+  letter-spacing: 0.22px;
+  text-align: left;
+}
+
+.request-form__hints {
+  display: flex;
+  grid-column: 1 / -1;
+  justify-content: center;
+  gap: 24px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.334;
+  letter-spacing: 0.24px;
+}
+
+.request-form__message {
+  grid-column: 1 / -1;
+  width: auto;
+  margin: 0;
+  color: var(--color-gold);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.334;
+  letter-spacing: 0.28px;
+  text-align: center;
+}
+
+.request-form__message.is-error {
+  color: #ffb4b4;
 }
 
 .button--submit {
@@ -693,29 +828,32 @@ input {
 }
 
 .site-footer__inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 160px 200px 1fr;
+  column-gap: 40px;
   width: 1160px;
-  height: 474px;
+  height: 100%;
   margin: 0 auto;
-  padding-top: 73px;
+  padding-top: 42px;
 }
 
 .site-footer__brand {
-  width: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 .site-logo--footer {
-  margin-bottom: 227px;
+  margin-bottom: 259px;
 }
 
 .site-footer__social {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  gap: 16px;
 }
 
 .site-footer__social p {
-  width: 140px;
-  margin: 0 20px 0 0;
+  margin: 0 3px 0 0;
   color: var(--color-white);
   font-size: 16px;
   font-weight: 600;
@@ -724,22 +862,24 @@ input {
 }
 
 .site-footer__social a {
-  display: block;
-  width: 32px;
-  height: 32px;
-  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
 }
 
-.site-footer__social a + a {
-  margin-left: 18px;
+.site-footer__social img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .site-footer__nav {
   display: flex;
   flex-direction: column;
-  width: 200px;
-  margin-left: 0;
-  padding-top: 6px;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .site-footer__nav h2 {
@@ -752,7 +892,6 @@ input {
 }
 
 .site-footer__nav a {
-  margin-bottom: 10px;
   color: var(--color-white);
   font-size: 14px;
   font-weight: 400;
@@ -764,17 +903,14 @@ input {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 660px;
-  margin-left: 100px;
-  padding-top: 197px;
+  margin-top: 204px;
 }
 
 .phone-link--footer {
-  margin-bottom: 109px;
+  margin-bottom: 92px;
 }
 
 .site-footer__contacts p {
-  width: 660px;
   margin: 0;
   color: rgba(255, 255, 255, 0.5);
   font-size: 14px;
@@ -1184,6 +1320,7 @@ input {
 
   .site-header__tagline,
   .header-circle--search,
+  .header-search,
   .cart-link,
   .login-link,
   .phone-link--header,
@@ -1204,7 +1341,7 @@ input {
     grid-template-columns: 1fr;
     width: min(620px, calc(100% - 78px));
     height: 460px;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .hero-card__content {
@@ -1217,11 +1354,14 @@ input {
   .hero-card__image {
     grid-area: 1 / 1;
     justify-self: end;
-    align-self: start;
-    width: 372px;
-    height: 396px;
+    align-self: stretch;
+    width: min(46%, 300px);
+    height: 100%;
     max-width: none;
-    margin: 86px -30px 0 0;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0 16px 16px 0;
   }
 
   .hero-card h1 {
@@ -1364,12 +1504,13 @@ input {
   }
 
   .request-section {
-    height: 748px;
+    height: auto;
+    min-height: 780px;
   }
 
   .request-card {
     width: min(619px, calc(100% - 79px));
-    height: 660px;
+    min-height: 690px;
     padding-top: 60px;
   }
 
@@ -1387,6 +1528,11 @@ input {
     grid-template-columns: 1fr;
     gap: 15px;
     width: min(500px, calc(100% - 60px));
+  }
+
+  .request-form__hints {
+    flex-direction: column;
+    gap: 8px;
   }
 
   .request-form input,
@@ -1513,8 +1659,8 @@ input {
   }
 
   .site-footer__social a {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     margin-top: 7px;
   }
 
@@ -1623,12 +1769,16 @@ input {
 
   .hero-card__image {
     grid-area: 1 / 1;
-    justify-self: start;
-    align-self: start;
-    width: 344px;
-    height: 348px;
-    max-width: none;
-    margin: 270px 0 0 -26px;
+    justify-self: stretch;
+    align-self: end;
+    width: 100%;
+    height: 320px;
+    max-width: 100%;
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0 0 16px 16px;
+    opacity: 0.75;
   }
 
   .fabric-section {
@@ -1736,12 +1886,13 @@ input {
   }
 
   .request-section {
-    height: 710px;
+    height: auto;
+    min-height: 790px;
   }
 
   .request-card {
     width: 100%;
-    height: 630px;
+    min-height: 700px;
     padding-top: 60px;
     border-radius: 16px;
   }
