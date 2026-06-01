@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Каталог | Saka Tekstil</title>
+    <title>Доставка и оплата | Saka Tekstil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/pages/catalog.css" />
+    <link rel="stylesheet" href="../css/pages/delivery.css" />
     <link rel="stylesheet" href="../css/common/cart.css" />
   </head>
 
@@ -101,7 +101,7 @@
             type="button"
             aria-label="Открыть меню"
             aria-expanded="false"
-            aria-controls="mobile-menu-catalog"
+            aria-controls="mobile-menu-delivery"
             data-burger-button
           >
             <span></span>
@@ -112,108 +112,152 @@
 
         <nav class="site-header__nav" aria-label="Основная навигация">
           <a href="../index.html">Главная</a>
-          <a class="nav-catalog nav-catalog--active" href="catalog.html"
-            >Каталог <span></span
-          ></a>
+          <a class="nav-catalog" href="catalog.html">Каталог <span></span></a>
           <a href="about.html">О компании</a>
           <a href="#" data-cart-open>Корзина</a>
-          <a href="delivery.html">Доставка и оплата</a>
+          <a class="nav-link--active" href="delivery.html">Доставка и оплата</a>
           <a href="#">Контакты</a>
         </nav>
       </header>
 
-      <main class="catalog-main">
+      <main class="delivery-main">
         <div class="section-container">
           <nav class="breadcrumbs" aria-label="Хлебные крошки">
             <a href="../index.html">Главная</a>
             <span>&gt;</span>
-            <span>Каталог</span>
+            <span>Доставка и оплата</span>
           </nav>
 
-          <h1 class="catalog-title">
-            Позаботьтесь о себе и своих близких, выбирайте качественные ткани
-          </h1>
+          <section class="delivery-section" aria-labelledby="delivery-title">
+            <h1 class="delivery-title" id="delivery-title">Способы доставки товара</h1>
 
-          <div class="catalog-toolbar">
-            <div class="filter-heading">
-              <span>Фильтры</span>
-              <span class="filter-count" data-filter-count>0</span>
-            </div>
+            <div class="delivery-grid">
+              <div class="delivery-list">
+                <article class="delivery-card delivery-card--pickup">
+                  <div class="delivery-card__content">
+                    <h2>Самовывоз</h2>
+                    <p>
+                      <strong>Со склада по адресу:</strong> г. Могилев, ул.
+                      Верхние поля, д.48а, стр. 1
+                    </p>
+                    <p><strong>График работы:</strong></p>
+                    <p>ПН-ПТ 9:30-17:00</p>
+                    <p>СБ 10:30-16:00</p>
+                  </div>
+                  <img
+                    class="delivery-card__image delivery-card__image--boxes"
+                    src="../assets/images/backgrounds/delivery-boxes.png"
+                    alt=""
+                  />
+                </article>
 
-            <button class="reset-button" type="button" data-reset-button>
-              Сбросить
-            </button>
+                <article class="delivery-card delivery-card--transport">
+                  <div class="delivery-card__content">
+                    <h2>Доставка до транспортной компании</h2>
+                    <p>
+                      Бесплатная доставка до терминала ТК Деловые Линии,
+                      Байкал-Сервис, ПЭК, GTD, БСД, Мейджик Транс*
+                    </p>
+                    <p>
+                      Перевозка от терминала ТК до пункта назначения
+                      оплачивается по тарифам ТК
+                    </p>
+                    <p class="delivery-card__note">
+                      * Действует только для крупных заказов от 5000 кг
+                    </p>
+                  </div>
+                  <img
+                    class="delivery-card__image delivery-card__image--van"
+                    src="../assets/images/backgrounds/delivery-van.png"
+                    alt=""
+                  />
+                </article>
 
-            <label class="sort-control">
-              <span>Сортировка:</span>
-              <select data-sort-select>
-                <option value="default">По умолчанию</option>
-                <option value="price-asc">Цена по возрастанию</option>
-                <option value="price-desc">Цена по убыванию</option>
-              </select>
-            </label>
-
-            <label class="mobile-color-filter">
-              <span>Цвет</span>
-              <select data-mobile-color-select>
-                <option value="">Все цвета</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="catalog-layout">
-            <aside class="catalog-filters" aria-label="Фильтры каталога">
-              <label class="search-field">
-                <span>Поиск</span>
-                <input
-                  type="search"
-                  placeholder="Название товара"
-                  autocomplete="off"
-                  data-search-input
-                />
-              </label>
-
-              <section class="filter-group">
-                <h2>Тип полотна</h2>
-                <div class="filter-list" data-category-filters></div>
-              </section>
-
-              <section class="filter-group">
-                <h2>Качество</h2>
-                <div class="filter-list" data-quality-filters></div>
-              </section>
-
-              <section class="filter-group">
-                <h2>Цвет</h2>
-                <div class="color-list" data-color-filters></div>
-              </section>
-            </aside>
-
-            <section class="catalog-content" aria-label="Товары каталога">
-              <div class="products-grid" data-products-list></div>
-              <p class="empty-message" data-empty-message hidden>
-                Товары не найдены
-              </p>
-              <div class="catalog-pagination" data-catalog-pagination hidden>
-                <button
-                  class="catalog-pagination__button"
-                  type="button"
-                  aria-label="Предыдущая страница"
-                  data-pagination-prev
-                >
-                  <span aria-hidden="true"></span>
-                </button>
-                <button
-                  class="catalog-pagination__button catalog-pagination__button--next"
-                  type="button"
-                  aria-label="Следующая страница"
-                  data-pagination-next
-                >
-                  <span aria-hidden="true"></span>
-                </button>
+                <article class="delivery-card delivery-card--city">
+                  <div class="delivery-card__content">
+                    <h2>Доставка по Могилеву</h2>
+                    <p>Стоимость доставки уточняйте у менеджера</p>
+                  </div>
+                </article>
               </div>
-            </section>
-          </div>
+
+              <section class="delivery-question" aria-labelledby="delivery-question-title">
+                <h2 id="delivery-question-title">Возникли вопросы по доставке?</h2>
+                <p>Оставьте заявку и мы свяжемся с вами в ближайшее время</p>
+
+                <form class="delivery-form" data-delivery-form novalidate>
+                  <label class="delivery-form__field">
+                    <span>Ваше имя</span>
+                    <input
+                      type="text"
+                      name="name"
+                      autocomplete="name"
+                      placeholder="Ваше имя"
+                      data-delivery-name
+                    />
+                    <small data-error-name hidden></small>
+                  </label>
+
+                  <label class="delivery-form__field">
+                    <span>Телефон</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      autocomplete="tel"
+                      placeholder="+375 (__) ___-__-__"
+                      data-delivery-phone
+                    />
+                    <small data-error-phone hidden></small>
+                  </label>
+
+                  <button class="delivery-form__button" type="submit">
+                    <span>Отправить</span>
+                    <img src="../assets/images/icons/icon-arrow-right.svg" alt="" />
+                  </button>
+
+                  <p class="delivery-form__agree">
+                    Нажимая на кнопку вы даете свое согласие на обработку
+                    персональных данных. Гарантируем! Спама не будет!
+                  </p>
+
+                  <p class="delivery-form__message" data-delivery-message hidden></p>
+                </form>
+              </section>
+            </div>
+          </section>
+
+          <section class="payment-section" aria-labelledby="payment-title">
+            <h2 class="payment-title" id="payment-title">Оплата товара</h2>
+            <p class="payment-lead">
+              Наиболее удобный для вас способ оплаты товара вы можете
+              согласовать с менеджером
+            </p>
+
+            <article class="payment-card">
+              <div class="payment-card__content">
+                <h3>Безналичный расчет</h3>
+                <p>Безналичный расчет осуществляется для юридических лиц</p>
+              </div>
+              <img
+                src="../assets/images/backgrounds/delivery-card.png"
+                alt=""
+              />
+            </article>
+          </section>
+
+          <section class="delivery-info" aria-label="Контактная информация">
+            <h2>Более подробную информацию можно уточнить по телефону</h2>
+            <div class="delivery-info__contacts">
+              <div>
+                <p>Звоните сейчас:</p>
+                <a href="tel:+375298420000">+375 (29) 842 00 00</a>
+              </div>
+              <div>
+                <p>Или напишите нашему менеджеру напрямую:</p>
+                <span>Среднее время ответа <strong>5 минут</strong></span>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
 
@@ -263,7 +307,7 @@
 
     <div
       class="mobile-menu"
-      id="mobile-menu-catalog"
+      id="mobile-menu-delivery"
       aria-hidden="true"
       data-mobile-menu
     >
@@ -313,13 +357,17 @@
         <div class="mobile-menu__nav">
           <a class="mobile-menu__link" href="../index.html">Главная</a>
           <a
-            class="mobile-menu__link mobile-menu__link--catalog mobile-menu__link--active"
+            class="mobile-menu__link mobile-menu__link--catalog"
             href="catalog.html"
             >Каталог</a
           >
           <a class="mobile-menu__link" href="about.html">О компании</a>
           <a class="mobile-menu__link" href="#" data-cart-open>Корзина</a>
-          <a class="mobile-menu__link" href="delivery.html">Доставка и оплата</a>
+          <a
+            class="mobile-menu__link mobile-menu__link--active"
+            href="delivery.html"
+            >Доставка и оплата</a
+          >
           <a class="mobile-menu__link" href="#">Контакты</a>
         </div>
 
@@ -344,7 +392,7 @@
         <div class="mobile-menu__categories">
           <a href="catalog.html">
             <img src="../assets/images/icons/category-kulir.svg" alt="" />
-            <span>Кулинарная гладь</span>
+            <span>Кулирная гладь</span>
           </a>
           <a href="catalog.html">
             <img src="../assets/images/icons/category-footer.svg" alt="" />
@@ -370,7 +418,7 @@
       </nav>
     </div>
 
-    <script type="module" src="../js/pages/catalog.js"></script>
+    <script type="module" src="../js/pages/delivery.js"></script>
     <script type="module" src="../js/common/cart.js"></script>
     <script type="module" src="../js/common/burger-menu.js"></script>
   </body>

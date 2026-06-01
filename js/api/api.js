@@ -87,6 +87,15 @@ async function createPriceRequest(requestData) {
   return checkResponse(response);
 }
 
+async function createDeliveryQuestion(questionData) {
+  const response = await fetch(
+    `${API_URL}/deliveryQuestions`,
+    createRequestOptions("POST", questionData),
+  );
+
+  return checkResponse(response);
+}
+
 async function createReview(reviewData) {
   const response = await fetch(
     `${API_URL}/reviews`,
@@ -128,6 +137,7 @@ export {
   updateCartItem,
   createOrder,
   createPriceRequest,
+  createDeliveryQuestion,
   createReview,
   registerUser,
   loginUser,

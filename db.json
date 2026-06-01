@@ -570,16 +570,6 @@
   ],
   "cart": [
     {
-      "id": "4eUDUSo0ZVY",
-      "productId": 6,
-      "title": "Вискоза",
-      "price": 15.6,
-      "image": "assets/images/products/product-viscose-pink.png",
-      "color": "Розовый",
-      "width": "170 см",
-      "quantity": 1
-    },
-    {
       "id": "0PY_iBqUQMU",
       "productId": 9,
       "title": "Футер диагональ",
@@ -587,6 +577,16 @@
       "image": "assets/images/products/product-footer-diagonal-blue.png",
       "color": "Синий",
       "width": "185 см",
+      "quantity": 1
+    },
+    {
+      "id": "UDswRZJTzT8",
+      "productId": 2,
+      "title": "Кулинарная гладь",
+      "price": 13,
+      "image": "assets/images/products/product-cotton-jersey-white.png",
+      "color": "Белый",
+      "width": "180 см",
       "quantity": 1
     }
   ],
@@ -646,5 +646,5 @@
       "role": "admin"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "deliveryQuestions": []
 }
