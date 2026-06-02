@@ -702,6 +702,22 @@
       "nickname": "olyaolya218",
       "password": "1RdQ5To%gP@c",
       "createdAt": "2026-06-02T16:55:22.197Z"
+    },
+    {
+      "id": "04TgOb-wkp4",
+      "role": "user",
+      "firstName": "Ольга",
+      "lastName": "Батуро",
+      "middleName": "",
+      "fullName": "Батуро Ольга",
+      "phone": "+375444839223",
+      "email": "pir241@gmail.com",
+      "birthDate": "2006-05-31",
+      "city": "",
+      "nickname": "olgabatur104",
+      "password": "2^SxgOay@Wc&",
+      "avatar": "",
+      "createdAt": "2026-06-02T18:17:33.747Z"
     }
   ],
   "deliveryQuestions": [],

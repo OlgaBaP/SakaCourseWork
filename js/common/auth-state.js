@@ -142,51 +142,60 @@ function ensureAuthStyles() {
   style.dataset.authModalStyle = "";
   style.textContent = `
     .auth-modal-opened { overflow: hidden; }
-    .auth-modal { position: fixed; inset: 0; z-index: 120; display: flex; align-items: center; justify-content: center; padding: 28px; visibility: hidden; opacity: 0; pointer-events: none; transition: opacity .2s ease, visibility .2s ease; }
+    .auth-modal { position: fixed; inset: 0; z-index: 120; display: flex; align-items: center; justify-content: center; padding: 50px 28px; visibility: hidden; opacity: 0; pointer-events: none; transition: opacity .2s ease, visibility .2s ease; }
     .auth-modal.is-open { visibility: visible; opacity: 1; pointer-events: auto; }
-    .auth-modal__overlay { position: fixed; inset: 0; border: 0; background: rgba(25,36,47,.72); }
-    .auth-modal__panel { position: relative; z-index: 1; width: min(760px, 100%); max-height: calc(100vh - 56px); overflow-y: auto; padding: 34px; border-radius: 16px; background: #fff; color: #19242f; box-shadow: 0 24px 80px rgba(25,36,47,.24); }
-    .auth-modal__close { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #f7f2e8; }
-    .auth-modal__close::before, .auth-modal__close::after { content: ""; position: absolute; top: 20px; left: 11px; width: 20px; height: 2px; background: #19242f; }
+    .auth-modal__overlay { position: fixed; inset: 0; border: 0; background: rgba(25,36,47,.8); }
+    .auth-modal__panel { position: relative; z-index: 1; width: min(360px, 100%); max-height: calc(100vh - 100px); overflow-y: auto; padding: 46px 60px 38px; border-radius: 16px; background: #f8f8f8; color: #19242f; box-shadow: none; scrollbar-width: thin; }
+    .auth-modal--register .auth-modal__panel { width: min(620px, 100%); padding: 44px 58px 36px; }
+    .auth-modal__close { position: absolute; top: 10px; right: 12px; width: 32px; height: 32px; border: 0; border-radius: 0; background: transparent; }
+    .auth-modal__close::before, .auth-modal__close::after { content: ""; position: absolute; top: 15px; left: 2px; width: 28px; height: 2px; background: rgba(25,36,47,.22); }
     .auth-modal__close::before { transform: rotate(45deg); }
     .auth-modal__close::after { transform: rotate(-45deg); }
     .auth-modal__view[hidden] { display: none; }
-    .auth-modal h2 { margin: 0 56px 26px 0; font-size: 32px; font-weight: 600; line-height: 1.25; letter-spacing: 0; }
-    .auth-modal__form { display: grid; gap: 16px; }
-    .auth-modal__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .auth-modal__field { display: grid; gap: 8px; color: rgba(25,36,47,.72); font-size: 13px; font-weight: 600; }
+    .auth-modal h2 { margin: 0 0 32px; color: #19242f; font-size: 26px; font-weight: 600; line-height: 1.334; letter-spacing: .52px; text-align: center; }
+    .auth-modal__form { display: grid; gap: 12px; }
+    .auth-modal__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .auth-modal__field { position: relative; display: grid; gap: 6px; color: rgba(25,36,47,.72); font-size: 13px; font-weight: 600; }
     .auth-modal__field--wide, .auth-modal__agreement, .auth-modal__message, .auth-modal__actions { grid-column: 1 / -1; }
-    .auth-modal input { width: 100%; min-height: 52px; padding: 0 18px; border: 1px solid rgba(25,36,47,.14); border-radius: 8px; background: #f7f2e8; color: #19242f; font: inherit; outline: none; }
+    .auth-modal__label { position: fixed; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .auth-modal input { width: 100%; min-height: 58px; padding: 0 20px; border: 0; border-radius: 16px; background: #fff; color: #19242f; font: inherit; font-size: 14px; font-weight: 400; line-height: 1.514; letter-spacing: .28px; outline: none; }
+    .auth-modal input::placeholder { color: rgba(25,36,47,.5); opacity: 1; }
     .auth-modal input.input-error { border-color: #b84747; background: #fff7f5; }
-    .auth-modal__error { color: #b84747; font-size: 12px; font-weight: 600; }
+    .auth-modal__error { color: #b84747; font-size: 11px; font-weight: 600; }
     .auth-modal__password-mode, .auth-modal__nickname, .auth-modal__agreement-check { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .auth-modal__password-mode label, .auth-modal__agreement-check { color: #19242f; font-size: 13px; font-weight: 600; }
+    .auth-modal__password-mode { padding: 4px 0; }
+    .auth-modal__password-mode label, .auth-modal__agreement-check { color: #19242f; font-size: 12px; font-weight: 500; line-height: 1.514; letter-spacing: .72px; }
     .auth-modal__password-mode input, .auth-modal__agreement-check input { width: auto; min-height: 0; }
     .auth-modal__nickname input { flex: 1 1 220px; }
-    .auth-modal__link, .auth-modal__small-button, .auth-modal__agreement-toggle { border: 0; background: transparent; color: #bfa470; font: inherit; font-weight: 700; text-decoration: underline; }
-    .auth-modal__agreement-text { margin: 8px 0 0; color: rgba(25,36,47,.64); font-size: 13px; line-height: 1.5; }
-    .auth-modal__message { margin: 0; color: #2f7a46; font-size: 14px; font-weight: 700; }
+    .auth-modal__link, .auth-modal__small-button, .auth-modal__agreement-toggle { border: 0; background: transparent; color: #bfa470; font: inherit; font-size: 12px; font-weight: 500; line-height: 1.514; letter-spacing: 1.32px; text-decoration: none; }
+    .auth-modal__small-button, .auth-modal__agreement-toggle { text-decoration: underline; }
+    .auth-modal__forgot { color: #19242f; text-decoration: underline; }
+    .auth-modal__agreement-text { margin: 8px 0 0; color: rgba(25,36,47,.64); font-size: 12px; line-height: 1.5; }
+    .auth-modal__message { margin: 0; color: #2f7a46; font-size: 13px; font-weight: 700; text-align: center; }
     .auth-modal__message.is-error { color: #b84747; }
-    .auth-modal__submit { min-height: 56px; padding: 0 28px; border: 0; border-radius: 100px; background: #dbc08d; color: #19242f; font-size: 16px; font-weight: 700; }
+    .auth-modal__submit { min-height: 55px; width: 100%; padding: 0 30px; border: 0; border-radius: 100px; background: #dbc08d; color: #19242f; font-size: 16px; font-weight: 700; line-height: 1.334; letter-spacing: .4px; }
     .auth-modal__submit:disabled { opacity: .55; cursor: default; }
-    .auth-modal__actions { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+    .auth-modal__actions { display: grid; gap: 14px; justify-items: center; margin-top: 6px; }
+    .auth-modal__actions .auth-modal__submit { margin-bottom: 6px; }
     @media (max-width: 639px) {
       .auth-modal { align-items: flex-end; padding: 12px; }
-      .auth-modal__panel { max-height: calc(100vh - 24px); padding: 28px 18px 20px; border-radius: 16px; }
+      .auth-modal__panel, .auth-modal--register .auth-modal__panel { width: 100%; max-height: calc(100vh - 24px); padding: 38px 20px 24px; border-radius: 16px; }
       .auth-modal h2 { font-size: 26px; }
       .auth-modal__grid { grid-template-columns: 1fr; }
-      .auth-modal__actions { align-items: stretch; flex-direction: column; }
-      .auth-modal__submit { width: 100%; }
     }
   `;
   document.head.append(style);
 }
 
 function createField(label, inputHtml) {
+  const input = inputHtml.includes("placeholder=")
+    ? inputHtml
+    : inputHtml.replace("<input ", `<input placeholder="${label}" `);
+
   return `
     <label class="auth-modal__field" data-auth-field>
-      <span>${label}</span>
-      ${inputHtml}
+      <span class="auth-modal__label">${label}</span>
+      ${input}
       <span class="auth-modal__error" data-auth-error hidden></span>
     </label>
   `;
@@ -214,6 +223,7 @@ function createAuthModal() {
           <p class="auth-modal__message" data-auth-message hidden></p>
           <div class="auth-modal__actions">
             <button class="auth-modal__submit" type="submit">Войти</button>
+            <a class="auth-modal__link auth-modal__forgot" href="#">Забыли пароль?</a>
             <button class="auth-modal__link" type="button" data-auth-switch="register">Регистрация</button>
           </div>
         </form>
@@ -265,6 +275,8 @@ function createAuthModal() {
 }
 
 function showAuthView(mode) {
+  createAuthModal().classList.toggle("auth-modal--register", mode === "register");
+  createAuthModal().classList.toggle("auth-modal--login", mode !== "register");
   createAuthModal()
     .querySelectorAll("[data-auth-view]")
     .forEach((view) => {
@@ -698,6 +710,7 @@ function bindAuthModalEvents() {
   authModal.addEventListener("click", (event) => {
     const closeButton = event.target.closest("[data-auth-close]");
     const switchButton = event.target.closest("[data-auth-switch]");
+    const forgotLink = event.target.closest(".auth-modal__forgot");
 
     if (closeButton) {
       event.preventDefault();
@@ -708,6 +721,11 @@ function bindAuthModalEvents() {
     if (switchButton) {
       event.preventDefault();
       showAuthView(switchButton.dataset.authSwitch);
+      return;
+    }
+
+    if (forgotLink) {
+      event.preventDefault();
     }
   });
 
