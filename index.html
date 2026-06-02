@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="css/pages/home.css" />
     <link rel="stylesheet" href="css/common/cart.css" />
+    <link rel="stylesheet" href="css/common/preloader.css" />
   </head>
 
   <body>
@@ -75,7 +76,7 @@
             <span class="cart-link__count" data-cart-count>0</span>
           </a>
 
-          <a class="login-link" href="#">
+          <a class="login-link" href="pages/login.html">
             <img src="assets/images/icons/icon-user.svg" />
             <span>Войти</span>
           </a>
@@ -116,7 +117,7 @@
           <a href="pages/about.html">О компании</a>
           <a href="#" data-cart-open>Корзина</a>
           <a href="pages/delivery.html">Доставка и оплата</a>
-          <a href="#">Контакты</a>
+          <a href="pages/contacts.html">Контакты</a>
         </nav>
 
         <div class="category-strip">
@@ -409,7 +410,7 @@
             <a href="pages/catalog.html">Каталог</a>
             <a href="pages/about.html">О компании</a>
             <a href="pages/delivery.html">Доставка и оплата</a>
-            <a href="#">Контакты</a>
+            <a href="pages/contacts.html">Контакты</a>
             <a href="#" data-cart-open>Корзина</a>
           </nav>
 
@@ -483,8 +484,10 @@
           >
           <a class="mobile-menu__link" href="pages/about.html">О компании</a>
           <a class="mobile-menu__link" href="#" data-cart-open>Корзина</a>
-          <a class="mobile-menu__link" href="pages/delivery.html">Доставка и оплата</a>
-          <a class="mobile-menu__link" href="#">Контакты</a>
+          <a class="mobile-menu__link" href="pages/delivery.html"
+            >Доставка и оплата</a
+          >
+          <a class="mobile-menu__link" href="pages/contacts.html">Контакты</a>
         </div>
 
         <a class="mobile-menu__phone" href="tel:+375333536608">
@@ -502,7 +505,7 @@
             <img src="assets/images/icons/icon-cart.svg" alt="" />
             <span data-cart-count>0</span>
           </a>
-          <a class="mobile-menu__login" href="#">
+          <a class="mobile-menu__login" href="pages/login.html">
             <img src="assets/images/icons/icon-user.svg" alt="" />
             <span>Войти</span>
           </a>
@@ -539,6 +542,8 @@
       </nav>
     </div>
 
+    <script type="module" src="js/common/preloader.js"></script>
+    <script type="module" src="js/common/auth-state.js"></script>
     <script type="module" src="js/pages/home.js"></script>
     <script type="module" src="js/common/cart.js"></script>
     <script type="module" src="js/common/burger-menu.js"></script>

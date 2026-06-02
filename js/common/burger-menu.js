@@ -1,6 +1,8 @@
 const burgerButton = document.querySelector("[data-burger-button]");
 const mobileMenu = document.querySelector("[data-mobile-menu]");
-const headerSearchToggle = document.querySelector("[data-header-search-toggle]");
+const headerSearchToggle = document.querySelector(
+  "[data-header-search-toggle]",
+);
 const headerSearchForm = document.querySelector("[data-header-search-form]");
 const headerSearchInput = document.querySelector("[data-header-search-input]");
 

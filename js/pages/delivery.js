@@ -14,7 +14,10 @@ const ERROR_MESSAGES = {
 };
 
 function normalizePhone(phone) {
-  return phone.trim().replace(/[\s()-]/g, "").replace(/^\+/, "");
+  return phone
+    .trim()
+    .replace(/[\s()-]/g, "")
+    .replace(/^\+/, "");
 }
 
 function showFieldError(input, errorElement, message) {

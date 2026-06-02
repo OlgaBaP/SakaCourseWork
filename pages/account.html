@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Личный кабинет | Saka Tekstil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/pages/catalog.css" />
+    <link rel="stylesheet" href="../css/pages/account.css" />
+    <link rel="stylesheet" href="../css/common/cart.css" />
+    <link rel="stylesheet" href="../css/common/preloader.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="site-header__top">
+          <a class="site-logo site-logo--header" href="../index.html" aria-label="Saka Holding"><img src="../assets/images/logos/saka-logo.png" alt="Saka Holding" /></a>
+          <div class="brand-marks" aria-label="Партнерские логотипы">
+            <span class="brand-marks__item brand-marks__item--saka"><img src="../assets/images/logos/partner-saka.png" alt="Saka" /></span>
+            <span class="brand-marks__item brand-marks__item--eros"><img src="../assets/images/logos/partner-eros.png" alt="Eros" /></span>
+            <span class="brand-marks__item brand-marks__item--tortex"><img src="../assets/images/logos/partner-tortex.png" alt="Tortex" /></span>
+          </div>
+          <p class="site-header__tagline">Производитель турецкого трикотажного полотна</p>
+          <a class="header-circle header-circle--search" href="#" data-header-search-toggle aria-label="Поиск"><img src="../assets/images/icons/icon-search.svg" alt="" /></a>
+          <form class="header-search" action="catalog.html" data-header-search-form hidden>
+            <input type="search" name="search" placeholder="Поиск" autocomplete="off" data-header-search-input />
+            <button type="submit" aria-label="Найти"><img src="../assets/images/icons/icon-search.svg" alt="" /></button>
+          </form>
+          <a class="cart-link" href="#" aria-label="Корзина" data-cart-open><span class="header-circle"><img src="../assets/images/icons/icon-cart.svg" alt="" /></span><span class="cart-link__count" data-cart-count>0</span></a>
+          <a class="login-link" href="login.html"><img src="../assets/images/icons/icon-user.svg" alt="" /><span>Войти</span></a>
+          <a class="phone-link phone-link--header" href="tel:+375333536608"><img src="../assets/images/icons/icon-phone.svg" alt="" /><span>+375 33 353 66 08</span></a>
+          <div class="site-header__settings"><span><b>RU</b> / EN</span><span>Dark / Light</span></div>
+          <a class="header-circle header-circle--eye" href="#" aria-label="Версия для слабовидящих"><img src="../assets/images/icons/icon-eye.svg" alt="" /></a>
+          <button class="burger-button" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu-account" data-burger-button><span></span><span></span><span></span></button>
+        </div>
+        <nav class="site-header__nav" aria-label="Основная навигация">
+          <a href="../index.html">Главная</a>
+          <a class="nav-catalog" href="catalog.html">Каталог <span></span></a>
+          <a href="about.html">О компании</a>
+          <a href="#" data-cart-open>Корзина</a>
+          <a href="delivery.html">Доставка и оплата</a>
+          <a href="contacts.html">Контакты</a>
+        </nav>
+      </header>
+
+      <main class="account-main">
+        <div class="section-container">
+          <h1 class="account-title">Личные данные</h1>
+          <section class="account-guest" data-account-guest hidden>
+            <h2>Войдите в аккаунт</h2>
+            <button class="account-button" type="button" data-auth-open="login" data-auth-intent="account">Войти</button>
+          </section>
+          <section class="account-card" data-account-profile hidden>
+            <div class="account-avatar-block">
+              <div class="account-avatar" data-account-avatar>ST</div>
+              <label class="account-avatar-button">
+                <span>Выбрать аватар</span>
+                <input type="file" accept="image/*" data-account-avatar-input />
+              </label>
+            </div>
+            <form class="account-data" data-account-form novalidate>
+              <label class="account-data__item">
+                <span>Фамилия</span>
+                <input type="text" data-account-last-name />
+                <small data-account-error="lastName" hidden></small>
+              </label>
+              <label class="account-data__item">
+                <span>Имя</span>
+                <input type="text" data-account-first-name />
+                <small data-account-error="firstName" hidden></small>
+              </label>
+              <label class="account-data__item">
+                <span>Отчество</span>
+                <input type="text" data-account-middle-name />
+                <small data-account-error="middleName" hidden></small>
+              </label>
+              <label class="account-data__item">
+                <span>Телефон</span>
+                <input type="tel" data-account-phone />
+                <small data-account-error="phone" hidden></small>
+              </label>
+              <label class="account-data__item">
+                <span>E-mail</span>
+                <input type="email" data-account-email />
+                <small data-account-error="email" hidden></small>
+              </label>
+              <label class="account-data__item">
+                <span>Город</span>
+                <input type="text" data-account-city />
+                <small data-account-error="city" hidden></small>
+              </label>
+              <div class="account-actions">
+                <button class="account-button" type="submit">Сохранить</button>
+                <a class="account-button account-button--dark" href="orders.html">Ваши заказы</a>
+                <button class="account-button account-button--ghost" type="button">Сбросить настройки</button>
+              </div>
+            </form>
+          </section>
+          <p class="account-message" data-account-message hidden></p>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer__inner">
+          <div class="site-footer__brand">
+            <a class="site-logo site-logo--footer" href="../index.html" aria-label="Saka Holding"><img src="../assets/images/logos/saka-logo.png" alt="Saka Holding" /></a>
+            <div class="site-footer__social">
+              <p>Напишите нам, <br />мы онлайн:</p>
+              <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="VK"><img src="../assets/images/icons/icon-vk.svg" alt="" /></a>
+              <a href="https://wa.me/375333536608" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><img src="../assets/images/icons/icon-whatsapp.svg" alt="" /></a>
+            </div>
+          </div>
+          <nav class="site-footer__nav" aria-label="Навигация в подвале">
+            <h2>Навигация</h2>
+            <a href="catalog.html">Каталог</a>
+            <a href="about.html">О компании</a>
+            <a href="delivery.html">Доставка и оплата</a>
+            <a href="contacts.html">Контакты</a>
+            <a href="#" data-cart-open>Корзина</a>
+          </nav>
+          <div class="site-footer__contacts">
+            <a class="phone-link phone-link--footer" href="tel:+375333536608"><img src="../assets/images/icons/icon-phone.svg" alt="" /><span>+375 33 353 66 08</span></a>
+            <p>Copyright © 2023 Сака Текстиль. Все права защищены.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu-account" aria-hidden="true" data-mobile-menu>
+      <button class="mobile-menu__overlay" type="button" aria-label="Закрыть меню" data-mobile-menu-close></button>
+      <nav class="mobile-menu__panel" aria-label="Мобильная навигация">
+        <div class="mobile-menu__header">
+          <a class="mobile-menu__logo" href="../index.html"><img src="../assets/images/logos/saka-logo.png" alt="Saka Holding" /></a>
+          <button class="mobile-menu__close" type="button" aria-label="Закрыть меню" data-mobile-menu-close></button>
+        </div>
+        <div class="mobile-menu__nav">
+          <a class="mobile-menu__link" href="../index.html">Главная</a>
+          <a class="mobile-menu__link mobile-menu__link--catalog" href="catalog.html">Каталог</a>
+          <a class="mobile-menu__link" href="about.html">О компании</a>
+          <a class="mobile-menu__link" href="#" data-cart-open>Корзина</a>
+          <a class="mobile-menu__link" href="delivery.html">Доставка и оплата</a>
+          <a class="mobile-menu__link" href="contacts.html">Контакты</a>
+        </div>
+        <a class="mobile-menu__phone" href="tel:+375333536608"><img src="../assets/images/icons/icon-phone.svg" alt="" /><span>+375 33 353 66 08</span></a>
+        <div class="mobile-menu__actions">
+          <a class="mobile-menu__cart" href="#" aria-label="Корзина" data-cart-open><img src="../assets/images/icons/icon-cart.svg" alt="" /><span data-cart-count>0</span></a>
+          <a class="mobile-menu__login" href="login.html"><img src="../assets/images/icons/icon-user.svg" alt="" /><span>Войти</span></a>
+        </div>
+      </nav>
+    </div>
+
+    <script type="module" src="../js/common/preloader.js"></script>
+    <script type="module" src="../js/common/auth-state.js"></script>
+    <script type="module" src="../js/pages/account.js"></script>
+    <script type="module" src="../js/common/cart.js"></script>
+    <script type="module" src="../js/common/burger-menu.js"></script>
+  </body>
+</html>

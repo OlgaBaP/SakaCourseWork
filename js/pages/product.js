@@ -31,7 +31,9 @@ const calculatorTotalProduct = document.querySelector(
 const calculatorTotalWeight = document.querySelector(
   "[data-calculator-total-weight]",
 );
-const calculatorTotalSum = document.querySelector("[data-calculator-total-sum]");
+const calculatorTotalSum = document.querySelector(
+  "[data-calculator-total-sum]",
+);
 
 const requestForm = document.querySelector("[data-request-form]");
 const nameInput = document.querySelector("[data-request-name]");
@@ -241,7 +243,9 @@ function handleCalculatorStep(event) {
   }
 
   const input =
-    button.dataset.calculatorStep === "rolls" ? calculatorRolls : calculatorPacks;
+    button.dataset.calculatorStep === "rolls"
+      ? calculatorRolls
+      : calculatorPacks;
   const direction = Number(button.dataset.calculatorDirection);
   const nextValue = getPositiveInteger(input.value) + direction;
 

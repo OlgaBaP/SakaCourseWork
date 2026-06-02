@@ -1,0 +1,254 @@
+.page {
+  min-height: 1250px;
+}
+
+.account-main {
+  padding: 80px 0 54px;
+}
+
+.account-title {
+  margin: 0 0 34px;
+  color: var(--color-dark);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.334;
+  letter-spacing: 0.64px;
+}
+
+.account-card,
+.account-guest {
+  display: flex;
+  min-height: 377px;
+  align-items: flex-start;
+  gap: 60px;
+  padding: 60px;
+  border-radius: 16px;
+  background: var(--color-light);
+}
+
+.account-avatar-block {
+  display: grid;
+  flex: 0 0 220px;
+  gap: 18px;
+  justify-items: center;
+}
+
+.account-avatar {
+  display: flex;
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(219, 192, 141, 0.75), rgba(25, 36, 47, 0.16)),
+    var(--color-white);
+  color: var(--color-dark);
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.account-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.account-avatar-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border-radius: 100px;
+  background: var(--color-white);
+  color: var(--color-dark);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.account-avatar-button input {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.account-data {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px 42px;
+}
+
+.account-data__item {
+  display: grid;
+  gap: 8px;
+}
+
+.account-data__item span {
+  color: rgba(25, 36, 47, 0.5);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.334;
+  letter-spacing: 0.3px;
+}
+
+.account-data__item input {
+  min-height: 52px;
+  width: 100%;
+  padding: 0 18px;
+  border: 1px solid rgba(25, 36, 47, 0.12);
+  border-radius: 8px;
+  background: var(--color-white);
+  color: var(--color-dark);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+}
+
+.account-data__item input.input-error {
+  border-color: #b84747;
+  background: #fff7f5;
+}
+
+.account-data__item small {
+  color: #b84747;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.account-actions {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.account-button {
+  display: inline-flex;
+  min-width: 188px;
+  min-height: 55px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 100px;
+  background: var(--color-gold);
+  color: var(--color-dark);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.334;
+  letter-spacing: 0.4px;
+}
+
+.account-button--dark {
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+.account-button--ghost {
+  background: var(--color-white);
+}
+
+.account-guest {
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.account-guest h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.account-message {
+  margin: 18px 0 0;
+  color: var(--color-dark-gold);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.account-message.is-error {
+  color: #b84747;
+}
+
+@media (max-width: 1399px) {
+  .account-main {
+    padding: 50px 0 26px;
+  }
+
+  .account-main .section-container {
+    width: auto;
+    margin: 0 39px;
+  }
+
+  .account-card {
+    gap: 30px;
+    padding: 50px;
+  }
+
+  .account-data {
+    gap: 24px 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .account-card,
+  .account-guest {
+    flex-direction: column;
+  }
+
+  .account-avatar-block {
+    justify-self: center;
+    align-self: center;
+  }
+
+  .account-data {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 639px) {
+  .account-main {
+    padding: 45px 0 20px;
+  }
+
+  .account-main .section-container {
+    margin: 0 30px;
+  }
+
+  .account-title {
+    font-size: 26px;
+    letter-spacing: 0.52px;
+  }
+
+  .account-card,
+  .account-guest {
+    min-height: 0;
+    gap: 24px;
+    padding: 40px 22px 28px;
+  }
+
+  .account-avatar {
+    width: 168px;
+    height: 168px;
+    font-size: 44px;
+  }
+
+  .account-actions {
+    justify-content: stretch;
+  }
+
+  .account-button {
+    width: 100%;
+  }
+}

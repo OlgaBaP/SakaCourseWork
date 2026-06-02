@@ -1,9 +1,13 @@
 import {
   addToCart,
+  clearCart,
+  createOrder,
   getCart,
+  getOrders,
   removeCartItem,
   updateCartItem,
 } from "../api/api.js";
+import { getCurrentUser, openAuthModal } from "./auth-state.js";
 
 const CART_MODAL_OPENED_CLASS = "cart-modal--opened";
 const BODY_LOCK_CLASS = "cart-modal-opened";
@@ -15,6 +19,7 @@ let cartModal = null;
 let cartList = null;
 let cartMessage = null;
 let cartTotal = null;
+let cartOrderButton = null;
 let cartItems = [];
 
 function formatPrice(value) {
@@ -54,6 +59,7 @@ function createCartModal() {
     cartList = cartModal.querySelector("[data-cart-list]");
     cartMessage = cartModal.querySelector("[data-cart-message]");
     cartTotal = cartModal.querySelector("[data-cart-total]");
+    cartOrderButton = cartModal.querySelector("[data-cart-order], .cart-modal__order");
     return;
   }
 
@@ -84,6 +90,9 @@ function createCartModal() {
   cartList = cartModal.querySelector("[data-cart-list]");
   cartMessage = cartModal.querySelector("[data-cart-message]");
   cartTotal = cartModal.querySelector("[data-cart-total]");
+  cartOrderButton = cartModal.querySelector(".cart-modal__order");
+  cartOrderButton.dataset.cartOrder = "";
+  cartOrderButton.textContent = "Оформить заказ";
 }
 
 function openCartModal() {
@@ -110,15 +119,22 @@ function setCartMessage(message) {
   cartTotal.textContent = formatPrice(0);
 }
 
+function showCartNotice(message) {
+  cartMessage.textContent = message;
+  cartMessage.hidden = false;
+}
+
 function renderCart() {
   cartList.innerHTML = "";
 
   if (cartItems.length === 0) {
+    cartOrderButton.disabled = true;
     setCartMessage("Корзина пуста");
     return;
   }
 
   cartMessage.hidden = true;
+  cartOrderButton.disabled = false;
   const total = cartItems.reduce((sum, item) => {
     return sum + (Number(item.price) || 0) * (Number(item.quantity) || 0);
   }, 0);
@@ -176,6 +192,81 @@ async function refreshCart(shouldKeepOpen = false) {
 
   if (shouldKeepOpen) {
     keepCartModalOpen();
+  }
+}
+
+function getOrderItems() {
+  return cartItems.map((item) => {
+    return {
+      productId: String(item.productId || item.id),
+      title: item.title,
+      price: Number(item.price) || 0,
+      quantity: Number(item.quantity) || 1,
+      image: item.image || "",
+    };
+  });
+}
+
+function getCartTotal() {
+  return cartItems.reduce((sum, item) => {
+    return sum + (Number(item.price) || 0) * (Number(item.quantity) || 0);
+  }, 0);
+}
+
+async function getNextOrderNumber() {
+  const orders = await getOrders();
+  const maxNumber = orders.reduce((max, order) => {
+    const value = Number(order.orderNumber || order.id) || 0;
+    return Math.max(max, value);
+  }, 0);
+
+  return maxNumber + 1;
+}
+
+async function createOrderFromCart() {
+  const currentUser = getCurrentUser();
+
+  if (!currentUser) {
+    openAuthModal("login", {
+      intent: "checkout",
+      onSuccess: createOrderFromCart,
+    });
+    return;
+  }
+
+  await loadCart();
+
+  if (cartItems.length === 0) {
+    renderCart();
+    return;
+  }
+
+  cartOrderButton.disabled = true;
+  showCartNotice("Оформляем заказ...");
+
+  try {
+    const now = new Date();
+    const orderNumber = await getNextOrderNumber();
+
+    await createOrder({
+      id: `${Date.now()}`,
+      userId: String(currentUser.id),
+      orderNumber,
+      date: now.toISOString().slice(0, 10),
+      status: "Ожидает",
+      shipmentStatus: "Ожидает обработки",
+      shippingStatus: "Ожидает обработки",
+      total: getCartTotal(),
+      items: getOrderItems(),
+      createdAt: now.toISOString(),
+    });
+    await clearCart();
+    cartItems = [];
+    updateCountElements(0);
+    setCartMessage("Заказ успешно оформлен");
+  } catch {
+    showCartNotice("Не удалось оформить заказ. Попробуйте позже.");
+    cartOrderButton.disabled = false;
   }
 }
 
@@ -279,6 +370,7 @@ function bindCartEvents() {
   });
 
   cartList.addEventListener("click", handleCartAction);
+  cartOrderButton.addEventListener("click", createOrderFromCart);
 
   document.addEventListener("keydown", (event) => {
     if (

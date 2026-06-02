@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="../css/pages/delivery.css" />
     <link rel="stylesheet" href="../css/common/cart.css" />
+    <link rel="stylesheet" href="../css/common/preloader.css" />
   </head>
 
   <body>
@@ -37,7 +38,10 @@
               <img src="../assets/images/logos/partner-eros.png" alt="Eros" />
             </span>
             <span class="brand-marks__item brand-marks__item--tortex">
-              <img src="../assets/images/logos/partner-tortex.png" alt="Tortex" />
+              <img
+                src="../assets/images/logos/partner-tortex.png"
+                alt="Tortex"
+              />
             </span>
           </div>
 
@@ -53,7 +57,12 @@
           >
             <img src="../assets/images/icons/icon-search.svg" alt="" />
           </a>
-          <form class="header-search" action="catalog.html" data-header-search-form hidden>
+          <form
+            class="header-search"
+            action="catalog.html"
+            data-header-search-form
+            hidden
+          >
             <input
               type="search"
               name="search"
@@ -73,7 +82,7 @@
             <span class="cart-link__count" data-cart-count>0</span>
           </a>
 
-          <a class="login-link" href="#">
+          <a class="login-link" href="login.html">
             <img src="../assets/images/icons/icon-user.svg" alt="" />
             <span>Войти</span>
           </a>
@@ -116,7 +125,7 @@
           <a href="about.html">О компании</a>
           <a href="#" data-cart-open>Корзина</a>
           <a class="nav-link--active" href="delivery.html">Доставка и оплата</a>
-          <a href="#">Контакты</a>
+          <a href="contacts.html">Контакты</a>
         </nav>
       </header>
 
@@ -129,7 +138,9 @@
           </nav>
 
           <section class="delivery-section" aria-labelledby="delivery-title">
-            <h1 class="delivery-title" id="delivery-title">Способы доставки товара</h1>
+            <h1 class="delivery-title" id="delivery-title">
+              Способы доставки товара
+            </h1>
 
             <div class="delivery-grid">
               <div class="delivery-list">
@@ -181,8 +192,13 @@
                 </article>
               </div>
 
-              <section class="delivery-question" aria-labelledby="delivery-question-title">
-                <h2 id="delivery-question-title">Возникли вопросы по доставке?</h2>
+              <section
+                class="delivery-question"
+                aria-labelledby="delivery-question-title"
+              >
+                <h2 id="delivery-question-title">
+                  Возникли вопросы по доставке?
+                </h2>
                 <p>Оставьте заявку и мы свяжемся с вами в ближайшее время</p>
 
                 <form class="delivery-form" data-delivery-form novalidate>
@@ -212,7 +228,10 @@
 
                   <button class="delivery-form__button" type="submit">
                     <span>Отправить</span>
-                    <img src="../assets/images/icons/icon-arrow-right.svg" alt="" />
+                    <img
+                      src="../assets/images/icons/icon-arrow-right.svg"
+                      alt=""
+                    />
                   </button>
 
                   <p class="delivery-form__agree">
@@ -220,7 +239,11 @@
                     персональных данных. Гарантируем! Спама не будет!
                   </p>
 
-                  <p class="delivery-form__message" data-delivery-message hidden></p>
+                  <p
+                    class="delivery-form__message"
+                    data-delivery-message
+                    hidden
+                  ></p>
                 </form>
               </section>
             </div>
@@ -276,10 +299,20 @@
             </a>
             <div class="site-footer__social">
               <p>Напишите нам, <br />мы онлайн:</p>
-              <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="VK">
+              <a
+                href="https://vk.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="VK"
+              >
                 <img src="../assets/images/icons/icon-vk.svg" alt="" />
               </a>
-              <a href="https://wa.me/375333536608" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <a
+                href="https://wa.me/375333536608"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+              >
                 <img src="../assets/images/icons/icon-whatsapp.svg" alt="" />
               </a>
             </div>
@@ -290,7 +323,7 @@
             <a href="catalog.html">Каталог</a>
             <a href="about.html">О компании</a>
             <a href="delivery.html">Доставка и оплата</a>
-            <a href="#">Контакты</a>
+            <a href="contacts.html">Контакты</a>
             <a href="#" data-cart-open>Корзина</a>
           </nav>
 
@@ -368,7 +401,7 @@
             href="delivery.html"
             >Доставка и оплата</a
           >
-          <a class="mobile-menu__link" href="#">Контакты</a>
+          <a class="mobile-menu__link" href="contacts.html">Контакты</a>
         </div>
 
         <a class="mobile-menu__phone" href="tel:+375333536608">
@@ -377,11 +410,16 @@
         </a>
 
         <div class="mobile-menu__actions">
-          <a class="mobile-menu__cart" href="#" aria-label="Корзина" data-cart-open>
+          <a
+            class="mobile-menu__cart"
+            href="#"
+            aria-label="Корзина"
+            data-cart-open
+          >
             <img src="../assets/images/icons/icon-cart.svg" alt="" />
             <span data-cart-count>0</span>
           </a>
-          <a class="mobile-menu__login" href="#">
+          <a class="mobile-menu__login" href="login.html">
             <img src="../assets/images/icons/icon-user.svg" alt="" />
             <span>Войти</span>
           </a>
@@ -418,6 +456,8 @@
       </nav>
     </div>
 
+    <script type="module" src="../js/common/preloader.js"></script>
+    <script type="module" src="../js/common/auth-state.js"></script>
     <script type="module" src="../js/pages/delivery.js"></script>
     <script type="module" src="../js/common/cart.js"></script>
     <script type="module" src="../js/common/burger-menu.js"></script>

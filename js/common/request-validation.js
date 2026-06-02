@@ -5,7 +5,10 @@ const REQUEST_ERROR_MESSAGES = {
 };
 
 function normalizePhone(phone) {
-  return phone.trim().replace(/[\s()-]/g, "").replace(/^\+/, "");
+  return phone
+    .trim()
+    .replace(/[\s()-]/g, "")
+    .replace(/^\+/, "");
 }
 
 function isEmailValid(email) {

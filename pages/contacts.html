@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Каталог | Saka Tekstil</title>
+    <title>Контакты | Saka Tekstil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/pages/catalog.css" />
+    <link rel="stylesheet" href="../css/pages/contacts.css" />
     <link rel="stylesheet" href="../css/common/cart.css" />
     <link rel="stylesheet" href="../css/common/preloader.css" />
   </head>
@@ -110,7 +111,7 @@
             type="button"
             aria-label="Открыть меню"
             aria-expanded="false"
-            aria-controls="mobile-menu-catalog"
+            aria-controls="mobile-menu-contacts"
             data-burger-button
           >
             <span></span>
@@ -121,9 +122,7 @@
 
         <nav class="site-header__nav" aria-label="Основная навигация">
           <a href="../index.html">Главная</a>
-          <a class="nav-catalog nav-catalog--active" href="catalog.html"
-            >Каталог <span></span
-          ></a>
+          <a class="nav-catalog" href="catalog.html">Каталог <span></span></a>
           <a href="about.html">О компании</a>
           <a href="#" data-cart-open>Корзина</a>
           <a href="delivery.html">Доставка и оплата</a>
@@ -131,98 +130,95 @@
         </nav>
       </header>
 
-      <main class="catalog-main">
-        <div class="section-container">
-          <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <main class="contacts-main">
+        <div class="section-container contacts-container">
+          <nav class="breadcrumbs contacts-breadcrumbs" aria-label="Хлебные крошки">
             <a href="../index.html">Главная</a>
             <span>&gt;</span>
-            <span>Каталог</span>
+            <span>Контакты</span>
           </nav>
 
-          <h1 class="catalog-title">
-            Позаботьтесь о себе и своих близких, выбирайте качественные ткани
-          </h1>
+          <h1 class="contacts-title">Контакты</h1>
 
-          <div class="catalog-toolbar">
-            <div class="filter-heading">
-              <span>Фильтры</span>
-              <span class="filter-count" data-filter-count>0</span>
-            </div>
+          <section class="contacts-info" aria-label="Контактная информация">
+            <article class="contacts-info__card">
+              <span>Адрес:</span>
+              <p>г.Могилев, МКР Котельники, ул. Яничкин проезд 7</p>
+            </article>
+            <article class="contacts-info__card">
+              <span>Телефон:</span>
+              <a href="tel:+375298420000">+375 (29) 842 00 00</a>
+            </article>
+            <article class="contacts-info__card">
+              <span>Почта:</span>
+              <a href="mailto:info@mail.ru">info@mail.ru</a>
+            </article>
+            <article class="contacts-info__card">
+              <span>График работы:</span>
+              <p>ПН-ПТ 09:00-18:00<br />СБ 10:00-17:00<br />ВС Выходной</p>
+            </article>
+          </section>
 
-            <button class="reset-button" type="button" data-reset-button>
-              Сбросить
-            </button>
+          <section class="contacts-map" aria-label="Карта">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?mode=search&text=%D0%B3.%20%D0%9C%D0%BE%D0%B3%D0%B8%D0%BB%D0%B5%D0%B2%2C%20%D0%9C%D0%9A%D0%A0%20%D0%9A%D0%BE%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%D0%B8%2C%20%D1%83%D0%BB.%20%D0%AF%D0%BD%D0%B8%D1%87%D0%BA%D0%B8%D0%BD%20%D0%BF%D1%80%D0%BE%D0%B5%D0%B7%D0%B4%207&z=15"
+              allowfullscreen
+              loading="lazy"
+              title="Карта Saka Tekstil"
+            ></iframe>
+          </section>
 
-            <label class="sort-control">
-              <span>Сортировка:</span>
-              <select data-sort-select>
-                <option value="default">По умолчанию</option>
-                <option value="price-asc">Цена по возрастанию</option>
-                <option value="price-desc">Цена по убыванию</option>
-              </select>
-            </label>
+          <section class="contacts-consultation">
+            <h2>
+              Получите бесплатную консультацию <br />от нашего специалиста
+            </h2>
+            <p class="contacts-consultation__lead">
+              Заполните форму ниже и мы свяжемся с вами в ближайшее время
+            </p>
 
-            <label class="mobile-color-filter">
-              <span>Цвет</span>
-              <select data-mobile-color-select>
-                <option value="">Все цвета</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="catalog-layout">
-            <aside class="catalog-filters" aria-label="Фильтры каталога">
-              <label class="search-field">
-                <span>Поиск</span>
+            <form class="contacts-form" data-contact-form novalidate>
+              <label>
                 <input
-                  type="search"
-                  placeholder="Название товара"
-                  autocomplete="off"
-                  data-search-input
+                  type="text"
+                  name="name"
+                  placeholder="Ваше имя"
+                  autocomplete="name"
+                  data-contact-name
                 />
+                <span class="field-error" data-error-name hidden></span>
               </label>
+              <label>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="+375 (__) ___-__-__"
+                  autocomplete="tel"
+                  data-contact-phone
+                />
+                <span class="field-error" data-error-phone hidden></span>
+              </label>
+              <label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Ваш E-mail"
+                  autocomplete="email"
+                  data-contact-email
+                />
+                <span class="field-error" data-error-email hidden></span>
+              </label>
+              <button class="contacts-form__submit" type="submit">
+                <span>Отправить</span>
+                <img src="../assets/images/icons/icon-arrow-right.svg" alt="" />
+              </button>
+            </form>
 
-              <section class="filter-group">
-                <h2>Тип полотна</h2>
-                <div class="filter-list" data-category-filters></div>
-              </section>
-
-              <section class="filter-group">
-                <h2>Качество</h2>
-                <div class="filter-list" data-quality-filters></div>
-              </section>
-
-              <section class="filter-group">
-                <h2>Цвет</h2>
-                <div class="color-list" data-color-filters></div>
-              </section>
-            </aside>
-
-            <section class="catalog-content" aria-label="Товары каталога">
-              <div class="products-grid" data-products-list></div>
-              <p class="empty-message" data-empty-message hidden>
-                Товары не найдены
-              </p>
-              <div class="catalog-pagination" data-catalog-pagination hidden>
-                <button
-                  class="catalog-pagination__button"
-                  type="button"
-                  aria-label="Предыдущая страница"
-                  data-pagination-prev
-                >
-                  <span aria-hidden="true"></span>
-                </button>
-                <button
-                  class="catalog-pagination__button catalog-pagination__button--next"
-                  type="button"
-                  aria-label="Следующая страница"
-                  data-pagination-next
-                >
-                  <span aria-hidden="true"></span>
-                </button>
-              </div>
-            </section>
-          </div>
+            <p class="contacts-form__message" data-contact-message hidden></p>
+            <p class="contacts-consultation__agreement">
+              Нажимая на кнопку вы даете свое согласие на обработку персональных
+              данных. Гарантируем! Спама не будет!
+            </p>
+          </section>
         </div>
       </main>
 
@@ -282,7 +278,7 @@
 
     <div
       class="mobile-menu"
-      id="mobile-menu-catalog"
+      id="mobile-menu-contacts"
       aria-hidden="true"
       data-mobile-menu
     >
@@ -332,7 +328,7 @@
         <div class="mobile-menu__nav">
           <a class="mobile-menu__link" href="../index.html">Главная</a>
           <a
-            class="mobile-menu__link mobile-menu__link--catalog mobile-menu__link--active"
+            class="mobile-menu__link mobile-menu__link--catalog"
             href="catalog.html"
             >Каталог</a
           >
@@ -341,7 +337,11 @@
           <a class="mobile-menu__link" href="delivery.html"
             >Доставка и оплата</a
           >
-          <a class="mobile-menu__link" href="contacts.html">Контакты</a>
+          <a
+            class="mobile-menu__link mobile-menu__link--active"
+            href="contacts.html"
+            >Контакты</a
+          >
         </div>
 
         <a class="mobile-menu__phone" href="tel:+375333536608">
@@ -398,7 +398,7 @@
 
     <script type="module" src="../js/common/preloader.js"></script>
     <script type="module" src="../js/common/auth-state.js"></script>
-    <script type="module" src="../js/pages/catalog.js"></script>
+    <script type="module" src="../js/pages/contacts.js"></script>
     <script type="module" src="../js/common/cart.js"></script>
     <script type="module" src="../js/common/burger-menu.js"></script>
   </body>
