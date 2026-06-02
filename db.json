@@ -571,48 +571,71 @@
   "cart": [],
   "orders": [
     {
-      "id": "1",
-      "userId": "2",
-      "date": "2026-06-01",
-      "status": "Принят",
-      "shippingStatus": "Доставлен",
-      "total": 12570,
+      "id": "dyX01oX-y3U",
+      "userId": "04TgOb-wkp4",
+      "orderNumber": 3,
+      "date": "2026-06-02",
+      "status": "Доставлен",
+      "shipmentStatus": "Отправлен",
+      "shippingStatus": "Отправлен",
+      "total": 25.240000000000002,
       "items": [
         {
-          "productId": "9",
-          "title": "Футер диагональ",
-          "quantity": 2,
-          "price": 6285
-        }
-      ],
-      "orderNumber": 1,
-      "createdAt": "2026-06-01T12:00:00.000Z",
-      "shipmentStatus": "Доставлен"
-    },
-    {
-      "id": "2",
-      "userId": "2",
-      "date": "2026-05-28",
-      "status": "В обработке",
-      "shippingStatus": "Ожидает обработки",
-      "total": 56951,
-      "items": [
-        {
-          "productId": "2",
-          "title": "Кулирная гладь",
-          "quantity": 3,
-          "price": 13000
+          "productId": "1",
+          "title": "Кулинарная гладь",
+          "price": 11.4,
+          "quantity": 1,
+          "image": "assets/images/products/product-cotton-jersey-blue.png"
         },
         {
           "productId": "3",
-          "title": "Бифлекс",
+          "title": "Кулинарная гладь",
+          "price": 13.84,
           "quantity": 1,
-          "price": 17951
+          "image": "assets/images/products/product-cotton-jersey-orange.png"
         }
       ],
-      "orderNumber": 2,
-      "createdAt": "2026-05-28T12:00:00.000Z",
-      "shipmentStatus": "Ожидает обработки"
+      "createdAt": "2026-06-02T19:09:21.140Z"
+    },
+    {
+      "id": "oCRmGYV0cXo",
+      "userId": "-BVLb3hMZzM",
+      "orderNumber": 4,
+      "date": "2026-06-02",
+      "status": "Ожидает",
+      "shipmentStatus": "Ожидает обработки",
+      "shippingStatus": "Ожидает обработки",
+      "total": 11.4,
+      "items": [
+        {
+          "productId": "1",
+          "title": "Кулинарная гладь",
+          "price": 11.4,
+          "quantity": 1,
+          "image": "assets/images/products/product-cotton-jersey-blue.png"
+        }
+      ],
+      "createdAt": "2026-06-02T19:41:27.187Z"
+    },
+    {
+      "id": "hjNQ20Z6mK4",
+      "userId": "Ac6fbk0LLxI",
+      "orderNumber": 5,
+      "date": "2026-06-02",
+      "status": "Ожидает",
+      "shipmentStatus": "Ожидает обработки",
+      "shippingStatus": "Ожидает обработки",
+      "total": 15.6,
+      "items": [
+        {
+          "productId": "6",
+          "title": "Вискоза",
+          "price": 15.6,
+          "quantity": 1,
+          "image": "assets/images/products/product-viscose-pink.png"
+        }
+      ],
+      "createdAt": "2026-06-02T19:58:56.254Z"
     }
   ],
   "priceRequests": [
@@ -661,16 +684,7 @@
       "id": "xfRpq1_aT_Q"
     }
   ],
-  "contactRequests": [
-    {
-      "name": "nnnnnnnn",
-      "phone": "+375333544434",
-      "email": "olgapir241@gmail.com",
-      "source": "Контакты",
-      "createdAt": "2026-06-01T13:26:59.177Z",
-      "id": "b8Vc6f2QAyM"
-    }
-  ],
+  "contactRequests": [],
   "users": [
     {
       "id": "1",
@@ -687,39 +701,7 @@
       "nickname": "OlgaAdmin123",
       "password": "Admin123!",
       "createdAt": "2026-06-01T12:00:00.000Z"
-    },
-    {
-      "id": "Dq0Iydtp4do",
-      "role": "user",
-      "firstName": "Оля",
-      "lastName": "Оля",
-      "middleName": "",
-      "fullName": "Оля Оля",
-      "phone": "+375333544434",
-      "email": "olgapir241@gmail.com",
-      "birthDate": "2002-06-02",
-      "city": "",
-      "nickname": "olyaolya218",
-      "password": "1RdQ5To%gP@c",
-      "createdAt": "2026-06-02T16:55:22.197Z"
-    },
-    {
-      "id": "04TgOb-wkp4",
-      "role": "user",
-      "firstName": "Ольга",
-      "lastName": "Батуро",
-      "middleName": "",
-      "fullName": "Батуро Ольга",
-      "phone": "+375444839223",
-      "email": "pir241@gmail.com",
-      "birthDate": "2006-05-31",
-      "city": "",
-      "nickname": "olgabatur104",
-      "password": "2^SxgOay@Wc&",
-      "avatar": "",
-      "createdAt": "2026-06-02T18:17:33.747Z"
     }
   ],
-  "deliveryQuestions": [],
-  "$schema": "./node_modules/json-server/schema.json"
+  "deliveryQuestions": []
 }

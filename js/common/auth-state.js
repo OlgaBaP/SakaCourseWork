@@ -45,6 +45,9 @@ function saveCurrentUser(user) {
   const safeUser = {
     id: user.id,
     role: user.role,
+    firstName: user.firstName || "",
+    lastName: user.lastName || "",
+    middleName: user.middleName || "",
     fullName: user.fullName || user.name || "",
     email: user.email || "",
     phone: user.phone || "",

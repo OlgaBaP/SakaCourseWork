@@ -52,53 +52,38 @@
       <main class="account-main">
         <div class="section-container">
           <h1 class="account-title">Личные данные</h1>
-          <section class="account-guest" data-account-guest hidden>
-            <h2>Войдите в аккаунт</h2>
-            <button class="account-button" type="button" data-auth-open="login" data-auth-intent="account">Войти</button>
-          </section>
           <section class="account-card" data-account-profile hidden>
             <div class="account-avatar-block">
               <div class="account-avatar" data-account-avatar>ST</div>
               <label class="account-avatar-button">
-                <span>Выбрать аватар</span>
+                <span>Изменить аватар</span>
                 <input type="file" accept="image/*" data-account-avatar-input />
               </label>
             </div>
             <form class="account-data" data-account-form novalidate>
-              <label class="account-data__item">
-                <span>Фамилия</span>
-                <input type="text" data-account-last-name />
-                <small data-account-error="lastName" hidden></small>
-              </label>
-              <label class="account-data__item">
-                <span>Имя</span>
-                <input type="text" data-account-first-name />
-                <small data-account-error="firstName" hidden></small>
-              </label>
-              <label class="account-data__item">
-                <span>Отчество</span>
-                <input type="text" data-account-middle-name />
-                <small data-account-error="middleName" hidden></small>
-              </label>
-              <label class="account-data__item">
-                <span>Телефон</span>
-                <input type="tel" data-account-phone />
-                <small data-account-error="phone" hidden></small>
-              </label>
-              <label class="account-data__item">
-                <span>E-mail</span>
-                <input type="email" data-account-email />
+              <div class="account-field" data-account-field="fullName">
+                <span class="account-field__label">ФИО</span>
+                <button class="account-field__value" type="button" data-account-edit="fullName" data-account-full-name></button>
+                <small data-account-error="fullName" hidden></small>
+              </div>
+              <div class="account-field" data-account-field="email">
+                <span class="account-field__label">E-mail</span>
+                <button class="account-field__value" type="button" data-account-edit="email" data-account-email></button>
                 <small data-account-error="email" hidden></small>
-              </label>
-              <label class="account-data__item">
-                <span>Город</span>
-                <input type="text" data-account-city />
+              </div>
+              <div class="account-field" data-account-field="phone">
+                <span class="account-field__label">Телефон</span>
+                <button class="account-field__value" type="button" data-account-edit="phone" data-account-phone></button>
+                <small data-account-error="phone" hidden></small>
+              </div>
+              <div class="account-field" data-account-field="city">
+                <span class="account-field__label">Город</span>
+                <button class="account-field__value" type="button" data-account-edit="city" data-account-city></button>
                 <small data-account-error="city" hidden></small>
-              </label>
+              </div>
               <div class="account-actions">
-                <button class="account-button" type="submit">Сохранить</button>
-                <a class="account-button account-button--dark" href="orders.html">Ваши заказы</a>
-                <button class="account-button account-button--ghost" type="button">Сбросить настройки</button>
+                <a class="account-button" href="orders.html">Ваши заказы</a>
+                <button class="account-button" type="button" data-account-reset>Сбросить настройки</button>
               </div>
             </form>
           </section>

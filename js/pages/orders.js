@@ -20,7 +20,6 @@ const SHIPMENT_STATUSES = [
   "Доставлен",
 ];
 
-const guestSection = document.querySelector("[data-orders-guest]");
 const ordersSection = document.querySelector("[data-orders-section]");
 const ordersList = document.querySelector("[data-orders-list]");
 const emptyMessage = document.querySelector("[data-orders-empty]");
@@ -229,13 +228,12 @@ async function initOrders() {
   currentUser = getCurrentUser();
 
   if (!currentUser) {
-    guestSection.hidden = false;
     ordersSection.hidden = true;
+    window.location.replace("login.html");
     return;
   }
 
   isAdmin = currentUser.role === "admin";
-  guestSection.hidden = true;
   ordersSection.hidden = false;
   roleBadge.textContent = isAdmin ? "Администратор" : "Покупатель";
   await loadOrders();
