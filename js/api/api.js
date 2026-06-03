@@ -33,8 +33,11 @@ async function getCategories() {
   return checkResponse(response);
 }
 
-async function getCart() {
-  const response = await fetch(`${API_URL}/cart`);
+async function getCart(userId) {
+  const url = userId
+    ? `${API_URL}/cart?userId=${encodeURIComponent(String(userId))}`
+    : `${API_URL}/cart`;
+  const response = await fetch(url);
   return checkResponse(response);
 }
 
@@ -129,8 +132,12 @@ async function updateCartItem(id, data) {
   return checkResponse(response);
 }
 
-async function clearCart() {
-  const items = await getCart();
+async function clearCart(userId) {
+  if (!userId) {
+    return [];
+  }
+
+  const items = await getCart(userId);
 
   await Promise.all(
     items.map((item) => {

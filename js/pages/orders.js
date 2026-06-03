@@ -2,6 +2,7 @@ import {
   deleteOrder,
   getOrders,
   getOrdersByUserId,
+  getUsers,
   updateOrder,
 } from "../api/api.js";
 import { getCurrentUser } from "../common/auth-state.js";
@@ -10,7 +11,9 @@ const ORDER_STATUSES = [
   "Ожидает",
   "Принят",
   "В обработке",
+  "Отправлен",
   "Доставлен",
+  "Получен",
   "Отменён",
 ];
 const SHIPMENT_STATUSES = [
@@ -18,15 +21,38 @@ const SHIPMENT_STATUSES = [
   "Готовится",
   "Отправлен",
   "Доставлен",
+  "Получен",
+];
+const USER_HEADERS = [
+  "№ заказа",
+  "Дата заказа",
+  "Статус",
+  "Сумма",
+  "Отгрузка",
+  "Товары",
+  "Детали",
+];
+const ADMIN_HEADERS = [
+  "№ заказа",
+  "Дата заказа",
+  "Покупатель",
+  "Статус",
+  "Сумма",
+  "Отгрузка",
+  "Товары",
+  "Действия",
 ];
 
 const ordersSection = document.querySelector("[data-orders-section]");
 const ordersList = document.querySelector("[data-orders-list]");
 const emptyMessage = document.querySelector("[data-orders-empty]");
 const roleBadge = document.querySelector("[data-orders-role]");
+const ordersTitle = document.querySelector("[data-orders-title]");
+const ordersHeader = document.querySelector("[data-orders-header]");
 
 let currentUser = null;
 let isAdmin = false;
+let usersById = new Map();
 
 function formatPrice(value) {
   return new Intl.NumberFormat("ru-RU", {
@@ -77,6 +103,18 @@ function getItemsLabel(count) {
   return `${count} товаров`;
 }
 
+function getCustomerName(order) {
+  const user = usersById.get(String(order.userId));
+
+  return (
+    user?.fullName ||
+    [user?.lastName, user?.firstName, user?.middleName].filter(Boolean).join(" ") ||
+    user?.nickname ||
+    user?.email ||
+    "Пользователь не найден"
+  );
+}
+
 function createStatusSelect(value, options, action, orderId) {
   const select = document.createElement("select");
   select.className = "orders-status-select";
@@ -115,6 +153,30 @@ function createCell(label, content) {
   return cell;
 }
 
+function createDetailsText(order) {
+  return (
+    (order.items || [])
+      .map((item) => {
+        return `${item.title} × ${Number(item.quantity) || 0}`;
+      })
+      .join(", ") || "Товары не указаны"
+  );
+}
+
+function renderHeader() {
+  ordersSection.classList.toggle("orders-section--admin", isAdmin);
+  ordersSection.classList.toggle("orders-section--user", !isAdmin);
+  ordersTitle.textContent = isAdmin ? "Все заказы" : "Ваши заказы";
+  roleBadge.textContent = isAdmin ? "Администратор" : "Покупатель";
+  ordersHeader.innerHTML = "";
+
+  (isAdmin ? ADMIN_HEADERS : USER_HEADERS).forEach((label) => {
+    const item = document.createElement("span");
+    item.textContent = label;
+    ordersHeader.append(item);
+  });
+}
+
 function createOrderRow(order) {
   const row = document.createElement("article");
   row.className = "orders-list__row";
@@ -123,10 +185,17 @@ function createOrderRow(order) {
   row.append(
     createCell("№ заказа", getOrderNumber(order)),
     createCell("Дата заказа", formatDate(order.date || order.createdAt)),
+  );
+
+  if (isAdmin) {
+    row.append(createCell("Покупатель", getCustomerName(order)));
+  }
+
+  row.append(
     createCell(
       "Статус",
       isAdmin
-        ? createStatusSelect(order.status, ORDER_STATUSES, "status", order.id)
+        ? createStatusSelect(order.status || "Ожидает", ORDER_STATUSES, "status", order.id)
         : createReadonlyStatus(order.status || "Ожидает", "order"),
     ),
     createCell("Сумма", formatPrice(order.total)),
@@ -155,12 +224,8 @@ function createOrderRow(order) {
   } else {
     const details = document.createElement("div");
     details.className = "orders-list__details-text";
-    details.textContent = (order.items || [])
-      .map((item) => {
-        return `${item.title} × ${Number(item.quantity) || 0}`;
-      })
-      .join(", ");
-    row.append(createCell("Детали", details.textContent || "Товары не указаны"));
+    details.textContent = createDetailsText(order);
+    row.append(createCell("Детали", details));
   }
 
   return row;
@@ -181,11 +246,15 @@ function renderOrders(orders) {
 }
 
 async function loadOrders() {
-  const orders = isAdmin
-    ? await getOrders()
-    : await getOrdersByUserId(currentUser.id);
+  if (isAdmin) {
+    const [users, orders] = await Promise.all([getUsers(), getOrders()]);
+    usersById = new Map(users.map((user) => [String(user.id), user]));
+    renderOrders(orders);
+    return;
+  }
 
-  renderOrders(orders);
+  usersById = new Map([[String(currentUser.id), currentUser]]);
+  renderOrders(await getOrdersByUserId(currentUser.id));
 }
 
 async function handleOrderAction(event) {
@@ -235,7 +304,7 @@ async function initOrders() {
 
   isAdmin = currentUser.role === "admin";
   ordersSection.hidden = false;
-  roleBadge.textContent = isAdmin ? "Администратор" : "Покупатель";
+  renderHeader();
   await loadOrders();
 }
 

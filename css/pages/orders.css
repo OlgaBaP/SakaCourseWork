@@ -1,5 +1,5 @@
 .page {
-  min-height: 1370px;
+  min-height: 0;
 }
 
 .orders-main {
@@ -45,9 +45,18 @@
 .orders-list__header,
 .orders-list__row {
   display: grid;
-  grid-template-columns: 80px 130px 180px 120px 220px 140px 1fr;
   gap: 20px;
   align-items: center;
+}
+
+.orders-section--user .orders-list__header,
+.orders-section--user .orders-list__row {
+  grid-template-columns: 80px 130px 180px 120px 220px 140px 1fr;
+}
+
+.orders-section--admin .orders-list__header,
+.orders-section--admin .orders-list__row {
+  grid-template-columns: 80px 120px 170px 160px 115px 205px 110px 100px;
 }
 
 .orders-list__header {
@@ -70,7 +79,8 @@
   letter-spacing: 0.28px;
 }
 
-.orders-list__cell:nth-child(4) {
+.orders-section--user .orders-list__cell:nth-child(4),
+.orders-section--admin .orders-list__cell:nth-child(5) {
   font-weight: 700;
 }
 
@@ -173,7 +183,17 @@
   .orders-list__header,
   .orders-list__row {
     min-width: 1120px;
+  }
+
+  .orders-section--user .orders-list__header,
+  .orders-section--user .orders-list__row {
     grid-template-columns: 80px 120px 160px 100px 230px 130px 220px;
+  }
+
+  .orders-section--admin .orders-list__header,
+  .orders-section--admin .orders-list__row {
+    min-width: 1180px;
+    grid-template-columns: 80px 120px 170px 160px 100px 220px 120px 110px;
   }
 }
 
@@ -208,6 +228,12 @@
     grid-template-columns: 1fr;
     gap: 12px;
     padding: 20px;
+  }
+
+  .orders-section--user .orders-list__row,
+  .orders-section--admin .orders-list__row {
+    min-width: 0;
+    grid-template-columns: 1fr;
   }
 
   .orders-list__cell {

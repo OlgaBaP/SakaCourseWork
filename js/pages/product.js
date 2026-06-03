@@ -268,7 +268,12 @@ async function handleAddToCart() {
   addToCartMessage.hidden = true;
 
   try {
-    await addProductToCart(currentProduct);
+    const isAdded = await addProductToCart(currentProduct);
+
+    if (isAdded === false) {
+      return;
+    }
+
     showAddToCartMessage("Товар добавлен в корзину");
   } catch {
     showAddToCartMessage("Не удалось добавить товар в корзину", true);

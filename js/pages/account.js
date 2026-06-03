@@ -17,6 +17,7 @@ const form = document.querySelector("[data-account-form]");
 const avatarElement = document.querySelector("[data-account-avatar]");
 const avatarInput = document.querySelector("[data-account-avatar-input]");
 const resetButton = document.querySelector("[data-account-reset]");
+const ordersLink = document.querySelector("[data-account-orders-link]");
 
 let currentUserData = null;
 let avatarValue = "";
@@ -132,6 +133,9 @@ function renderUser(user) {
   setDisplayValue("phone", user.phone || "");
   setDisplayValue("email", user.email || "");
   setDisplayValue("city", user.city || "Не указано");
+  if (ordersLink) {
+    ordersLink.textContent = user.role === "admin" ? "Все заказы" : "Ваши заказы";
+  }
 }
 
 function redirectToLogin() {

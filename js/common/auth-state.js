@@ -81,7 +81,60 @@ function dispatchAuthChange(user, intent) {
   );
 }
 
+function ensureAuthLinkStyles() {
+  if (document.querySelector("[data-auth-link-style]")) {
+    return;
+  }
+
+  const style = document.createElement("style");
+  style.dataset.authLinkStyle = "";
+  style.textContent = `
+    .login-link .auth-link__text,
+    .mobile-menu__login .auth-link__text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      min-width: 0;
+      line-height: 1.334;
+    }
+    .login-link .auth-link__name,
+    .mobile-menu__login .auth-link__name {
+      display: block;
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .login-link .auth-link__logout,
+    .mobile-menu__login .auth-link__logout {
+      display: block;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .24px;
+      white-space: nowrap;
+    }
+  `;
+  document.head.append(style);
+}
+
+function getAuthLabelElement(link) {
+  let textElement = Array.from(link.children).find((child) => {
+    return child.tagName === "SPAN" && !child.matches("[data-cart-count]");
+  });
+
+  if (!textElement) {
+    textElement = document.createElement("span");
+    link.append(textElement);
+  }
+
+  return textElement;
+}
+
 function updateAuthLinks() {
+  ensureAuthLinkStyles();
+
   const currentUser = getCurrentUser();
   const accountHref = getPagePath("account.html");
   const loginHref = getPagePath("login.html");
@@ -92,48 +145,26 @@ function updateAuthLinks() {
 
   document.querySelectorAll(".login-link, .mobile-menu__login").forEach((link) => {
     link.setAttribute("href", href);
-    const textElement = link.querySelector("span");
+    link.classList.toggle("login-link--authorized", Boolean(currentUser));
+    const textElement = getAuthLabelElement(link);
 
-    if (textElement) {
-      textElement.textContent = text;
+    if (currentUser) {
+      const logoutType = link.classList.contains("mobile-menu__login")
+        ? "mobile"
+        : "header";
+
+      textElement.classList.add("auth-link__text");
+      textElement.innerHTML = `
+        <span class="auth-link__name"></span>
+        <span class="auth-link__logout" data-auth-logout="${logoutType}">Выйти</span>
+      `;
+      textElement.querySelector(".auth-link__name").textContent = text;
     } else {
-      link.textContent = text;
+      textElement.classList.remove("auth-link__text");
+      textElement.textContent = text;
     }
   });
 
-  document.querySelectorAll(".login-link").forEach((link) => {
-    if (link.parentElement?.querySelector("[data-auth-logout='header']")) {
-      return;
-    }
-
-    const logoutLink = document.createElement("a");
-    logoutLink.href = "#";
-    logoutLink.textContent = "Выйти";
-    logoutLink.dataset.authLogout = "header";
-    logoutLink.style.cssText =
-      "margin:23px 0 0 14px;color:#fff;font-size:12px;font-weight:600;line-height:1.334;letter-spacing:.24px;white-space:nowrap;";
-    link.after(logoutLink);
-  });
-
-  document.querySelectorAll(".mobile-menu__login").forEach((link) => {
-    const actions = link.closest(".mobile-menu__actions");
-
-    if (!actions || actions.querySelector("[data-auth-logout='mobile']")) {
-      return;
-    }
-
-    const logoutLink = document.createElement("a");
-    logoutLink.href = "#";
-    logoutLink.textContent = "Выйти";
-    logoutLink.dataset.authLogout = "mobile";
-    logoutLink.style.cssText =
-      "display:flex;align-items:center;justify-content:center;min-width:74px;height:44px;border-radius:100px;background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:600;letter-spacing:.24px;";
-    actions.append(logoutLink);
-  });
-
-  document.querySelectorAll("[data-auth-logout]").forEach((button) => {
-    button.hidden = !currentUser;
-  });
 }
 
 function ensureAuthStyles() {

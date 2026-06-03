@@ -22,6 +22,25 @@ let cartTotal = null;
 let cartOrderButton = null;
 let cartItems = [];
 
+function getCurrentUserId() {
+  return getCurrentUser()?.id || null;
+}
+
+function requireCartUser(onSuccess, intent = "cart") {
+  const currentUser = getCurrentUser();
+
+  if (currentUser) {
+    return currentUser;
+  }
+
+  openAuthModal("login", {
+    intent,
+    onSuccess,
+  });
+
+  return null;
+}
+
 function formatPrice(value) {
   return new Intl.NumberFormat("ru-RU", {
     style: "currency",
@@ -96,6 +115,10 @@ function createCartModal() {
 }
 
 function openCartModal() {
+  if (!requireCartUser(openCartModal)) {
+    return;
+  }
+
   keepCartModalOpen();
   loadCart(true);
 }
@@ -170,8 +193,21 @@ function renderCart() {
 }
 
 async function loadCart(shouldRender = false) {
+  const userId = getCurrentUserId();
+
+  if (!userId) {
+    cartItems = [];
+    updateCountElements(0);
+
+    if (shouldRender) {
+      setCartMessage("РљРѕСЂР·РёРЅР° РїСѓСЃС‚Р°");
+    }
+
+    return;
+  }
+
   try {
-    cartItems = await getCart();
+    cartItems = await getCart(userId);
     updateCountElements(getCartQuantity(cartItems));
 
     if (shouldRender) {
@@ -224,13 +260,9 @@ async function getNextOrderNumber() {
 }
 
 async function createOrderFromCart() {
-  const currentUser = getCurrentUser();
+  const currentUser = requireCartUser(createOrderFromCart, "checkout");
 
   if (!currentUser) {
-    openAuthModal("login", {
-      intent: "checkout",
-      onSuccess: createOrderFromCart,
-    });
     return;
   }
 
@@ -260,9 +292,10 @@ async function createOrderFromCart() {
       items: getOrderItems(),
       createdAt: now.toISOString(),
     });
-    await clearCart();
+    await clearCart(currentUser.id);
     cartItems = [];
     updateCountElements(0);
+    closeCartModal();
     setCartMessage("Заказ успешно оформлен");
   } catch {
     showCartNotice("Не удалось оформить заказ. Попробуйте позже.");
@@ -324,10 +357,18 @@ async function handleCartAction(event) {
 }
 
 async function addProductToCart(product) {
-  const itemId = `product-${product.id}`;
-  const items = await getCart();
+  const currentUser = requireCartUser(() => {
+    addProductToCart(product);
+  });
+
+  if (!currentUser) {
+    return false;
+  }
+
+  const itemId = `user-${currentUser.id}-product-${product.id}`;
+  const items = await getCart(currentUser.id);
   const currentItem = items.find((item) => {
-    return item.id === itemId || String(item.productId) === String(product.id);
+    return String(item.productId) === String(product.id);
   });
 
   if (currentItem) {
@@ -337,6 +378,7 @@ async function addProductToCart(product) {
   } else {
     await addToCart({
       id: itemId,
+      userId: String(currentUser.id),
       productId: getProductId(product),
       title: product.title,
       price: Number(product.price) || 0,
@@ -348,6 +390,7 @@ async function addProductToCart(product) {
   }
 
   await refreshCart(cartModal.classList.contains(CART_MODAL_OPENED_CLASS));
+  return true;
 }
 
 function bindCartEvents() {
@@ -386,6 +429,9 @@ function initCart() {
   createCartModal();
   bindCartEvents();
   loadCart();
+  window.addEventListener("auth:changed", () => {
+    loadCart(cartModal.classList.contains(CART_MODAL_OPENED_CLASS));
+  });
 }
 
 if (document.readyState === "loading") {
