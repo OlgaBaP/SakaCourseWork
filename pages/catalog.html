@@ -168,6 +168,15 @@
                 <option value="">Все цвета</option>
               </select>
             </label>
+
+            <button
+              class="catalog-admin-button"
+              type="button"
+              data-catalog-admin-open
+              hidden
+            >
+              Управление каталогом
+            </button>
           </div>
 
           <div class="catalog-layout">
@@ -278,6 +287,132 @@
           </div>
         </div>
       </footer>
+    </div>
+
+    <div
+      class="catalog-admin-modal"
+      aria-hidden="true"
+      data-catalog-admin-modal
+      hidden
+    >
+      <button
+        class="catalog-admin-modal__overlay"
+        type="button"
+        aria-label="Закрыть управление каталогом"
+        data-catalog-admin-close
+      ></button>
+      <section
+        class="catalog-admin-modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="catalog-admin-title"
+      >
+        <div class="catalog-admin-modal__head">
+          <div>
+            <p class="catalog-admin-modal__eyebrow">Администратор</p>
+            <h2 id="catalog-admin-title">Управление каталогом</h2>
+          </div>
+          <button
+            class="catalog-admin-modal__close"
+            type="button"
+            aria-label="Закрыть"
+            data-catalog-admin-close
+          ></button>
+        </div>
+
+        <form class="catalog-admin-form" data-catalog-admin-form>
+          <div class="catalog-admin-form__top">
+            <label class="catalog-admin-field catalog-admin-field--wide">
+              <span>Режим</span>
+              <select data-admin-mode>
+                <option value="add">Добавить товар</option>
+                <option value="edit">Редактировать товар</option>
+              </select>
+            </label>
+
+            <label
+              class="catalog-admin-field catalog-admin-field--wide"
+              data-admin-product-field
+              hidden
+            >
+              <span>Товар</span>
+              <select data-admin-product-select></select>
+            </label>
+          </div>
+
+          <div class="catalog-admin-form__grid">
+            <label class="catalog-admin-field">
+              <span>Название</span>
+              <input type="text" name="title" required />
+            </label>
+            <label class="catalog-admin-field">
+              <span>Тип полотна</span>
+              <input type="text" name="category" required />
+            </label>
+            <label class="catalog-admin-field">
+              <span>ID категории</span>
+              <input type="number" name="categoryId" min="1" step="1" required />
+            </label>
+            <label class="catalog-admin-field">
+              <span>Цена</span>
+              <input type="number" name="price" min="0" step="0.01" required />
+            </label>
+            <label class="catalog-admin-field">
+              <span>Цвет</span>
+              <input type="text" name="color" required />
+            </label>
+            <label class="catalog-admin-field">
+              <span>Ширина</span>
+              <input type="text" name="width" required />
+            </label>
+            <label class="catalog-admin-field">
+              <span>Плотность</span>
+              <input type="text" name="density" required />
+            </label>
+            <label class="catalog-admin-field">
+              <span>Качество</span>
+              <input type="text" name="quality" required />
+            </label>
+            <label class="catalog-admin-field catalog-admin-field--wide">
+              <span>Изображение</span>
+              <input
+                type="text"
+                name="image"
+                placeholder="assets/images/products/product-name.png"
+                required
+              />
+            </label>
+            <label class="catalog-admin-field catalog-admin-field--wide">
+              <span>Состав</span>
+              <input type="text" name="composition" required />
+            </label>
+            <label class="catalog-admin-field catalog-admin-field--wide">
+              <span>Описание</span>
+              <textarea name="description" rows="4" required></textarea>
+            </label>
+            <label class="catalog-admin-check">
+              <input type="checkbox" name="inStock" checked />
+              <span>В наличии</span>
+            </label>
+          </div>
+
+          <p class="catalog-admin-message" data-catalog-admin-message hidden></p>
+
+          <div class="catalog-admin-actions">
+            <button
+              class="catalog-admin-actions__delete"
+              type="button"
+              data-admin-delete
+              hidden
+            >
+              Удалить
+            </button>
+            <button class="catalog-admin-actions__save" type="submit">
+              Сохранить
+            </button>
+          </div>
+        </form>
+      </section>
     </div>
 
     <div

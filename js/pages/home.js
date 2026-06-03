@@ -16,7 +16,8 @@ const heroLines = document.querySelectorAll("[data-hero-slide]");
 
 const heroSlides = [
   {
-    title: "Большой выбор качественных тканей для производства и пошива одежды",
+    title:
+      "Большой выбор качественных тканей для производства и пошива одежды",
     image: "assets/images/banners/hero-fabrics.png",
   },
   {
@@ -24,7 +25,8 @@ const heroSlides = [
     image: "assets/images/banners/hero-white-fabric-model.png",
   },
   {
-    title: "Качественные полотна для летней и повседневной одежды",
+    title:
+      "Качественные полотна для летней и повседневной одежды",
     image: "assets/images/banners/hero-white-fabric-outdoor.png",
   },
   {
@@ -98,9 +100,6 @@ async function loadProducts() {
     return;
   }
 }
-
-loadProducts();
-initHeroSlider();
 
 function showFieldError(input, errorElement, message) {
   input.classList.add("input-error");
@@ -178,6 +177,9 @@ async function handleRequestSubmit(event) {
     showRequestMessage("Не удалось отправить заявку. Попробуйте позже.", true);
   }
 }
+
+loadProducts();
+initHeroSlider();
 
 if (requestForm) {
   requestForm.addEventListener("submit", handleRequestSubmit);

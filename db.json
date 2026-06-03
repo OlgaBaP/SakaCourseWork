@@ -782,6 +782,17 @@
       "color": "Синий",
       "width": "175 см",
       "quantity": 1
+    },
+    {
+      "id": "q9kW9mLjdOE",
+      "userId": "oUs-F_aVtI4",
+      "productId": 5,
+      "title": "Кулинарная гладь",
+      "price": 12.8,
+      "image": "assets/images/products/product-cotton-jersey-grey.png",
+      "color": "Серый",
+      "width": "180 см",
+      "quantity": 1
     }
   ],
   "orders": [
@@ -1120,6 +1131,23 @@
       "source": "Главная страница",
       "createdAt": "2026-06-03T18:36:13.834Z",
       "id": "tG3bQxb0zP4"
+    },
+    {
+      "name": "Оля",
+      "phone": "+375333544444",
+      "email": "olgapir241@gmail.com",
+      "source": "Главная страница",
+      "createdAt": "2026-06-03T20:38:57.841Z",
+      "id": "pa1VnIr46bQ"
+    },
+    {
+      "name": "ольга",
+      "phone": "+375333544434",
+      "email": "olgapir241@gmail.com",
+      "address": "дом 8",
+      "source": "Каталог",
+      "createdAt": "2026-06-03T20:39:46.102Z",
+      "id": "yLRoWLEc8z8"
     }
   ],
   "contactRequests": [

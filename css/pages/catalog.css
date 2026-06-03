@@ -765,6 +765,251 @@ button {
   opacity: 0.35;
 }
 
+.catalog-admin-button {
+  display: inline-flex;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 100px;
+  background: var(--color-dark);
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.334;
+  letter-spacing: 0.26px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.catalog-admin-button:hover {
+  background: var(--color-gold);
+  color: var(--color-dark);
+}
+
+.catalog-admin-button[hidden],
+.catalog-admin-modal[hidden],
+[data-admin-product-field][hidden],
+.catalog-admin-actions__delete[hidden],
+.catalog-admin-message[hidden] {
+  display: none;
+}
+
+.catalog-admin-modal-opened {
+  overflow: hidden;
+}
+
+.catalog-admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.catalog-admin-modal__overlay {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(25, 36, 47, 0.76);
+}
+
+.catalog-admin-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: 760px;
+  max-height: calc(100vh - 64px);
+  overflow: auto;
+  border-radius: 16px;
+  background: var(--color-white);
+  box-shadow: 0 24px 70px rgba(25, 36, 47, 0.26);
+}
+
+.catalog-admin-modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 34px 40px 24px;
+  border-bottom: 1px solid rgba(25, 36, 47, 0.1);
+}
+
+.catalog-admin-modal__eyebrow {
+  margin: 0 0 6px;
+  color: var(--color-gold);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.334;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+}
+
+.catalog-admin-modal__head h2 {
+  margin: 0;
+  color: var(--color-dark);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.334;
+  letter-spacing: 0.56px;
+}
+
+.catalog-admin-modal__close {
+  position: relative;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-light);
+}
+
+.catalog-admin-modal__close::before,
+.catalog-admin-modal__close::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 11px;
+  width: 20px;
+  height: 2px;
+  background: var(--color-dark);
+}
+
+.catalog-admin-modal__close::before {
+  transform: rotate(45deg);
+}
+
+.catalog-admin-modal__close::after {
+  transform: rotate(-45deg);
+}
+
+.catalog-admin-form {
+  padding: 30px 40px 38px;
+}
+
+.catalog-admin-form__top,
+.catalog-admin-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.catalog-admin-form__grid {
+  margin-top: 20px;
+}
+
+.catalog-admin-field {
+  display: grid;
+  gap: 8px;
+}
+
+.catalog-admin-field--wide,
+.catalog-admin-check,
+.catalog-admin-message,
+.catalog-admin-actions {
+  grid-column: 1 / -1;
+}
+
+.catalog-admin-field span,
+.catalog-admin-check span {
+  color: rgba(25, 36, 47, 0.68);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.334;
+  letter-spacing: 0.72px;
+  text-transform: uppercase;
+}
+
+.catalog-admin-field input,
+.catalog-admin-field select,
+.catalog-admin-field textarea {
+  width: 100%;
+  border: 1px solid rgba(25, 36, 47, 0.14);
+  border-radius: 10px;
+  outline: none;
+  background: var(--color-light);
+  color: var(--color-dark);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.334;
+}
+
+.catalog-admin-field input,
+.catalog-admin-field select {
+  height: 46px;
+  padding: 0 14px;
+}
+
+.catalog-admin-field textarea {
+  min-height: 112px;
+  resize: vertical;
+  padding: 13px 14px;
+}
+
+.catalog-admin-field input:focus,
+.catalog-admin-field select:focus,
+.catalog-admin-field textarea:focus {
+  border-color: var(--color-gold);
+  background: var(--color-white);
+}
+
+.catalog-admin-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.catalog-admin-check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-gold);
+}
+
+.catalog-admin-message {
+  margin: 18px 0 0;
+  color: #b53b3b;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.334;
+}
+
+.catalog-admin-message[data-message-type="success"] {
+  color: #2f8d52;
+}
+
+.catalog-admin-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.catalog-admin-actions__delete,
+.catalog-admin-actions__save {
+  min-width: 150px;
+  height: 48px;
+  border: 0;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.334;
+  letter-spacing: 0.28px;
+}
+
+.catalog-admin-actions__delete {
+  background: rgba(181, 59, 59, 0.1);
+  color: #b53b3b;
+}
+
+.catalog-admin-actions__save {
+  background: var(--color-gold);
+  color: var(--color-dark);
+}
+
 .site-footer {
   height: 474px;
   background: var(--color-dark);
@@ -1419,6 +1664,35 @@ button {
     letter-spacing: 0.28px;
   }
 
+  .catalog-toolbar--admin {
+    height: auto;
+  }
+
+  .catalog-admin-button {
+    order: 4;
+    height: 44px;
+    margin: 12px 0 0 auto;
+    padding: 0 20px;
+  }
+
+  .catalog-admin-modal {
+    padding: 20px;
+  }
+
+  .catalog-admin-modal__panel {
+    width: min(620px, 100%);
+    max-height: calc(100vh - 40px);
+    border-radius: 14px;
+  }
+
+  .catalog-admin-modal__head {
+    padding: 28px 30px 20px;
+  }
+
+  .catalog-admin-form {
+    padding: 24px 30px 30px;
+  }
+
   .site-footer {
     position: relative;
   }
@@ -1665,6 +1939,47 @@ button {
 
   .mobile-color-filter select {
     width: 206px;
+  }
+
+  .catalog-toolbar--admin {
+    height: auto;
+  }
+
+  .catalog-admin-button {
+    width: 300px;
+    margin: 0;
+  }
+
+  .catalog-admin-modal {
+    padding: 14px;
+  }
+
+  .catalog-admin-modal__head {
+    padding: 24px 20px 18px;
+  }
+
+  .catalog-admin-modal__head h2 {
+    font-size: 22px;
+    letter-spacing: 0.44px;
+  }
+
+  .catalog-admin-form {
+    padding: 20px;
+  }
+
+  .catalog-admin-form__top,
+  .catalog-admin-form__grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .catalog-admin-actions {
+    flex-direction: column-reverse;
+  }
+
+  .catalog-admin-actions__delete,
+  .catalog-admin-actions__save {
+    width: 100%;
   }
 
   .products-grid {

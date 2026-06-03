@@ -1,5 +1,6 @@
-import { createPriceRequest, getProductById, getProducts } from "../api/api.js";
+import { getProductById, getProducts } from "../api/api.js";
 import { addProductToCart } from "../common/cart.js";
+import { openPriceRequestModal } from "../common/price-request-modal.js";
 import { validateRequestFields } from "../common/request-validation.js";
 
 const params = new URLSearchParams(window.location.search);
@@ -335,6 +336,23 @@ function validateForm() {
 
 async function handleRequestSubmit(event) {
   event.preventDefault();
+
+  if (!currentProduct) {
+    return;
+  }
+
+  clearRequestMessage();
+  openPriceRequestModal({
+    source: "Страница товара",
+    productId: getNumericProductId(currentProduct.id),
+    productTitle: currentProduct.title,
+    initialValues: {
+      name: nameInput.value,
+      phone: phoneInput.value,
+      email: emailInput.value,
+    },
+  });
+  return;
 
   const validation = validateForm();
 

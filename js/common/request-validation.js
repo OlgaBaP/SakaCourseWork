@@ -2,10 +2,11 @@ const REQUEST_ERROR_MESSAGES = {
   name: "Введите имя",
   phone: "Введите белорусский номер телефона",
   email: "Введите корректный E-mail",
+  address: "Введите адрес",
 };
 
 function normalizePhone(phone) {
-  return phone
+  return String(phone || "")
     .trim()
     .replace(/[\s()-]/g, "")
     .replace(/^\+/, "");
@@ -16,10 +17,12 @@ function isEmailValid(email) {
 }
 
 function validateRequestFields(fields) {
+  const hasAddress = Object.hasOwn(fields, "address");
   const values = {
-    name: fields.name.trim(),
+    name: String(fields.name || "").trim(),
     phone: normalizePhone(fields.phone),
-    email: fields.email.trim(),
+    email: String(fields.email || "").trim(),
+    address: String(fields.address || "").trim(),
   };
   const errors = {};
 
@@ -35,6 +38,10 @@ function validateRequestFields(fields) {
     errors.email = REQUEST_ERROR_MESSAGES.email;
   }
 
+  if (hasAddress && values.address.length < 5) {
+    errors.address = REQUEST_ERROR_MESSAGES.address;
+  }
+
   return {
     errors,
     isValid: Object.keys(errors).length === 0,
@@ -42,6 +49,7 @@ function validateRequestFields(fields) {
       name: values.name,
       phone: values.phone ? `+${values.phone}` : "",
       email: values.email,
+      address: values.address,
     },
   };
 }

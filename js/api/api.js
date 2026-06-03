@@ -28,6 +28,32 @@ async function getProductById(id) {
   return checkResponse(response);
 }
 
+async function createProduct(productData) {
+  const response = await fetch(
+    `${API_URL}/products`,
+    createRequestOptions("POST", productData),
+  );
+
+  return checkResponse(response);
+}
+
+async function updateProduct(id, productData) {
+  const response = await fetch(
+    `${API_URL}/products/${id}`,
+    createRequestOptions("PATCH", productData),
+  );
+
+  return checkResponse(response);
+}
+
+async function deleteProduct(id) {
+  const response = await fetch(`${API_URL}/products/${id}`, {
+    method: "DELETE",
+  });
+
+  return checkResponse(response);
+}
+
 async function getCategories() {
   const response = await fetch(`${API_URL}/categories`);
   return checkResponse(response);
@@ -238,6 +264,9 @@ async function loginUser(email, password) {
 export {
   getProducts,
   getProductById,
+  createProduct,
+  updateProduct,
+  deleteProduct,
   getCategories,
   getCart,
   getReviews,

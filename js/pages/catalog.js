@@ -1,4 +1,11 @@
-import { getProducts } from "../api/api.js";
+import {
+  createProduct,
+  deleteProduct,
+  getProducts,
+  updateProduct,
+} from "../api/api.js";
+import { getCurrentUser } from "../common/auth-state.js";
+import { openPriceRequestModal } from "../common/price-request-modal.js";
 
 const productsList = document.querySelector("[data-products-list]");
 const emptyMessage = document.querySelector("[data-empty-message]");
@@ -13,8 +20,18 @@ const filterCount = document.querySelector("[data-filter-count]");
 const pagination = document.querySelector("[data-catalog-pagination]");
 const paginationPrev = document.querySelector("[data-pagination-prev]");
 const paginationNext = document.querySelector("[data-pagination-next]");
+const catalogToolbar = document.querySelector(".catalog-toolbar");
+const adminOpenButton = document.querySelector("[data-catalog-admin-open]");
+const adminModal = document.querySelector("[data-catalog-admin-modal]");
+const adminForm = document.querySelector("[data-catalog-admin-form]");
+const adminModeSelect = document.querySelector("[data-admin-mode]");
+const adminProductField = document.querySelector("[data-admin-product-field]");
+const adminProductSelect = document.querySelector("[data-admin-product-select]");
+const adminDeleteButton = document.querySelector("[data-admin-delete]");
+const adminMessage = document.querySelector("[data-catalog-admin-message]");
 const params = new URLSearchParams(window.location.search);
 const ITEMS_PER_PAGE = 9;
+const ADMIN_MODAL_OPEN_CLASS = "catalog-admin-modal-opened";
 
 let products = [];
 let currentPage = 1;
@@ -34,9 +51,13 @@ const colorMap = {
   Коричневый: "#7a4c34",
 };
 
+function isAdmin() {
+  return getCurrentUser()?.role === "admin";
+}
+
 function getUniqueValues(items, key) {
-  return [...new Set(items.map((item) => item[key]))].sort((a, b) =>
-    a.localeCompare(b, "ru"),
+  return [...new Set(items.map((item) => item[key]).filter(Boolean))].sort(
+    (a, b) => a.localeCompare(b, "ru"),
   );
 }
 
@@ -232,6 +253,153 @@ function renderProducts() {
   updateFilterCount();
 }
 
+function updateAdminButton() {
+  if (!adminOpenButton) {
+    return;
+  }
+
+  adminOpenButton.hidden = !isAdmin();
+  catalogToolbar?.classList.toggle("catalog-toolbar--admin", isAdmin());
+
+  if (!isAdmin()) {
+    closeAdminModal();
+  }
+}
+
+function showAdminMessage(text, type = "error") {
+  adminMessage.textContent = text;
+  adminMessage.dataset.messageType = type;
+  adminMessage.hidden = false;
+}
+
+function hideAdminMessage() {
+  adminMessage.hidden = true;
+  adminMessage.textContent = "";
+  adminMessage.removeAttribute("data-message-type");
+}
+
+function getSelectedAdminProduct() {
+  return (
+    products.find((product) => {
+      return String(product.id) === String(adminProductSelect.value);
+    }) || null
+  );
+}
+
+function fillAdminForm(product = null) {
+  const elements = adminForm.elements;
+
+  elements.title.value = product?.title || "";
+  elements.category.value = product?.category || "";
+  elements.categoryId.value = product?.categoryId || "";
+  elements.price.value = product?.price ?? "";
+  elements.color.value = product?.color || "";
+  elements.image.value = product?.image || "";
+  elements.description.value = product?.description || "";
+  elements.composition.value = product?.composition || "";
+  elements.width.value = product?.width || "";
+  elements.density.value = product?.density || "";
+  elements.quality.value = product?.quality || "";
+  elements.inStock.checked = product?.inStock ?? true;
+}
+
+function renderAdminProductOptions(preferredProductId = adminProductSelect.value) {
+  adminProductSelect.innerHTML = "";
+
+  products.forEach((product) => {
+    const option = document.createElement("option");
+    option.value = product.id;
+    option.textContent = `${product.title} / ${product.color} / ${formatPrice(
+      product.price,
+    )}`;
+    adminProductSelect.append(option);
+  });
+
+  if (products.length === 0) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = "Товары не найдены";
+    adminProductSelect.append(option);
+  }
+
+  if (
+    preferredProductId &&
+    products.some((product) => String(product.id) === String(preferredProductId))
+  ) {
+    adminProductSelect.value = preferredProductId;
+  }
+}
+
+function setAdminMode(mode) {
+  const isEditMode = mode === "edit";
+  adminModeSelect.value = isEditMode ? "edit" : "add";
+  adminProductField.hidden = !isEditMode;
+  adminDeleteButton.hidden = !isEditMode || products.length === 0;
+  hideAdminMessage();
+
+  if (isEditMode) {
+    renderAdminProductOptions();
+    fillAdminForm(getSelectedAdminProduct());
+    return;
+  }
+
+  fillAdminForm();
+}
+
+function getAdminFormData() {
+  const elements = adminForm.elements;
+
+  return {
+    title: elements.title.value.trim(),
+    category: elements.category.value.trim(),
+    categoryId: Number(elements.categoryId.value),
+    price: Number(elements.price.value),
+    color: elements.color.value.trim(),
+    image: elements.image.value.trim(),
+    description: elements.description.value.trim(),
+    composition: elements.composition.value.trim(),
+    width: elements.width.value.trim(),
+    density: elements.density.value.trim(),
+    quality: elements.quality.value.trim(),
+    inStock: elements.inStock.checked,
+  };
+}
+
+async function reloadCatalogAfterAdminChange(preferredProductId = "") {
+  products = await getProducts();
+  currentPage = 1;
+  renderFilters();
+  renderProducts();
+  renderAdminProductOptions(preferredProductId);
+
+  if (adminModeSelect.value === "edit") {
+    fillAdminForm(getSelectedAdminProduct());
+  }
+}
+
+function openAdminModal() {
+  if (!isAdmin() || !adminModal) {
+    return;
+  }
+
+  renderAdminProductOptions();
+  setAdminMode(adminModeSelect.value);
+  adminModal.hidden = false;
+  adminModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add(ADMIN_MODAL_OPEN_CLASS);
+}
+
+function closeAdminModal() {
+  if (!adminModal) {
+    return;
+  }
+
+  adminModal.hidden = true;
+  adminModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove(ADMIN_MODAL_OPEN_CLASS);
+  hideAdminMessage();
+}
+
 function resetPageAndRender() {
   currentPage = 1;
   renderProducts();
@@ -267,12 +435,83 @@ function showNextPage() {
   }
 }
 
+async function handleAdminSubmit(event) {
+  event.preventDefault();
+
+  if (!isAdmin()) {
+    closeAdminModal();
+    return;
+  }
+
+  const productData = getAdminFormData();
+
+  try {
+    if (adminModeSelect.value === "edit") {
+      const selectedProduct = getSelectedAdminProduct();
+
+      if (!selectedProduct) {
+        showAdminMessage("Выберите товар для редактирования");
+        return;
+      }
+
+      const updatedProduct = await updateProduct(selectedProduct.id, productData);
+      await reloadCatalogAfterAdminChange(updatedProduct.id);
+      showAdminMessage("Товар обновлен", "success");
+      return;
+    }
+
+    const createdProduct = await createProduct(productData);
+    await reloadCatalogAfterAdminChange(createdProduct.id);
+    setAdminMode("edit");
+    adminProductSelect.value = createdProduct.id;
+    fillAdminForm(createdProduct);
+    showAdminMessage("Товар добавлен", "success");
+  } catch {
+    showAdminMessage("Не удалось сохранить товар");
+  }
+}
+
+async function handleAdminDelete() {
+  if (!isAdmin()) {
+    closeAdminModal();
+    return;
+  }
+
+  const selectedProduct = getSelectedAdminProduct();
+
+  if (!selectedProduct) {
+    showAdminMessage("Выберите товар для удаления");
+    return;
+  }
+
+  const isConfirmed = window.confirm(
+    `Удалить товар "${selectedProduct.title}"?`,
+  );
+
+  if (!isConfirmed) {
+    return;
+  }
+
+  try {
+    await deleteProduct(selectedProduct.id);
+    await reloadCatalogAfterAdminChange();
+    setAdminMode(products.length > 0 ? "edit" : "add");
+    showAdminMessage("Товар удален", "success");
+  } catch {
+    showAdminMessage("Не удалось удалить товар");
+  }
+}
+
 async function initCatalog() {
   try {
     products = await getProducts();
     renderFilters();
     searchInput.value = params.get("search") || "";
     renderProducts();
+    updateAdminButton();
+    openPriceRequestModal({
+      source: "Каталог",
+    });
   } catch {
     emptyMessage.hidden = false;
     emptyMessage.textContent = "Не удалось загрузить товары";
@@ -285,5 +524,26 @@ mobileColorSelect.addEventListener("change", resetPageAndRender);
 resetButton.addEventListener("click", resetFilters);
 paginationPrev.addEventListener("click", showPreviousPage);
 paginationNext.addEventListener("click", showNextPage);
+adminOpenButton?.addEventListener("click", openAdminModal);
+adminModeSelect?.addEventListener("change", () => {
+  setAdminMode(adminModeSelect.value);
+});
+adminProductSelect?.addEventListener("change", () => {
+  hideAdminMessage();
+  fillAdminForm(getSelectedAdminProduct());
+});
+adminForm?.addEventListener("submit", handleAdminSubmit);
+adminDeleteButton?.addEventListener("click", handleAdminDelete);
+adminModal?.addEventListener("click", (event) => {
+  if (event.target.closest("[data-catalog-admin-close]")) {
+    closeAdminModal();
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !adminModal?.hidden) {
+    closeAdminModal();
+  }
+});
+window.addEventListener("auth:changed", updateAdminButton);
 
 initCatalog();
