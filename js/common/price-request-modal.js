@@ -1,4 +1,5 @@
 import { createPriceRequest } from "../api/api.js";
+import { t, translatePage } from "./i18n.js";
 import { validateRequestFields } from "./request-validation.js";
 
 const MODAL_OPEN_CLASS = "price-request-modal-opened";
@@ -73,10 +74,10 @@ function ensureStyles() {
   document.head.append(style);
 }
 
-function createField(name, type, placeholder, autocomplete) {
+function createField(name, type, placeholderKey, autocomplete) {
   return `
     <label class="price-request-modal__field" data-price-field="${name}">
-      <input type="${type}" name="${name}" placeholder="${placeholder}" autocomplete="${autocomplete}" data-price-input="${name}" />
+      <input type="${type}" name="${name}" placeholder="${t(placeholderKey)}" autocomplete="${autocomplete}" data-i18n-placeholder="${placeholderKey}" data-price-input="${name}" />
       <span class="price-request-modal__error" data-price-error="${name}" hidden></span>
     </label>
   `;
@@ -94,19 +95,19 @@ function createModal() {
   modal.setAttribute("aria-hidden", "true");
   modal.setAttribute("data-price-request-modal", "");
   modal.innerHTML = `
-    <button class="price-request-modal__overlay" type="button" aria-label="Закрыть" data-price-request-close></button>
+    <button class="price-request-modal__overlay" type="button" aria-label="${t("common.close")}" data-i18n-aria-label="common.close" data-price-request-close></button>
     <section class="price-request-modal__panel" role="dialog" aria-modal="true" aria-labelledby="price-request-title">
-      <button class="price-request-modal__close" type="button" aria-label="Закрыть" data-price-request-close></button>
+      <button class="price-request-modal__close" type="button" aria-label="${t("common.close")}" data-i18n-aria-label="common.close" data-price-request-close></button>
       <div class="price-request-modal__content">
-        <h2 class="price-request-modal__title" id="price-request-title">Заказать прайс-лист и каталог</h2>
-        <p class="price-request-modal__lead">Оставьте заявку и получите образцы</p>
+        <h2 class="price-request-modal__title" id="price-request-title" data-i18n="price.title">${t("price.title")}</h2>
+        <p class="price-request-modal__lead" data-i18n="price.lead">${t("price.lead")}</p>
         <form class="price-request-modal__form" data-price-request-form novalidate>
-          ${createField("name", "text", "Имя", "name")}
+          ${createField("name", "text", "price.name", "name")}
           ${createField("email", "email", "E-Mail", "email")}
           ${createField("phone", "tel", "+375 (__) ___-__-__", "tel")}
-          ${createField("address", "text", "Адрес", "street-address")}
-          <button class="price-request-modal__submit" type="submit">Оставить заявку</button>
-          <p class="price-request-modal__agree">Нажимая на кнопку вы даете свое согласие на обработку персональных данных. Гарантируем! Спама не будет!</p>
+          ${createField("address", "text", "price.address", "street-address")}
+          <button class="price-request-modal__submit" type="submit" data-i18n="price.submit">${t("price.submit")}</button>
+          <p class="price-request-modal__agree" data-i18n="price.agree">${t("price.agree")}</p>
           <p class="price-request-modal__message" data-price-request-message hidden></p>
         </form>
       </div>
@@ -117,6 +118,7 @@ function createModal() {
   `;
 
   document.body.append(modal);
+  translatePage(modal);
   form = modal.querySelector("[data-price-request-form]");
   form.addEventListener("submit", handleSubmit);
   modal.addEventListener("click", (event) => {
@@ -231,7 +233,7 @@ async function handleSubmit(event) {
     phone: validation.values.phone,
     email: validation.values.email,
     address: validation.values.address,
-    source: activeContext.source || "Прайс-лист и каталог",
+    source: activeContext.source || t("price.source"),
     createdAt: new Date().toISOString(),
   };
 
@@ -248,10 +250,10 @@ async function handleSubmit(event) {
   try {
     await createPriceRequest(requestData);
     form.reset();
-    showMessage("Заявка успешно отправлена");
+    showMessage(t("common.requestSuccess"));
     closeTimer = window.setTimeout(closePriceRequestModal, CLOSE_DELAY);
   } catch {
-    showMessage("Не удалось отправить заявку. Попробуйте позже.", true);
+    showMessage(t("common.requestFailed"), true);
   } finally {
     submitButton.disabled = false;
   }
@@ -265,6 +267,12 @@ document.addEventListener("keydown", (event) => {
 
 window.addEventListener("price-request:open", (event) => {
   openPriceRequestModal(event.detail || {});
+});
+
+window.addEventListener("i18n:changed", () => {
+  if (modal) {
+    translatePage(modal);
+  }
 });
 
 export { closePriceRequestModal, openPriceRequestModal };

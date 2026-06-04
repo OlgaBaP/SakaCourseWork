@@ -1,4 +1,5 @@
 import { createReview, getReviews } from "../api/api.js";
+import { t, translateValue } from "../common/i18n.js";
 
 const reviewsList = document.querySelector("[data-reviews-list]");
 const reviewsError = document.querySelector("[data-reviews-error]");
@@ -25,8 +26,8 @@ function createReviewCard(review) {
   text.className = "review-card__text";
   author.className = "review-card__author";
 
-  text.textContent = review.text;
-  author.textContent = review.author;
+  text.textContent = translateValue("review", review.text);
+  author.textContent = translateValue("person", review.author);
 
   card.append(text, author);
 
@@ -103,7 +104,7 @@ async function handleReviewSubmit(event) {
   const text = textInput.value.trim();
 
   if (!author || !text) {
-    showMessage("Заполните обязательные поля");
+    showMessage(t("common.submitRequired"));
     return;
   }
 
@@ -119,7 +120,7 @@ async function handleReviewSubmit(event) {
     renderReviews();
     closeModal();
   } catch {
-    showMessage("Не удалось сохранить отзыв. Попробуйте еще раз.");
+    showMessage(t("reviews.saveFailed"));
   }
 }
 
@@ -138,6 +139,7 @@ openReviewButton.addEventListener("click", openModal);
 reviewForm.addEventListener("submit", handleReviewSubmit);
 prevReviewsButton.addEventListener("click", showPrevReviews);
 nextReviewsButton.addEventListener("click", showNextReviews);
+window.addEventListener("i18n:changed", renderReviews);
 
 closeButtons.forEach((button) => {
   button.addEventListener("click", closeModal);

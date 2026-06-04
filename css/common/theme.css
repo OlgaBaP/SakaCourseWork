@@ -1,0 +1,852 @@
+body.dark-theme {
+  --dark-bg: #090f15;
+  --dark-section: #101820;
+  --dark-card: #18212b;
+  --dark-card-soft: #202c38;
+  --dark-input: #0d151d;
+  --dark-text: #edf2f7;
+  --dark-muted: rgba(237, 242, 247, 0.72);
+  --dark-border: rgba(237, 242, 247, 0.18);
+  --accent: #dbc08d;
+  --danger: #ffaaa8;
+  --color-dark: #edf2f7;
+  --color-dark-soft: rgba(13, 18, 24, 0.96);
+  --color-light: #18212b;
+  --color-white: #101820;
+  --color-muted: rgba(237, 242, 247, 0.68);
+  background: #090f15;
+  color: var(--color-dark);
+}
+
+body.dark-theme .page,
+body.dark-theme .account-main,
+body.dark-theme .catalog-main,
+body.dark-theme .product-main,
+body.dark-theme .about-main,
+body.dark-theme .delivery-main,
+body.dark-theme .contacts-main,
+body.dark-theme .orders-main,
+body.dark-theme .auth-main {
+  background: #101820;
+  color: var(--color-dark);
+}
+
+body.dark-theme .site-header,
+body.dark-theme .site-header__nav,
+body.dark-theme .category-strip,
+body.dark-theme .site-footer,
+body.dark-theme .mobile-menu__panel {
+  background: #0b1219;
+  color: #f7f3ea;
+}
+
+body.dark-theme .site-header__nav {
+  background: rgba(11, 18, 25, 0.96);
+}
+
+body.dark-theme .header-circle--search,
+body.dark-theme .header-circle--eye,
+body.dark-theme .header-search,
+body.dark-theme .mobile-menu__accessibility {
+  background: #f7f3ea;
+}
+
+body.dark-theme .site-header__settings span,
+body.dark-theme .mobile-menu__settings span {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+body.dark-theme .site-header__settings b,
+body.dark-theme .mobile-menu__settings b {
+  color: #dbc08d;
+}
+
+body.dark-theme .breadcrumbs,
+body.dark-theme .breadcrumbs a,
+body.dark-theme .hero-card,
+body.dark-theme .hero-card h1,
+body.dark-theme .hero-card p,
+body.dark-theme .catalog-title,
+body.dark-theme .product-title,
+body.dark-theme .account-title,
+body.dark-theme .orders-title,
+body.dark-theme .about-title,
+body.dark-theme .delivery-title,
+body.dark-theme .contacts-title,
+body.dark-theme .section-title,
+body.dark-theme .fabric-section h2,
+body.dark-theme .palette-section h2,
+body.dark-theme .about-section h2,
+body.dark-theme .about-section__text p,
+body.dark-theme .request-section h2,
+body.dark-theme .request-section p,
+body.dark-theme .catalog-layout,
+body.dark-theme .product-specs,
+body.dark-theme .calculator-section,
+body.dark-theme .colors-section,
+body.dark-theme .account-field__label,
+body.dark-theme .account-field__value,
+body.dark-theme .orders-list__cell,
+body.dark-theme .contacts-info__card,
+body.dark-theme .delivery-card,
+body.dark-theme .payment-card,
+body.dark-theme .quality-card,
+body.dark-theme .service-card,
+body.dark-theme .review-card,
+body.dark-theme .stats-card,
+body.dark-theme .fabric-section,
+body.dark-theme .palette-section,
+body.dark-theme .about-section,
+body.dark-theme .about-intro,
+body.dark-theme .fabric-quality,
+body.dark-theme .service-section,
+body.dark-theme .reviews-section,
+body.dark-theme .delivery-section,
+body.dark-theme .payment-section,
+body.dark-theme .delivery-info,
+body.dark-theme .contacts-info,
+body.dark-theme .contacts-map,
+body.dark-theme .contacts-consultation {
+  color: var(--color-dark);
+}
+
+body.dark-theme .hero-card,
+body.dark-theme .category-strip,
+body.dark-theme .fabric-section,
+body.dark-theme .request-section,
+body.dark-theme .calculator-panel {
+  background: #0b1219;
+}
+
+body.dark-theme .about-section,
+body.dark-theme .palette-section,
+body.dark-theme .about-intro,
+body.dark-theme .fabric-quality,
+body.dark-theme .service-section,
+body.dark-theme .reviews-section,
+body.dark-theme .delivery-section,
+body.dark-theme .payment-section,
+body.dark-theme .delivery-info,
+body.dark-theme .contacts-info,
+body.dark-theme .contacts-map,
+body.dark-theme .contacts-consultation {
+  background: #101820;
+}
+
+body.dark-theme .account-card,
+body.dark-theme .orders-section,
+body.dark-theme .orders-list__row,
+body.dark-theme .product-card,
+body.dark-theme .catalog-filters,
+body.dark-theme .catalog-admin-modal__panel,
+body.dark-theme .cart-modal__panel,
+body.dark-theme .cart-modal__item,
+body.dark-theme .auth-card,
+body.dark-theme .account-message,
+body.dark-theme .delivery-card,
+body.dark-theme .payment-card,
+body.dark-theme .contacts-info__card,
+body.dark-theme .review-card,
+body.dark-theme .review-modal__dialog,
+body.dark-theme .service-card,
+body.dark-theme .delivery-question,
+body.dark-theme .payment-card,
+body.dark-theme .delivery-info,
+body.dark-theme .contacts-consultation,
+body.dark-theme .quality-card p,
+body.dark-theme .stats-card span,
+body.dark-theme .calculator-card,
+body.dark-theme .calculator-total {
+  background: #18212b;
+  color: var(--color-dark);
+}
+
+body.dark-theme .fabric-card p,
+body.dark-theme .filter-count,
+body.dark-theme .account-avatar-button,
+body.dark-theme .orders-role {
+  color: #19242f;
+}
+
+body.dark-theme .orders-role {
+  background: #dbc08d;
+}
+
+body.dark-theme .calculator-field,
+body.dark-theme .counter-row span,
+body.dark-theme .counter-row__input {
+  background: #26313d;
+  color: rgba(247, 243, 234, 0.9);
+}
+
+body.dark-theme .counter-row button {
+  background: #324050;
+  color: #f7f3ea;
+}
+
+body.dark-theme .product-card__image,
+body.dark-theme .product-card__body,
+body.dark-theme .catalog-sidebar,
+body.dark-theme .sort-control,
+body.dark-theme .mobile-color-filter,
+body.dark-theme .account-edit input,
+body.dark-theme .auth-form input,
+body.dark-theme .catalog-admin-field input,
+body.dark-theme .catalog-admin-field select,
+body.dark-theme .catalog-admin-field textarea,
+body.dark-theme .review-form input,
+body.dark-theme .review-form textarea,
+body.dark-theme .request-form input,
+body.dark-theme .contacts-form input,
+body.dark-theme .delivery-form input,
+body.dark-theme .header-search input,
+body.dark-theme .counter-row__input,
+body.dark-theme .orders-status-select,
+body.dark-theme .cart-modal__quantity {
+  background: #101820;
+  color: var(--color-dark);
+  border-color: rgba(237, 242, 247, 0.18);
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: rgba(237, 242, 247, 0.58);
+  opacity: 1;
+}
+
+body.dark-theme .input-error,
+body.dark-theme input.input-error,
+body.dark-theme textarea.input-error {
+  background: #2a1718;
+  border-color: #ff8f8f;
+  color: #fff2f2;
+}
+
+body.dark-theme [data-auth-error],
+body.dark-theme [data-account-error],
+body.dark-theme [data-error-name],
+body.dark-theme [data-error-phone],
+body.dark-theme [data-error-email],
+body.dark-theme .catalog-admin-message[data-message-type="error"],
+body.dark-theme .cart-visual__message.is-error,
+body.dark-theme .account-message.is-error,
+body.dark-theme .auth-form__message.is-error,
+body.dark-theme .request-form__message.is-error,
+body.dark-theme .contacts-form__message.is-error,
+body.dark-theme .delivery-form__message.is-error {
+  color: #ffaaa8;
+}
+
+body.dark-theme .button,
+body.dark-theme .account-button,
+body.dark-theme .auth-form__submit,
+body.dark-theme .product-card__button,
+body.dark-theme .cart-visual__button,
+body.dark-theme .about-section__link,
+body.dark-theme .request-form__button,
+body.dark-theme .delivery-form__button,
+body.dark-theme .contacts-form__submit,
+body.dark-theme .reviews-add-button,
+body.dark-theme .review-form button,
+body.dark-theme .catalog-admin-button,
+body.dark-theme .catalog-admin-actions button,
+body.dark-theme .cart-modal__order,
+body.dark-theme .account-edit__actions button {
+  background: #dbc08d;
+  color: #19242f;
+}
+
+body.dark-theme .button--submit,
+body.dark-theme .review-form button,
+body.dark-theme .catalog-admin-actions button:last-child {
+  background: #0b1219;
+  color: #f7f3ea;
+}
+
+body.dark-theme .cart-modal__overlay,
+body.dark-theme .catalog-admin-modal__overlay,
+body.dark-theme .review-modal__overlay,
+body.dark-theme .mobile-menu__overlay {
+  background: rgba(3, 7, 11, 0.78);
+}
+
+body.dark-theme .cart-modal__close,
+body.dark-theme .catalog-admin-modal__close,
+body.dark-theme .review-modal__close,
+body.dark-theme .mobile-menu__close {
+  background-color: #18212b;
+}
+
+body.dark-theme .cart-modal__close::before,
+body.dark-theme .cart-modal__close::after,
+body.dark-theme .catalog-admin-modal__close::before,
+body.dark-theme .catalog-admin-modal__close::after,
+body.dark-theme .review-modal__close::before,
+body.dark-theme .review-modal__close::after {
+  background: var(--color-dark);
+}
+
+body.dark-theme .filter-option,
+body.dark-theme .filter-section,
+body.dark-theme .product-specs dl,
+body.dark-theme .cart-modal__footer,
+body.dark-theme .catalog-admin-modal__head,
+body.dark-theme .orders-list__header,
+body.dark-theme .orders-list__row,
+body.dark-theme .delivery-card,
+body.dark-theme .payment-card,
+body.dark-theme .delivery-question,
+body.dark-theme .delivery-info,
+body.dark-theme .contacts-info__card,
+body.dark-theme .contacts-consultation,
+body.dark-theme .quality-card p,
+body.dark-theme .service-card,
+body.dark-theme .review-card {
+  border-color: rgba(237, 242, 247, 0.16);
+}
+
+body.dark-theme .product-card__price,
+body.dark-theme .account-message,
+body.dark-theme .catalog-admin-message[data-message-type="success"],
+body.dark-theme .cart-visual__message,
+body.dark-theme .request-form__message,
+body.dark-theme .contacts-form__message,
+body.dark-theme .delivery-form__message {
+  color: #dbc08d;
+}
+
+body.dark-theme .price-request-modal {
+  background: rgba(3, 7, 11, 0.82);
+  color: var(--color-dark);
+}
+
+body.dark-theme .price-request-modal__panel,
+body.dark-theme .price-request-modal__image::before {
+  background: #18212b;
+}
+
+body.dark-theme .price-request-modal__title,
+body.dark-theme .price-request-modal__lead,
+body.dark-theme .price-request-modal__agree {
+  color: var(--color-dark);
+}
+
+body.dark-theme .price-request-modal__field input {
+  background: #101820;
+  color: var(--color-dark);
+  border-color: rgba(237, 242, 247, 0.18);
+}
+
+body.dark-theme .auth-modal__panel {
+  background: #18212b;
+  color: var(--color-dark);
+}
+
+body.dark-theme .auth-modal h2,
+body.dark-theme .auth-modal__field,
+body.dark-theme .auth-modal__password-mode label,
+body.dark-theme .auth-modal__agreement-check,
+body.dark-theme .auth-modal__forgot {
+  color: var(--color-dark);
+}
+
+body.dark-theme .auth-modal input {
+  background: #101820;
+  color: var(--color-dark);
+}
+
+body.dark-theme .auth-modal input::placeholder,
+body.dark-theme .price-request-modal__field input::placeholder {
+  color: rgba(237, 242, 247, 0.58);
+}
+
+body.dark-theme .auth-modal__close::before,
+body.dark-theme .auth-modal__close::after {
+  background: rgba(237, 242, 247, 0.45);
+}
+
+body.dark-theme {
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark-theme .page,
+body.dark-theme main,
+body.dark-theme .catalog-main,
+body.dark-theme .product-main,
+body.dark-theme .about-main,
+body.dark-theme .delivery-main,
+body.dark-theme .contacts-main,
+body.dark-theme .account-main,
+body.dark-theme .orders-main,
+body.dark-theme .auth-main {
+  background: var(--dark-section);
+  color: var(--dark-text);
+}
+
+body.dark-theme .site-header,
+body.dark-theme .site-header__top,
+body.dark-theme .site-header__nav,
+body.dark-theme .category-strip,
+body.dark-theme .mobile-menu__panel {
+  background: #0b1219;
+  color: #f7f3ea;
+}
+
+body.dark-theme .site-header__tagline,
+body.dark-theme .site-header__nav a,
+body.dark-theme .category-strip__list,
+body.dark-theme .category-strip__list a,
+body.dark-theme .phone-link,
+body.dark-theme .login-link,
+body.dark-theme .mobile-menu__meta p,
+body.dark-theme .mobile-menu__link,
+body.dark-theme .mobile-menu__phone,
+body.dark-theme .mobile-menu__login,
+body.dark-theme .mobile-menu__categories a {
+  color: #f7f3ea;
+}
+
+body.dark-theme .site-header__nav a:hover,
+body.dark-theme .site-header__nav .nav-link--active,
+body.dark-theme .mobile-menu__link--active,
+body.dark-theme .mobile-menu__sale,
+body.dark-theme .mobile-menu__meta b,
+body.dark-theme .site-header__settings b {
+  color: var(--accent);
+}
+
+body.dark-theme .site-header__settings span,
+body.dark-theme .mobile-menu__settings span,
+body.dark-theme .mobile-menu__meta div span {
+  color: var(--dark-muted);
+}
+
+body.dark-theme .header-circle--search,
+body.dark-theme .header-circle--eye,
+body.dark-theme .header-search,
+body.dark-theme .mobile-menu__eye,
+body.dark-theme .mobile-menu__cart {
+  background: #f7f3ea;
+  color: #19242f;
+}
+
+body.dark-theme .cart-link .header-circle,
+body.dark-theme .mobile-menu__login {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-theme .cart-link__count,
+body.dark-theme .mobile-menu__cart span,
+body.dark-theme .filter-count,
+body.dark-theme .orders-role {
+  background: var(--accent);
+  color: #19242f;
+}
+
+body.dark-theme .site-footer {
+  background: #0b1219;
+  color: #f7f3ea;
+}
+
+body.dark-theme .site-footer__nav,
+body.dark-theme .site-footer__nav h2,
+body.dark-theme .site-footer__nav a,
+body.dark-theme .site-footer__social p,
+body.dark-theme .site-footer__contacts,
+body.dark-theme .site-footer__contacts a,
+body.dark-theme .site-footer .phone-link {
+  color: #f7f3ea;
+}
+
+body.dark-theme .site-footer__contacts p {
+  color: var(--dark-muted);
+}
+
+body.dark-theme .site-footer__social a {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-theme .breadcrumbs,
+body.dark-theme .breadcrumbs a,
+body.dark-theme .catalog-title,
+body.dark-theme .product-title,
+body.dark-theme .about-title,
+body.dark-theme .delivery-title,
+body.dark-theme .contacts-title,
+body.dark-theme .account-title,
+body.dark-theme .orders-title,
+body.dark-theme .section-title,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4 {
+  color: var(--dark-text);
+}
+
+body.dark-theme .hero-card,
+body.dark-theme .fabric-section,
+body.dark-theme .request-section,
+body.dark-theme .request-card,
+body.dark-theme .request-form,
+body.dark-theme .calculator-panel {
+  background: #0b1219;
+  color: var(--dark-text);
+}
+
+body.dark-theme .about-section,
+body.dark-theme .palette-section,
+body.dark-theme .about-intro,
+body.dark-theme .fabric-quality,
+body.dark-theme .service-section,
+body.dark-theme .reviews-section,
+body.dark-theme .delivery-section,
+body.dark-theme .payment-section,
+body.dark-theme .contacts-info,
+body.dark-theme .contacts-map,
+body.dark-theme .contacts-consultation {
+  background: var(--dark-section);
+  color: var(--dark-text);
+}
+
+body.dark-theme .account-card,
+body.dark-theme .auth-card,
+body.dark-theme .catalog-filters,
+body.dark-theme .catalog-sidebar,
+body.dark-theme .product-card,
+body.dark-theme .product-card__body,
+body.dark-theme .product-specs,
+body.dark-theme .product-specs dl,
+body.dark-theme .calculator-card,
+body.dark-theme .calculator-total,
+body.dark-theme .delivery-card,
+body.dark-theme .delivery-question,
+body.dark-theme .payment-card,
+body.dark-theme .delivery-info,
+body.dark-theme .contacts-info__card,
+body.dark-theme .contacts-consultation,
+body.dark-theme .orders-section,
+body.dark-theme .orders-list__row,
+body.dark-theme .review-card,
+body.dark-theme .review-modal__dialog,
+body.dark-theme .catalog-admin-modal__panel,
+body.dark-theme .cart-modal__panel,
+body.dark-theme .cart-modal__item,
+body.dark-theme .price-request-modal__panel,
+body.dark-theme .price-request-modal__image::before,
+body.dark-theme .auth-modal__panel,
+body.dark-theme .quality-card p,
+body.dark-theme .service-card,
+body.dark-theme .stats-card span {
+  background: var(--dark-card);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+body.dark-theme .product-card__image,
+body.dark-theme .catalog-admin-modal__head,
+body.dark-theme .cart-modal__footer,
+body.dark-theme .sort-control,
+body.dark-theme .filter-section,
+body.dark-theme .filter-option,
+body.dark-theme .mobile-color-filter,
+body.dark-theme .reviews-error {
+  background: var(--dark-card-soft);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+body.dark-theme p,
+body.dark-theme li,
+body.dark-theme dt,
+body.dark-theme dd,
+body.dark-theme label,
+body.dark-theme small,
+body.dark-theme .catalog-layout,
+body.dark-theme .filter-option,
+body.dark-theme .product-card__title,
+body.dark-theme .product-card__meta,
+body.dark-theme .product-specs dt,
+body.dark-theme .product-specs dd,
+body.dark-theme .calculator-card h3,
+body.dark-theme .calculator-card__prices dt,
+body.dark-theme .calculator-card__prices dd,
+body.dark-theme .calculator-total span,
+body.dark-theme .calculator-total strong,
+body.dark-theme .request-form h2,
+body.dark-theme .request-card h2,
+body.dark-theme .request-card p,
+body.dark-theme .request-form > p,
+body.dark-theme .request-form__hints,
+body.dark-theme .request-form__hints span,
+body.dark-theme .delivery-card h2,
+body.dark-theme .delivery-card p,
+body.dark-theme .delivery-card strong,
+body.dark-theme .delivery-card__note,
+body.dark-theme .delivery-question h2,
+body.dark-theme .delivery-question p,
+body.dark-theme .delivery-form__field span,
+body.dark-theme .delivery-form__agree,
+body.dark-theme .payment-title,
+body.dark-theme .payment-lead,
+body.dark-theme .payment-card h3,
+body.dark-theme .payment-card p,
+body.dark-theme .delivery-info h2,
+body.dark-theme .delivery-info p,
+body.dark-theme .delivery-info span,
+body.dark-theme .delivery-info a,
+body.dark-theme .contacts-info__card p,
+body.dark-theme .contacts-info__card a,
+body.dark-theme .contacts-consultation h2,
+body.dark-theme .contacts-consultation__lead,
+body.dark-theme .contacts-consultation__agreement,
+body.dark-theme .account-field__label,
+body.dark-theme .account-field__value,
+body.dark-theme .orders-list__cell,
+body.dark-theme .orders-list__header,
+body.dark-theme .cart-modal__title,
+body.dark-theme .cart-modal__info h3,
+body.dark-theme .cart-modal__info p,
+body.dark-theme .cart-modal__info strong,
+body.dark-theme .cart-modal__item-total,
+body.dark-theme .cart-modal__total span,
+body.dark-theme .cart-modal__total strong,
+body.dark-theme .review-card__text,
+body.dark-theme .review-card__author,
+body.dark-theme .catalog-admin-field,
+body.dark-theme .catalog-admin-field span,
+body.dark-theme .catalog-admin-check,
+body.dark-theme .catalog-admin-check span,
+body.dark-theme .catalog-admin-modal__head h2,
+body.dark-theme .price-request-modal__title,
+body.dark-theme .price-request-modal__lead,
+body.dark-theme .price-request-modal__agree,
+body.dark-theme .auth-modal h2,
+body.dark-theme .auth-modal__field,
+body.dark-theme .auth-modal__label,
+body.dark-theme .auth-modal__password-mode label,
+body.dark-theme .auth-modal__agreement-check,
+body.dark-theme .auth-modal__agreement-text,
+body.dark-theme .auth-modal__forgot {
+  color: var(--dark-text);
+}
+
+body.dark-theme .breadcrumbs span,
+body.dark-theme .catalog-admin-modal__eyebrow,
+body.dark-theme .contacts-info__card span,
+body.dark-theme .product-card__meta,
+body.dark-theme .product-specs dt,
+body.dark-theme .calculator-card__prices dt,
+body.dark-theme .calculator-total span,
+body.dark-theme .cart-modal__info p,
+body.dark-theme .cart-modal__total span,
+body.dark-theme .orders-list__header,
+body.dark-theme .account-field__label,
+body.dark-theme .delivery-form__agree,
+body.dark-theme .contacts-consultation__agreement,
+body.dark-theme .request-form__hints,
+body.dark-theme .price-request-modal__agree,
+body.dark-theme .auth-modal__agreement-text {
+  color: var(--dark-muted);
+}
+
+body.dark-theme .hero-slider__counter {
+  color: var(--dark-muted);
+}
+
+body.dark-theme .hero-slider__counter b {
+  color: var(--dark-text);
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea,
+body.dark-theme .header-search input,
+body.dark-theme .account-edit input,
+body.dark-theme .auth-form input,
+body.dark-theme .auth-modal input,
+body.dark-theme .catalog-admin-field input,
+body.dark-theme .catalog-admin-field select,
+body.dark-theme .catalog-admin-field textarea,
+body.dark-theme .review-form input,
+body.dark-theme .review-form textarea,
+body.dark-theme .request-form input,
+body.dark-theme .contacts-form input,
+body.dark-theme .delivery-form input,
+body.dark-theme .price-request-modal__field input,
+body.dark-theme .orders-status-select,
+body.dark-theme .cart-modal__quantity,
+body.dark-theme .counter-row__input {
+  background: var(--dark-input);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder,
+body.dark-theme .auth-modal input::placeholder,
+body.dark-theme .price-request-modal__field input::placeholder {
+  color: rgba(237, 242, 247, 0.62);
+  opacity: 1;
+}
+
+body.dark-theme input.input-error,
+body.dark-theme textarea.input-error,
+body.dark-theme .input-error,
+body.dark-theme .price-request-modal__field input.input-error {
+  background: #2a1718;
+  border-color: #ff8f8f;
+  color: #fff2f2;
+}
+
+body.dark-theme [data-auth-error],
+body.dark-theme [data-account-error],
+body.dark-theme [data-error-name],
+body.dark-theme [data-error-phone],
+body.dark-theme [data-error-email],
+body.dark-theme .field-error,
+body.dark-theme .price-request-modal__error,
+body.dark-theme .review-form__message.is-error,
+body.dark-theme .catalog-admin-message[data-message-type="error"],
+body.dark-theme .cart-visual__message.is-error,
+body.dark-theme .account-message.is-error,
+body.dark-theme .auth-form__message.is-error,
+body.dark-theme .auth-modal__message.is-error,
+body.dark-theme .request-form__message.is-error,
+body.dark-theme .contacts-form__message.is-error,
+body.dark-theme .delivery-form__message.is-error {
+  color: var(--danger);
+}
+
+body.dark-theme .product-card__price,
+body.dark-theme .catalog-admin-message[data-message-type="success"],
+body.dark-theme .account-message,
+body.dark-theme .cart-visual__message,
+body.dark-theme .request-form__message,
+body.dark-theme .contacts-form__message,
+body.dark-theme .delivery-form__message,
+body.dark-theme .price-request-modal__message,
+body.dark-theme .auth-modal__message,
+body.dark-theme .about-section h2 span,
+body.dark-theme .stats-card strong {
+  color: var(--accent);
+}
+
+body.dark-theme .button,
+body.dark-theme .account-button,
+body.dark-theme .auth-form__submit,
+body.dark-theme .auth-modal__submit,
+body.dark-theme .product-card__button,
+body.dark-theme .cart-visual__button,
+body.dark-theme .about-section__link,
+body.dark-theme .request-form__button,
+body.dark-theme .delivery-form__button,
+body.dark-theme .contacts-form__submit,
+body.dark-theme .reviews-add-button,
+body.dark-theme .review-form button,
+body.dark-theme .catalog-admin-button,
+body.dark-theme .catalog-admin-actions button,
+body.dark-theme .cart-modal__order,
+body.dark-theme .price-request-modal__submit,
+body.dark-theme .account-edit__actions button,
+body.dark-theme .calculator-add,
+body.dark-theme .pagination-button,
+body.dark-theme .orders-list__delete {
+  background: var(--accent);
+  color: #19242f;
+  border-color: transparent;
+}
+
+body.dark-theme .button--submit,
+body.dark-theme .catalog-admin-actions__delete,
+body.dark-theme .catalog-admin-actions button:last-child {
+  background: #0b1219;
+  color: #f7f3ea;
+  border-color: var(--dark-border);
+}
+
+body.dark-theme .fabric-card p,
+body.dark-theme .category-strip__sale,
+body.dark-theme .mobile-menu__sale {
+  background: var(--accent);
+  color: #19242f;
+}
+
+body.dark-theme .calculator-field,
+body.dark-theme .counter-row span,
+body.dark-theme .counter-row__input,
+body.dark-theme .calculator-card__preview {
+  background: #26313d;
+  color: rgba(247, 243, 234, 0.92);
+}
+
+body.dark-theme .counter-row button {
+  background: #324050;
+  color: #f7f3ea;
+}
+
+body.dark-theme .calculator-card__image {
+  background: transparent;
+}
+
+body.dark-theme .cart-modal__quantity button,
+body.dark-theme .reviews-arrow {
+  background: var(--dark-card-soft);
+  color: var(--dark-text);
+}
+
+body.dark-theme .reviews-arrow--next {
+  background: var(--accent);
+  color: #19242f;
+}
+
+body.dark-theme .cart-modal__remove,
+body.dark-theme .auth-modal__link,
+body.dark-theme .auth-modal__small-button,
+body.dark-theme .auth-modal__agreement-toggle {
+  color: var(--accent);
+}
+
+body.dark-theme .cart-modal__overlay,
+body.dark-theme .catalog-admin-modal__overlay,
+body.dark-theme .review-modal__overlay,
+body.dark-theme .price-request-modal,
+body.dark-theme .auth-modal,
+body.dark-theme .mobile-menu__overlay {
+  background: rgba(3, 7, 11, 0.78);
+}
+
+body.dark-theme .cart-modal__close,
+body.dark-theme .catalog-admin-modal__close,
+body.dark-theme .review-modal__close,
+body.dark-theme .price-request-modal__close,
+body.dark-theme .auth-modal__close,
+body.dark-theme .mobile-menu__close {
+  background-color: var(--dark-card);
+}
+
+body.dark-theme .cart-modal__close::before,
+body.dark-theme .cart-modal__close::after,
+body.dark-theme .catalog-admin-modal__close::before,
+body.dark-theme .catalog-admin-modal__close::after,
+body.dark-theme .review-modal__close::before,
+body.dark-theme .review-modal__close::after,
+body.dark-theme .price-request-modal__close::before,
+body.dark-theme .price-request-modal__close::after,
+body.dark-theme .auth-modal__close::before,
+body.dark-theme .auth-modal__close::after,
+body.dark-theme .mobile-menu__close::before,
+body.dark-theme .mobile-menu__close::after {
+  background: var(--dark-text);
+}
+
+body.dark-theme .contacts-map,
+body.dark-theme .contacts-map iframe {
+  background: transparent;
+  color-scheme: light;
+  filter: none;
+}
+
+body.dark-theme img {
+  filter: none;
+}

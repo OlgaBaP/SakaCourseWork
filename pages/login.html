@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/pages/auth.css" />
     <link rel="stylesheet" href="../css/common/cart.css" />
     <link rel="stylesheet" href="../css/common/preloader.css" />
+    <link rel="stylesheet" href="../css/common/theme.css" />
   </head>
 
   <body>
@@ -48,7 +49,7 @@
             <img src="../assets/images/icons/icon-phone.svg" alt="" />
             <span>+375 33 353 66 08</span>
           </a>
-          <div class="site-header__settings"><span><b>RU</b> / EN</span><span>Dark / Light</span></div>
+          <div class="site-header__settings"><span data-language-toggle role="button" tabindex="0"><b>RU</b> / EN</span><span data-theme-toggle role="button" tabindex="0">Dark / <b>Light</b></span></div>
           <a class="header-circle header-circle--eye" href="#" aria-label="Версия для слабовидящих">
             <img src="../assets/images/icons/icon-eye.svg" alt="" />
           </a>
@@ -134,7 +135,7 @@
         </div>
         <div class="mobile-menu__meta">
           <p>Производитель турецкого трикотажного полотна</p>
-          <div><span><b>RU</b> / EN</span><span>Dark / Light</span></div>
+          <div><span data-language-toggle role="button" tabindex="0"><b>RU</b> / EN</span><span data-theme-toggle role="button" tabindex="0">Dark / <b>Light</b></span></div>
           <a class="mobile-menu__eye" href="#" aria-label="Версия для слабовидящих"><img src="../assets/images/icons/icon-eye.svg" alt="" /></a>
         </div>
         <div class="mobile-menu__nav">
@@ -154,6 +155,8 @@
     </div>
 
     <script type="module" src="../js/common/preloader.js"></script>
+    <script type="module" src="../js/common/i18n.js"></script>
+    <script type="module" src="../js/common/theme.js"></script>
     <script type="module" src="../js/common/auth-state.js"></script>
     <script type="module" src="../js/pages/auth.js"></script>
     <script type="module" src="../js/common/cart.js"></script>

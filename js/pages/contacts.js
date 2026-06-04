@@ -1,4 +1,5 @@
 import { createContactRequest } from "../api/api.js";
+import { t } from "../common/i18n.js";
 import { validateRequestFields } from "../common/request-validation.js";
 
 const contactForm = document.querySelector("[data-contact-form]");
@@ -75,7 +76,7 @@ async function handleContactSubmit(event) {
     name: validation.values.name,
     phone: validation.values.phone,
     email: validation.values.email,
-    source: "Контакты",
+    source: t("Контакты"),
     createdAt: new Date().toISOString(),
   };
 
@@ -86,9 +87,9 @@ async function handleContactSubmit(event) {
   try {
     await createContactRequest(requestData);
     contactForm.reset();
-    showContactMessage("Заявка успешно отправлена");
+    showContactMessage(t("common.requestSuccess"));
   } catch {
-    showContactMessage("Не удалось отправить заявку. Попробуйте позже.", true);
+    showContactMessage(t("common.requestFailed"), true);
   } finally {
     if (submitButton) {
       submitButton.disabled = false;

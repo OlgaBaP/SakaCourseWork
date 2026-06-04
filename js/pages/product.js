@@ -1,5 +1,6 @@
 import { getProductById, getProducts } from "../api/api.js";
 import { addProductToCart } from "../common/cart.js";
+import { t, translateValue } from "../common/i18n.js";
 import { openPriceRequestModal } from "../common/price-request-modal.js";
 import { validateRequestFields } from "../common/request-validation.js";
 
@@ -46,6 +47,7 @@ const emailError = document.querySelector("[data-error-email]");
 const requestMessage = document.querySelector("[data-request-message]");
 
 let currentProduct = null;
+let currentProducts = [];
 
 const ROLL_WEIGHT = 20;
 const PACK_WEIGHT = 2;
@@ -88,9 +90,9 @@ function getNumericProductId(id) {
 function showProductNotFound() {
   productContent.hidden = true;
   productMessage.hidden = false;
-  productMessage.textContent = "Товар не найден";
-  productBreadcrumb.textContent = "Товар не найден";
-  document.title = "Товар не найден | Saka Tekstil";
+  productMessage.textContent = t("product.notFound");
+  productBreadcrumb.textContent = t("product.notFound");
+  document.title = `${t("product.notFound")} | Saka Tekstil`;
 }
 
 function setMainImage(product) {
@@ -105,9 +107,9 @@ function renderThumbnails(thumbnails) {
     const button = document.createElement("button");
     const image = document.createElement("img");
 
-    button.className = "product-thumb";
-    button.type = "button";
-    button.setAttribute("aria-label", `${product.title} ${product.color}`);
+  button.className = "product-thumb";
+  button.type = "button";
+    button.setAttribute("aria-label", `${translateValue("product", product.title)} ${translateValue("color", product.color)}`);
 
     if (index === 0) {
       button.classList.add("product-thumb--active");
@@ -137,7 +139,7 @@ function renderColorSwatches(products) {
   colors.forEach((color) => {
     const swatch = document.createElement("span");
     swatch.className = "color-swatch";
-    swatch.title = color;
+    swatch.title = translateValue("color", color);
     swatch.style.setProperty("--swatch-color", colorMap[color] || "#d9d9d9");
     productColors.append(swatch);
   });
@@ -145,13 +147,13 @@ function renderColorSwatches(products) {
 
 function renderSpecs(product) {
   const specs = [
-    ["Материал:", product.category],
-    ["Качество:", product.quality],
-    ["Состав:", product.composition],
-    ["Цвет:", product.color],
-    ["Плотность:", product.density],
-    ["Ширина рулона:", product.width],
-    ["Производство:", "Турция"],
+    [t("Материал:"), translateValue("product", product.category)],
+    [t("Качество:"), translateValue("quality", product.quality)],
+    [t("Состав:"), translateValue("unit", product.composition)],
+    [t("Цвет:"), translateValue("color", product.color)],
+    [t("Плотность:"), translateValue("unit", product.density)],
+    [t("Ширина рулона:"), translateValue("unit", product.width)],
+    [t("Производство:"), t("product.production")],
   ];
 
   productSpecs.innerHTML = "";
@@ -161,7 +163,7 @@ function renderSpecs(product) {
     const description = document.createElement("dd");
 
     term.textContent = label;
-    description.textContent = value || "Не указано";
+    description.textContent = value || t("account.defaultValue");
 
     productSpecs.append(term, description);
   });
@@ -184,9 +186,9 @@ function updateCalculator() {
   const total = weight * price;
 
   calculatorPrice.textContent = formatPrice(price);
-  calculatorWeight.textContent = `${weight} кг`;
+  calculatorWeight.textContent = `${weight} ${t("common.kg")}`;
   calculatorSum.textContent = formatPrice(total);
-  calculatorTotalWeight.textContent = `${weight} кг`;
+  calculatorTotalWeight.textContent = `${weight} ${t("common.kg")}`;
   calculatorTotalSum.textContent = formatPrice(total);
 }
 
@@ -200,11 +202,12 @@ function renderProduct(product, products) {
   ].slice(0, 4);
 
   currentProduct = product;
-  productBreadcrumb.textContent = product.title;
-  productTitle.textContent = product.title;
+  currentProducts = products;
+  productBreadcrumb.textContent = translateValue("product", product.title);
+  productTitle.textContent = translateValue("product", product.title);
   productPrice.textContent = formatPrice(product.price);
-  productColor.textContent = product.color;
-  document.title = `${product.title} | Saka Tekstil`;
+  productColor.textContent = translateValue("color", product.color);
+  document.title = `${translateValue("product", product.title)} | Saka Tekstil`;
 
   setMainImage(product);
   renderThumbnails(thumbnails);
@@ -213,10 +216,10 @@ function renderProduct(product, products) {
   );
   renderSpecs(product);
 
-  calculatorProduct.textContent = product.title;
-  calculatorTotalProduct.textContent = product.title;
+  calculatorProduct.textContent = translateValue("product", product.title);
+  calculatorTotalProduct.textContent = translateValue("product", product.title);
   calculatorImage.src = getImagePath(product.image);
-  calculatorImage.alt = `${product.title} ${product.color}`;
+  calculatorImage.alt = `${translateValue("product", product.title)} ${translateValue("color", product.color)}`;
   updateCalculator();
 
   productMessage.hidden = true;
@@ -275,9 +278,9 @@ async function handleAddToCart() {
       return;
     }
 
-    showAddToCartMessage("Товар добавлен в корзину");
+    showAddToCartMessage(t("product.added"));
   } catch {
-    showAddToCartMessage("Не удалось добавить товар в корзину", true);
+    showAddToCartMessage(t("product.addFailed"), true);
   } finally {
     addToCartButton.disabled = false;
   }
@@ -343,7 +346,7 @@ async function handleRequestSubmit(event) {
 
   clearRequestMessage();
   openPriceRequestModal({
-    source: "Страница товара",
+    source: t("product.pageRequestSource"),
     productId: getNumericProductId(currentProduct.id),
     productTitle: currentProduct.title,
     initialValues: {
@@ -372,9 +375,9 @@ async function handleRequestSubmit(event) {
   try {
     await createPriceRequest(requestData);
     requestForm.reset();
-    showRequestMessage("Заявка успешно отправлена");
+    showRequestMessage(t("common.requestSuccess"));
   } catch {
-    showRequestMessage("Не удалось отправить заявку. Попробуйте позже.", true);
+    showRequestMessage(t("common.requestFailed"), true);
   }
 }
 
@@ -405,5 +408,10 @@ calculatorRolls.addEventListener("input", handleCalculatorInput);
 calculatorPacks.addEventListener("input", handleCalculatorInput);
 calculator.addEventListener("click", handleCalculatorStep);
 requestForm.addEventListener("submit", handleRequestSubmit);
+window.addEventListener("i18n:changed", () => {
+  if (currentProduct) {
+    renderProduct(currentProduct, currentProducts);
+  }
+});
 
 initProductPage();

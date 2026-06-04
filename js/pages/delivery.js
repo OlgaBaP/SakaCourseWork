@@ -1,4 +1,5 @@
 import { createDeliveryQuestion } from "../api/api.js";
+import { t } from "../common/i18n.js";
 
 const deliveryForm = document.querySelector("[data-delivery-form]");
 const nameInput = document.querySelector("[data-delivery-name]");
@@ -9,8 +10,8 @@ const deliveryMessage = document.querySelector("[data-delivery-message]");
 const submitButton = deliveryForm?.querySelector("button[type='submit']");
 
 const ERROR_MESSAGES = {
-  name: "Введите имя",
-  phone: "Введите белорусский номер телефона",
+  name: "validation.name",
+  phone: "validation.phone",
 };
 
 function normalizePhone(phone) {
@@ -56,11 +57,11 @@ function validateDeliveryForm() {
   clearDeliveryMessage();
 
   if (values.name.length < 2) {
-    errors.name = ERROR_MESSAGES.name;
+    errors.name = t(ERROR_MESSAGES.name);
   }
 
   if (!/^375(25|29|33|44)\d{7}$/.test(values.phone)) {
-    errors.phone = ERROR_MESSAGES.phone;
+    errors.phone = t(ERROR_MESSAGES.phone);
   }
 
   if (errors.name) {
@@ -93,7 +94,7 @@ async function handleDeliverySubmit(event) {
   const questionData = {
     name: validation.values.name,
     phone: validation.values.phone,
-    source: "Доставка и оплата",
+    source: t("Доставка и оплата"),
     createdAt: new Date().toISOString(),
   };
 
@@ -104,9 +105,9 @@ async function handleDeliverySubmit(event) {
   try {
     await createDeliveryQuestion(questionData);
     deliveryForm.reset();
-    showDeliveryMessage("Заявка успешно отправлена");
+    showDeliveryMessage(t("common.requestSuccess"));
   } catch {
-    showDeliveryMessage("Не удалось отправить заявку. Попробуйте позже.", true);
+    showDeliveryMessage(t("common.requestFailed"), true);
   } finally {
     if (submitButton) {
       submitButton.disabled = false;

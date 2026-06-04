@@ -8,6 +8,7 @@ import {
   updateCartItem,
 } from "../api/api.js";
 import { getCurrentUser, openAuthModal } from "./auth-state.js";
+import { t, translatePage, translateValue } from "./i18n.js";
 
 const CART_MODAL_OPENED_CLASS = "cart-modal--opened";
 const BODY_LOCK_CLASS = "cart-modal-opened";
@@ -87,31 +88,32 @@ function createCartModal() {
   cartModal.setAttribute("aria-hidden", "true");
   cartModal.setAttribute("data-cart-modal", "");
   cartModal.innerHTML = `
-    <button class="cart-modal__overlay" type="button" aria-label="Закрыть корзину" data-cart-close></button>
+    <button class="cart-modal__overlay" type="button" aria-label="${t("cart.close")}" data-i18n-aria-label="cart.close" data-cart-close></button>
     <section class="cart-modal__panel" role="dialog" aria-modal="true" aria-labelledby="cart-modal-title">
       <div class="cart-modal__header">
-        <h2 class="cart-modal__title" id="cart-modal-title">Корзина</h2>
-        <button class="cart-modal__close" type="button" aria-label="Закрыть корзину" data-cart-close></button>
+        <h2 class="cart-modal__title" id="cart-modal-title" data-i18n="cart.title">${t("cart.title")}</h2>
+        <button class="cart-modal__close" type="button" aria-label="${t("cart.close")}" data-i18n-aria-label="cart.close" data-cart-close></button>
       </div>
       <p class="cart-modal__message" data-cart-message hidden></p>
       <div class="cart-modal__list" data-cart-list></div>
       <div class="cart-modal__footer">
         <div class="cart-modal__total">
-          <span>Итого</span>
+          <span data-i18n="cart.total">${t("cart.total")}</span>
           <strong data-cart-total>0 ₽</strong>
         </div>
-        <button class="cart-modal__order" type="button">Оформить заказ</button>
+        <button class="cart-modal__order" type="button" data-i18n="cart.checkout">${t("cart.checkout")}</button>
       </div>
     </section>
   `;
 
   document.body.append(cartModal);
+  translatePage(cartModal);
   cartList = cartModal.querySelector("[data-cart-list]");
   cartMessage = cartModal.querySelector("[data-cart-message]");
   cartTotal = cartModal.querySelector("[data-cart-total]");
   cartOrderButton = cartModal.querySelector(".cart-modal__order");
   cartOrderButton.dataset.cartOrder = "";
-  cartOrderButton.textContent = "Оформить заказ";
+  cartOrderButton.textContent = t("cart.checkout");
 }
 
 function openCartModal() {
@@ -152,7 +154,7 @@ function renderCart() {
 
   if (cartItems.length === 0) {
     cartOrderButton.disabled = true;
-    setCartMessage("Корзина пуста");
+    setCartMessage(t("cart.empty"));
     return;
   }
 
@@ -172,18 +174,18 @@ function renderCart() {
     cartItem.innerHTML = `
       <img class="cart-modal__image" src="${getImagePath(item.image)}" alt="">
       <div class="cart-modal__info">
-        <h3>${item.title}</h3>
-        <p>${item.color || "Цвет не указан"}</p>
-        <p>${item.width || "Ширина не указана"}</p>
+        <h3>${translateValue("product", item.title)}</h3>
+        <p>${item.color ? translateValue("color", item.color) : t("cart.colorMissing")}</p>
+        <p>${item.width ? translateValue("unit", item.width) : t("cart.widthMissing")}</p>
         <strong>${formatPrice(item.price)}</strong>
       </div>
       <div class="cart-modal__quantity">
-        <button type="button" aria-label="Уменьшить количество" data-cart-action="decrease">-</button>
+        <button type="button" aria-label="${t("Уменьшить количество")}" data-cart-action="decrease">-</button>
         <span>${Number(item.quantity) || 1}</span>
-        <button type="button" aria-label="Увеличить количество" data-cart-action="increase">+</button>
+        <button type="button" aria-label="${t("Увеличить количество")}" data-cart-action="increase">+</button>
       </div>
       <strong class="cart-modal__item-total">${formatPrice(itemTotal)}</strong>
-      <button class="cart-modal__remove" type="button" aria-label="Удалить товар" data-cart-action="remove">Удалить</button>
+      <button class="cart-modal__remove" type="button" aria-label="${t("cart.removeAria")}" data-cart-action="remove">${t("cart.remove")}</button>
     `;
 
     cartList.append(cartItem);
@@ -200,7 +202,7 @@ async function loadCart(shouldRender = false) {
     updateCountElements(0);
 
     if (shouldRender) {
-      setCartMessage("РљРѕСЂР·РёРЅР° РїСѓСЃС‚Р°");
+      setCartMessage(t("cart.empty"));
     }
 
     return;
@@ -218,7 +220,7 @@ async function loadCart(shouldRender = false) {
     updateCountElements(0);
 
     if (shouldRender) {
-      setCartMessage("Не удалось загрузить корзину");
+      setCartMessage(t("cart.loadFailed"));
     }
   }
 }
@@ -274,7 +276,7 @@ async function createOrderFromCart() {
   }
 
   cartOrderButton.disabled = true;
-  showCartNotice("Оформляем заказ...");
+  showCartNotice(t("cart.inProgress"));
 
   try {
     const now = new Date();
@@ -296,9 +298,9 @@ async function createOrderFromCart() {
     cartItems = [];
     updateCountElements(0);
     closeCartModal();
-    setCartMessage("Заказ успешно оформлен");
+    setCartMessage(t("cart.orderSuccess"));
   } catch {
-    showCartNotice("Не удалось оформить заказ. Попробуйте позже.");
+    showCartNotice(t("cart.orderFailed"));
     cartOrderButton.disabled = false;
   }
 }
@@ -349,7 +351,7 @@ async function handleCartAction(event) {
       await refreshCart(true);
     }
   } catch {
-    setCartMessage("Не удалось обновить корзину");
+    setCartMessage(t("cart.updateFailed"));
     keepCartModalOpen();
   } finally {
     button.disabled = false;
@@ -431,6 +433,10 @@ function initCart() {
   loadCart();
   window.addEventListener("auth:changed", () => {
     loadCart(cartModal.classList.contains(CART_MODAL_OPENED_CLASS));
+  });
+  window.addEventListener("i18n:changed", () => {
+    translatePage(cartModal);
+    renderCart();
   });
 }
 

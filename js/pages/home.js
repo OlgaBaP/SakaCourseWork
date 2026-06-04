@@ -1,4 +1,5 @@
 import { createPriceRequest, getProducts } from "../api/api.js";
+import { t } from "../common/i18n.js";
 import { validateRequestFields } from "../common/request-validation.js";
 
 const requestForm = document.querySelector("[data-request-form]");
@@ -58,7 +59,7 @@ function renderHeroSlide(index) {
   activeHeroSlide = index;
   const slide = heroSlides[activeHeroSlide];
 
-  heroTitle.innerHTML = slide.title;
+  heroTitle.textContent = t(slide.title);
   heroImage.src = slide.image;
   heroCounter.innerHTML = `<b>${formatSlideNumber(activeHeroSlide)}</b> / ${formatSlideNumber(heroSlides.length)}`;
 
@@ -165,21 +166,24 @@ async function handleRequestSubmit(event) {
     name: validation.values.name,
     phone: validation.values.phone,
     email: validation.values.email,
-    source: "Главная страница",
+    source: t("home.requestSource"),
     createdAt: new Date().toISOString(),
   };
 
   try {
     await createPriceRequest(requestData);
     requestForm.reset();
-    showRequestMessage("Заявка успешно отправлена");
+    showRequestMessage(t("common.requestSuccess"));
   } catch {
-    showRequestMessage("Не удалось отправить заявку. Попробуйте позже.", true);
+    showRequestMessage(t("common.requestFailed"), true);
   }
 }
 
 loadProducts();
 initHeroSlider();
+window.addEventListener("i18n:changed", () => {
+  renderHeroSlide(activeHeroSlide);
+});
 
 if (requestForm) {
   requestForm.addEventListener("submit", handleRequestSubmit);

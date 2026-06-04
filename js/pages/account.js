@@ -5,6 +5,8 @@ import {
   saveCurrentUser,
   updateAuthLinks,
 } from "../common/auth-state.js";
+import { resetLanguage, t } from "../common/i18n.js";
+import { resetTheme } from "../common/theme.js";
 
 const PHONE_PATTERN = /^375(25|29|33|44)\d{7}$/;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -119,7 +121,7 @@ function setDisplayValue(name, value) {
     return;
   }
 
-  button.textContent = value || "Не указано";
+  button.textContent = value || t("account.defaultValue");
 }
 
 function renderUser(user) {
@@ -132,9 +134,9 @@ function renderUser(user) {
   setDisplayValue("fullName", getFullName(user));
   setDisplayValue("phone", user.phone || "");
   setDisplayValue("email", user.email || "");
-  setDisplayValue("city", user.city || "Не указано");
+  setDisplayValue("city", user.city || t("account.defaultValue"));
   if (ordersLink) {
-    ordersLink.textContent = user.role === "admin" ? "Все заказы" : "Ваши заказы";
+    ordersLink.textContent = user.role === "admin" ? t("account.ordersAdmin") : t("account.ordersUser");
   }
 }
 
@@ -165,7 +167,7 @@ function createPatch(name, rawValue) {
 
     if (nameParts.lastName.length < 2 || nameParts.firstName.length < 2) {
       return {
-        error: "Введите фамилию и имя",
+        error: t("account.invalidFullName"),
       };
     }
 
@@ -179,7 +181,7 @@ function createPatch(name, rawValue) {
 
     if (!PHONE_PATTERN.test(phone)) {
       return {
-        error: "Введите белорусский номер телефона",
+        error: t("account.invalidPhone"),
       };
     }
 
@@ -195,7 +197,7 @@ function createPatch(name, rawValue) {
 
     if (!EMAIL_PATTERN.test(email)) {
       return {
-        error: "Введите корректный E-mail",
+        error: t("account.invalidEmail"),
       };
     }
 
@@ -254,10 +256,10 @@ async function saveField(name, input, saveButton) {
       ...updatedUser,
       ...safeUser,
     });
-    showMessage("Данные сохранены");
+    showMessage(t("account.dataSaved"));
   } catch {
-    setError(name, "Не удалось сохранить данные");
-    showMessage("Не удалось сохранить данные. Попробуйте позже.", true);
+    setError(name, t("account.saveFailed"));
+    showMessage(t("account.saveFailedLong"), true);
     saveButton.disabled = false;
   }
 }
@@ -289,8 +291,8 @@ function startEdit(name) {
   editor.innerHTML = `
     <input type="${name === "email" ? "email" : name === "phone" ? "tel" : "text"}" />
     <span class="account-edit__actions">
-      <button type="button" data-account-save>Сохранить</button>
-      <button type="button" data-account-cancel>Отмена</button>
+      <button type="button" data-account-save>${t("Сохранить")}</button>
+      <button type="button" data-account-cancel>${t("Отмена")}</button>
     </span>
   `;
 
@@ -375,15 +377,15 @@ function loadImageFromFile(file) {
 
 function isAvatarValidationError(error) {
   return [
-    "Выберите изображение",
-    "Изображение слишком большое",
-    "Не удалось обработать изображение",
+    t("account.chooseImage"),
+    t("account.imageTooLarge"),
+    t("account.imageProcessFailed"),
   ].includes(error.message);
 }
 
 async function compressAvatar(file) {
   if (!file.type.startsWith("image/")) {
-    throw new Error("Выберите изображение");
+    throw new Error(t("account.chooseImage"));
   }
 
   const image = await loadImageFromFile(file);
@@ -394,7 +396,7 @@ async function compressAvatar(file) {
   const context = canvas.getContext("2d");
 
   if (!context) {
-    throw new Error("Не удалось обработать изображение");
+    throw new Error(t("account.imageProcessFailed"));
   }
 
   canvas.width = width;
@@ -406,7 +408,7 @@ async function compressAvatar(file) {
   const dataUrl = canvas.toDataURL("image/jpeg", 0.82);
 
   if (dataUrl.length > MAX_AVATAR_DATA_URL_LENGTH) {
-    throw new Error("Изображение слишком большое");
+    throw new Error(t("account.imageTooLarge"));
   }
 
   return dataUrl;
@@ -434,13 +436,13 @@ async function handleAvatarChange() {
     saveCurrentUser(updatedUser);
     updateAuthLinks();
     renderUser(updatedUser);
-    showMessage("Аватар сохранен");
+    showMessage(t("account.avatarSaved"));
   } catch (error) {
     renderAvatar(currentUserData);
     showMessage(
       isAvatarValidationError(error)
         ? error.message
-        : "Не удалось сохранить аватар. Попробуйте позже.",
+        : t("account.avatarSaveFailed"),
       true,
     );
   } finally {
@@ -461,11 +463,20 @@ form.addEventListener("click", (event) => {
 avatarInput.addEventListener("change", handleAvatarChange);
 
 resetButton.addEventListener("click", () => {
-  showMessage("Настройки уже по умолчанию");
+  const resetMessage = t("account.settingsReset");
+  resetLanguage();
+  resetTheme();
+  showMessage(resetMessage);
 });
 
 window.addEventListener("auth:changed", () => {
   initAccount();
+});
+
+window.addEventListener("i18n:changed", () => {
+  if (currentUserData) {
+    renderUser(currentUserData);
+  }
 });
 
 initAccount();

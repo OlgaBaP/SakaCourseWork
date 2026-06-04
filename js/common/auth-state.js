@@ -1,4 +1,5 @@
 import { createUser, getUsers } from "../api/api.js";
+import { t, translatePage } from "./i18n.js";
 
 const CURRENT_USER_KEY = "currentUser";
 const BODY_OPEN_CLASS = "auth-modal-opened";
@@ -139,8 +140,8 @@ function updateAuthLinks() {
   const accountHref = getPagePath("account.html");
   const loginHref = getPagePath("login.html");
   const text = currentUser
-    ? currentUser.nickname || currentUser.fullName || "Личный кабинет"
-    : "Войти";
+    ? currentUser.nickname || currentUser.fullName || t("Личные данные")
+    : t("Войти");
   const href = currentUser ? accountHref : loginHref;
 
   document.querySelectorAll(".login-link, .mobile-menu__login").forEach((link) => {
@@ -156,7 +157,7 @@ function updateAuthLinks() {
       textElement.classList.add("auth-link__text");
       textElement.innerHTML = `
         <span class="auth-link__name"></span>
-        <span class="auth-link__logout" data-auth-logout="${logoutType}">Выйти</span>
+        <span class="auth-link__logout" data-auth-logout="${logoutType}">${t("Выйти")}</span>
       `;
       textElement.querySelector(".auth-link__name").textContent = text;
     } else {
@@ -222,13 +223,14 @@ function ensureAuthStyles() {
 }
 
 function createField(label, inputHtml) {
+  const translatedLabel = t(label);
   const input = inputHtml.includes("placeholder=")
     ? inputHtml
-    : inputHtml.replace("<input ", `<input placeholder="${label}" `);
+    : inputHtml.replace("<input ", `<input placeholder="${translatedLabel}" data-i18n-placeholder="${label}" `);
 
   return `
     <label class="auth-modal__field" data-auth-field>
-      <span class="auth-modal__label">${label}</span>
+      <span class="auth-modal__label" data-i18n="${label}">${translatedLabel}</span>
       ${input}
       <span class="auth-modal__error" data-auth-error hidden></span>
     </label>
@@ -246,24 +248,24 @@ function createAuthModal() {
   authModal.setAttribute("aria-hidden", "true");
   authModal.setAttribute("data-auth-modal", "");
   authModal.innerHTML = `
-    <button class="auth-modal__overlay" type="button" aria-label="Закрыть" data-auth-close></button>
+    <button class="auth-modal__overlay" type="button" aria-label="${t("common.close")}" data-i18n-aria-label="common.close" data-auth-close></button>
     <section class="auth-modal__panel" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
-      <button class="auth-modal__close" type="button" aria-label="Закрыть" data-auth-close></button>
+      <button class="auth-modal__close" type="button" aria-label="${t("common.close")}" data-i18n-aria-label="common.close" data-auth-close></button>
       <div class="auth-modal__view" data-auth-view="login">
-        <h2 id="auth-modal-title">Войти</h2>
+        <h2 id="auth-modal-title" data-i18n="Войти">${t("Войти")}</h2>
         <form class="auth-modal__form" data-auth-login-form novalidate>
           ${createField("Email или телефон", '<input type="text" autocomplete="username" data-login-identity />')}
           ${createField("Пароль", '<input type="password" autocomplete="current-password" data-login-password />')}
           <p class="auth-modal__message" data-auth-message hidden></p>
           <div class="auth-modal__actions">
-            <button class="auth-modal__submit" type="submit">Войти</button>
-            <a class="auth-modal__link auth-modal__forgot" href="#">Забыли пароль?</a>
-            <button class="auth-modal__link" type="button" data-auth-switch="register">Регистрация</button>
+            <button class="auth-modal__submit" type="submit" data-i18n="Войти">${t("Войти")}</button>
+            <a class="auth-modal__link auth-modal__forgot" href="#" data-i18n="Забыли пароль?">${t("Забыли пароль?")}</a>
+            <button class="auth-modal__link" type="button" data-auth-switch="register" data-i18n="Регистрация">${t("Регистрация")}</button>
           </div>
         </form>
       </div>
       <div class="auth-modal__view" data-auth-view="register" hidden>
-        <h2>Регистрация</h2>
+        <h2 data-i18n="Регистрация">${t("Регистрация")}</h2>
         <form class="auth-modal__form auth-modal__grid" data-auth-register-form novalidate>
           ${createField("Фамилия", '<input type="text" autocomplete="family-name" data-register-last-name />')}
           ${createField("Имя", '<input type="text" autocomplete="given-name" data-register-first-name />')}
@@ -272,38 +274,39 @@ function createAuthModal() {
           ${createField("E-mail", '<input type="email" autocomplete="email" data-register-email />')}
           ${createField("Дата рождения", '<input type="date" data-register-birth-date />')}
           <div class="auth-modal__password-mode auth-modal__field--wide">
-            <label><input type="radio" name="modalPasswordMode" value="manual" checked /> Придумать пароль</label>
-            <label><input type="radio" name="modalPasswordMode" value="auto" /> Сгенерировать пароль</label>
+            <label><input type="radio" name="modalPasswordMode" value="manual" checked /> ${t("Придумать пароль")}</label>
+            <label><input type="radio" name="modalPasswordMode" value="auto" /> ${t("Сгенерировать пароль")}</label>
           </div>
           ${createField("Пароль", '<input type="text" autocomplete="new-password" data-register-password />')}
           ${createField("Повторите пароль", '<input type="password" autocomplete="new-password" data-register-password-repeat />')}
           <label class="auth-modal__field auth-modal__field--wide" data-auth-field>
-            <span>Никнейм</span>
+            <span data-i18n="Никнейм">${t("Никнейм")}</span>
             <span class="auth-modal__nickname">
               <input type="text" data-register-nickname readonly />
-              <button class="auth-modal__small-button" type="button" data-generate-nickname>Сгенерировать ещё</button>
+              <button class="auth-modal__small-button" type="button" data-generate-nickname data-i18n="Сгенерировать ещё">${t("Сгенерировать ещё")}</button>
             </span>
             <span class="auth-modal__error" data-auth-error hidden></span>
           </label>
           <div class="auth-modal__agreement" data-auth-field>
             <label class="auth-modal__agreement-check">
               <input type="checkbox" data-register-agreement />
-              <span>Согласен с условиями обработки данных</span>
+              <span data-i18n="Согласен с условиями обработки данных">${t("Согласен с условиями обработки данных")}</span>
             </label>
             <span class="auth-modal__error" data-auth-error hidden></span>
-            <button class="auth-modal__agreement-toggle" type="button" data-agreement-toggle>Открыть соглашение</button>
-            <p class="auth-modal__agreement-text" data-agreement-text hidden>Нажимая кнопку регистрации, вы соглашаетесь на обработку данных для создания аккаунта и оформления заказов Saka Tekstil.</p>
+            <button class="auth-modal__agreement-toggle" type="button" data-agreement-toggle data-i18n="Открыть соглашение">${t("Открыть соглашение")}</button>
+            <p class="auth-modal__agreement-text" data-agreement-text data-i18n="Нажимая кнопку регистрации, вы соглашаетесь на обработку данных для создания аккаунта и оформления заказов Saka Tekstil." hidden>${t("Нажимая кнопку регистрации, вы соглашаетесь на обработку данных для создания аккаунта и оформления заказов Saka Tekstil.")}</p>
           </div>
           <p class="auth-modal__message" data-auth-message hidden></p>
           <div class="auth-modal__actions">
-            <button class="auth-modal__submit" type="submit">Зарегистрироваться</button>
-            <button class="auth-modal__link" type="button" data-auth-switch="login">Уже есть аккаунт</button>
+            <button class="auth-modal__submit" type="submit" data-i18n="Зарегистрироваться">${t("Зарегистрироваться")}</button>
+            <button class="auth-modal__link" type="button" data-auth-switch="login" data-i18n="Уже есть аккаунт">${t("Уже есть аккаунт")}</button>
           </div>
         </form>
       </div>
     </section>
   `;
   document.body.append(authModal);
+  translatePage(authModal);
   bindAuthModalEvents();
   return authModal;
 }
@@ -537,43 +540,43 @@ function validateRegisterForm(form, shouldShowErrors = false) {
   const email = normalizeEmail(fields.email.value);
 
   if (!isNameValid(fields.lastName.value)) {
-    errors.set(fields.lastName, "Введите фамилию");
+    errors.set(fields.lastName, t("auth.invalidLastName"));
   }
 
   if (!isNameValid(fields.firstName.value)) {
-    errors.set(fields.firstName, "Введите имя");
+    errors.set(fields.firstName, t("auth.invalidFirstName"));
   }
 
   if (!isNameValid(fields.middleName.value, false)) {
-    errors.set(fields.middleName, "Введите корректное отчество");
+    errors.set(fields.middleName, t("auth.invalidMiddleName"));
   }
 
   if (!PHONE_PATTERN.test(phone)) {
-    errors.set(fields.phone, "Введите белорусский номер телефона");
+    errors.set(fields.phone, t("auth.invalidPhone"));
   }
 
   if (!EMAIL_PATTERN.test(email)) {
-    errors.set(fields.email, "Введите корректный E-mail");
+    errors.set(fields.email, t("auth.invalidEmail"));
   }
 
   if (!isAdultEnough(fields.birthDate.value)) {
-    errors.set(fields.birthDate, "Регистрация доступна с 16 лет");
+    errors.set(fields.birthDate, t("auth.tooYoung"));
   }
 
   if (!isPasswordValid(fields.password.value)) {
-    errors.set(fields.password, "Пароль 8-20 символов: буквы, цифра и спецсимвол");
+    errors.set(fields.password, t("auth.invalidPassword"));
   }
 
   if (passwordMode === "manual" && fields.password.value !== fields.passwordRepeat.value) {
-    errors.set(fields.passwordRepeat, "Пароли должны совпадать");
+    errors.set(fields.passwordRepeat, t("auth.passwordMismatch"));
   }
 
   if (!fields.nickname.value.trim()) {
-    errors.set(fields.nickname, "Сгенерируйте никнейм");
+    errors.set(fields.nickname, t("auth.nicknameRequired"));
   }
 
   if (!fields.agreement.checked) {
-    errors.set(fields.agreement, "Подтвердите соглашение");
+    errors.set(fields.agreement, t("auth.agreementRequired"));
   }
 
   if (shouldShowErrors) {
@@ -635,19 +638,19 @@ async function handleLoginSubmit(event) {
   try {
     await loadUsers();
   } catch {
-    showFormMessage(form, "Не удалось выполнить вход. Попробуйте позже.", true);
+    showFormMessage(form, t("auth.loginFailed"), true);
     return;
   }
 
   const user = findUserByLogin(loginInput.value);
 
   if (!user) {
-    setError(loginInput, "Пользователь не найден");
+    setError(loginInput, t("auth.notFound"));
     return;
   }
 
   if (user.password !== passwordInput.value) {
-    setError(passwordInput, "Неверный пароль");
+    setError(passwordInput, t("auth.wrongPassword"));
     return;
   }
 
@@ -673,7 +676,7 @@ async function handleRegisterSubmit(event) {
   try {
     await loadUsers();
   } catch {
-    showFormMessage(form, "Не удалось зарегистрироваться. Попробуйте позже.", true);
+    showFormMessage(form, t("auth.registerFailedLong"), true);
     return;
   }
 
@@ -686,17 +689,17 @@ async function handleRegisterSubmit(event) {
   const { fields, values } = validation;
 
   if (users.some((user) => normalizeEmail(user.email) === values.email)) {
-    setError(fields.email, "Такой E-mail уже зарегистрирован");
+    setError(fields.email, t("auth.emailExists"));
     return;
   }
 
   if (users.some((user) => getUserPhone(user) === normalizePhone(values.phone))) {
-    setError(fields.phone, "Такой телефон уже зарегистрирован");
+    setError(fields.phone, t("auth.phoneExists"));
     return;
   }
 
   if (!isNicknameUnique(values.nickname)) {
-    setError(fields.nickname, "Такой никнейм уже существует");
+    setError(fields.nickname, t("auth.nicknameExists"));
     return;
   }
 
@@ -728,7 +731,7 @@ async function handleRegisterSubmit(event) {
     dispatchAuthChange(safeUser, "registration");
     window.location.href = getPagePath("account.html");
   } catch {
-    showFormMessage(form, "Не удалось зарегистрироваться. Попробуйте позже.", true);
+    showFormMessage(form, t("auth.registerFailedLong"), true);
     submitButton.disabled = false;
   }
 }
@@ -841,6 +844,13 @@ function initAuthState() {
       intent: event.detail?.intent || "header",
       onSuccess: event.detail?.onSuccess,
     });
+  });
+
+  window.addEventListener("i18n:changed", () => {
+    updateAuthLinks();
+    if (authModal) {
+      translatePage(authModal);
+    }
   });
 }
 

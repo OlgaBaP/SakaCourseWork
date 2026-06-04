@@ -5,6 +5,7 @@ import {
   updateProduct,
 } from "../api/api.js";
 import { getCurrentUser } from "../common/auth-state.js";
+import { t, translateValue } from "../common/i18n.js";
 import { openPriceRequestModal } from "../common/price-request-modal.js";
 
 const productsList = document.querySelector("[data-products-list]");
@@ -76,7 +77,7 @@ function createFilterOption(name, value) {
   label.className = "filter-option";
 
   label.innerHTML = `
-    <span>${value}</span>
+    <span>${translateValue(name === "quality" ? "quality" : "product", value)}</span>
     <input type="checkbox" name="${name}" value="${value}" />
     <span class="filter-option__mark" aria-hidden="true"></span>
   `;
@@ -89,7 +90,7 @@ function createFilterOption(name, value) {
 function createColorOption(color) {
   const label = document.createElement("label");
   label.className = "color-option";
-  label.title = color;
+  label.title = translateValue("color", color);
 
   label.innerHTML = `
     <input type="checkbox" name="color" value="${color}" />
@@ -111,7 +112,7 @@ function renderFilters() {
   categoryFilters.innerHTML = "";
   qualityFilters.innerHTML = "";
   colorFilters.innerHTML = "";
-  mobileColorSelect.innerHTML = '<option value="">Все цвета</option>';
+  mobileColorSelect.innerHTML = `<option value="">${t("catalog.allColors")}</option>`;
 
   categories.forEach((category) => {
     categoryFilters.append(createFilterOption("category", category));
@@ -126,7 +127,7 @@ function renderFilters() {
 
     const option = document.createElement("option");
     option.value = color;
-    option.textContent = color;
+    option.textContent = translateValue("color", color);
     mobileColorSelect.append(option);
   });
 }
@@ -144,6 +145,10 @@ function getFilteredProducts() {
       product.category,
       product.color,
       product.quality,
+      translateValue("product", product.title),
+      translateValue("product", product.category),
+      translateValue("color", product.color),
+      translateValue("quality", product.quality),
     ]
       .join(" ")
       .toLowerCase();
@@ -190,16 +195,16 @@ function renderProductCard(product) {
   card.className = "product-card";
   card.innerHTML = `
     <a class="product-card__image" href="product.html?id=${product.id}">
-      <img src="${imageSrc}" alt="${product.title} ${product.color}" />
+      <img src="${imageSrc}" alt="${translateValue("product", product.title)} ${translateValue("color", product.color)}" />
     </a>
     <div class="product-card__body">
-      <h2 class="product-card__title">${product.title}</h2>
+      <h2 class="product-card__title">${translateValue("product", product.title)}</h2>
       <div class="product-card__meta">
         <span class="product-card__price">${formatPrice(product.price)}</span>
-        <span class="product-card__width">${product.width}</span>
+        <span class="product-card__width">${translateValue("unit", product.width)}</span>
       </div>
       <a class="product-card__button" href="product.html?id=${product.id}">
-        Подробнее
+        ${t("catalog.more")}
       </a>
     </div>
   `;
@@ -309,7 +314,7 @@ function renderAdminProductOptions(preferredProductId = adminProductSelect.value
   products.forEach((product) => {
     const option = document.createElement("option");
     option.value = product.id;
-    option.textContent = `${product.title} / ${product.color} / ${formatPrice(
+    option.textContent = `${translateValue("product", product.title)} / ${translateValue("color", product.color)} / ${formatPrice(
       product.price,
     )}`;
     adminProductSelect.append(option);
@@ -318,7 +323,7 @@ function renderAdminProductOptions(preferredProductId = adminProductSelect.value
   if (products.length === 0) {
     const option = document.createElement("option");
     option.value = "";
-    option.textContent = "Товары не найдены";
+    option.textContent = t("admin.noProducts");
     adminProductSelect.append(option);
   }
 
@@ -450,13 +455,13 @@ async function handleAdminSubmit(event) {
       const selectedProduct = getSelectedAdminProduct();
 
       if (!selectedProduct) {
-        showAdminMessage("Выберите товар для редактирования");
+        showAdminMessage(t("admin.chooseEdit"));
         return;
       }
 
       const updatedProduct = await updateProduct(selectedProduct.id, productData);
       await reloadCatalogAfterAdminChange(updatedProduct.id);
-      showAdminMessage("Товар обновлен", "success");
+      showAdminMessage(t("admin.updated"), "success");
       return;
     }
 
@@ -465,9 +470,9 @@ async function handleAdminSubmit(event) {
     setAdminMode("edit");
     adminProductSelect.value = createdProduct.id;
     fillAdminForm(createdProduct);
-    showAdminMessage("Товар добавлен", "success");
+    showAdminMessage(t("admin.added"), "success");
   } catch {
-    showAdminMessage("Не удалось сохранить товар");
+    showAdminMessage(t("admin.saveFailed"));
   }
 }
 
@@ -480,12 +485,12 @@ async function handleAdminDelete() {
   const selectedProduct = getSelectedAdminProduct();
 
   if (!selectedProduct) {
-    showAdminMessage("Выберите товар для удаления");
+    showAdminMessage(t("admin.chooseDelete"));
     return;
   }
 
   const isConfirmed = window.confirm(
-    `Удалить товар "${selectedProduct.title}"?`,
+    t("admin.confirmDelete", { title: translateValue("product", selectedProduct.title) }),
   );
 
   if (!isConfirmed) {
@@ -496,9 +501,9 @@ async function handleAdminDelete() {
     await deleteProduct(selectedProduct.id);
     await reloadCatalogAfterAdminChange();
     setAdminMode(products.length > 0 ? "edit" : "add");
-    showAdminMessage("Товар удален", "success");
+    showAdminMessage(t("admin.deleted"), "success");
   } catch {
-    showAdminMessage("Не удалось удалить товар");
+    showAdminMessage(t("admin.deleteFailed"));
   }
 }
 
@@ -510,11 +515,11 @@ async function initCatalog() {
     renderProducts();
     updateAdminButton();
     openPriceRequestModal({
-      source: "Каталог",
+      source: t("Каталог"),
     });
   } catch {
     emptyMessage.hidden = false;
-    emptyMessage.textContent = "Не удалось загрузить товары";
+    emptyMessage.textContent = t("catalog.loadFailed");
   }
 }
 
@@ -545,5 +550,25 @@ document.addEventListener("keydown", (event) => {
   }
 });
 window.addEventListener("auth:changed", updateAdminButton);
+window.addEventListener("i18n:changed", () => {
+  const selectedCategories = getCheckedValues("category");
+  const selectedQualities = getCheckedValues("quality");
+  const selectedColors = getCheckedValues("color");
+  const selectedMobileColor = mobileColorSelect.value;
+
+  renderFilters();
+  document.querySelectorAll('input[name="category"]').forEach((input) => {
+    input.checked = selectedCategories.includes(input.value);
+  });
+  document.querySelectorAll('input[name="quality"]').forEach((input) => {
+    input.checked = selectedQualities.includes(input.value);
+  });
+  document.querySelectorAll('input[name="color"]').forEach((input) => {
+    input.checked = selectedColors.includes(input.value);
+  });
+  mobileColorSelect.value = selectedMobileColor;
+  renderProducts();
+  renderAdminProductOptions();
+});
 
 initCatalog();

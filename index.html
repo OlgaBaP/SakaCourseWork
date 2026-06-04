@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/pages/home.css" />
     <link rel="stylesheet" href="css/common/cart.css" />
     <link rel="stylesheet" href="css/common/preloader.css" />
+    <link rel="stylesheet" href="css/common/theme.css" />
   </head>
 
   <body>
@@ -87,8 +88,8 @@
           </a>
 
           <div class="site-header__settings">
-            <span><b>RU</b> / EN</span>
-            <span>Dark / Light</span>
+            <span data-language-toggle role="button" tabindex="0"><b>RU</b> / EN</span>
+            <span data-theme-toggle role="button" tabindex="0">Dark / <b>Light</b></span>
           </div>
 
           <a class="header-circle header-circle--eye" href="#">
@@ -459,8 +460,8 @@
         <div class="mobile-menu__meta">
           <p>Производитель турецкого трикотажного полотна</p>
           <div>
-            <span><b>RU</b> / EN</span>
-            <span>Dark / Light</span>
+            <span data-language-toggle role="button" tabindex="0"><b>RU</b> / EN</span>
+            <span data-theme-toggle role="button" tabindex="0">Dark / <b>Light</b></span>
           </div>
           <a
             class="mobile-menu__eye"
@@ -543,6 +544,8 @@
     </div>
 
     <script type="module" src="js/common/preloader.js"></script>
+    <script type="module" src="js/common/i18n.js"></script>
+    <script type="module" src="js/common/theme.js"></script>
     <script type="module" src="js/common/auth-state.js"></script>
     <script type="module" src="js/pages/home.js"></script>
     <script type="module" src="js/common/cart.js"></script>

@@ -3,6 +3,7 @@ import {
   getUsers,
 } from "../api/api.js";
 import { saveCurrentUser } from "../common/auth-state.js";
+import { t } from "../common/i18n.js";
 
 const POPULAR_PASSWORDS = [
   "Password123!",
@@ -217,46 +218,46 @@ function validateRegisterSync(shouldShowErrors = false) {
   const email = normalizeEmail(fields.email.value);
 
   if (!isNameValid(fields.lastName.value)) {
-    errors.set(fields.lastName, "Введите фамилию");
+    errors.set(fields.lastName, t("auth.invalidLastName"));
   }
 
   if (!isNameValid(fields.firstName.value)) {
-    errors.set(fields.firstName, "Введите имя");
+    errors.set(fields.firstName, t("auth.invalidFirstName"));
   }
 
   if (!isNameValid(fields.middleName.value, false)) {
-    errors.set(fields.middleName, "Введите корректное отчество");
+    errors.set(fields.middleName, t("auth.invalidMiddleName"));
   }
 
   if (!PHONE_PATTERN.test(phone)) {
-    errors.set(fields.phone, "Введите белорусский номер телефона");
+    errors.set(fields.phone, t("auth.invalidPhone"));
   }
 
   if (!EMAIL_PATTERN.test(email)) {
-    errors.set(fields.email, "Введите корректный E-mail");
+    errors.set(fields.email, t("auth.invalidEmail"));
   }
 
   if (!isAdultEnough(fields.birthDate.value)) {
-    errors.set(fields.birthDate, "Регистрация доступна с 16 лет");
+    errors.set(fields.birthDate, t("auth.tooYoung"));
   }
 
   if (!isPasswordValid(fields.password.value)) {
     errors.set(
       fields.password,
-      "Пароль 8-20 символов: буквы, цифра и спецсимвол",
+      t("auth.invalidPassword"),
     );
   }
 
   if (passwordMode === "manual" && fields.password.value !== fields.passwordRepeat.value) {
-    errors.set(fields.passwordRepeat, "Пароли должны совпадать");
+    errors.set(fields.passwordRepeat, t("auth.passwordMismatch"));
   }
 
   if (!fields.nickname.value.trim()) {
-    errors.set(fields.nickname, "Сгенерируйте никнейм");
+    errors.set(fields.nickname, t("auth.nicknameRequired"));
   }
 
   if (!fields.agreement.checked) {
-    errors.set(fields.agreement, "Подтвердите соглашение");
+    errors.set(fields.agreement, t("auth.agreementRequired"));
   }
 
   if (shouldShowErrors) {
@@ -346,12 +347,12 @@ async function handleLoginSubmit(event) {
   setError(passwordInput, "");
 
   if (!user) {
-    setError(loginInput, "Пользователь не найден");
+    setError(loginInput, t("auth.notFound"));
     return;
   }
 
   if (user.password !== passwordInput.value) {
-    setError(passwordInput, "Неверный пароль");
+    setError(passwordInput, t("auth.wrongPassword"));
     return;
   }
 
@@ -381,17 +382,17 @@ async function handleRegisterSubmit(event) {
   });
 
   if (emailExists) {
-    setError(fields.email, "Такой E-mail уже зарегистрирован");
+    setError(fields.email, t("auth.emailExists"));
     return;
   }
 
   if (phoneExists) {
-    setError(fields.phone, "Такой телефон уже зарегистрирован");
+    setError(fields.phone, t("auth.phoneExists"));
     return;
   }
 
   if (!isNicknameUnique(values.nickname)) {
-    setError(fields.nickname, "Такой никнейм уже существует");
+    setError(fields.nickname, t("auth.nicknameExists"));
     return;
   }
 
@@ -420,12 +421,12 @@ async function handleRegisterSubmit(event) {
     const createdUser = await createUser(userData);
     saveCurrentUser(createdUser);
     registerForm.reset();
-    showFormMessage(registerForm, "Регистрация прошла успешно");
+    showFormMessage(registerForm, t("auth.registerSuccess"));
     window.setTimeout(() => {
       window.location.href = "account.html";
     }, 900);
   } catch {
-    showFormMessage(registerForm, "Не удалось зарегистрироваться", true);
+    showFormMessage(registerForm, t("auth.registerFailed"), true);
     updateRegisterButton();
   }
 }

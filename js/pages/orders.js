@@ -6,6 +6,7 @@ import {
   updateOrder,
 } from "../api/api.js";
 import { getCurrentUser } from "../common/auth-state.js";
+import { getLanguage, t, translateValue } from "../common/i18n.js";
 
 const ORDER_STATUSES = [
   "Ожидает",
@@ -64,10 +65,10 @@ function formatPrice(value) {
 
 function formatDate(value) {
   if (!value) {
-    return "Не указана";
+    return t("orders.noDate");
   }
 
-  return new Intl.DateTimeFormat("ru-RU").format(new Date(value));
+  return new Intl.DateTimeFormat(getLanguage() === "en" ? "en-US" : "ru-RU").format(new Date(value));
 }
 
 function getShipmentStatus(order) {
@@ -89,30 +90,30 @@ function getItemsLabel(count) {
   const last = count % 10;
 
   if (lastTwo >= 11 && lastTwo <= 14) {
-    return `${count} товаров`;
+    return t("orders.itemMany", { count });
   }
 
   if (last === 1) {
-    return `${count} товар`;
+    return t("orders.itemOne", { count });
   }
 
   if (last >= 2 && last <= 4) {
-    return `${count} товара`;
+    return t("orders.itemFew", { count });
   }
 
-  return `${count} товаров`;
+  return t("orders.itemMany", { count });
 }
 
 function getCustomerName(order) {
   const user = usersById.get(String(order.userId));
-
-  return (
+  const name =
     user?.fullName ||
     [user?.lastName, user?.firstName, user?.middleName].filter(Boolean).join(" ") ||
     user?.nickname ||
     user?.email ||
-    "Пользователь не найден"
-  );
+    t("orders.notFoundUser");
+
+  return translateValue("person", name);
 }
 
 function createStatusSelect(value, options, action, orderId) {
@@ -124,7 +125,7 @@ function createStatusSelect(value, options, action, orderId) {
   options.forEach((option) => {
     const item = document.createElement("option");
     item.value = option;
-    item.textContent = option;
+    item.textContent = t(option);
     item.selected = option === value;
     select.append(item);
   });
@@ -135,7 +136,7 @@ function createStatusSelect(value, options, action, orderId) {
 function createReadonlyStatus(value, type = "order") {
   const status = document.createElement("span");
   status.className = `orders-status orders-status--${type}`;
-  status.textContent = value;
+  status.textContent = t(value);
   return status;
 }
 
@@ -157,22 +158,22 @@ function createDetailsText(order) {
   return (
     (order.items || [])
       .map((item) => {
-        return `${item.title} × ${Number(item.quantity) || 0}`;
+        return `${translateValue("product", item.title)} × ${Number(item.quantity) || 0}`;
       })
-      .join(", ") || "Товары не указаны"
+      .join(", ") || t("orders.noItems")
   );
 }
 
 function renderHeader() {
   ordersSection.classList.toggle("orders-section--admin", isAdmin);
   ordersSection.classList.toggle("orders-section--user", !isAdmin);
-  ordersTitle.textContent = isAdmin ? "Все заказы" : "Ваши заказы";
-  roleBadge.textContent = isAdmin ? "Администратор" : "Покупатель";
+  ordersTitle.textContent = isAdmin ? t("orders.allOrders") : t("orders.userOrders");
+  roleBadge.textContent = isAdmin ? t("orders.admin") : t("orders.customer");
   ordersHeader.innerHTML = "";
 
   (isAdmin ? ADMIN_HEADERS : USER_HEADERS).forEach((label) => {
     const item = document.createElement("span");
-    item.textContent = label;
+    item.textContent = t(label);
     ordersHeader.append(item);
   });
 }
@@ -183,24 +184,24 @@ function createOrderRow(order) {
   row.dataset.orderId = order.id;
 
   row.append(
-    createCell("№ заказа", getOrderNumber(order)),
-    createCell("Дата заказа", formatDate(order.date || order.createdAt)),
+    createCell(t("№ заказа"), getOrderNumber(order)),
+    createCell(t("Дата заказа"), formatDate(order.date || order.createdAt)),
   );
 
   if (isAdmin) {
-    row.append(createCell("Покупатель", getCustomerName(order)));
+    row.append(createCell(t("Покупатель"), getCustomerName(order)));
   }
 
   row.append(
     createCell(
-      "Статус",
+      t("Статус"),
       isAdmin
         ? createStatusSelect(order.status || "Ожидает", ORDER_STATUSES, "status", order.id)
         : createReadonlyStatus(order.status || "Ожидает", "order"),
     ),
-    createCell("Сумма", formatPrice(order.total)),
+    createCell(t("Сумма"), formatPrice(order.total)),
     createCell(
-      "Отгрузка",
+      t("Отгрузка"),
       isAdmin
         ? createStatusSelect(
             getShipmentStatus(order),
@@ -210,22 +211,22 @@ function createOrderRow(order) {
           )
         : createReadonlyStatus(getShipmentStatus(order), "shipping"),
     ),
-    createCell("Товары", getItemsLabel(getItemsCount(order))),
+    createCell(t("Товары"), getItemsLabel(getItemsCount(order))),
   );
 
   if (isAdmin) {
     const deleteButton = document.createElement("button");
     deleteButton.className = "orders-list__delete";
     deleteButton.type = "button";
-    deleteButton.textContent = "Удалить";
+    deleteButton.textContent = t("orders.delete");
     deleteButton.dataset.orderAction = "delete";
     deleteButton.dataset.orderId = order.id;
-    row.append(createCell("Действия", deleteButton));
+    row.append(createCell(t("Действия"), deleteButton));
   } else {
     const details = document.createElement("div");
     details.className = "orders-list__details-text";
     details.textContent = createDetailsText(order);
-    row.append(createCell("Детали", details));
+    row.append(createCell(t("Детали"), details));
   }
 
   return row;
@@ -311,4 +312,8 @@ async function initOrders() {
 ordersList.addEventListener("change", handleOrderAction);
 ordersList.addEventListener("click", handleOrderAction);
 window.addEventListener("auth:changed", initOrders);
+window.addEventListener("i18n:changed", () => {
+  renderHeader();
+  loadOrders();
+});
 initOrders();
