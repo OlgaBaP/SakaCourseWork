@@ -29,9 +29,32 @@ const BODY_CLASSES = [
 
 const PANEL_OPEN_CLASS = "a11y-panel-opened";
 const PLACEHOLDER_CLASS = "a11y-image-placeholder";
+const PLACEHOLDER_MODE_CLASSES = [
+  `${PLACEHOLDER_CLASS}--content`,
+  `${PLACEHOLDER_CLASS}--brand`,
+  `${PLACEHOLDER_CLASS}--social`,
+  `${PLACEHOLDER_CLASS}--silent`,
+];
 const MEDIA_SELECTOR = "img, iframe, video, canvas";
 const TOGGLE_SELECTOR =
   ".header-circle--eye, .mobile-menu__eye, [data-accessibility-toggle]";
+const SILENT_MEDIA_CONTEXT_SELECTOR = [
+  "button",
+  ".button",
+  ".header-circle--search",
+  ".cart-link",
+  ".login-link",
+  ".phone-link",
+  ".mobile-menu__cart",
+  ".mobile-menu__login",
+  ".mobile-menu__phone",
+  ".product-card__button",
+  ".pagination",
+  "[data-header-search-form]",
+  "[data-cart-open]",
+  "[data-cart-close]",
+  "[data-modal-close]",
+].join(", ");
 
 let settings = readSettings();
 let panel = null;
@@ -173,21 +196,41 @@ function syncAccessibilityHeader() {
   }
 }
 
-function getMediaText(element) {
-  if (element.tagName === "IFRAME") {
-    return getLabels().mapDisabled;
+function getMediaPresentation(element) {
+  if (element.closest(TOGGLE_SELECTOR)) {
+    return {
+      mode: "keep",
+      text: "",
+    };
   }
 
-  const alt = element.getAttribute("alt");
-  if (alt?.trim()) {
-    return alt.trim();
+  if (element.closest(".site-logo, .mobile-menu__logo")) {
+    return {
+      mode: "brand",
+      text: "Saka Holding",
+    };
   }
 
-  const labelledElement = element.closest("[aria-label], [title]");
-  const label =
-    labelledElement?.getAttribute("aria-label") || labelledElement?.getAttribute("title");
+  const socialLink = element.closest(".site-footer__social a");
+  if (socialLink) {
+    const socialLabel = socialLink.getAttribute("aria-label")?.trim();
+    return {
+      mode: "social",
+      text: socialLabel || element.getAttribute("alt")?.trim() || getLabels().imageDisabled,
+    };
+  }
 
-  return label?.trim() || getLabels().imageDisabled;
+  if (element.closest(SILENT_MEDIA_CONTEXT_SELECTOR)) {
+    return {
+      mode: "silent",
+      text: "",
+    };
+  }
+
+  return {
+    mode: "content",
+    text: element.tagName === "IFRAME" ? getLabels().mapDisabled : getLabels().imageDisabled,
+  };
 }
 
 function createPlaceholder(element) {
@@ -200,14 +243,19 @@ function createPlaceholder(element) {
 }
 
 function ensureMediaPlaceholder(element) {
-  if (element.closest(".a11y-panel") || element.dataset.a11yPlaceholderReady === "true") {
-    return;
+  if (element.closest(".a11y-panel")) {
+    return null;
+  }
+
+  const currentPlaceholder = element.nextElementSibling;
+  if (currentPlaceholder?.classList.contains(PLACEHOLDER_CLASS)) {
+    return currentPlaceholder;
   }
 
   const placeholder = createPlaceholder(element);
-  placeholder.textContent = getMediaText(element);
   element.after(placeholder);
   element.dataset.a11yPlaceholderReady = "true";
+  return placeholder;
 }
 
 function updateMediaPlaceholder(element) {
@@ -215,11 +263,26 @@ function updateMediaPlaceholder(element) {
     return;
   }
 
-  ensureMediaPlaceholder(element);
-  const placeholder = element.nextElementSibling;
+  const presentation = getMediaPresentation(element);
+  const currentPlaceholder = element.nextElementSibling;
+
+  element.dataset.a11yMediaMode = presentation.mode;
+
+  if (presentation.mode === "keep") {
+    if (currentPlaceholder?.classList.contains(PLACEHOLDER_CLASS)) {
+      currentPlaceholder.remove();
+    }
+    delete element.dataset.a11yPlaceholderReady;
+    return;
+  }
+
+  const placeholder = ensureMediaPlaceholder(element);
 
   if (placeholder?.classList.contains(PLACEHOLDER_CLASS)) {
-    placeholder.textContent = getMediaText(element);
+    placeholder.classList.remove(...PLACEHOLDER_MODE_CLASSES);
+    placeholder.classList.add(`${PLACEHOLDER_CLASS}--${presentation.mode}`);
+    placeholder.textContent = presentation.text;
+    placeholder.setAttribute("aria-hidden", String(presentation.mode === "silent"));
   }
 }
 
