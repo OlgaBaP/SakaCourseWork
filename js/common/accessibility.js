@@ -1,5 +1,4 @@
-import { getLanguage, resetLanguage, t } from "./i18n.js";
-import { resetTheme } from "./theme.js";
+import { getLanguage, t } from "./i18n.js";
 
 const STORAGE_KEYS = {
   enabled: "sakaAccessibilityEnabled",
@@ -30,13 +29,15 @@ const BODY_CLASSES = [
 
 const PANEL_OPEN_CLASS = "a11y-panel-opened";
 const PLACEHOLDER_CLASS = "a11y-image-placeholder";
-const MEDIA_SELECTOR = "img, iframe";
+const MEDIA_SELECTOR = "img, iframe, video, canvas";
 const TOGGLE_SELECTOR = ".header-circle--eye, .mobile-menu__eye";
 
 let settings = readSettings();
 let panel = null;
 let noticeTimer = null;
 let observer = null;
+let lastToggleButton = null;
+let accessibilityMediaQuery = null;
 
 const LABELS = {
   ru: {
@@ -163,19 +164,37 @@ function applyBodyClasses() {
   }
 }
 
+function syncAccessibilityHeader() {
+  const searchForm = document.querySelector("[data-header-search-form]");
+
+  if (searchForm) {
+    searchForm.hidden = !settings.enabled;
+  }
+}
+
 function getMediaText(element) {
   if (element.tagName === "IFRAME") {
     return getLabels().mapDisabled;
   }
 
   const alt = element.getAttribute("alt");
-  return alt && alt.trim() ? alt.trim() : getLabels().imageDisabled;
+  if (alt?.trim()) {
+    return alt.trim();
+  }
+
+  const labelledElement = element.closest("[aria-label], [title]");
+  const label =
+    labelledElement?.getAttribute("aria-label") || labelledElement?.getAttribute("title");
+
+  return label?.trim() || getLabels().imageDisabled;
 }
 
 function createPlaceholder(element) {
-  const placeholder = document.createElement(element.tagName === "IFRAME" ? "div" : "span");
+  const placeholder = document.createElement(
+    ["IFRAME", "VIDEO", "CANVAS"].includes(element.tagName) ? "div" : "span",
+  );
   placeholder.className = PLACEHOLDER_CLASS;
-  placeholder.setAttribute("aria-hidden", "true");
+  placeholder.setAttribute("role", "img");
   return placeholder;
 }
 
@@ -254,6 +273,8 @@ function syncPanelControls() {
 
 function applySettings({ persist = true } = {}) {
   applyBodyClasses();
+  syncAccessibilityHeader();
+  closeDesktopMobileMenu();
   prepareMediaPlaceholders(document);
   updateToggleButtons();
   syncPanelControls();
@@ -296,6 +317,7 @@ function closePanel() {
   panel.hidden = true;
   document.body.classList.remove(PANEL_OPEN_CLASS);
   updateToggleButtons();
+  lastToggleButton?.focus();
 }
 
 function togglePanel() {
@@ -330,8 +352,6 @@ function showResetNotice() {
 
 function resetAccessibilitySettings({ notify = true } = {}) {
   clearAccessibilityStorage();
-  resetLanguage();
-  resetTheme();
   settings = {
     ...DEFAULT_SETTINGS,
   };
@@ -451,6 +471,7 @@ function bindToggleButtons() {
     }
 
     event.preventDefault();
+    lastToggleButton = toggleButton;
     togglePanel();
   });
 
@@ -459,6 +480,7 @@ function bindToggleButtons() {
 
     if (toggleButton && ["Enter", " "].includes(event.key)) {
       event.preventDefault();
+      lastToggleButton = toggleButton;
       togglePanel();
       return;
     }
@@ -477,9 +499,33 @@ function bindLanguageUpdates() {
   });
 }
 
+function closeDesktopMobileMenu() {
+  if (!settings.enabled || !accessibilityMediaQuery?.matches) {
+    return;
+  }
+
+  const mobileMenu = document.querySelector("[data-mobile-menu]");
+  const burgerButton = document.querySelector("[data-burger-button]");
+
+  mobileMenu?.classList.remove("mobile-menu--opened");
+  mobileMenu?.setAttribute("aria-hidden", "true");
+  burgerButton?.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("mobile-menu-opened");
+}
+
+function bindAccessibilityViewport() {
+  accessibilityMediaQuery = window.matchMedia("(min-width: 768px)");
+  accessibilityMediaQuery.addEventListener("change", closeDesktopMobileMenu);
+  closeDesktopMobileMenu();
+}
+
 function observeDynamicMedia() {
   observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
+      if (mutation.type === "attributes" && mutation.target.matches?.(MEDIA_SELECTOR)) {
+        updateMediaPlaceholder(mutation.target);
+      }
+
       mutation.addedNodes.forEach((node) => {
         prepareMediaPlaceholders(node);
       });
@@ -487,6 +533,8 @@ function observeDynamicMedia() {
   });
 
   observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ["alt", "aria-label", "title"],
     childList: true,
     subtree: true,
   });
@@ -496,6 +544,7 @@ function initAccessibility() {
   createPanel();
   bindToggleButtons();
   bindLanguageUpdates();
+  bindAccessibilityViewport();
   observeDynamicMedia();
   applySettings({ persist: false });
 }

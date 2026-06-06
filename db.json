@@ -799,6 +799,17 @@
       "color": "Белый",
       "width": "180 см",
       "quantity": 1
+    },
+    {
+      "id": "user-user-maria-moroz-product-2",
+      "userId": "user-maria-moroz",
+      "productId": 2,
+      "title": "Кулинарная гладь",
+      "price": 13,
+      "image": "assets/images/products/product-cotton-jersey-white.png",
+      "color": "Белый",
+      "width": "180 см",
+      "quantity": 1
     }
   ],
   "orders": [
@@ -1326,6 +1337,22 @@
       "password": "Maxim2026!G",
       "avatar": "",
       "createdAt": "2026-06-03T19:00:00.000Z"
+    },
+    {
+      "id": "1780755619936",
+      "role": "user",
+      "firstName": "Михаил",
+      "lastName": "Михалич",
+      "middleName": "",
+      "fullName": "Михалич Михаил",
+      "phone": "+375443942849",
+      "email": "ofldkx1@gmail.com",
+      "birthDate": "2006-06-30",
+      "city": "",
+      "nickname": "mihaimihal684",
+      "password": "*B4r1u5QjRqg",
+      "avatar": "",
+      "createdAt": "2026-06-06T14:20:19.936Z"
     }
   ],
   "deliveryQuestions": [
