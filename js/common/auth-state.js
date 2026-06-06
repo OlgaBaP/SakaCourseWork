@@ -121,9 +121,19 @@ function ensureAuthLinkStyles() {
 }
 
 function getAuthLabelElement(link) {
-  let textElement = Array.from(link.children).find((child) => {
-    return child.tagName === "SPAN" && !child.matches("[data-cart-count]");
+  const textElements = Array.from(link.children).filter((child) => {
+    return (
+      child.tagName === "SPAN" &&
+      !child.matches("[data-cart-count], .a11y-image-placeholder")
+    );
   });
+  let textElement =
+    textElements.find((element) => element.classList.contains("auth-link__text")) ||
+    textElements.shift();
+
+  textElements
+    .filter((element) => element !== textElement)
+    .forEach((element) => element.remove());
 
   if (!textElement) {
     textElement = document.createElement("span");

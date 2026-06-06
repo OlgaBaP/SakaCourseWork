@@ -112,7 +112,7 @@ function createModal() {
         </form>
       </div>
       <div class="price-request-modal__image" aria-hidden="true">
-        <img src="${getAssetPath("assets/images/banners/hero-fabric-swatches-hand.png")}" alt="" />
+        <img src="${getAssetPath("assets/images/banners/heroo.jpg")}" alt="" />
       </div>
     </section>
   `;

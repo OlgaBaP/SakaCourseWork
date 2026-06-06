@@ -5,8 +5,8 @@ import {
   saveCurrentUser,
   updateAuthLinks,
 } from "../common/auth-state.js";
-import { resetLanguage, t } from "../common/i18n.js";
-import { resetTheme } from "../common/theme.js";
+import { resetAccessibilitySettings } from "../common/accessibility.js";
+import { t } from "../common/i18n.js";
 
 const PHONE_PATTERN = /^375(25|29|33|44)\d{7}$/;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -463,9 +463,7 @@ form.addEventListener("click", (event) => {
 avatarInput.addEventListener("change", handleAvatarChange);
 
 resetButton.addEventListener("click", () => {
-  const resetMessage = t("account.settingsReset");
-  resetLanguage();
-  resetTheme();
+  const resetMessage = resetAccessibilitySettings({ notify: false });
   showMessage(resetMessage);
 });
 

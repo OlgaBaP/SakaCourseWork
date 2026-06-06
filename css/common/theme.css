@@ -431,6 +431,15 @@ body.dark-theme .mobile-menu__cart {
   color: #19242f;
 }
 
+body.dark-theme .burger-button span {
+  background: #f7f3ea;
+}
+
+body.dark-theme .burger-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
 body.dark-theme .cart-link .header-circle,
 body.dark-theme .mobile-menu__login {
   background: rgba(255, 255, 255, 0.08);
