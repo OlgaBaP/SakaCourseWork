@@ -859,3 +859,33 @@ body.dark-theme .contacts-map iframe {
 body.dark-theme img {
   filter: none;
 }
+
+@media (max-width: 479px) {
+  .site-header .site-logo {
+    flex: 0 0 100px;
+    width: 100px;
+    height: 54px;
+    overflow: hidden;
+  }
+
+  .site-header .site-logo img {
+    width: 148px;
+    height: 87px;
+    max-width: none;
+    object-fit: cover;
+    transform: translate(-27px, -16px);
+  }
+
+  body.accessibility-mode .site-header .site-logo {
+    width: 100px !important;
+    height: 54px !important;
+    overflow: hidden !important;
+  }
+
+  body.accessibility-mode .site-header .site-logo img {
+    width: 148px !important;
+    height: 87px !important;
+    max-width: none !important;
+    transform: translate(-27px, -16px) !important;
+  }
+}

@@ -30,7 +30,8 @@ const BODY_CLASSES = [
 const PANEL_OPEN_CLASS = "a11y-panel-opened";
 const PLACEHOLDER_CLASS = "a11y-image-placeholder";
 const MEDIA_SELECTOR = "img, iframe, video, canvas";
-const TOGGLE_SELECTOR = ".header-circle--eye, .mobile-menu__eye";
+const TOGGLE_SELECTOR =
+  ".header-circle--eye, .mobile-menu__eye, [data-accessibility-toggle]";
 
 let settings = readSettings();
 let panel = null;
