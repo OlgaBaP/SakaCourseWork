@@ -560,12 +560,6 @@
       "text": "Искала качественную ткань для нового проекта и нашла её именно здесь. Очень понравился широкий выбор материалов и подробные описания товаров. Заказ оформляется быстро и без лишних сложностей. Ткань пришла в отличном состоянии и полностью оправдала ожидания. Материал приятный на ощупь, ровный и без дефектов. Отдельное спасибо за хорошую упаковку и быструю доставку. Цена полностью соответствует качеству продукции. Уже рекомендовала ваш магазин своим подругам, которые занимаются пошивом одежды. Приятно работать с компанией, которая заботится о клиентах. Желаю вам дальнейшего развития и успехов",
       "createdAt": "2026-06-03T18:39:05.260Z",
       "id": "X8IvzshbeSQ"
-    },
-    {
-      "id": "4c22",
-      "author": "Матвей",
-      "text": "Лучшие ткани",
-      "createdAt": "2026-06-06T11:29:38.566Z"
     }
   ],
   "cart": [
@@ -779,17 +773,6 @@
       "quantity": 1
     },
     {
-      "id": "q9kW9mLjdOE",
-      "userId": "oUs-F_aVtI4",
-      "productId": 5,
-      "title": "Кулинарная гладь",
-      "price": 12.8,
-      "image": "assets/images/products/product-cotton-jersey-grey.png",
-      "color": "Серый",
-      "width": "180 см",
-      "quantity": 1
-    },
-    {
       "id": "5uHLF30saxE",
       "userId": "user-alina-novik",
       "productId": 2,
@@ -808,6 +791,28 @@
       "price": 13,
       "image": "assets/images/products/product-cotton-jersey-white.png",
       "color": "Белый",
+      "width": "180 см",
+      "quantity": 1
+    },
+    {
+      "id": "7Fio2LiT4NI",
+      "userId": "oUs-F_aVtI4",
+      "productId": 1,
+      "title": "Кулинарная гладь",
+      "price": 11.4,
+      "image": "assets/images/products/product-cotton-jersey-blue.png",
+      "color": "Синий",
+      "width": "180 см",
+      "quantity": 1
+    },
+    {
+      "id": "13EMxftRMRQ",
+      "userId": "oUs-F_aVtI4",
+      "productId": 4,
+      "title": "Кулинарная гладь",
+      "price": 12.2,
+      "image": "assets/images/products/product-cotton-jersey-green.png",
+      "color": "Зеленый",
       "width": "180 см",
       "quantity": 1
     }
