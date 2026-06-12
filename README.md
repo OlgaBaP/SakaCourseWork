@@ -1,6 +1,13 @@
 # Saka – Turkish Textile Store
+## Макет Figma
 
-Course project for Web Programming.
+https://www.figma.com/design/S2r77sMMMzkgy7MBzFcts6/Saka-Coursework-Website?node-id=1005-2822&t=bNviVHmwfHcqyVa2-1
 
-## Figma Design
-https://www.figma.com/design/S2r77sMMMzkgy7MBzFcts6/Saka-Coursework-Website?node-id=1005-4840&t=WINbP2yChsdSYTJP-0
+## Запуск проекта
+
+Запуск JSON Server:
+npm.cmd run server
+
+## Администратор
+Email admin@gmail.com
+Пароль Admin123!
