@@ -61,6 +61,7 @@ function renderHeroSlide(index) {
 
   heroTitle.textContent = t(slide.title);
   heroImage.src = slide.image;
+  heroImage.alt = t(slide.title);
   heroCounter.innerHTML = `<b>${formatSlideNumber(activeHeroSlide)}</b> / ${formatSlideNumber(heroSlides.length)}`;
 
   heroLines.forEach((line) => {

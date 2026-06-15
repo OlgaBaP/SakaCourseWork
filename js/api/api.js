@@ -59,14 +59,6 @@ async function getCategories() {
   return checkResponse(response);
 }
 
-async function getCart(userId) {
-  const url = userId
-    ? `${API_URL}/cart?userId=${encodeURIComponent(String(userId))}`
-    : `${API_URL}/cart`;
-  const response = await fetch(url);
-  return checkResponse(response);
-}
-
 async function getReviews() {
   const response = await fetch(`${API_URL}/reviews`);
   return checkResponse(response);
@@ -130,48 +122,6 @@ async function getOrdersByUserId(userId) {
   return orders.filter((order) => {
     return String(order.userId) === String(userId);
   });
-}
-
-async function addToCart(product) {
-  const response = await fetch(
-    `${API_URL}/cart`,
-    createRequestOptions("POST", product),
-  );
-
-  return checkResponse(response);
-}
-
-async function removeCartItem(id) {
-  const response = await fetch(`${API_URL}/cart/${id}`, {
-    method: "DELETE",
-  });
-
-  return checkResponse(response);
-}
-
-async function updateCartItem(id, data) {
-  const response = await fetch(
-    `${API_URL}/cart/${id}`,
-    createRequestOptions("PATCH", data),
-  );
-
-  return checkResponse(response);
-}
-
-async function clearCart(userId) {
-  if (!userId) {
-    return [];
-  }
-
-  const items = await getCart(userId);
-
-  await Promise.all(
-    items.map((item) => {
-      return removeCartItem(item.id);
-    }),
-  );
-
-  return [];
 }
 
 async function createOrder(orderData) {
@@ -268,17 +218,12 @@ export {
   updateProduct,
   deleteProduct,
   getCategories,
-  getCart,
   getReviews,
   getUsers,
   getUserById,
   updateUser,
   getUserByEmail,
   getUserByPhone,
-  addToCart,
-  removeCartItem,
-  updateCartItem,
-  clearCart,
   createOrder,
   getOrders,
   getOrdersByUserId,

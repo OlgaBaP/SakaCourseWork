@@ -1,4 +1,5 @@
-import { getLanguage, t } from "./i18n.js";
+import { getLanguage, resetLanguage, t } from "./i18n.js";
+import { resetTheme } from "./theme.js";
 
 const STORAGE_KEYS = {
   enabled: "sakaAccessibilityEnabled",
@@ -457,6 +458,12 @@ function resetAccessibilitySettings({ notify = true } = {}) {
   return t("account.settingsReset");
 }
 
+function resetSiteSettings({ notify = true } = {}) {
+  resetLanguage();
+  resetTheme();
+  return resetAccessibilitySettings({ notify });
+}
+
 function createPanel() {
   if (panel) {
     return panel;
@@ -514,7 +521,7 @@ function bindPanelEvents() {
 
     if (resetButton) {
       event.preventDefault();
-      resetAccessibilitySettings();
+      resetSiteSettings();
     }
   });
 
@@ -655,7 +662,8 @@ window.SakaAccessibility = {
   },
   openPanel,
   resetAccessibilitySettings,
+  resetSiteSettings,
   setSettings,
 };
 
-export { resetAccessibilitySettings };
+export { resetAccessibilitySettings, resetSiteSettings };

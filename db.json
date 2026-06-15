@@ -784,17 +784,6 @@
       "quantity": 1
     },
     {
-      "id": "6zNJuPHBVyk",
-      "userId": "user-ivan-kavalev",
-      "productId": 6,
-      "title": "Вискоза",
-      "price": 15.6,
-      "image": "assets/images/products/product-viscose-pink.png",
-      "color": "Розовый",
-      "width": "170 см",
-      "quantity": 1
-    },
-    {
       "id": "DM0PqeUduKg",
       "userId": "user-ivan-kavalev",
       "productId": 9,
@@ -1205,6 +1194,26 @@
         }
       ],
       "createdAt": "2026-06-10T09:00:32.849Z"
+    },
+    {
+      "id": "pVI_MAu8X8k",
+      "userId": "user-ivan-kavalev",
+      "orderNumber": 15,
+      "date": "2026-06-11",
+      "status": "Ожидает",
+      "shipmentStatus": "Ожидает обработки",
+      "shippingStatus": "Ожидает обработки",
+      "total": 11.4,
+      "items": [
+        {
+          "productId": "1",
+          "title": "Кулинарная гладь",
+          "price": 11.4,
+          "quantity": 1,
+          "image": "assets/images/products/product-cotton-jersey-blue.png"
+        }
+      ],
+      "createdAt": "2026-06-11T17:18:16.589Z"
     }
   ],
   "priceRequests": [
@@ -1240,6 +1249,14 @@
       "source": "Каталог",
       "createdAt": "2026-06-03T20:39:46.102Z",
       "id": "yLRoWLEc8z8"
+    },
+    {
+      "name": "Матвей",
+      "phone": "+375333544434",
+      "email": "olgapir241@gmail.com",
+      "source": "Главная страница",
+      "createdAt": "2026-06-11T12:22:36.306Z",
+      "id": "WUWh5KrCO4I"
     }
   ],
   "contactRequests": [
@@ -1428,6 +1445,22 @@
       "password": "*B4r1u5QjRqg",
       "avatar": "",
       "createdAt": "2026-06-06T14:20:19.936Z"
+    },
+    {
+      "id": "dIBdqUYSaLA",
+      "role": "user",
+      "firstName": "Илья",
+      "lastName": "Медведев",
+      "middleName": "",
+      "fullName": "Медведев Илья",
+      "phone": "+375448392384",
+      "email": "kfdlcszf@gmail.com",
+      "birthDate": "2000-06-30",
+      "city": "",
+      "nickname": "usersaka229",
+      "password": "2euLCZbC5%5Z",
+      "avatar": "",
+      "createdAt": "2026-06-11T12:19:14.854Z"
     }
   ],
   "deliveryQuestions": [
@@ -1445,5 +1478,6 @@
       "createdAt": "2026-06-03T18:39:39.486Z",
       "id": "LZbh0Rg0Pz0"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

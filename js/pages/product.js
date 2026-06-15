@@ -2,7 +2,6 @@ import { getProductById, getProducts } from "../api/api.js";
 import { addProductToCart } from "../common/cart.js";
 import { t, translateValue } from "../common/i18n.js";
 import { openPriceRequestModal } from "../common/price-request-modal.js";
-import { validateRequestFields } from "../common/request-validation.js";
 
 const params = new URLSearchParams(window.location.search);
 const productId = params.get("id");
@@ -41,10 +40,6 @@ const requestForm = document.querySelector("[data-request-form]");
 const nameInput = document.querySelector("[data-request-name]");
 const phoneInput = document.querySelector("[data-request-phone]");
 const emailInput = document.querySelector("[data-request-email]");
-const nameError = document.querySelector("[data-error-name]");
-const phoneError = document.querySelector("[data-error-phone]");
-const emailError = document.querySelector("[data-error-email]");
-const requestMessage = document.querySelector("[data-request-message]");
 
 let currentProduct = null;
 let currentProducts = [];
@@ -286,65 +281,13 @@ async function handleAddToCart() {
   }
 }
 
-function showFieldError(input, errorElement, message) {
-  input.classList.add("input-error");
-  errorElement.textContent = message;
-  errorElement.hidden = false;
-}
-
-function clearFieldError(input, errorElement) {
-  input.classList.remove("input-error");
-  errorElement.textContent = "";
-  errorElement.hidden = true;
-}
-
-function showRequestMessage(text, isError = false) {
-  requestMessage.textContent = text;
-  requestMessage.hidden = false;
-  requestMessage.classList.toggle("is-error", isError);
-}
-
-function clearRequestMessage() {
-  requestMessage.textContent = "";
-  requestMessage.hidden = true;
-  requestMessage.classList.remove("is-error");
-}
-
-function validateForm() {
-  const validation = validateRequestFields({
-    name: nameInput.value,
-    phone: phoneInput.value,
-    email: emailInput.value,
-  });
-
-  clearFieldError(nameInput, nameError);
-  clearFieldError(phoneInput, phoneError);
-  clearFieldError(emailInput, emailError);
-  clearRequestMessage();
-
-  if (validation.errors.name) {
-    showFieldError(nameInput, nameError, validation.errors.name);
-  }
-
-  if (validation.errors.phone) {
-    showFieldError(phoneInput, phoneError, validation.errors.phone);
-  }
-
-  if (validation.errors.email) {
-    showFieldError(emailInput, emailError, validation.errors.email);
-  }
-
-  return validation;
-}
-
-async function handleRequestSubmit(event) {
+function handleRequestSubmit(event) {
   event.preventDefault();
 
   if (!currentProduct) {
     return;
   }
 
-  clearRequestMessage();
   openPriceRequestModal({
     source: t("product.pageRequestSource"),
     productId: getNumericProductId(currentProduct.id),
@@ -355,30 +298,6 @@ async function handleRequestSubmit(event) {
       email: emailInput.value,
     },
   });
-  return;
-
-  const validation = validateForm();
-
-  if (!currentProduct || !validation.isValid) {
-    return;
-  }
-
-  const requestData = {
-    name: validation.values.name,
-    phone: validation.values.phone,
-    email: validation.values.email,
-    productId: getNumericProductId(currentProduct.id),
-    productTitle: currentProduct.title,
-    createdAt: new Date().toISOString(),
-  };
-
-  try {
-    await createPriceRequest(requestData);
-    requestForm.reset();
-    showRequestMessage(t("common.requestSuccess"));
-  } catch {
-    showRequestMessage(t("common.requestFailed"), true);
-  }
 }
 
 async function initProductPage() {

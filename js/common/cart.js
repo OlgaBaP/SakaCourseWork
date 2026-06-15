@@ -1,13 +1,13 @@
 import {
-  addToCart,
-  clearCart,
   createOrder,
-  getCart,
   getOrders,
-  removeCartItem,
-  updateCartItem,
 } from "../api/api.js";
 import { getCurrentUser, openAuthModal } from "./auth-state.js";
+import {
+  clearStoredCart,
+  readStoredCart,
+  writeStoredCart,
+} from "./cart-storage.js";
 import { t, translatePage, translateValue } from "./i18n.js";
 
 const CART_MODAL_OPENED_CLASS = "cart-modal--opened";
@@ -209,7 +209,7 @@ async function loadCart(shouldRender = false) {
   }
 
   try {
-    cartItems = await getCart(userId);
+    cartItems = readStoredCart(userId);
     updateCountElements(getCartQuantity(cartItems));
 
     if (shouldRender) {
@@ -294,7 +294,7 @@ async function createOrderFromCart() {
       items: getOrderItems(),
       createdAt: now.toISOString(),
     });
-    await clearCart(currentUser.id);
+    clearStoredCart(currentUser.id);
     cartItems = [];
     updateCountElements(0);
     closeCartModal();
@@ -307,7 +307,17 @@ async function createOrderFromCart() {
 
 async function changeCartItemQuantity(itemId, nextQuantity) {
   const quantity = Math.max(1, nextQuantity);
-  await updateCartItem(itemId, { quantity });
+  const userId = getCurrentUserId();
+
+  cartItems = cartItems.map((item) => {
+    return String(item.id) === String(itemId)
+      ? {
+          ...item,
+          quantity,
+        }
+      : item;
+  });
+  writeStoredCart(userId, cartItems);
   await refreshCart(true);
 }
 
@@ -347,7 +357,11 @@ async function handleCartAction(event) {
     }
 
     if (button.dataset.cartAction === "remove") {
-      await removeCartItem(item.id);
+      const userId = getCurrentUserId();
+      cartItems = cartItems.filter((cartProduct) => {
+        return String(cartProduct.id) !== String(item.id);
+      });
+      writeStoredCart(userId, cartItems);
       await refreshCart(true);
     }
   } catch {
@@ -368,17 +382,15 @@ async function addProductToCart(product) {
   }
 
   const itemId = `user-${currentUser.id}-product-${product.id}`;
-  const items = await getCart(currentUser.id);
+  const items = readStoredCart(currentUser.id);
   const currentItem = items.find((item) => {
     return String(item.productId) === String(product.id);
   });
 
   if (currentItem) {
-    await updateCartItem(currentItem.id, {
-      quantity: (Number(currentItem.quantity) || 1) + 1,
-    });
+    currentItem.quantity = (Number(currentItem.quantity) || 1) + 1;
   } else {
-    await addToCart({
+    items.push({
       id: itemId,
       userId: String(currentUser.id),
       productId: getProductId(product),
@@ -391,6 +403,7 @@ async function addProductToCart(product) {
     });
   }
 
+  writeStoredCart(currentUser.id, items);
   await refreshCart(cartModal.classList.contains(CART_MODAL_OPENED_CLASS));
   return true;
 }

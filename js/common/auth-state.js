@@ -1,19 +1,11 @@
 import { createUser, getUsers } from "../api/api.js";
 import { t, translatePage } from "./i18n.js";
+import { isPasswordValid } from "./password-validation.js";
 
 const CURRENT_USER_KEY = "currentUser";
 const BODY_OPEN_CLASS = "auth-modal-opened";
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^375(25|29|33|44)\d{7}$/;
-const PASSWORD_PATTERN =
-  /^(?=.*[a-zа-я])(?=.*[A-ZА-Я])(?=.*\d)(?=.*[!@#$%^&*()_\-+=[\]{};:'",.<>/?\\|`~]).{8,20}$/;
-const POPULAR_PASSWORDS = [
-  "Password123!",
-  "Qwerty123!",
-  "Admin123!",
-  "User123!",
-  "Password1!",
-];
 
 let authModal = null;
 let activeIntent = "header";
@@ -435,10 +427,6 @@ function isAdultEnough(value) {
   }
 
   return age >= 16;
-}
-
-function isPasswordValid(password) {
-  return PASSWORD_PATTERN.test(password) && !POPULAR_PASSWORDS.includes(password);
 }
 
 function transliterate(value) {

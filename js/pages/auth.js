@@ -4,18 +4,10 @@ import {
 } from "../api/api.js";
 import { saveCurrentUser } from "../common/auth-state.js";
 import { t } from "../common/i18n.js";
+import { isPasswordValid } from "../common/password-validation.js";
 
-const POPULAR_PASSWORDS = [
-  "Password123!",
-  "Qwerty123!",
-  "Admin123!",
-  "User123!",
-  "Password1!",
-];
 const PHONE_PATTERN = /^375(25|29|33|44)\d{7}$/;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PASSWORD_PATTERN =
-  /^(?=.*[a-zа-я])(?=.*[A-ZА-Я])(?=.*\d)(?=.*[!@#$%^&*()_\-+=[\]{};:'",.<>/?\\|`~]).{8,20}$/;
 
 const loginForm = document.querySelector("[data-login-form]");
 const registerForm = document.querySelector("[data-register-form]");
@@ -97,12 +89,6 @@ function isAdultEnough(value) {
   }
 
   return age >= 16;
-}
-
-function isPasswordValid(password) {
-  return (
-    PASSWORD_PATTERN.test(password) && !POPULAR_PASSWORDS.includes(password)
-  );
 }
 
 function generatePassword() {

@@ -5,7 +5,7 @@ import {
   saveCurrentUser,
   updateAuthLinks,
 } from "../common/auth-state.js";
-import { resetAccessibilitySettings } from "../common/accessibility.js";
+import { resetSiteSettings } from "../common/accessibility.js";
 import { t } from "../common/i18n.js";
 
 const PHONE_PATTERN = /^375(25|29|33|44)\d{7}$/;
@@ -463,7 +463,7 @@ form.addEventListener("click", (event) => {
 avatarInput.addEventListener("change", handleAvatarChange);
 
 resetButton.addEventListener("click", () => {
-  const resetMessage = resetAccessibilitySettings({ notify: false });
+  const resetMessage = resetSiteSettings({ notify: false });
   showMessage(resetMessage);
 });
 
