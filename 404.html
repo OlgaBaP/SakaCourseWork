@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title data-i18n="notFound.documentTitle">404 — Страница не найдена | Saka Tekstil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/pages/home.css" />
+    <link rel="stylesheet" href="css/pages/404.css" />
+    <link rel="stylesheet" href="css/common/cart.css" />
+    <link rel="stylesheet" href="css/common/preloader.css" />
+    <link rel="stylesheet" href="css/common/theme.css" />
+    <link rel="stylesheet" href="css/common/accessibility.css" />
+  </head>
+
+  <body class="not-found-page">
+    <div class="not-found-shell">
+      <header class="site-header">
+        <div class="site-header__top">
+          <a
+            class="site-logo site-logo--header"
+            href="index.html"
+            aria-label="Saka Holding"
+          >
+            <img src="assets/images/logos/saka-logo.png" alt="Saka Holding" />
+          </a>
+
+          <div class="brand-marks" aria-label="Партнерские логотипы">
+            <span class="brand-marks__item brand-marks__item--saka">
+              <img src="assets/images/logos/partner-saka.png" alt="Saka" />
+            </span>
+            <span class="brand-marks__item brand-marks__item--eros">
+              <img src="assets/images/logos/partner-eros.png" alt="Eros" />
+            </span>
+            <span class="brand-marks__item brand-marks__item--tortex">
+              <img src="assets/images/logos/partner-tortex.png" alt="Tortex" />
+            </span>
+          </div>
+
+          <p class="site-header__tagline">
+            Производитель турецкого трикотажного полотна
+          </p>
+
+          <a
+            class="header-circle header-circle--search"
+            href="#"
+            aria-label="Поиск"
+            data-header-search-toggle
+          >
+            <img src="assets/images/icons/icon-search.svg" alt="" />
+          </a>
+          <form
+            class="header-search"
+            action="pages/catalog.html"
+            data-header-search-form
+            hidden
+          >
+            <input
+              type="search"
+              name="search"
+              placeholder="Поиск"
+              autocomplete="off"
+              data-header-search-input
+            />
+            <button type="submit" aria-label="Найти">
+              <img src="assets/images/icons/icon-search.svg" alt="" />
+            </button>
+          </form>
+
+          <a class="cart-link" href="#" aria-label="Корзина" data-cart-open>
+            <span class="header-circle">
+              <img src="assets/images/icons/icon-cart.svg" alt="" />
+            </span>
+            <span class="cart-link__count" data-cart-count>0</span>
+          </a>
+
+          <a class="login-link" href="pages/login.html">
+            <img src="assets/images/icons/icon-user.svg" alt="" />
+            <span>Войти</span>
+          </a>
+
+          <a class="phone-link phone-link--header" href="tel:+375333536608">
+            <img src="assets/images/icons/icon-phone.svg" alt="" />
+            <span>+375 33 353 66 08</span>
+          </a>
+
+          <div class="site-header__settings">
+            <span data-language-toggle role="button" tabindex="0"><b>RU</b> / EN</span>
+            <span data-theme-toggle role="button" tabindex="0">Dark / <b>Light</b></span>
+          </div>
+
+          <a
+            class="header-circle header-circle--eye"
+            href="#"
+            aria-label="Версия для слабовидящих"
+          >
+            <img src="assets/images/icons/icon-eye.svg" alt="" />
+          </a>
+
+          <button
+            class="burger-button"
+            type="button"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            aria-controls="mobile-menu-404"
+            data-burger-button
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <nav class="site-header__nav" aria-label="Основная навигация">
+          <a href="index.html">Главная</a>
+          <a class="nav-catalog" href="pages/catalog.html">Каталог <span></span></a>
+          <a href="pages/about.html">О компании</a>
+          <a href="#" data-cart-open>Корзина</a>
+          <a href="pages/delivery.html">Доставка и оплата</a>
+          <a href="pages/contacts.html">Контакты</a>
+        </nav>
+      </header>
+
+      <main class="not-found-main">
+        <div class="not-found-decoration" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <section class="not-found-content" aria-labelledby="not-found-title">
+          <p class="not-found-code" aria-hidden="true">404</p>
+          <p class="not-found-kicker" data-i18n="notFound.kicker">Ошибка 404</p>
+          <h1 id="not-found-title" data-i18n="notFound.title">Страница не найдена</h1>
+          <p class="not-found-description" data-i18n="notFound.description">
+            Возможно, страница была перемещена или адрес указан неверно. Вернитесь на
+            главную страницу или перейдите в каталог тканей.
+          </p>
+          <div class="not-found-actions">
+            <a class="not-found-button not-found-button--primary" href="index.html">
+              <span data-i18n="notFound.home">На главную</span>
+              <span aria-hidden="true">→</span>
+            </a>
+            <a
+              class="not-found-button not-found-button--secondary"
+              href="pages/catalog.html"
+              data-i18n="notFound.catalog"
+            >
+              Перейти в каталог
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="not-found-footer">
+        <p data-i18n="notFound.copyright">© 2023 Сака Текстиль. Все права защищены.</p>
+        <a href="tel:+375333536608">+375 33 353 66 08</a>
+      </footer>
+    </div>
+
+    <div
+      class="mobile-menu"
+      id="mobile-menu-404"
+      aria-hidden="true"
+      data-mobile-menu
+    >
+      <button
+        class="mobile-menu__overlay"
+        type="button"
+        aria-label="Закрыть меню"
+        data-mobile-menu-close
+      ></button>
+      <nav class="mobile-menu__panel" aria-label="Мобильная навигация">
+        <div class="mobile-menu__header">
+          <a class="mobile-menu__logo" href="index.html">
+            <img src="assets/images/logos/saka-logo.png" alt="Saka Holding" />
+          </a>
+          <button
+            class="mobile-menu__close"
+            type="button"
+            aria-label="Закрыть меню"
+            data-mobile-menu-close
+          ></button>
+        </div>
+
+        <div class="mobile-menu__brands" aria-label="Партнерские логотипы">
+          <img src="assets/images/logos/partner-saka.png" alt="Saka" />
+          <img src="assets/images/logos/partner-eros.png" alt="Eros" />
+          <img src="assets/images/logos/partner-tortex.png" alt="Tortex" />
+        </div>
+
+        <div class="mobile-menu__meta">
+          <p>Производитель турецкого трикотажного полотна</p>
+          <div>
+            <span data-language-toggle role="button" tabindex="0"><b>RU</b> / EN</span>
+            <span data-theme-toggle role="button" tabindex="0">Dark / <b>Light</b></span>
+          </div>
+          <a
+            class="mobile-menu__eye"
+            href="#"
+            aria-label="Версия для слабовидящих"
+          >
+            <img src="assets/images/icons/icon-eye.svg" alt="" />
+          </a>
+        </div>
+
+        <div class="mobile-menu__nav">
+          <a class="mobile-menu__link" href="index.html">Главная</a>
+          <a
+            class="mobile-menu__link mobile-menu__link--catalog"
+            href="pages/catalog.html"
+            >Каталог</a
+          >
+          <a class="mobile-menu__link" href="pages/about.html">О компании</a>
+          <a class="mobile-menu__link" href="#" data-cart-open>Корзина</a>
+          <a class="mobile-menu__link" href="pages/delivery.html">Доставка и оплата</a>
+          <a class="mobile-menu__link" href="pages/contacts.html">Контакты</a>
+        </div>
+
+        <a class="mobile-menu__phone" href="tel:+375333536608">
+          <img src="assets/images/icons/icon-phone.svg" alt="" />
+          <span>+375 33 353 66 08</span>
+        </a>
+
+        <div class="mobile-menu__actions">
+          <a
+            class="mobile-menu__cart"
+            href="#"
+            aria-label="Корзина"
+            data-cart-open
+          >
+            <img src="assets/images/icons/icon-cart.svg" alt="" />
+            <span data-cart-count>0</span>
+          </a>
+          <a class="mobile-menu__login" href="pages/login.html">
+            <img src="assets/images/icons/icon-user.svg" alt="" />
+            <span>Войти</span>
+          </a>
+        </div>
+
+        <a class="mobile-menu__sale" href="#">Акции</a>
+
+        <div class="mobile-menu__categories">
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-kulir.svg" alt="" />
+            <span>Кулинарная гладь</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-footer.svg" alt="" />
+            <span>Футер</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-ribana.svg" alt="" />
+            <span>Кашкорсе, рибана</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-pique.svg" alt="" />
+            <span>Пике</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-interlock.svg" alt="" />
+            <span>Интерлок</span>
+          </a>
+          <a href="pages/catalog.html">
+            <img src="assets/images/icons/category-kapitoniy.svg" alt="" />
+            <span>Капитоний</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+
+    <script type="module" src="js/common/preloader.js"></script>
+    <script type="module" src="js/common/i18n.js"></script>
+    <script type="module" src="js/common/theme.js"></script>
+    <script type="module" src="js/common/accessibility.js"></script>
+    <script type="module" src="js/common/auth-state.js"></script>
+    <script type="module" src="js/common/cart.js"></script>
+    <script type="module" src="js/common/burger-menu.js"></script>
+  </body>
+</html>
