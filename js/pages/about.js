@@ -108,6 +108,16 @@ async function handleReviewSubmit(event) {
     return;
   }
 
+  if (author.length < 3) {
+    showMessage("Имя должно содержать не менее 3 символов.");
+    return;
+  }
+
+  if (text.split(/\s+/).length < 5) {
+    showMessage("Отзыв должен содержать не менее 5 слов.");
+    return;
+  }
+
   const reviewData = {
     author,
     text,
