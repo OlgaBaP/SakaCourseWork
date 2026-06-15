@@ -424,10 +424,20 @@ function resetFilters() {
   resetPageAndRender();
 }
 
+function scrollToCatalogProducts() {
+  window.requestAnimationFrame(() => {
+    productsList.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+}
+
 function showPreviousPage() {
   if (currentPage > 1) {
     currentPage -= 1;
     renderProducts();
+    scrollToCatalogProducts();
   }
 }
 
@@ -437,6 +447,7 @@ function showNextPage() {
   if (currentPage < totalPages) {
     currentPage += 1;
     renderProducts();
+    scrollToCatalogProducts();
   }
 }
 

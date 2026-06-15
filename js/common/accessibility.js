@@ -41,6 +41,8 @@ const TOGGLE_SELECTOR =
 const SILENT_MEDIA_CONTEXT_SELECTOR = [
   "button",
   ".button",
+  ".brand-marks",
+  ".category-strip",
   ".header-circle--search",
   ".cart-link",
   ".login-link",
@@ -55,6 +57,18 @@ const SILENT_MEDIA_CONTEXT_SELECTOR = [
   "[data-cart-close]",
   "[data-modal-close]",
 ].join(", ");
+
+function getMediaSource(element) {
+  return (element.getAttribute("src") || "").replaceAll("\\", "/").toLowerCase();
+}
+
+function getMediaLabel(element, fallback) {
+  return (
+    element.getAttribute("alt")?.trim() ||
+    element.closest("[aria-label]")?.getAttribute("aria-label")?.trim() ||
+    fallback
+  );
+}
 
 let settings = readSettings();
 let panel = null;
@@ -204,23 +218,33 @@ function getMediaPresentation(element) {
     };
   }
 
-  if (element.closest(".site-logo, .mobile-menu__logo")) {
+  const mediaSource = getMediaSource(element);
+
+  if (
+    element.closest(".site-logo, .mobile-menu__logo, .brand-marks") ||
+    mediaSource.includes("/assets/images/logos/") ||
+    mediaSource.includes("assets/images/logos/")
+  ) {
     return {
       mode: "brand",
-      text: "Saka Holding",
+      text: getMediaLabel(element, "Saka Holding"),
     };
   }
 
   const socialLink = element.closest(".site-footer__social a");
   if (socialLink) {
-    const socialLabel = socialLink.getAttribute("aria-label")?.trim();
     return {
       mode: "social",
-      text: socialLabel || element.getAttribute("alt")?.trim() || getLabels().imageDisabled,
+      text: getMediaLabel(element, getLabels().imageDisabled),
     };
   }
 
-  if (element.closest(SILENT_MEDIA_CONTEXT_SELECTOR)) {
+  if (
+    element.closest(SILENT_MEDIA_CONTEXT_SELECTOR) ||
+    mediaSource.includes("/assets/images/icons/") ||
+    mediaSource.includes("assets/images/icons/") ||
+    (element.tagName === "IFRAME" && !element.closest(".contacts-map"))
+  ) {
     return {
       mode: "silent",
       text: "",
@@ -229,7 +253,10 @@ function getMediaPresentation(element) {
 
   return {
     mode: "content",
-    text: element.tagName === "IFRAME" ? getLabels().mapDisabled : getLabels().imageDisabled,
+    text:
+      element.tagName === "IFRAME" && element.closest(".contacts-map")
+        ? getLabels().mapDisabled
+        : getLabels().imageDisabled,
   };
 }
 
@@ -268,7 +295,7 @@ function updateMediaPlaceholder(element) {
 
   element.dataset.a11yMediaMode = presentation.mode;
 
-  if (presentation.mode === "keep") {
+  if (["keep", "silent"].includes(presentation.mode)) {
     if (currentPlaceholder?.classList.contains(PLACEHOLDER_CLASS)) {
       currentPlaceholder.remove();
     }

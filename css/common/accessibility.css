@@ -1153,7 +1153,6 @@ body.a11y-images-disabled :where(
   font-size: var(--a11y-small-size) !important;
 }
 
-/* Final accessibility layout and color normalization. */
 body.accessibility-mode :where(
   p,
   span,
@@ -2752,4 +2751,125 @@ body.accessibility-mode.a11y-font-xlarge .cart-modal__item {
 body.accessibility-mode.a11y-font-xlarge .cart-modal__quantity,
 body.accessibility-mode.a11y-font-xlarge .cart-modal__remove {
   grid-column: 1 !important;
+}
+
+body.accessibility-mode :where(
+  .fabric-card > img,
+  .fabric-card > .a11y-image-placeholder--content,
+  .quality-card > img,
+  .quality-card > .a11y-image-placeholder--content
+) {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+}
+
+body.accessibility-mode :where(
+  .product-card__image > img,
+  .product-card__image > .a11y-image-placeholder--content,
+  .product-gallery__main > img,
+  .product-gallery__main > .a11y-image-placeholder--content
+) {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 1 !important;
+  object-fit: cover !important;
+}
+
+body.accessibility-mode.a11y-images-disabled
+  .palette-card
+  > .a11y-image-placeholder--content {
+  width: 8rem !important;
+  height: 8rem !important;
+  min-height: 8rem !important;
+  aspect-ratio: 1 !important;
+}
+
+body.accessibility-mode.a11y-images-disabled .service-card__icon {
+  display: none !important;
+}
+
+body.accessibility-mode.a11y-images-disabled
+  :where(.brand-marks__item, .site-logo, .mobile-menu__logo)
+  .a11y-image-placeholder--brand {
+  display: inline-flex !important;
+  width: fit-content !important;
+  min-height: 2.75rem !important;
+}
+
+body.accessibility-mode .product-specs {
+  flex: 1 1 100% !important;
+}
+
+body.accessibility-mode .product-specs dl {
+  width: 100% !important;
+  grid-template-columns: minmax(11rem, 0.8fr) minmax(14rem, 1.2fr) !important;
+}
+
+body.accessibility-mode .product-specs :where(dt, dd) {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+
+body.accessibility-mode.a11y-font-large .product-specs dl,
+body.accessibility-mode.a11y-font-xlarge .product-specs dl {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0.25rem !important;
+}
+
+body.accessibility-mode.a11y-font-large .product-specs dd,
+body.accessibility-mode.a11y-font-xlarge .product-specs dd {
+  margin-bottom: 0.85rem !important;
+}
+
+body.accessibility-mode .service-grid {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 20rem), 1fr)
+  ) !important;
+}
+
+body.accessibility-mode.a11y-font-large .service-grid {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 24rem), 1fr)
+  ) !important;
+}
+
+body.accessibility-mode.a11y-font-xlarge .service-grid {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 28rem), 1fr)
+  ) !important;
+}
+
+body.accessibility-mode .service-card {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+body.accessibility-mode .service-card :where(h3, p) {
+  width: 100% !important;
+  max-width: 100% !important;
+  letter-spacing: 0.06em !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+
+@media (max-width: 767px) {
+  body.accessibility-mode .product-specs dl {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.25rem !important;
+  }
+
+  body.accessibility-mode .product-specs dd {
+    margin-bottom: 0.85rem !important;
+  }
 }
