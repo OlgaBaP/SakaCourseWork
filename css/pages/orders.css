@@ -165,7 +165,7 @@
   font-weight: 700;
 }
 
-@media (max-width: 1399px) {
+@media (min-width: 640px) and (max-width: 1399px) {
   .orders-main {
     padding: 70px 0 90px;
   }
@@ -176,24 +176,51 @@
   }
 
   .orders-list {
-    overflow-x: auto;
-    padding-bottom: 8px;
+    width: 100%;
+    overflow: visible;
   }
 
   .orders-list__header,
   .orders-list__row {
-    min-width: 1120px;
+    width: 100%;
+    min-width: 0;
+    gap: 8px;
   }
 
   .orders-section--user .orders-list__header,
   .orders-section--user .orders-list__row {
-    grid-template-columns: 80px 120px 160px 100px 230px 130px 220px;
+    grid-template-columns: 45px 68px 95px 65px 85px 55px minmax(115px, 1fr);
   }
 
   .orders-section--admin .orders-list__header,
   .orders-section--admin .orders-list__row {
-    min-width: 1180px;
-    grid-template-columns: 80px 120px 170px 160px 100px 220px 120px 110px;
+    grid-template-columns: 42px 62px 76px 82px 58px 76px 52px minmax(76px, 1fr);
+  }
+
+  .orders-list__header {
+    padding: 0 12px;
+    font-size: 10px;
+  }
+
+  .orders-list__row {
+    padding: 14px 12px;
+    font-size: 12px;
+  }
+
+  .orders-list__cell,
+  .orders-list__header span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .orders-status,
+  .orders-status-select,
+  .orders-list__details,
+  .orders-list__delete {
+    min-width: 0;
+    padding-right: 7px;
+    padding-left: 7px;
+    font-size: 10px;
   }
 }
 

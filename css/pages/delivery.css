@@ -363,13 +363,13 @@ button {
 }
 
 .delivery-main {
-  padding: 37px 0 80px;
+  padding: 60px 0 80px;
 }
 
 .breadcrumbs {
   display: flex;
   gap: 22px;
-  margin-bottom: 17px;
+  margin-bottom: 22px;
   color: var(--color-dark);
   font-size: 12px;
   font-weight: 400;
@@ -439,28 +439,40 @@ button {
 }
 
 .delivery-card--pickup {
-  display: grid;
-  grid-template-columns: 1fr 280px;
+  position: relative;
   min-height: 278px;
 }
 
 .delivery-card--pickup .delivery-card__content {
+  position: relative;
+  z-index: 1;
+  width: 442px;
   padding: 35px 0 35px 45px;
 }
 
+.delivery-card--pickup h2 {
+  margin-bottom: 15px;
+}
+
+.delivery-card--pickup p {
+  width: 397px;
+  font-size: 18px;
+  letter-spacing: 0.36px;
+}
+
 .delivery-card__image--boxes {
-  align-self: end;
+  position: absolute;
+  top: 25px;
+  left: 367px;
   width: 380px;
   max-width: none;
-  height: 278px;
-  object-fit: cover;
-  object-position: center;
+  height: 299px;
+  object-fit: fill;
 }
 
 .delivery-card--transport {
-  display: flex;
-  flex-direction: column;
-  min-height: 469px;
+  position: relative;
+  height: 469px;
   padding: 35px 45px 0;
 }
 
@@ -473,8 +485,16 @@ button {
   max-width: 555px;
 }
 
+.delivery-card--transport h2 {
+  margin-bottom: 12px;
+}
+
 .delivery-card--transport p + p {
-  margin-top: 22px;
+  margin-top: 30px;
+}
+
+.delivery-card--transport p.delivery-card__note {
+  margin-top: 16px;
 }
 
 .delivery-card__note {
@@ -483,12 +503,14 @@ button {
 }
 
 .delivery-card__image--van {
-  width: 660px;
+  position: absolute;
+  top: 247px;
+  left: 27px;
+  width: 584px;
   max-width: none;
-  height: 225px;
-  margin: auto -45px 0;
-  object-fit: contain;
-  object-position: left bottom;
+  height: 316px;
+  margin: 0;
+  object-fit: fill;
 }
 
 .delivery-card--city {
@@ -511,14 +533,14 @@ button {
 }
 
 .delivery-question {
-  min-height: 500px;
+  min-height: 607px;
   padding: 40px 60px 34px;
   text-align: center;
 }
 
 .delivery-question h2 {
   width: 288px;
-  margin: 0 auto 28px;
+  margin: 0 auto 10px;
   color: var(--color-white);
   font-size: 26px;
   font-weight: 600;
@@ -528,7 +550,7 @@ button {
 
 .delivery-question > p {
   width: 340px;
-  margin: 0 auto 42px;
+  margin: 0 auto 22px;
   color: var(--color-white);
   font-size: 16px;
   font-weight: 400;
@@ -624,6 +646,10 @@ button {
   line-height: 1.3;
 }
 
+.delivery-form__field small[hidden] {
+  display: none;
+}
+
 .delivery-form__button {
   display: flex;
   align-items: center;
@@ -654,7 +680,7 @@ button {
 
 .delivery-form__agree {
   width: 340px;
-  margin: 22px auto 0;
+  margin: 10px auto 0;
   color: rgba(255, 255, 255, 0.25);
   font-size: 12px;
   font-weight: 400;
@@ -675,29 +701,32 @@ button {
 }
 
 .payment-section {
-  margin-top: 87px;
+  margin-top: 93px;
 }
 
 .payment-lead {
   width: 660px;
-  margin-top: 34px;
+  margin-top: 15px;
   font-size: 18px;
   letter-spacing: 0.36px;
 }
 
 .payment-card {
-  display: grid;
-  grid-template-columns: 1fr 317px;
+  position: relative;
+  display: flex;
   align-items: center;
   width: 660px;
-  min-height: 183px;
-  margin-top: 34px;
-  overflow: hidden;
+  height: 183px;
+  margin-top: 30px;
+  overflow: visible;
   border-radius: 16px;
   background: var(--color-light);
 }
 
 .payment-card__content {
+  position: relative;
+  z-index: 1;
+  width: 450px;
   padding-left: 45px;
 }
 
@@ -710,6 +739,9 @@ button {
 }
 
 .payment-card img {
+  position: absolute;
+  top: -28px;
+  right: -40px;
   width: 317px;
   height: 211px;
   object-fit: cover;
@@ -717,7 +749,7 @@ button {
 
 .delivery-info {
   width: 960px;
-  min-height: 315px;
+  height: 315px;
   margin-top: 115px;
   padding: 50px 60px;
   background:
@@ -727,7 +759,7 @@ button {
 
 .delivery-info h2 {
   max-width: 658px;
-  margin: 0 0 57px;
+  margin: 0 0 45px;
   color: var(--color-white);
   font-size: 32px;
   font-weight: 600;
@@ -738,6 +770,10 @@ button {
 .delivery-info__contacts {
   display: flex;
   gap: 40px;
+}
+
+.delivery-info__contacts div:first-child {
+  flex: 0 0 303px;
 }
 
 .delivery-info__contacts p {
@@ -760,6 +796,7 @@ button {
 .delivery-info__contacts span {
   display: block;
   width: 176px;
+  margin-left: 136px;
   color: var(--color-white);
   font-size: 14px;
   font-weight: 400;
@@ -1214,7 +1251,6 @@ button {
   }
 
   .delivery-card--pickup {
-    grid-template-columns: 1fr 280px;
     min-height: 278px;
   }
 
@@ -1230,10 +1266,23 @@ button {
   }
 
   .delivery-card--pickup .delivery-card__content {
+    width: 391px;
     padding: 35px 0 35px 45px;
   }
 
+  .delivery-card--pickup h2 {
+    margin-bottom: 20px;
+  }
+
+  .delivery-card--pickup p {
+    width: 346px;
+    font-size: 16px;
+    letter-spacing: 0.32px;
+  }
+
   .delivery-card__image--boxes {
+    top: 19px;
+    left: 327px;
     width: 380px;
   }
 
@@ -1242,29 +1291,41 @@ button {
     padding: 35px 45px 0;
   }
 
+  .delivery-card--transport h2 {
+    margin-bottom: 17px;
+  }
+
   .delivery-card__image--van {
-    width: 620px;
+    top: 261px;
+    left: 25px;
+    width: 549px;
+    height: 297px;
   }
 
   .delivery-card--city {
-    min-height: 160px;
+    display: none;
   }
 
   .delivery-question {
     width: 100%;
     min-height: 0;
-    padding: 40px clamp(35px, 9.7vw, 60px) 42px;
+    padding: 40px clamp(35px, 9.7vw, 60px) 34px;
   }
 
   .delivery-question h2 {
+    margin-bottom: 10px;
     font-size: 26px;
+  }
+
+  .delivery-question > p {
+    margin-bottom: 22px;
   }
 
   .delivery-form {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    gap: 12px;
+    gap: 10px;
   }
 
   .delivery-form__field textarea {
@@ -1274,6 +1335,7 @@ button {
   .delivery-form__agree {
     width: 100%;
     max-width: 462px;
+    margin-top: 10px;
   }
 
   .payment-section {
@@ -1293,20 +1355,26 @@ button {
   }
 
   .payment-card img {
+    top: -10px;
+    right: -36px;
     width: 276px;
     height: 183px;
   }
 
+  .payment-card__content {
+    width: 380px;
+  }
+
   .delivery-info {
     width: 620px;
-    min-height: 316px;
+    height: 316px;
     margin-top: 40px;
     padding: 50px 60px;
   }
 
   .delivery-info h2 {
     max-width: 500px;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     font-size: 20px;
     letter-spacing: 0.4px;
   }
@@ -1316,7 +1384,7 @@ button {
   }
 
   .delivery-info__contacts div + div {
-    margin-top: 28px;
+    display: none;
   }
 
   .delivery-info__contacts a {
@@ -1403,6 +1471,15 @@ button {
     gap: 30px;
   }
 
+  .delivery-card {
+    width: 300px;
+    min-width: 0;
+  }
+
+  .delivery-card__content {
+    min-width: 0;
+  }
+
   .delivery-card h2,
   .payment-card h3 {
     margin-bottom: 24px;
@@ -1429,15 +1506,45 @@ button {
     padding: 35px 35px 0;
   }
 
+  .delivery-card--pickup .delivery-card__content {
+    width: auto;
+  }
+
+  .delivery-card--pickup h2 {
+    margin-bottom: 15px;
+  }
+
+  .delivery-card--pickup p {
+    width: 230px;
+    font-size: 16px;
+    letter-spacing: 0.32px;
+  }
+
   .delivery-card__image--boxes {
+    position: absolute;
+    top: 299px;
+    left: 7px;
     width: 380px;
-    height: 278px;
-    margin-top: auto;
-    margin-left: 7px;
+    height: 299px;
+    margin: 0;
+    object-fit: fill;
   }
 
   .delivery-card--transport {
     min-height: 540px;
+  }
+
+  .delivery-card--transport h2 {
+    width: 235px;
+    margin-bottom: 11px;
+  }
+
+  .delivery-card--transport p {
+    width: 215px;
+  }
+
+  .delivery-card--transport .delivery-card__note {
+    width: 225px;
   }
 
   .delivery-card--transport p + p {
@@ -1449,21 +1556,24 @@ button {
   }
 
   .delivery-card__image--van {
-    width: 300px;
-    height: 178px;
-    margin: auto -35px 0;
+    top: 439px;
+    bottom: auto;
+    left: 12px;
+    width: 266px;
+    height: 143px;
+    margin: 0;
+    object-fit: fill;
   }
 
   .delivery-card--city {
-    min-height: 150px;
-    padding-bottom: 35px;
+    display: none;
   }
 
   .delivery-question {
-    width: min(360px, calc(100vw - 30px));
+    width: min(360px, 100vw);
     min-height: 0;
-    margin-left: calc((300px - min(360px, calc(100vw - 30px))) / 2);
-    padding: 40px clamp(20px, 7.7vw, 30px) 45px;
+    margin-left: calc((300px - min(360px, 100vw)) / 2);
+    padding: 40px 30px 45px;
     border-radius: 16px;
   }
 
@@ -1482,36 +1592,36 @@ button {
   }
 
   .delivery-form {
-    gap: 12px;
+    gap: 10px;
   }
 
   .delivery-form__field input,
   .delivery-form__field select {
-    height: 56px;
-    padding-left: 24px;
+    height: 59px;
+    padding-left: 40px;
   }
 
   .delivery-form__field select {
-    padding-right: 50px;
+    padding-right: 58px;
     background-position:
-      calc(100% - 27px) 24px,
-      calc(100% - 20px) 24px,
+      calc(100% - 29px) 26px,
+      calc(100% - 22px) 26px,
       0 0;
   }
 
   .delivery-form__field textarea {
-    min-height: 128px;
-    padding: 16px 24px;
+    min-height: 118px;
+    padding: 18px 40px;
   }
 
   .delivery-form__field small {
-    margin-left: 14px;
+    margin-left: 18px;
   }
 
   .delivery-form__button {
-    height: 56px;
-    margin-top: 2px;
-    padding: 0 24px;
+    height: 58px;
+    margin-top: 10px;
+    padding: 0 30px;
   }
 
   .delivery-form__agree {
@@ -1535,13 +1645,16 @@ button {
     width: 300px;
     min-height: 398px;
     margin-top: 30px;
+    overflow: hidden;
   }
 
   .payment-card__content {
+    width: auto;
     padding: 35px 35px 0;
   }
 
   .payment-card img {
+    position: static;
     width: 300px;
     height: 191px;
     margin-top: auto;
@@ -1549,14 +1662,14 @@ button {
 
   .delivery-info {
     width: 300px;
-    min-height: 420px;
+    height: 420px;
     margin-top: 30px;
     padding: 40px;
   }
 
   .delivery-info h2 {
     max-width: 212px;
-    margin-bottom: 74px;
+    margin-bottom: 27px;
     font-size: 20px;
     letter-spacing: 0.4px;
   }
@@ -1566,7 +1679,7 @@ button {
   }
 
   .delivery-info__contacts div + div {
-    margin-top: 32px;
+    display: none;
   }
 
   .delivery-info__contacts p {
@@ -1575,7 +1688,8 @@ button {
   }
 
   .delivery-info__contacts a {
-    font-size: 22px;
-    letter-spacing: 0.44px;
+    font-size: 20px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
   }
 }

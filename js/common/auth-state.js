@@ -21,7 +21,9 @@ function normalizePhone(phone) {
 }
 
 function normalizeEmail(email) {
-  return String(email || "").trim().toLowerCase();
+  return String(email || "")
+    .trim()
+    .toLowerCase();
 }
 
 function getCurrentUser() {
@@ -120,8 +122,9 @@ function getAuthLabelElement(link) {
     );
   });
   let textElement =
-    textElements.find((element) => element.classList.contains("auth-link__text")) ||
-    textElements.shift();
+    textElements.find((element) =>
+      element.classList.contains("auth-link__text"),
+    ) || textElements.shift();
 
   textElements
     .filter((element) => element !== textElement)
@@ -146,28 +149,29 @@ function updateAuthLinks() {
     : t("Войти");
   const href = currentUser ? accountHref : loginHref;
 
-  document.querySelectorAll(".login-link, .mobile-menu__login").forEach((link) => {
-    link.setAttribute("href", href);
-    link.classList.toggle("login-link--authorized", Boolean(currentUser));
-    const textElement = getAuthLabelElement(link);
+  document
+    .querySelectorAll(".login-link, .mobile-menu__login")
+    .forEach((link) => {
+      link.setAttribute("href", href);
+      link.classList.toggle("login-link--authorized", Boolean(currentUser));
+      const textElement = getAuthLabelElement(link);
 
-    if (currentUser) {
-      const logoutType = link.classList.contains("mobile-menu__login")
-        ? "mobile"
-        : "header";
+      if (currentUser) {
+        const logoutType = link.classList.contains("mobile-menu__login")
+          ? "mobile"
+          : "header";
 
-      textElement.classList.add("auth-link__text");
-      textElement.innerHTML = `
+        textElement.classList.add("auth-link__text");
+        textElement.innerHTML = `
         <span class="auth-link__name"></span>
         <span class="auth-link__logout" data-auth-logout="${logoutType}">${t("Выйти")}</span>
       `;
-      textElement.querySelector(".auth-link__name").textContent = text;
-    } else {
-      textElement.classList.remove("auth-link__text");
-      textElement.textContent = text;
-    }
-  });
-
+        textElement.querySelector(".auth-link__name").textContent = text;
+      } else {
+        textElement.classList.remove("auth-link__text");
+        textElement.textContent = text;
+      }
+    });
 }
 
 function ensureAuthStyles() {
@@ -228,7 +232,10 @@ function createField(label, inputHtml) {
   const translatedLabel = t(label);
   const input = inputHtml.includes("placeholder=")
     ? inputHtml
-    : inputHtml.replace("<input ", `<input placeholder="${translatedLabel}" data-i18n-placeholder="${label}" `);
+    : inputHtml.replace(
+        "<input ",
+        `<input placeholder="${translatedLabel}" data-i18n-placeholder="${label}" `,
+      );
 
   return `
     <label class="auth-modal__field" data-auth-field>
@@ -314,7 +321,10 @@ function createAuthModal() {
 }
 
 function showAuthView(mode) {
-  createAuthModal().classList.toggle("auth-modal--register", mode === "register");
+  createAuthModal().classList.toggle(
+    "auth-modal--register",
+    mode === "register",
+  );
   createAuthModal().classList.toggle("auth-modal--login", mode !== "register");
   createAuthModal()
     .querySelectorAll("[data-auth-view]")
@@ -329,14 +339,17 @@ function openAuthModal(mode = "login", options = {}) {
   }
 
   activeIntent = options.intent || "header";
-  successCallback = typeof options.onSuccess === "function" ? options.onSuccess : null;
+  successCallback =
+    typeof options.onSuccess === "function" ? options.onSuccess : null;
   createAuthModal();
   showAuthView(mode);
   authModal.classList.add("is-open");
   authModal.setAttribute("aria-hidden", "false");
   document.body.classList.add(BODY_OPEN_CLASS);
 
-  const firstInput = authModal.querySelector(`[data-auth-view="${mode}"] input`);
+  const firstInput = authModal.querySelector(
+    `[data-auth-view="${mode}"] input`,
+  );
 
   if (firstInput) {
     firstInput.focus();
@@ -422,7 +435,10 @@ function isAdultEnough(value) {
   let age = today.getFullYear() - birthDate.getFullYear();
   const monthDiff = today.getMonth() - birthDate.getMonth();
 
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
     age -= 1;
   }
 
@@ -565,7 +581,10 @@ function validateRegisterForm(form, shouldShowErrors = false) {
     errors.set(fields.password, t("auth.invalidPassword"));
   }
 
-  if (passwordMode === "manual" && fields.password.value !== fields.passwordRepeat.value) {
+  if (
+    passwordMode === "manual" &&
+    fields.password.value !== fields.passwordRepeat.value
+  ) {
     errors.set(fields.passwordRepeat, t("auth.passwordMismatch"));
   }
 
@@ -605,7 +624,10 @@ function validateRegisterForm(form, shouldShowErrors = false) {
 function fillNickname(form) {
   const fields = getRegisterFields(form);
   nicknameAttempts += 1;
-  fields.nickname.value = generateNickname(fields.firstName.value, fields.lastName.value);
+  fields.nickname.value = generateNickname(
+    fields.firstName.value,
+    fields.lastName.value,
+  );
   fields.nickname.readOnly = nicknameAttempts < 5;
   setError(fields.nickname, "");
 }
@@ -691,7 +713,9 @@ async function handleRegisterSubmit(event) {
     return;
   }
 
-  if (users.some((user) => getUserPhone(user) === normalizePhone(values.phone))) {
+  if (
+    users.some((user) => getUserPhone(user) === normalizePhone(values.phone))
+  ) {
     setError(fields.phone, t("auth.phoneExists"));
     return;
   }
@@ -707,7 +731,9 @@ async function handleRegisterSubmit(event) {
     firstName: values.firstName,
     lastName: values.lastName,
     middleName: values.middleName,
-    fullName: [values.lastName, values.firstName, values.middleName].filter(Boolean).join(" "),
+    fullName: [values.lastName, values.firstName, values.middleName]
+      .filter(Boolean)
+      .join(" "),
     phone: values.phone,
     email: values.email,
     birthDate: values.birthDate,
@@ -737,7 +763,9 @@ async function handleRegisterSubmit(event) {
 function bindAuthModalEvents() {
   const loginForm = authModal.querySelector("[data-auth-login-form]");
   const registerForm = authModal.querySelector("[data-auth-register-form]");
-  const passwordRepeat = registerForm.querySelector("[data-register-password-repeat]");
+  const passwordRepeat = registerForm.querySelector(
+    "[data-register-password-repeat]",
+  );
   const nicknameButton = registerForm.querySelector("[data-generate-nickname]");
   const agreementButton = registerForm.querySelector("[data-agreement-toggle]");
   const agreementText = registerForm.querySelector("[data-agreement-text]");

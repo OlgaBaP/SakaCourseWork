@@ -60,7 +60,9 @@ const SILENT_MEDIA_CONTEXT_SELECTOR = [
 ].join(", ");
 
 function getMediaSource(element) {
-  return (element.getAttribute("src") || "").replaceAll("\\", "/").toLowerCase();
+  return (element.getAttribute("src") || "")
+    .replaceAll("\\", "/")
+    .toLowerCase();
 }
 
 function getMediaLabel(element, fallback) {
@@ -162,8 +164,13 @@ function readSettings() {
   const savedColorScheme = getStoredValue(STORAGE_KEYS.colorScheme);
 
   return {
-    enabled: parseBoolean(getStoredValue(STORAGE_KEYS.enabled), DEFAULT_SETTINGS.enabled),
-    fontSize: FONT_SIZES.includes(savedFontSize) ? savedFontSize : DEFAULT_SETTINGS.fontSize,
+    enabled: parseBoolean(
+      getStoredValue(STORAGE_KEYS.enabled),
+      DEFAULT_SETTINGS.enabled,
+    ),
+    fontSize: FONT_SIZES.includes(savedFontSize)
+      ? savedFontSize
+      : DEFAULT_SETTINGS.fontSize,
     colorScheme: COLOR_SCHEMES.includes(savedColorScheme)
       ? savedColorScheme
       : DEFAULT_SETTINGS.colorScheme,
@@ -310,12 +317,18 @@ function updateMediaPlaceholder(element) {
     placeholder.classList.remove(...PLACEHOLDER_MODE_CLASSES);
     placeholder.classList.add(`${PLACEHOLDER_CLASS}--${presentation.mode}`);
     placeholder.textContent = presentation.text;
-    placeholder.setAttribute("aria-hidden", String(presentation.mode === "silent"));
+    placeholder.setAttribute(
+      "aria-hidden",
+      String(presentation.mode === "silent"),
+    );
   }
 }
 
 function prepareMediaPlaceholders(root = document) {
-  if (root.nodeType !== Node.ELEMENT_NODE && root.nodeType !== Node.DOCUMENT_NODE) {
+  if (
+    root.nodeType !== Node.ELEMENT_NODE &&
+    root.nodeType !== Node.DOCUMENT_NODE
+  ) {
     return;
   }
 
@@ -345,22 +358,35 @@ function syncPanelControls() {
   panel.querySelector("[data-a11y-title]").textContent = labels.title;
   panel.querySelector("[data-a11y-enable-label]").textContent = labels.enable;
   panel.querySelector("[data-a11y-font-title]").textContent = labels.fontTitle;
-  panel.querySelector("[data-a11y-scheme-title]").textContent = labels.schemeTitle;
+  panel.querySelector("[data-a11y-scheme-title]").textContent =
+    labels.schemeTitle;
   panel.querySelector("[data-a11y-images-label]").textContent = labels.images;
   panel.querySelector("[data-a11y-reset]").textContent = labels.reset;
-  panel.querySelector("[data-a11y-close]").setAttribute("aria-label", labels.close);
+  panel
+    .querySelector("[data-a11y-close]")
+    .setAttribute("aria-label", labels.close);
 
   panel.querySelector("[data-a11y-enabled]").checked = settings.enabled;
   panel.querySelector("[data-a11y-images]").checked = settings.imagesDisabled;
-  panel.querySelector(`[name="a11y-font"][value="${settings.fontSize}"]`).checked = true;
-  panel.querySelector(`[name="a11y-scheme"][value="${settings.colorScheme}"]`).checked = true;
+  panel.querySelector(
+    `[name="a11y-font"][value="${settings.fontSize}"]`,
+  ).checked = true;
+  panel.querySelector(
+    `[name="a11y-scheme"][value="${settings.colorScheme}"]`,
+  ).checked = true;
 
-  panel.querySelector('[data-font-label="normal"]').textContent = labels.fontNormal;
-  panel.querySelector('[data-font-label="large"]').textContent = labels.fontLarge;
-  panel.querySelector('[data-font-label="xlarge"]').textContent = labels.fontXlarge;
-  panel.querySelector('[data-scheme-label="black-white"]').textContent = labels.schemeBlackWhite;
-  panel.querySelector('[data-scheme-label="black-green"]').textContent = labels.schemeBlackGreen;
-  panel.querySelector('[data-scheme-label="white-black"]').textContent = labels.schemeWhiteBlack;
+  panel.querySelector('[data-font-label="normal"]').textContent =
+    labels.fontNormal;
+  panel.querySelector('[data-font-label="large"]').textContent =
+    labels.fontLarge;
+  panel.querySelector('[data-font-label="xlarge"]').textContent =
+    labels.fontXlarge;
+  panel.querySelector('[data-scheme-label="black-white"]').textContent =
+    labels.schemeBlackWhite;
+  panel.querySelector('[data-scheme-label="black-green"]').textContent =
+    labels.schemeBlackGreen;
+  panel.querySelector('[data-scheme-label="white-black"]').textContent =
+    labels.schemeWhiteBlack;
 }
 
 function applySettings({ persist = true } = {}) {
@@ -605,10 +631,23 @@ function closeDesktopMobileMenu() {
   const mobileMenu = document.querySelector("[data-mobile-menu]");
   const burgerButton = document.querySelector("[data-burger-button]");
 
+  if (!mobileMenu?.classList.contains("mobile-menu--opened")) {
+    return;
+  }
+
   mobileMenu?.classList.remove("mobile-menu--opened");
   mobileMenu?.setAttribute("aria-hidden", "true");
   burgerButton?.setAttribute("aria-expanded", "false");
+  const lockedScrollY =
+    Math.abs(Number.parseInt(document.body.style.top, 10)) || 0;
+  document.documentElement.classList.remove("mobile-menu-opened");
   document.body.classList.remove("mobile-menu-opened");
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.right = "";
+  document.body.style.left = "";
+  document.body.style.width = "";
+  window.scrollTo(0, lockedScrollY);
 }
 
 function bindAccessibilityViewport() {
@@ -620,7 +659,10 @@ function bindAccessibilityViewport() {
 function observeDynamicMedia() {
   observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      if (mutation.type === "attributes" && mutation.target.matches?.(MEDIA_SELECTOR)) {
+      if (
+        mutation.type === "attributes" &&
+        mutation.target.matches?.(MEDIA_SELECTOR)
+      ) {
         updateMediaPlaceholder(mutation.target);
       }
 

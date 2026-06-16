@@ -55,20 +55,48 @@ if (headerSearchToggle && headerSearchForm && headerSearchInput) {
 
 if (burgerButton && mobileMenu) {
   const closeButtons = mobileMenu.querySelectorAll("[data-mobile-menu-close]");
+  const menuOverlay = mobileMenu.querySelector(".mobile-menu__overlay");
   const menuLinks = mobileMenu.querySelectorAll("a");
+  let lockedScrollY = 0;
+
+  function lockPageScroll() {
+    lockedScrollY = window.scrollY;
+    document.documentElement.classList.add("mobile-menu-opened");
+    document.body.classList.add("mobile-menu-opened");
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${lockedScrollY}px`;
+    document.body.style.right = "0";
+    document.body.style.left = "0";
+    document.body.style.width = "100%";
+  }
+
+  function unlockPageScroll() {
+    document.documentElement.classList.remove("mobile-menu-opened");
+    document.body.classList.remove("mobile-menu-opened");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.right = "";
+    document.body.style.left = "";
+    document.body.style.width = "";
+    window.scrollTo(0, lockedScrollY);
+  }
 
   function openMenu() {
     mobileMenu.classList.add("mobile-menu--opened");
     mobileMenu.setAttribute("aria-hidden", "false");
     burgerButton.setAttribute("aria-expanded", "true");
-    document.body.classList.add("mobile-menu-opened");
+    lockPageScroll();
   }
 
   function closeMenu() {
+    if (!mobileMenu.classList.contains("mobile-menu--opened")) {
+      return;
+    }
+
     mobileMenu.classList.remove("mobile-menu--opened");
     mobileMenu.setAttribute("aria-hidden", "true");
     burgerButton.setAttribute("aria-expanded", "false");
-    document.body.classList.remove("mobile-menu-opened");
+    unlockPageScroll();
   }
 
   burgerButton.addEventListener("click", () => {
@@ -83,6 +111,8 @@ if (burgerButton && mobileMenu) {
   closeButtons.forEach((button) => {
     button.addEventListener("click", closeMenu);
   });
+
+  menuOverlay?.addEventListener("click", closeMenu);
 
   menuLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);

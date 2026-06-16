@@ -291,21 +291,22 @@ body.accessibility-mode .page {
   color: var(--a11y-text) !important;
 }
 
-body.accessibility-mode :where(
-  .section-container,
-  main,
-  section,
-  article,
-  aside,
-  form,
-  nav,
-  header,
-  footer,
-  div,
-  ul,
-  ol,
-  dl
-) {
+body.accessibility-mode
+  :where(
+    .section-container,
+    main,
+    section,
+    article,
+    aside,
+    form,
+    nav,
+    header,
+    footer,
+    div,
+    ul,
+    ol,
+    dl
+  ) {
   min-width: 0;
   max-width: 100%;
 }
@@ -318,25 +319,26 @@ body.accessibility-mode .section-container {
   padding-left: clamp(12px, 3vw, 32px) !important;
 }
 
-body.accessibility-mode :where(
-  p,
-  a,
-  span,
-  label,
-  button,
-  input,
-  select,
-  textarea,
-  li,
-  dt,
-  dd,
-  small,
-  strong,
-  b,
-  legend,
-  th,
-  td
-) {
+body.accessibility-mode
+  :where(
+    p,
+    a,
+    span,
+    label,
+    button,
+    input,
+    select,
+    textarea,
+    li,
+    dt,
+    dd,
+    small,
+    strong,
+    b,
+    legend,
+    th,
+    td
+  ) {
   max-width: 80ch;
   line-height: 1.5 !important;
   letter-spacing: 0.12em !important;
@@ -349,30 +351,22 @@ body.accessibility-mode :where(p, li, dt, dd) {
   font-size: var(--a11y-font-size) !important;
 }
 
-body.accessibility-mode :where(
-  small,
-  .breadcrumbs,
-  .field-error,
-  [class*="__error"],
-  [class*="__agree"],
-  [class*="__note"],
-  .filter-count,
-  .hero-slider__counter
-) {
+body.accessibility-mode
+  :where(
+    small,
+    .breadcrumbs,
+    .field-error,
+    [class*="__error"],
+    [class*="__agree"],
+    [class*="__note"],
+    .filter-count,
+    .hero-slider__counter
+  ) {
   font-size: var(--a11y-small-size) !important;
 }
 
-body.accessibility-mode :where(
-  a,
-  label,
-  button,
-  input,
-  select,
-  textarea,
-  legend,
-  th,
-  td
-) {
+body.accessibility-mode
+  :where(a, label, button, input, select, textarea, legend, th, td) {
   font-size: var(--a11y-control-size) !important;
 }
 
@@ -422,16 +416,17 @@ body.accessibility-mode :where(img, iframe, video, canvas, svg) {
   max-width: 100% !important;
 }
 
-body.accessibility-mode :where(
-  .site-header,
-  .site-header__top,
-  .site-header__nav,
-  .category-strip,
-  .category-strip__list,
-  .site-footer,
-  .site-footer__inner,
-  .mobile-menu__panel
-) {
+body.accessibility-mode
+  :where(
+    .site-header,
+    .site-header__top,
+    .site-header__nav,
+    .category-strip,
+    .category-strip__list,
+    .site-footer,
+    .site-footer__inner,
+    .mobile-menu__panel
+  ) {
   width: 100% !important;
   min-width: 0 !important;
   height: auto !important;
@@ -456,17 +451,18 @@ body.accessibility-mode .site-header__top {
   padding: 0 !important;
 }
 
-body.accessibility-mode :where(
-  .site-logo,
-  .brand-marks,
-  .site-header__tagline,
-  .header-search,
-  .cart-link,
-  .login-link,
-  .phone-link,
-  .site-header__settings,
-  .burger-button
-) {
+body.accessibility-mode
+  :where(
+    .site-logo,
+    .brand-marks,
+    .site-header__tagline,
+    .header-search,
+    .cart-link,
+    .login-link,
+    .phone-link,
+    .site-header__settings,
+    .burger-button
+  ) {
   position: static !important;
   inset: auto !important;
   flex: 0 1 auto !important;
@@ -522,13 +518,14 @@ body.accessibility-mode .category-strip__list {
   background: transparent !important;
 }
 
-body.accessibility-mode :where(
-  .site-header__nav a,
-  .category-strip a,
-  .mobile-menu__link,
-  .mobile-menu__categories a,
-  .site-footer__nav a
-) {
+body.accessibility-mode
+  :where(
+    .site-header__nav a,
+    .category-strip a,
+    .mobile-menu__link,
+    .mobile-menu__categories a,
+    .site-footer__nav a
+  ) {
   display: inline-flex !important;
   flex: 1 1 11rem !important;
   width: auto !important;
@@ -548,14 +545,15 @@ body.accessibility-mode .category-strip__sale {
   flex: 1 1 11rem !important;
 }
 
-body.accessibility-mode :where(
-  .header-circle,
-  .mobile-menu__eye,
-  .mobile-menu__cart,
-  .mobile-menu__login,
-  .login-link,
-  .phone-link
-) {
+body.accessibility-mode
+  :where(
+    .header-circle,
+    .mobile-menu__eye,
+    .mobile-menu__cart,
+    .mobile-menu__login,
+    .login-link,
+    .phone-link
+  ) {
   display: inline-flex !important;
   width: auto !important;
   height: auto !important;
@@ -604,37 +602,39 @@ body.accessibility-mode .mobile-menu__panel {
   padding: 1rem !important;
 }
 
-body.accessibility-mode :where(
-  .mobile-menu__header,
-  .mobile-menu__brands,
-  .mobile-menu__meta,
-  .mobile-menu__nav,
-  .mobile-menu__actions,
-  .mobile-menu__categories
-) {
+body.accessibility-mode
+  :where(
+    .mobile-menu__header,
+    .mobile-menu__brands,
+    .mobile-menu__meta,
+    .mobile-menu__nav,
+    .mobile-menu__actions,
+    .mobile-menu__categories
+  ) {
   display: flex !important;
   flex-wrap: wrap !important;
   width: 100% !important;
   gap: 0.75rem !important;
 }
 
-body.accessibility-mode :where(
-  .hero-section,
-  .fabric-section,
-  .palette-section,
-  .about-section,
-  .request-section,
-  .catalog-main,
-  .product-main,
-  .about-main,
-  .delivery-main,
-  .contacts-main,
-  .account-main,
-  .orders-main,
-  .auth-main,
-  .service-section,
-  .reviews-section
-) {
+body.accessibility-mode
+  :where(
+    .hero-section,
+    .fabric-section,
+    .palette-section,
+    .about-section,
+    .request-section,
+    .catalog-main,
+    .product-main,
+    .about-main,
+    .delivery-main,
+    .contacts-main,
+    .account-main,
+    .orders-main,
+    .auth-main,
+    .service-section,
+    .reviews-section
+  ) {
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
@@ -642,23 +642,24 @@ body.accessibility-mode :where(
   padding-bottom: clamp(1.5rem, 4vw, 3rem) !important;
 }
 
-body.accessibility-mode :where(
-  .hero-card,
-  .catalog-layout,
-  .catalog-toolbar,
-  .product-layout,
-  .calculator-panel,
-  .about-intro,
-  .about-section,
-  .delivery-grid,
-  .contacts-grid,
-  .contacts-info,
-  .orders-head,
-  .account-card,
-  .account-data,
-  .account-actions,
-  .cart-modal__footer
-) {
+body.accessibility-mode
+  :where(
+    .hero-card,
+    .catalog-layout,
+    .catalog-toolbar,
+    .product-layout,
+    .calculator-panel,
+    .about-intro,
+    .about-section,
+    .delivery-grid,
+    .contacts-grid,
+    .contacts-info,
+    .orders-head,
+    .account-card,
+    .account-data,
+    .account-actions,
+    .cart-modal__footer
+  ) {
   position: relative !important;
   inset: auto !important;
   display: flex !important;
@@ -674,13 +675,14 @@ body.accessibility-mode :where(
   transform: none !important;
 }
 
-body.accessibility-mode :where(
-  .hero-card__content,
-  .about-section__content,
-  .about-intro__content,
-  .delivery-card__content,
-  .payment-card__content
-) {
+body.accessibility-mode
+  :where(
+    .hero-card__content,
+    .about-section__content,
+    .about-intro__content,
+    .delivery-card__content,
+    .payment-card__content
+  ) {
   position: relative !important;
   inset: auto !important;
   flex: 1 1 22rem !important;
@@ -701,45 +703,46 @@ body.accessibility-mode .about-intro::after {
   display: none !important;
 }
 
-body.accessibility-mode :where(
-  .hero-card,
-  .fabric-section,
-  .palette-section,
-  .about-section,
-  .request-card,
-  .catalog-filters,
-  .catalog-content,
-  .product-card,
-  .product-card__image,
-  .product-card__body,
-  .product-specs,
-  .calculator-section,
-  .calculator-card,
-  .calculator-total,
-  .colors-section,
-  .account-card,
-  .account-message,
-  .orders-section,
-  .orders-list__row,
-  .orders-empty,
-  .orders-guest,
-  .auth-card,
-  .delivery-card,
-  .payment-card,
-  .delivery-info,
-  .delivery-question,
-  .contacts-info__card,
-  .contacts-map,
-  .contacts-consultation,
-  .review-card,
-  .review-modal__dialog,
-  .catalog-admin-modal__panel,
-  .cart-modal__panel,
-  .cart-modal__item,
-  .auth-modal__panel,
-  .price-request-modal__dialog,
-  .price-request-modal__panel
-) {
+body.accessibility-mode
+  :where(
+    .hero-card,
+    .fabric-section,
+    .palette-section,
+    .about-section,
+    .request-card,
+    .catalog-filters,
+    .catalog-content,
+    .product-card,
+    .product-card__image,
+    .product-card__body,
+    .product-specs,
+    .calculator-section,
+    .calculator-card,
+    .calculator-total,
+    .colors-section,
+    .account-card,
+    .account-message,
+    .orders-section,
+    .orders-list__row,
+    .orders-empty,
+    .orders-guest,
+    .auth-card,
+    .delivery-card,
+    .payment-card,
+    .delivery-info,
+    .delivery-question,
+    .contacts-info__card,
+    .contacts-map,
+    .contacts-consultation,
+    .review-card,
+    .review-modal__dialog,
+    .catalog-admin-modal__panel,
+    .cart-modal__panel,
+    .cart-modal__item,
+    .auth-modal__panel,
+    .price-request-modal__dialog,
+    .price-request-modal__panel
+  ) {
   max-width: 100% !important;
   border: 2px solid var(--a11y-border) !important;
   border-radius: 8px !important;
@@ -747,22 +750,26 @@ body.accessibility-mode :where(
   color: var(--a11y-text) !important;
 }
 
-body.accessibility-mode :where(
-  .products-grid,
-  .fabric-grid,
-  .palette-grid,
-  .quality-grid,
-  .service-grid,
-  .reviews-list,
-  .delivery-grid,
-  .payment-grid,
-  .colors-grid,
-  .stats-list
-) {
+body.accessibility-mode
+  :where(
+    .products-grid,
+    .fabric-grid,
+    .palette-grid,
+    .quality-grid,
+    .service-grid,
+    .reviews-list,
+    .delivery-grid,
+    .payment-grid,
+    .colors-grid,
+    .stats-list
+  ) {
   position: static !important;
   display: grid !important;
   width: 100% !important;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)) !important;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 16rem), 1fr)
+  ) !important;
   gap: 1rem !important;
   margin: 0 !important;
   transform: none !important;
@@ -772,18 +779,19 @@ body.accessibility-mode .fabric-grid__row {
   display: contents !important;
 }
 
-body.accessibility-mode :where(
-  .product-card,
-  .fabric-card,
-  .palette-card,
-  .quality-card,
-  .service-card,
-  .delivery-card,
-  .payment-card,
-  .contacts-info__card,
-  .review-card,
-  .stats-card
-) {
+body.accessibility-mode
+  :where(
+    .product-card,
+    .fabric-card,
+    .palette-card,
+    .quality-card,
+    .service-card,
+    .delivery-card,
+    .payment-card,
+    .contacts-info__card,
+    .review-card,
+    .stats-card
+  ) {
   position: static !important;
   display: flex !important;
   width: 100% !important;
@@ -811,34 +819,36 @@ body.accessibility-mode :where(.catalog-layout, .product-layout) > * {
   max-width: 100% !important;
 }
 
-body.accessibility-mode :where(
-  .catalog-filters,
-  .product-card__body,
-  .account-data,
-  .auth-form,
-  .request-form,
-  .contacts-form,
-  .delivery-form,
-  .review-form,
-  .catalog-admin-form,
-  .cart-modal__list
-) {
+body.accessibility-mode
+  :where(
+    .catalog-filters,
+    .product-card__body,
+    .account-data,
+    .auth-form,
+    .request-form,
+    .contacts-form,
+    .delivery-form,
+    .review-form,
+    .catalog-admin-form,
+    .cart-modal__list
+  ) {
   display: grid !important;
   width: 100% !important;
   grid-template-columns: minmax(0, 1fr) !important;
   gap: 1rem !important;
 }
 
-body.accessibility-mode :where(
-  .hero-card__image,
-  .product-card__image,
-  .about-section__image,
-  .about-intro__image,
-  .calculator-card__image,
-  .quality-card img,
-  .delivery-card img,
-  .payment-card img
-) {
+body.accessibility-mode
+  :where(
+    .hero-card__image,
+    .product-card__image,
+    .about-section__image,
+    .about-intro__image,
+    .calculator-card__image,
+    .quality-card img,
+    .delivery-card img,
+    .payment-card img
+  ) {
   position: static !important;
   flex: 1 1 18rem !important;
   width: 100% !important;
@@ -866,23 +876,24 @@ body.accessibility-mode :where(input, textarea)::placeholder {
   opacity: 1 !important;
 }
 
-body.accessibility-mode :where(
-  button,
-  .button,
-  .product-card__button,
-  .account-button,
-  .auth-form__submit,
-  .request-form__button,
-  .contacts-form__submit,
-  .delivery-form__button,
-  .reviews-add-button,
-  .cart-modal__order,
-  .cart-modal__remove,
-  .catalog-admin-button,
-  .catalog-admin-actions button,
-  .orders-list__details,
-  .orders-list__delete
-) {
+body.accessibility-mode
+  :where(
+    button,
+    .button,
+    .product-card__button,
+    .account-button,
+    .auth-form__submit,
+    .request-form__button,
+    .contacts-form__submit,
+    .delivery-form__button,
+    .reviews-add-button,
+    .cart-modal__order,
+    .cart-modal__remove,
+    .catalog-admin-button,
+    .catalog-admin-actions button,
+    .orders-list__details,
+    .orders-list__delete
+  ) {
   display: inline-flex !important;
   width: auto !important;
   max-width: 100% !important;
@@ -899,28 +910,30 @@ body.accessibility-mode :where(
   cursor: pointer;
 }
 
-body.accessibility-mode :where(
-  [data-auth-error],
-  [data-account-error],
-  [data-error-name],
-  [data-error-phone],
-  [data-error-email],
-  .is-error,
-  .input-error,
-  [class*="__error"]
-) {
+body.accessibility-mode
+  :where(
+    [data-auth-error],
+    [data-account-error],
+    [data-error-name],
+    [data-error-phone],
+    [data-error-email],
+    .is-error,
+    .input-error,
+    [class*="__error"]
+  ) {
   color: var(--a11y-error) !important;
 }
 
-body.accessibility-mode :where(
-  .account-message,
-  .catalog-admin-message,
-  .cart-visual__message,
-  .request-form__message,
-  .contacts-form__message,
-  .delivery-form__message,
-  .auth-form__message
-) {
+body.accessibility-mode
+  :where(
+    .account-message,
+    .catalog-admin-message,
+    .cart-visual__message,
+    .request-form__message,
+    .contacts-form__message,
+    .delivery-form__message,
+    .auth-form__message
+  ) {
   color: var(--a11y-success) !important;
 }
 
@@ -955,11 +968,12 @@ body.accessibility-mode .orders-list__header {
   display: none !important;
 }
 
-body.accessibility-mode :where(
-  .orders-list__row,
-  .orders-section--user .orders-list__row,
-  .orders-section--admin .orders-list__row
-) {
+body.accessibility-mode
+  :where(
+    .orders-list__row,
+    .orders-section--user .orders-list__row,
+    .orders-section--admin .orders-list__row
+  ) {
   display: grid !important;
   width: 100% !important;
   min-width: 0 !important;
@@ -981,37 +995,40 @@ body.accessibility-mode .orders-list__cell::before {
   font-weight: 700;
 }
 
-body.accessibility-mode :where(
-  .cart-modal,
-  .auth-modal,
-  .review-modal,
-  .catalog-admin-modal,
-  .price-request-modal
-) {
+body.accessibility-mode
+  :where(
+    .cart-modal,
+    .auth-modal,
+    .review-modal,
+    .catalog-admin-modal,
+    .price-request-modal
+  ) {
   padding: 1rem !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
 }
 
-body.accessibility-mode :where(
-  .cart-modal__overlay,
-  .auth-modal__overlay,
-  .review-modal__overlay,
-  .catalog-admin-modal__overlay,
-  .price-request-modal__overlay,
-  .mobile-menu__overlay
-) {
+body.accessibility-mode
+  :where(
+    .cart-modal__overlay,
+    .auth-modal__overlay,
+    .review-modal__overlay,
+    .catalog-admin-modal__overlay,
+    .price-request-modal__overlay,
+    .mobile-menu__overlay
+  ) {
   background: var(--a11y-overlay) !important;
 }
 
-body.accessibility-mode :where(
-  .cart-modal__panel,
-  .auth-modal__panel,
-  .review-modal__dialog,
-  .catalog-admin-modal__panel,
-  .price-request-modal__dialog,
-  .price-request-modal__panel
-) {
+body.accessibility-mode
+  :where(
+    .cart-modal__panel,
+    .auth-modal__panel,
+    .review-modal__dialog,
+    .catalog-admin-modal__panel,
+    .price-request-modal__dialog,
+    .price-request-modal__panel
+  ) {
   display: block !important;
   width: min(100%, 80ch) !important;
   min-width: 0 !important;
@@ -1026,13 +1043,14 @@ body.accessibility-mode .price-request-modal__image {
   display: none !important;
 }
 
-body.accessibility-mode :where(
-  .cart-modal__close,
-  .auth-modal__close,
-  .review-modal__close,
-  .catalog-admin-modal__close,
-  .price-request-modal__close
-) {
+body.accessibility-mode
+  :where(
+    .cart-modal__close,
+    .auth-modal__close,
+    .review-modal__close,
+    .catalog-admin-modal__close,
+    .price-request-modal__close
+  ) {
   top: 0.5rem !important;
   right: 0.5rem !important;
   width: 2.75rem !important;
@@ -1044,10 +1062,8 @@ body.accessibility-mode :where(
   background-color: transparent !important;
 }
 
-body.accessibility-mode :where(
-  .price-request-modal__content,
-  .auth-modal__content
-) {
+body.accessibility-mode
+  :where(.price-request-modal__content, .auth-modal__content) {
   width: 100% !important;
   min-width: 0 !important;
   max-width: 100% !important;
@@ -1140,39 +1156,42 @@ body.a11y-images-disabled .a11y-image-placeholder {
   word-spacing: 0.16em !important;
 }
 
-body.a11y-images-disabled :where(
-  .header-circle,
-  .mobile-menu__cart,
-  .mobile-menu__eye,
-  .login-link,
-  .phone-link,
-  .button
-) .a11y-image-placeholder {
+body.a11y-images-disabled
+  :where(
+    .header-circle,
+    .mobile-menu__cart,
+    .mobile-menu__eye,
+    .login-link,
+    .phone-link,
+    .button
+  )
+  .a11y-image-placeholder {
   min-height: 2.25rem !important;
   padding: 0.25rem !important;
   font-size: var(--a11y-small-size) !important;
 }
 
-body.accessibility-mode :where(
-  p,
-  span,
-  label,
-  li,
-  dt,
-  dd,
-  small,
-  strong,
-  b,
-  legend,
-  th,
-  td,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6
-) {
+body.accessibility-mode
+  :where(
+    p,
+    span,
+    label,
+    li,
+    dt,
+    dd,
+    small,
+    strong,
+    b,
+    legend,
+    th,
+    td,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
+  ) {
   color: var(--a11y-text) !important;
 }
 
@@ -1180,32 +1199,33 @@ body.accessibility-mode :where(a, a *) {
   color: var(--a11y-link) !important;
 }
 
-body.accessibility-mode :where(
-  button,
-  button *,
-  .button,
-  .button *,
-  .product-card__button,
-  .product-card__button *,
-  .account-button,
-  .account-button *,
-  .auth-form__submit,
-  .auth-form__submit *,
-  .request-form__button,
-  .request-form__button *,
-  .contacts-form__submit,
-  .contacts-form__submit *,
-  .delivery-form__button,
-  .delivery-form__button *,
-  .reviews-add-button,
-  .reviews-add-button *,
-  .cart-modal__order,
-  .cart-modal__order *,
-  .catalog-admin-button,
-  .catalog-admin-button *,
-  .catalog-admin-actions button,
-  .catalog-admin-actions button *
-) {
+body.accessibility-mode
+  :where(
+    button,
+    button *,
+    .button,
+    .button *,
+    .product-card__button,
+    .product-card__button *,
+    .account-button,
+    .account-button *,
+    .auth-form__submit,
+    .auth-form__submit *,
+    .request-form__button,
+    .request-form__button *,
+    .contacts-form__submit,
+    .contacts-form__submit *,
+    .delivery-form__button,
+    .delivery-form__button *,
+    .reviews-add-button,
+    .reviews-add-button *,
+    .cart-modal__order,
+    .cart-modal__order *,
+    .catalog-admin-button,
+    .catalog-admin-button *,
+    .catalog-admin-actions button,
+    .catalog-admin-actions button *
+  ) {
   color: var(--a11y-button-text) !important;
 }
 
@@ -1214,107 +1234,112 @@ body.accessibility-mode :where(input, select, textarea) {
   caret-color: var(--a11y-text) !important;
 }
 
-body.accessibility-mode :where(
-  [data-auth-error],
-  [data-account-error],
-  [data-error-name],
-  [data-error-phone],
-  [data-error-email],
-  .is-error,
-  .input-error,
-  [class*="__error"]
-) {
+body.accessibility-mode
+  :where(
+    [data-auth-error],
+    [data-account-error],
+    [data-error-name],
+    [data-error-phone],
+    [data-error-email],
+    .is-error,
+    .input-error,
+    [class*="__error"]
+  ) {
   color: var(--a11y-error) !important;
 }
 
-body.accessibility-mode :where(
-  .account-message,
-  .catalog-admin-message,
-  .cart-visual__message,
-  .request-form__message,
-  .contacts-form__message,
-  .delivery-form__message,
-  .auth-form__message
-) {
+body.accessibility-mode
+  :where(
+    .account-message,
+    .catalog-admin-message,
+    .cart-visual__message,
+    .request-form__message,
+    .contacts-form__message,
+    .delivery-form__message,
+    .auth-form__message
+  ) {
   color: var(--a11y-success) !important;
 }
 
-body.accessibility-mode :where(
-  main,
-  .hero-section,
-  .palette-section,
-  .catalog-main,
-  .product-main,
-  .about-main,
-  .delivery-main,
-  .contacts-main,
-  .account-main,
-  .orders-main,
-  .auth-main
-) {
+body.accessibility-mode
+  :where(
+    main,
+    .hero-section,
+    .palette-section,
+    .catalog-main,
+    .product-main,
+    .about-main,
+    .delivery-main,
+    .contacts-main,
+    .account-main,
+    .orders-main,
+    .auth-main
+  ) {
   background: var(--a11y-bg) !important;
 }
 
-body.accessibility-mode :where(
-  .catalog-sidebar,
-  .catalog-toolbar,
-  .catalog-filters,
-  .search-field,
-  .filter-group,
-  .filter-section,
-  .filter-option,
-  .sort-control,
-  .mobile-color-filter,
-  .product-specs dl,
-  .calculator-field,
-  .counter-row,
-  .account-field,
-  .orders-list__cell,
-  .contacts-info__item,
-  .auth-form__section,
-  .catalog-admin-form__top,
-  .catalog-admin-form__grid
-) {
+body.accessibility-mode
+  :where(
+    .catalog-sidebar,
+    .catalog-toolbar,
+    .catalog-filters,
+    .search-field,
+    .filter-group,
+    .filter-section,
+    .filter-option,
+    .sort-control,
+    .mobile-color-filter,
+    .product-specs dl,
+    .calculator-field,
+    .counter-row,
+    .account-field,
+    .orders-list__cell,
+    .contacts-info__item,
+    .auth-form__section,
+    .catalog-admin-form__top,
+    .catalog-admin-form__grid
+  ) {
   background: var(--a11y-surface) !important;
   color: var(--a11y-text) !important;
 }
 
-body.accessibility-mode :where(
-  .service-section,
-  .fabric-quality,
-  .service-card,
-  .quality-card,
-  .cart-visual__quantity,
-  .request-section .request-form
-) {
+body.accessibility-mode
+  :where(
+    .service-section,
+    .fabric-quality,
+    .service-card,
+    .quality-card,
+    .cart-visual__quantity,
+    .request-section .request-form
+  ) {
   border-color: var(--a11y-border) !important;
   background: var(--a11y-surface) !important;
   color: var(--a11y-text) !important;
 }
 
-body.accessibility-mode :where(
-  .fabric-card p,
-  .filter-count,
-  .cart-link__count
-) {
+body.accessibility-mode
+  :where(.fabric-card p, .filter-count, .cart-link__count) {
   background: var(--a11y-button-bg) !important;
   color: var(--a11y-button-text) !important;
 }
 
-body.accessibility-mode :where(
-  a.button,
-  a.product-card__button,
-  a.account-button,
-  a.cart-visual__button,
-  a.about-section__link
-),
-body.accessibility-mode :where(
-  a.button,
-  a.product-card__button,
-  a.account-button,
-  a.cart-visual__button,
-  a.about-section__link
-) * {
+body.accessibility-mode
+  :where(
+    a.button,
+    a.product-card__button,
+    a.account-button,
+    a.cart-visual__button,
+    a.about-section__link
+  ),
+body.accessibility-mode
+  :where(
+    a.button,
+    a.product-card__button,
+    a.account-button,
+    a.cart-visual__button,
+    a.about-section__link
+  )
+  * {
   background: var(--a11y-button-bg) !important;
   color: var(--a11y-button-text) !important;
   text-decoration: none !important;
@@ -1377,15 +1402,16 @@ body.accessibility-mode .header-search button img {
   height: 1.5rem !important;
 }
 
-body.accessibility-mode :where(
-  .auth-form,
-  .request-form,
-  .contacts-form,
-  .delivery-form,
-  .review-form,
-  .catalog-admin-form,
-  .account-edit
-) {
+body.accessibility-mode
+  :where(
+    .auth-form,
+    .request-form,
+    .contacts-form,
+    .delivery-form,
+    .review-form,
+    .catalog-admin-form,
+    .account-edit
+  ) {
   width: min(100%, 54rem) !important;
   max-width: 54rem !important;
   margin-right: auto !important;
@@ -1422,12 +1448,9 @@ body.accessibility-mode .request-form__row {
   gap: 1rem !important;
 }
 
-body.accessibility-mode .request-form :where(
-  label,
-  input,
-  .button--submit,
-  .request-form__button
-) {
+body.accessibility-mode
+  .request-form
+  :where(label, input, .button--submit, .request-form__button) {
   width: 100% !important;
   max-width: 100% !important;
 }
@@ -1440,35 +1463,37 @@ body.accessibility-mode .request-form__hints {
   width: 100% !important;
 }
 
-body.accessibility-mode :where(
-  .hero-section,
-  .fabric-section,
-  .palette-section,
-  .about-section,
-  .request-section,
-  .service-section,
-  .reviews-section,
-  .delivery-section,
-  .payment-section
-) {
+body.accessibility-mode
+  :where(
+    .hero-section,
+    .fabric-section,
+    .palette-section,
+    .about-section,
+    .request-section,
+    .service-section,
+    .reviews-section,
+    .delivery-section,
+    .payment-section
+  ) {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   padding-top: clamp(1rem, 2.5vw, 2rem) !important;
   padding-bottom: clamp(1rem, 2.5vw, 2rem) !important;
 }
 
-body.accessibility-mode :where(
-  .hero-card,
-  .fabric-grid,
-  .palette-grid,
-  .about-section,
-  .request-card,
-  .quality-grid,
-  .service-grid,
-  .reviews-list,
-  .delivery-grid,
-  .payment-grid
-) {
+body.accessibility-mode
+  :where(
+    .hero-card,
+    .fabric-grid,
+    .palette-grid,
+    .about-section,
+    .request-card,
+    .quality-grid,
+    .service-grid,
+    .reviews-list,
+    .delivery-grid,
+    .payment-grid
+  ) {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
@@ -1489,17 +1514,17 @@ body.accessibility-mode .site-footer__inner {
   width: min(100%, 80rem) !important;
   height: auto !important;
   min-height: 0 !important;
-  grid-template-columns: minmax(12rem, 1fr) minmax(14rem, 1fr) minmax(18rem, 2fr) !important;
+  grid-template-columns: minmax(12rem, 1fr) minmax(14rem, 1fr) minmax(
+      18rem,
+      2fr
+    ) !important;
   gap: 1.5rem !important;
   align-items: start !important;
   margin: 0 auto !important;
   padding: 0 clamp(12px, 3vw, 32px) !important;
 }
 
-body.accessibility-mode :where(
-  .site-footer__brand,
-  .site-footer__contacts
-) {
+body.accessibility-mode :where(.site-footer__brand, .site-footer__contacts) {
   position: static !important;
   display: flex !important;
   width: 100% !important;
@@ -1510,13 +1535,16 @@ body.accessibility-mode :where(
   margin: 0 !important;
 }
 
-body.accessibility-mode :where(
-  .site-logo--footer,
-  .site-footer__nav,
-  .phone-link--footer,
-  .site-footer__social,
-  .site-footer__contacts p
-) {
+body.accessibility-mode
+  :where(
+    .site-logo--footer,
+    .site-footer__nav,
+    .phone-link--footer,
+    .site-footer__social,
+    .site-footer__social p,
+    .site-footer__social a,
+    .site-footer__contacts p
+  ) {
   position: static !important;
   inset: auto !important;
   width: auto !important;
@@ -1524,6 +1552,20 @@ body.accessibility-mode :where(
   height: auto !important;
   margin: 0 !important;
   transform: none !important;
+}
+
+body.accessibility-mode .site-logo--footer {
+  flex: 0 0 auto !important;
+  width: min(12rem, 100%) !important;
+  overflow: visible !important;
+}
+
+body.accessibility-mode .site-logo--footer img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  transform: none !important;
+  object-fit: contain !important;
 }
 
 body.accessibility-mode .site-footer__nav {
@@ -1646,7 +1688,8 @@ body.accessibility-mode .site-footer__contacts::before {
     min-width: 0 !important;
   }
 
-  body.accessibility-mode :where(.mobile-menu__link, .mobile-menu__categories a) {
+  body.accessibility-mode
+    :where(.mobile-menu__link, .mobile-menu__categories a) {
     flex-basis: 100% !important;
   }
 
@@ -1665,90 +1708,94 @@ body.accessibility-mode .site-footer__contacts::before {
     max-height: calc(100vh - 32px);
   }
 
-  body.accessibility-mode :where(
-    .cart-modal__panel,
-    .auth-modal__panel,
-    .review-modal__dialog,
-    .catalog-admin-modal__panel,
-    .price-request-modal__dialog,
-    .price-request-modal__panel
-  ) {
+  body.accessibility-mode
+    :where(
+      .cart-modal__panel,
+      .auth-modal__panel,
+      .review-modal__dialog,
+      .catalog-admin-modal__panel,
+      .price-request-modal__dialog,
+      .price-request-modal__panel
+    ) {
     max-height: calc(100vh - 2rem) !important;
   }
 }
 
-body.accessibility-mode :where(
-  .catalog-toolbar,
-  .catalog-filters,
-  .catalog-content,
-  .search-field,
-  .filter-group,
-  .filter-list,
-  .filter-option,
-  .sort-control,
-  .product-card,
-  .product-card__image,
-  .product-card__body,
-  .product-card__title,
-  .product-card__meta,
-  .product-card__price,
-  .product-card__width,
-  .payment-card,
-  .payment-card__content,
-  .delivery-info,
-  .site-footer,
-  .site-footer__brand,
-  .site-footer__nav,
-  .site-footer__social,
-  .site-footer__contacts,
-  .modal,
-  [class*="modal__"]
-) {
+body.accessibility-mode
+  :where(
+    .catalog-toolbar,
+    .catalog-filters,
+    .catalog-content,
+    .search-field,
+    .filter-group,
+    .filter-list,
+    .filter-option,
+    .sort-control,
+    .product-card,
+    .product-card__image,
+    .product-card__body,
+    .product-card__title,
+    .product-card__meta,
+    .product-card__price,
+    .product-card__width,
+    .payment-card,
+    .payment-card__content,
+    .delivery-info,
+    .site-footer,
+    .site-footer__brand,
+    .site-footer__nav,
+    .site-footer__social,
+    .site-footer__contacts,
+    .modal,
+    [class*="modal__"]
+  ) {
   border-color: var(--a11y-border) !important;
   color: var(--a11y-text) !important;
 }
 
-body.accessibility-mode :where(
-  .catalog-toolbar,
-  .catalog-filters,
-  .catalog-content,
-  .search-field,
-  .filter-group,
-  .product-card,
-  .product-card__body,
-  .payment-card,
-  .payment-card__content,
-  .delivery-info,
-  .site-footer,
-  .site-footer__inner,
-  .site-footer__brand,
-  .site-footer__nav,
-  .site-footer__social,
-  .site-footer__contacts,
-  .modal,
-  [class*="modal__"]
-) {
+body.accessibility-mode
+  :where(
+    .catalog-toolbar,
+    .catalog-filters,
+    .catalog-content,
+    .search-field,
+    .filter-group,
+    .product-card,
+    .product-card__body,
+    .payment-card,
+    .payment-card__content,
+    .delivery-info,
+    .site-footer,
+    .site-footer__inner,
+    .site-footer__brand,
+    .site-footer__nav,
+    .site-footer__social,
+    .site-footer__contacts,
+    .modal,
+    [class*="modal__"]
+  ) {
   background-color: var(--a11y-surface) !important;
 }
 
-body.accessibility-mode :where(
-  .product-card__title,
-  .product-card__price,
-  .product-card__width,
-  .filter-group h2,
-  .filter-option,
-  .catalog-toolbar,
-  .catalog-toolbar *,
-  .site-header__nav a,
-  .category-strip a,
-  .mobile-menu__link,
-  .mobile-menu__categories a,
-  .site-footer h2,
-  .site-footer p,
-  .site-footer a,
-  button,
-  .button
-) {
+body.accessibility-mode
+  :where(
+    .product-card__title,
+    .product-card__price,
+    .product-card__width,
+    .filter-group h2,
+    .filter-option,
+    .catalog-toolbar,
+    .catalog-toolbar *,
+    .site-header__nav a,
+    .category-strip a,
+    .mobile-menu__link,
+    .mobile-menu__categories a,
+    .site-footer h2,
+    .site-footer p,
+    .site-footer a,
+    button,
+    .button
+  ) {
   hyphens: none !important;
   overflow-wrap: normal !important;
   word-break: normal !important;
@@ -1814,7 +1861,10 @@ body.accessibility-mode .color-option__swatch {
 
 body.accessibility-mode .products-grid {
   align-items: start !important;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)) !important;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 24rem), 1fr)
+  ) !important;
 }
 
 body.accessibility-mode .product-card {
@@ -1875,15 +1925,12 @@ body.accessibility-mode .payment-card img {
 }
 
 body.accessibility-mode .site-footer__inner {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)) !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 1.25rem !important;
 }
 
-body.accessibility-mode :where(
-  .site-footer__brand,
-  .site-footer__nav,
-  .site-footer__contacts
-) {
+body.accessibility-mode
+  :where(.site-footer__brand, .site-footer__nav, .site-footer__contacts) {
   align-self: start !important;
   min-width: 0 !important;
 }
@@ -1905,24 +1952,23 @@ body.accessibility-mode .site-footer__social a {
   justify-content: center !important;
 }
 
+body.accessibility-mode .site-footer__social img {
+  width: 3.25rem !important;
+  max-width: 3.25rem !important;
+  height: 3.25rem !important;
+  object-fit: contain !important;
+}
+
 body.accessibility-mode .site-footer__social p {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
 }
 
-body.accessibility-mode :where(
-  .site-footer__nav a,
-  .phone-link--footer,
-  .site-footer__contacts p
-) {
+body.accessibility-mode
+  :where(.site-footer__nav a, .phone-link--footer, .site-footer__contacts p) {
   width: 100% !important;
   max-width: 100% !important;
-}
-
-body.accessibility-mode.a11y-font-large .site-footer__inner,
-body.accessibility-mode.a11y-font-xlarge .site-footer__inner {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)) !important;
 }
 
 body.accessibility-mode.a11y-font-large .site-footer__social,
@@ -1936,8 +1982,23 @@ body.accessibility-mode.a11y-font-xlarge .site-footer__social p {
   grid-column: 1 / -1 !important;
 }
 
+@media (max-width: 1199px) {
+  body.accessibility-mode .site-footer__inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body.accessibility-mode .site-footer__inner {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
 body.accessibility-mode.a11y-font-xlarge .products-grid {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 27rem), 1fr)) !important;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 27rem), 1fr)
+  ) !important;
 }
 
 body.accessibility-mode :where(.not-found-button, .not-found-button *) {
@@ -1962,16 +2023,13 @@ body.accessibility-mode .auth-form__submit {
   padding-left: 0.5rem !important;
 }
 
-body.accessibility-mode.a11y-images-disabled :where(img, iframe, video, canvas) {
+body.accessibility-mode.a11y-images-disabled
+  :where(img, iframe, video, canvas) {
   display: none !important;
 }
 
 body.accessibility-mode.a11y-images-disabled
-  :where(
-    .header-circle--eye,
-    .mobile-menu__eye,
-    [data-accessibility-toggle]
-  )
+  :where(.header-circle--eye, .mobile-menu__eye, [data-accessibility-toggle])
   :where(img, svg) {
   display: block !important;
   width: 1.75rem !important;
@@ -2005,12 +2063,19 @@ body.accessibility-mode.a11y-images-disabled .a11y-image-placeholder--content {
 }
 
 body.accessibility-mode.a11y-images-disabled
-  :where(.product-card__image, .hero-card__image, .about-section__image, .about-intro__image)
+  :where(
+    .product-card__image,
+    .hero-card__image,
+    .about-section__image,
+    .about-intro__image
+  )
   .a11y-image-placeholder--content {
   min-height: 12rem !important;
 }
 
-body.accessibility-mode.a11y-images-disabled .payment-card .a11y-image-placeholder--content {
+body.accessibility-mode.a11y-images-disabled
+  .payment-card
+  .a11y-image-placeholder--content {
   min-height: 10rem !important;
   align-self: stretch !important;
 }
@@ -2050,7 +2115,10 @@ body.accessibility-mode.a11y-images-disabled
   }
 
   body.accessibility-mode .filter-list {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)) !important;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(min(100%, 15rem), 1fr)
+    ) !important;
   }
 
   body.accessibility-mode .payment-card {
@@ -2118,11 +2186,8 @@ body.accessibility-mode.a11y-images-disabled
   }
 }
 
-body.accessibility-mode :where(
-  .header-circle--eye,
-  .mobile-menu__eye,
-  [data-accessibility-toggle]
-) {
+body.accessibility-mode
+  :where(.header-circle--eye, .mobile-menu__eye, [data-accessibility-toggle]) {
   display: inline-flex !important;
   flex: 0 0 auto !important;
   width: 3.25rem !important;
@@ -2138,11 +2203,9 @@ body.accessibility-mode :where(
   color: var(--a11y-button-text) !important;
 }
 
-body.accessibility-mode :where(
-  .header-circle--eye,
-  .mobile-menu__eye,
-  [data-accessibility-toggle]
-) :where(img, svg) {
+body.accessibility-mode
+  :where(.header-circle--eye, .mobile-menu__eye, [data-accessibility-toggle])
+  :where(img, svg) {
   display: block !important;
   width: 1.75rem !important;
   height: 1.75rem !important;
@@ -2150,11 +2213,9 @@ body.accessibility-mode :where(
   filter: brightness(0) !important;
 }
 
-body.accessibility-mode.a11y-scheme-white-black :where(
-  .header-circle--eye,
-  .mobile-menu__eye,
-  [data-accessibility-toggle]
-) :where(img, svg) {
+body.accessibility-mode.a11y-scheme-white-black
+  :where(.header-circle--eye, .mobile-menu__eye, [data-accessibility-toggle])
+  :where(img, svg) {
   filter: brightness(0) invert(1) !important;
 }
 
@@ -2203,12 +2264,9 @@ body.accessibility-mode .catalog-toolbar {
   padding: 0.75rem !important;
 }
 
-body.accessibility-mode .catalog-toolbar :where(
-  .filter-heading,
-  .reset-button,
-  .sort-control,
-  .catalog-admin-button
-) {
+body.accessibility-mode
+  .catalog-toolbar
+  :where(.filter-heading, .reset-button, .sort-control, .catalog-admin-button) {
   width: auto !important;
   min-width: 0 !important;
   max-width: 100% !important;
@@ -2260,7 +2318,10 @@ body.accessibility-mode .search-field input {
 
 body.accessibility-mode .products-grid {
   width: 100% !important;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)) !important;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 22rem), 1fr)
+  ) !important;
 }
 
 body.accessibility-mode .product-card {
@@ -2283,7 +2344,10 @@ body.accessibility-mode .product-card__title {
 }
 
 body.accessibility-mode .palette-grid {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)) !important;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 12rem), 1fr)
+  ) !important;
   gap: 1.5rem !important;
   align-items: start !important;
 }
@@ -2354,7 +2418,9 @@ body.accessibility-mode .catalog-pagination__button span {
   background: transparent !important;
 }
 
-body.accessibility-mode .catalog-pagination__button:not(.catalog-pagination__button--next) span {
+body.accessibility-mode
+  .catalog-pagination__button:not(.catalog-pagination__button--next)
+  span {
   transform: rotate(135deg) !important;
 }
 
@@ -2385,13 +2451,14 @@ body.accessibility-mode .delivery-list {
   align-content: start !important;
 }
 
-body.accessibility-mode :where(
-  .delivery-card,
-  .delivery-card--pickup,
-  .delivery-card--transport,
-  .delivery-card--city,
-  .delivery-question
-) {
+body.accessibility-mode
+  :where(
+    .delivery-card,
+    .delivery-card--pickup,
+    .delivery-card--transport,
+    .delivery-card--city,
+    .delivery-question
+  ) {
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
@@ -2400,10 +2467,8 @@ body.accessibility-mode :where(
   align-self: start !important;
 }
 
-body.accessibility-mode :where(
-  .delivery-card--pickup,
-  .delivery-card--transport
-) {
+body.accessibility-mode
+  :where(.delivery-card--pickup, .delivery-card--transport) {
   display: grid !important;
   grid-template-columns: minmax(0, 1fr) !important;
   gap: 1rem !important;
@@ -2414,10 +2479,8 @@ body.accessibility-mode .delivery-card__content {
   padding: 0 !important;
 }
 
-body.accessibility-mode :where(
-  .delivery-card__image--boxes,
-  .delivery-card__image--van
-) {
+body.accessibility-mode
+  :where(.delivery-card__image--boxes, .delivery-card__image--van) {
   width: 100% !important;
   max-height: 14rem !important;
   min-height: 0 !important;
@@ -2455,7 +2518,10 @@ body.accessibility-mode .account-card {
 body.accessibility-mode .account-data {
   display: grid !important;
   width: 100% !important;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)) !important;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 16rem), 1fr)
+  ) !important;
   gap: 1rem !important;
   padding: 0 !important;
 }
@@ -2487,7 +2553,10 @@ body.accessibility-mode .account-actions {
   display: grid !important;
   width: 100% !important;
   grid-column: 1 / -1 !important;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)) !important;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 14rem), 1fr)
+  ) !important;
   gap: 0.75rem !important;
   margin: 0 !important;
 }
@@ -2545,20 +2614,22 @@ body.accessibility-mode .cart-modal__panel {
   width: min(100%, 64rem) !important;
 }
 
-body.accessibility-mode :where(
-  .cart-modal__close,
-  .auth-modal__close,
-  .review-modal__close,
-  .catalog-admin-modal__close,
-  .price-request-modal__close
-)::before,
-body.accessibility-mode :where(
-  .cart-modal__close,
-  .auth-modal__close,
-  .review-modal__close,
-  .catalog-admin-modal__close,
-  .price-request-modal__close
-)::after {
+body.accessibility-mode
+  :where(
+    .cart-modal__close,
+    .auth-modal__close,
+    .review-modal__close,
+    .catalog-admin-modal__close,
+    .price-request-modal__close
+  )::before,
+body.accessibility-mode
+  :where(
+    .cart-modal__close,
+    .auth-modal__close,
+    .review-modal__close,
+    .catalog-admin-modal__close,
+    .price-request-modal__close
+  )::after {
   background: var(--a11y-text) !important;
 }
 
@@ -2656,10 +2727,9 @@ body.accessibility-mode .login-link .auth-link__text {
   max-width: 100% !important;
 }
 
-body.accessibility-mode :where(
-  .login-link,
-  .mobile-menu__login
-) .auth-link__name {
+body.accessibility-mode
+  :where(.login-link, .mobile-menu__login)
+  .auth-link__name {
   display: block !important;
   width: auto !important;
   min-width: 0 !important;
@@ -2676,12 +2746,14 @@ body.accessibility-mode :where(
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
-  body.accessibility-mode .catalog-toolbar :where(
-    .filter-heading,
-    .reset-button,
-    .sort-control,
-    .catalog-admin-button
-  ) {
+  body.accessibility-mode
+    .catalog-toolbar
+    :where(
+      .filter-heading,
+      .reset-button,
+      .sort-control,
+      .catalog-admin-button
+    ) {
     width: 100% !important;
   }
 
@@ -2753,12 +2825,13 @@ body.accessibility-mode.a11y-font-xlarge .cart-modal__remove {
   grid-column: 1 !important;
 }
 
-body.accessibility-mode :where(
-  .fabric-card > img,
-  .fabric-card > .a11y-image-placeholder--content,
-  .quality-card > img,
-  .quality-card > .a11y-image-placeholder--content
-) {
+body.accessibility-mode
+  :where(
+    .fabric-card > img,
+    .fabric-card > .a11y-image-placeholder--content,
+    .quality-card > img,
+    .quality-card > .a11y-image-placeholder--content
+  ) {
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
@@ -2766,12 +2839,13 @@ body.accessibility-mode :where(
   object-fit: cover !important;
 }
 
-body.accessibility-mode :where(
-  .product-card__image > img,
-  .product-card__image > .a11y-image-placeholder--content,
-  .product-gallery__main > img,
-  .product-gallery__main > .a11y-image-placeholder--content
-) {
+body.accessibility-mode
+  :where(
+    .product-card__image > img,
+    .product-card__image > .a11y-image-placeholder--content,
+    .product-gallery__main > img,
+    .product-gallery__main > .a11y-image-placeholder--content
+  ) {
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;

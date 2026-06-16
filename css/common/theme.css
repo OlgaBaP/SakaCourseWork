@@ -691,6 +691,13 @@ body.dark-theme .counter-row__input {
   border-color: var(--dark-border);
 }
 
+body.dark-theme .orders-status--shipping,
+body.dark-theme .orders-list__cell:nth-child(5) .orders-status-select {
+  background: var(--dark-card-soft);
+  color: var(--dark-text);
+  border: 1px solid var(--dark-border);
+}
+
 body.dark-theme input::placeholder,
 body.dark-theme textarea::placeholder,
 body.dark-theme .auth-modal input::placeholder,

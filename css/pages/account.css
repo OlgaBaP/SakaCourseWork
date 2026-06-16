@@ -50,7 +50,11 @@
   overflow: hidden;
   border-radius: 50%;
   background:
-    linear-gradient(135deg, rgba(219, 192, 141, 0.72), rgba(255, 255, 255, 0.3)),
+    linear-gradient(
+      135deg,
+      rgba(219, 192, 141, 0.72),
+      rgba(255, 255, 255, 0.3)
+    ),
     var(--color-white);
   color: var(--color-dark);
   font-size: 52px;
@@ -80,12 +84,11 @@
 
 .account-avatar-button::before {
   content: "";
-  width: 24px;
-  height: 24px;
-  background:
-    linear-gradient(135deg, transparent 0 42%, var(--color-white) 43% 57%, transparent 58%) 7px 3px / 12px 18px no-repeat,
-    linear-gradient(var(--color-white), var(--color-white)) 5px 17px / 15px 4px no-repeat;
-  transform: rotate(-45deg);
+  width: 12px;
+  height: 12px;
+  border-right: 4px solid var(--color-white);
+  border-bottom: 4px solid var(--color-white);
+  transform: translateX(-2px) rotate(-45deg);
 }
 
 .account-avatar-button span {
@@ -104,7 +107,9 @@
   opacity: 0;
   pointer-events: none;
   transform: translate(-50%, 4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .account-avatar-button:hover span,
@@ -176,7 +181,9 @@
   opacity: 0;
   pointer-events: none;
   transform: translateY(3px);
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
 }
 
 .account-field__value:hover::after,

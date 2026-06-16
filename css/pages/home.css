@@ -821,7 +821,6 @@ input {
   padding: 0 30px;
 }
 
-
 .visually-hidden {
   display: block;
   width: 1px;
@@ -1441,38 +1440,6 @@ input {
   .button--submit {
     width: 100%;
   }
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 }
 
 @media (max-width: 479px) {
@@ -1704,28 +1671,6 @@ input {
   .request-form {
     width: calc(100% - 56px);
   }
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 }
 
 @media (min-width: 480px) and (max-width: 639px) {
@@ -1777,7 +1722,6 @@ input {
     justify-self: center;
   }
 }
-
 
 /* Final Figma alignment layer. Shared header/menu/footer rules live in
    css/common/site-shell.css and intentionally load after this file. */
@@ -2284,7 +2228,6 @@ input {
     width: 114px;
     height: 92px;
   }
-
 }
 
 @media (min-width: 640px) and (max-width: 1399px) {
