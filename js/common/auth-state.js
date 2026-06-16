@@ -59,12 +59,14 @@ function clearCurrentUser() {
   localStorage.removeItem(CURRENT_USER_KEY);
 }
 
+// возвращает путь к странице
 function getPagePath(pageName) {
   return window.location.pathname.includes("/pages/")
     ? pageName
     : `pages/${pageName}`;
 }
 
+// изменение состояния авторизации
 function dispatchAuthChange(user, intent) {
   window.dispatchEvent(
     new CustomEvent("auth:changed", {
@@ -231,6 +233,7 @@ function ensureAuthStyles() {
   document.head.append(style);
 }
 
+// поля ввода с подписью и ошибкой
 function createField(label, inputHtml) {
   const translatedLabel = t(label);
   const input = inputHtml.includes("placeholder=")
@@ -323,6 +326,7 @@ function createAuthModal() {
   return authModal;
 }
 
+// отображение формы входа или регистрации в модальном окне
 function showAuthView(mode) {
   createAuthModal().classList.toggle(
     "auth-modal--register",
@@ -336,6 +340,7 @@ function showAuthView(mode) {
     });
 }
 
+// модальное окно авторизации
 function openAuthModal(mode = "login", options = {}) {
   if (getCurrentUser() && mode === "login") {
     return;
@@ -405,10 +410,12 @@ function getUserPhone(user) {
   return normalizePhone(user.phone || "");
 }
 
+// загрузка пользователей для проверки при входе и регистрации
 async function loadUsers() {
   users = await getUsers();
 }
 
+// поиск пользователя по email или телефону при входе
 function findUserByLogin(login) {
   const email = normalizeEmail(login);
   const phone = normalizePhone(login);
@@ -492,6 +499,7 @@ function transliterate(value) {
     .replace(/[^a-z0-9]/g, "");
 }
 
+// проверка уникальности никнейма при регистрации
 function isNicknameUnique(nickname) {
   return !users.some((user) => {
     return normalizeEmail(user.nickname || "") === normalizeEmail(nickname);
@@ -649,6 +657,7 @@ function setPasswordMode(form) {
   }
 }
 
+// отправка формы входа
 async function handleLoginSubmit(event) {
   event.preventDefault();
 
@@ -795,6 +804,7 @@ function bindAuthModalEvents() {
     }
   });
 
+  // валидация и обработка форм
   loginForm.addEventListener("submit", handleLoginSubmit);
   registerForm.addEventListener("submit", handleRegisterSubmit);
   registerForm.addEventListener("input", () => {
@@ -830,6 +840,7 @@ function getAuthIntent(target) {
   return target.dataset.authIntent || "header";
 }
 
+// инициализация состояния авторизации
 function initAuthState() {
   updateAuthLinks();
 
@@ -868,6 +879,7 @@ function initAuthState() {
     }
   });
 
+  // открытие для друих скриптов через событие
   window.addEventListener("auth:open", (event) => {
     openAuthModal(event.detail?.mode || "login", {
       intent: event.detail?.intent || "header",
@@ -883,6 +895,7 @@ function initAuthState() {
   });
 }
 
+// инициализация состояния авторизации при загрузке страницы
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initAuthState);
 } else {
