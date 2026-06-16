@@ -178,7 +178,25 @@
                   ></div>
                 </div>
                 <div class="cart-visual" aria-label="Добавить в корзину">
-                  <span class="cart-visual__quantity">1</span>
+                  <div class="cart-visual__quantity">
+                    <button
+                      type="button"
+                      aria-label="Уменьшить количество"
+                      data-i18n-aria-label="Уменьшить количество"
+                      data-product-quantity-step="-1"
+                    >
+                      −
+                    </button>
+                    <span data-product-quantity>1</span>
+                    <button
+                      type="button"
+                      aria-label="Увеличить количество"
+                      data-i18n-aria-label="Увеличить количество"
+                      data-product-quantity-step="1"
+                    >
+                      +
+                    </button>
+                  </div>
                   <button
                     class="cart-visual__button"
                     type="button"

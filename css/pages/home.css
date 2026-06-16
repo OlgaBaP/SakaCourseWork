@@ -2156,7 +2156,7 @@ input {
 
   .about-section__text {
     position: absolute;
-    left: 60px;
+    left: 0;
     margin: 0;
   }
 
@@ -2283,6 +2283,91 @@ input {
     left: -1px;
     width: 114px;
     height: 92px;
+  }
+
+}
+
+@media (min-width: 640px) and (max-width: 1399px) {
+  .request-card {
+    position: relative;
+    padding: 0;
+  }
+
+  .request-card h2 {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    width: 501px;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .request-card > p {
+    position: absolute;
+    top: 227px;
+    left: 50%;
+    width: 480px;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .request-form {
+    position: absolute;
+    top: 314px;
+    left: 50%;
+    display: block;
+    width: 500px;
+    height: 285px;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .request-form label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 59px;
+  }
+
+  .request-form label:nth-of-type(1) {
+    top: 0;
+  }
+
+  .request-form label:nth-of-type(2) {
+    top: 74px;
+  }
+
+  .request-form label:nth-of-type(3) {
+    top: 148px;
+  }
+
+  .request-form .field-error {
+    position: absolute;
+    top: 59px;
+    left: 16px;
+  }
+
+  .request-form .button--submit {
+    position: absolute;
+    top: 227px;
+    left: 0;
+  }
+
+  .request-form__hints {
+    display: none;
+  }
+
+  .request-form__message {
+    position: absolute;
+    top: 290px;
+    left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1399px) {
+  .request-form__hints {
+    display: none;
   }
 }
 
@@ -2543,6 +2628,10 @@ input {
     height: 68px;
   }
 
+  .palette-card:nth-child(10) {
+    position: relative;
+  }
+
   .palette-card:nth-child(3) p,
   .palette-card:nth-child(4) p,
   .palette-card:nth-child(5) p,
@@ -2555,8 +2644,95 @@ input {
     transform: translateY(6px);
   }
 
-  .palette-card:nth-child(9) p,
-  .palette-card:nth-child(10) p {
+  .palette-card:nth-child(9) p {
     transform: translateY(-4px);
+  }
+
+  .palette-card:nth-child(10) p {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 140px;
+    transform: translateY(-4px);
+  }
+
+  .hero-slider__counter {
+    position: absolute;
+    top: 28px;
+    left: 0;
+    margin: 0;
+  }
+
+  .request-card {
+    position: relative;
+    padding: 0;
+  }
+
+  .request-card h2 {
+    position: absolute;
+    top: 60px;
+    left: 30px;
+    width: calc(100% - 60px);
+    margin: 0;
+  }
+
+  .request-card > p {
+    position: absolute;
+    top: 190px;
+    left: 40px;
+    width: calc(100% - 80px);
+    margin: 0;
+  }
+
+  .request-form {
+    position: absolute;
+    top: 294px;
+    left: 30px;
+    display: block;
+    width: calc(100% - 60px);
+    height: 280px;
+    margin: 0;
+  }
+
+  .request-form label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 59px;
+  }
+
+  .request-form label:nth-of-type(1) {
+    top: 0;
+  }
+
+  .request-form label:nth-of-type(2) {
+    top: 74px;
+  }
+
+  .request-form label:nth-of-type(3) {
+    top: 148px;
+  }
+
+  .request-form .field-error {
+    position: absolute;
+    top: 59px;
+    left: 16px;
+  }
+
+  .request-form .button--submit {
+    position: absolute;
+    top: 222px;
+    left: 0;
+  }
+
+  .request-form__hints {
+    display: none;
+  }
+
+  .request-form__message {
+    position: absolute;
+    top: 285px;
+    left: 0;
+    width: 100%;
   }
 }

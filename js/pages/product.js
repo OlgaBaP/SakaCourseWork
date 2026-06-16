@@ -18,6 +18,10 @@ const productColors = document.querySelector("[data-product-colors]");
 const productSpecs = document.querySelector("[data-product-specs]");
 const addToCartButton = document.querySelector("[data-product-cart-button]");
 const addToCartMessage = document.querySelector("[data-product-cart-message]");
+const productQuantity = document.querySelector("[data-product-quantity]");
+const productQuantityControls = document.querySelectorAll(
+  "[data-product-quantity-step]",
+);
 const calculator = document.querySelector("[data-calculator]");
 const calculatorProduct = document.querySelector("[data-calculator-product]");
 const calculatorImage = document.querySelector("[data-calculator-image]");
@@ -43,9 +47,12 @@ const emailInput = document.querySelector("[data-request-email]");
 
 let currentProduct = null;
 let currentProducts = [];
+let currentVariants = [];
+let selectedQuantity = 1;
 
 const ROLL_WEIGHT = 20;
 const PACK_WEIGHT = 2;
+const MAX_PRODUCT_QUANTITY = 99;
 
 const colorMap = {
   Бежевый: "#d8c0a2",
@@ -59,6 +66,7 @@ const colorMap = {
   Синий: "#275fba",
   Фиолетовый: "#7350a8",
   Черный: "#1d1d1d",
+  Коричневый: "#7a5038",
 };
 
 function formatPrice(price) {
@@ -92,22 +100,24 @@ function showProductNotFound() {
 
 function setMainImage(product) {
   productImage.src = getImagePath(product.image);
-  productImage.alt = `${product.title} ${product.color}`;
+  productImage.alt = `${translateValue("product", product.title)} ${translateValue("color", product.color)}`;
 }
 
 function renderThumbnails(thumbnails) {
   thumbnailsList.innerHTML = "";
 
-  thumbnails.forEach((product, index) => {
+  thumbnails.forEach((product) => {
     const button = document.createElement("button");
     const image = document.createElement("img");
 
-  button.className = "product-thumb";
-  button.type = "button";
+    button.className = "product-thumb";
+    button.type = "button";
+    button.dataset.productVariantId = String(product.id);
     button.setAttribute("aria-label", `${translateValue("product", product.title)} ${translateValue("color", product.color)}`);
 
-    if (index === 0) {
+    if (String(product.id) === String(currentProduct.id)) {
       button.classList.add("product-thumb--active");
+      button.setAttribute("aria-current", "true");
     }
 
     image.src = getImagePath(product.image);
@@ -115,11 +125,7 @@ function renderThumbnails(thumbnails) {
 
     button.append(image);
     button.addEventListener("click", () => {
-      setMainImage(product);
-      thumbnailsList
-        .querySelectorAll(".product-thumb")
-        .forEach((thumb) => thumb.classList.remove("product-thumb--active"));
-      button.classList.add("product-thumb--active");
+      selectProductVariant(product);
     });
 
     thumbnailsList.append(button);
@@ -127,15 +133,29 @@ function renderThumbnails(thumbnails) {
 }
 
 function renderColorSwatches(products) {
-  const colors = [...new Set(products.map((product) => product.color))];
-
   productColors.innerHTML = "";
 
-  colors.forEach((color) => {
-    const swatch = document.createElement("span");
+  products.forEach((product) => {
+    const color = product.color;
+    const swatch = document.createElement("button");
+
     swatch.className = "color-swatch";
+    swatch.type = "button";
+    swatch.dataset.productVariantId = String(product.id);
     swatch.title = translateValue("color", color);
+    swatch.setAttribute("aria-label", translateValue("color", color));
+    swatch.setAttribute(
+      "aria-pressed",
+      String(String(product.id) === String(currentProduct.id)),
+    );
     swatch.style.setProperty("--swatch-color", colorMap[color] || "#d9d9d9");
+    swatch.classList.toggle(
+      "color-swatch--active",
+      String(product.id) === String(currentProduct.id),
+    );
+    swatch.addEventListener("click", () => {
+      selectProductVariant(product);
+    });
     productColors.append(swatch);
   });
 }
@@ -187,38 +207,80 @@ function updateCalculator() {
   calculatorTotalSum.textContent = formatPrice(total);
 }
 
-function renderProduct(product, products) {
-  const sameCategoryProducts = products.filter(
-    (item) => item.category === product.category,
-  );
+function getProductVariants(product, products) {
+  const variants = products.filter((item) => item.title === product.title);
+
+  return variants.length > 0 ? variants : [product];
+}
+
+function renderSelectedVariant() {
   const thumbnails = [
-    product,
-    ...sameCategoryProducts.filter((item) => item.id !== product.id),
+    currentProduct,
+    ...currentVariants.filter(
+      (item) => String(item.id) !== String(currentProduct.id),
+    ),
   ].slice(0, 4);
 
+  productBreadcrumb.textContent = translateValue(
+    "product",
+    currentProduct.title,
+  );
+  productTitle.textContent = translateValue("product", currentProduct.title);
+  productPrice.textContent = formatPrice(currentProduct.price);
+  productColor.textContent = translateValue("color", currentProduct.color);
+  document.title = `${translateValue("product", currentProduct.title)} | Saka Tekstil`;
+
+  setMainImage(currentProduct);
+  renderThumbnails(thumbnails);
+  renderColorSwatches(currentVariants);
+  renderSpecs(currentProduct);
+
+  calculatorProduct.textContent = translateValue(
+    "product",
+    currentProduct.title,
+  );
+  calculatorTotalProduct.textContent = translateValue(
+    "product",
+    currentProduct.title,
+  );
+  calculatorImage.src = getImagePath(currentProduct.image);
+  calculatorImage.alt = `${translateValue("product", currentProduct.title)} ${translateValue("color", currentProduct.color)}`;
+  updateCalculator();
+}
+
+function selectProductVariant(product) {
+  currentProduct = product;
+  addToCartMessage.hidden = true;
+  renderSelectedVariant();
+}
+
+function renderProduct(product, products) {
   currentProduct = product;
   currentProducts = products;
-  productBreadcrumb.textContent = translateValue("product", product.title);
-  productTitle.textContent = translateValue("product", product.title);
-  productPrice.textContent = formatPrice(product.price);
-  productColor.textContent = translateValue("color", product.color);
-  document.title = `${translateValue("product", product.title)} | Saka Tekstil`;
-
-  setMainImage(product);
-  renderThumbnails(thumbnails);
-  renderColorSwatches(
-    sameCategoryProducts.length > 0 ? sameCategoryProducts : [product],
-  );
-  renderSpecs(product);
-
-  calculatorProduct.textContent = translateValue("product", product.title);
-  calculatorTotalProduct.textContent = translateValue("product", product.title);
-  calculatorImage.src = getImagePath(product.image);
-  calculatorImage.alt = `${translateValue("product", product.title)} ${translateValue("color", product.color)}`;
-  updateCalculator();
-
+  currentVariants = getProductVariants(product, products);
+  renderSelectedVariant();
   productMessage.hidden = true;
   productContent.hidden = false;
+}
+
+function updateProductQuantity(nextQuantity) {
+  selectedQuantity = Math.min(
+    MAX_PRODUCT_QUANTITY,
+    Math.max(1, nextQuantity),
+  );
+  productQuantity.textContent = String(selectedQuantity);
+
+  productQuantityControls.forEach((button) => {
+    const direction = Number(button.dataset.productQuantityStep);
+    button.disabled =
+      (direction < 0 && selectedQuantity === 1) ||
+      (direction > 0 && selectedQuantity === MAX_PRODUCT_QUANTITY);
+  });
+}
+
+function handleProductQuantityStep(event) {
+  const direction = Number(event.currentTarget.dataset.productQuantityStep);
+  updateProductQuantity(selectedQuantity + direction);
 }
 
 function normalizeCounterValue(input) {
@@ -267,13 +329,14 @@ async function handleAddToCart() {
   addToCartMessage.hidden = true;
 
   try {
-    const isAdded = await addProductToCart(currentProduct);
+    const isAdded = await addProductToCart(currentProduct, selectedQuantity);
 
     if (isAdded === false) {
       return;
     }
 
     showAddToCartMessage(t("product.added"));
+    updateProductQuantity(1);
   } catch {
     showAddToCartMessage(t("product.addFailed"), true);
   } finally {
@@ -323,14 +386,19 @@ async function initProductPage() {
 }
 
 addToCartButton.addEventListener("click", handleAddToCart);
+productQuantityControls.forEach((button) => {
+  button.addEventListener("click", handleProductQuantityStep);
+});
 calculatorRolls.addEventListener("input", handleCalculatorInput);
 calculatorPacks.addEventListener("input", handleCalculatorInput);
 calculator.addEventListener("click", handleCalculatorStep);
 requestForm.addEventListener("submit", handleRequestSubmit);
 window.addEventListener("i18n:changed", () => {
   if (currentProduct) {
-    renderProduct(currentProduct, currentProducts);
+    currentVariants = getProductVariants(currentProduct, currentProducts);
+    renderSelectedVariant();
   }
 });
 
+updateProductQuantity(1);
 initProductPage();

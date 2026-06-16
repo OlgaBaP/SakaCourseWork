@@ -83,7 +83,7 @@
       "width": "180 см",
       "density": "180 г/м²",
       "quality": "Пенье",
-      "inStock": true
+      "inStock": false
     },
     {
       "id": "2",
@@ -1214,6 +1214,46 @@
         }
       ],
       "createdAt": "2026-06-11T17:18:16.589Z"
+    },
+    {
+      "id": "8qDqGQqegBA",
+      "userId": "1",
+      "orderNumber": 16,
+      "date": "2026-06-12",
+      "status": "Ожидает",
+      "shipmentStatus": "Ожидает обработки",
+      "shippingStatus": "Ожидает обработки",
+      "total": 11.4,
+      "items": [
+        {
+          "productId": "1",
+          "title": "Кулинарная гладь",
+          "price": 11.4,
+          "quantity": 1,
+          "image": "assets/images/products/product-cotton-jersey-blue.png"
+        }
+      ],
+      "createdAt": "2026-06-12T21:47:28.602Z"
+    },
+    {
+      "id": "jsM9U9IKz_8",
+      "userId": "user-ivan-kavalev",
+      "orderNumber": 17,
+      "date": "2026-06-12",
+      "status": "Ожидает",
+      "shipmentStatus": "Ожидает обработки",
+      "shippingStatus": "Ожидает обработки",
+      "total": 22.8,
+      "items": [
+        {
+          "productId": "1",
+          "title": "Кулинарная гладь",
+          "price": 11.4,
+          "quantity": 2,
+          "image": "assets/images/products/product-cotton-jersey-blue.png"
+        }
+      ],
+      "createdAt": "2026-06-12T21:48:14.148Z"
     }
   ],
   "priceRequests": [
@@ -1257,6 +1297,14 @@
       "source": "Главная страница",
       "createdAt": "2026-06-11T12:22:36.306Z",
       "id": "WUWh5KrCO4I"
+    },
+    {
+      "name": "Оля",
+      "phone": "+375333544434",
+      "email": "olgapir241@gmail.com",
+      "source": "Главная страница",
+      "createdAt": "2026-06-12T19:34:21.720Z",
+      "id": "ZP2mMZuDbdk"
     }
   ],
   "contactRequests": [
@@ -1478,5 +1526,6 @@
       "createdAt": "2026-06-03T18:39:39.486Z",
       "id": "LZbh0Rg0Pz0"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
