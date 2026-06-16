@@ -709,3 +709,4 @@ window.SakaAccessibility = {
 };
 
 export { resetAccessibilitySettings, resetSiteSettings };
+

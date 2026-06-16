@@ -2947,3 +2947,1160 @@ body.accessibility-mode .service-card :where(h3, p) {
     margin-bottom: 0.85rem !important;
   }
 }
+
+body.accessibility-mode .request-section {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(12px, 3vw, 32px) !important;
+  margin: 0 !important;
+}
+
+body.accessibility-mode .request-card {
+  position: relative !important;
+  inset: auto !important;
+  display: grid !important;
+  width: min(100%, 72rem) !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  gap: 1.25rem !important;
+  margin: 0 auto !important;
+  padding: clamp(1.25rem, 3vw, 2.5rem) !important;
+  border: 2px solid var(--a11y-border) !important;
+  border-radius: 8px !important;
+  background: var(--a11y-surface) !important;
+  color: var(--a11y-text) !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .request-card h2,
+body.accessibility-mode .request-card > p {
+  position: static !important;
+  inset: auto !important;
+  width: min(100%, 70ch) !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  color: var(--a11y-text) !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .request-form {
+  position: static !important;
+  inset: auto !important;
+  display: grid !important;
+  width: min(100%, 48rem) !important;
+  max-width: 48rem !important;
+  height: auto !important;
+  min-height: 0 !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  margin: 0 auto !important;
+  padding: clamp(1rem, 3vw, 2rem) !important;
+  border: 2px solid var(--a11y-border) !important;
+  border-radius: 8px !important;
+  background: var(--a11y-bg) !important;
+  color: var(--a11y-text) !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .request-form label {
+  position: static !important;
+  inset: auto !important;
+  display: grid !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  gap: 0.5rem !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .request-form input {
+  width: 100% !important;
+  min-height: 3.5rem !important;
+  height: auto !important;
+}
+
+body.accessibility-mode .request-form .field-error {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: 100% !important;
+  margin: 0.25rem 0 0 !important;
+  color: var(--a11y-error) !important;
+}
+
+body.accessibility-mode .request-form .field-error[hidden] {
+  display: none !important;
+}
+
+body.accessibility-mode .request-form .button--submit {
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  min-height: 3.5rem !important;
+  height: auto !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .request-form__hints {
+  position: static !important;
+  display: grid !important;
+  width: 100% !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0.75rem !important;
+  margin: 0 !important;
+  color: var(--a11y-muted) !important;
+}
+
+body.accessibility-mode .request-form__message {
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+  color: var(--a11y-success) !important;
+  transform: none !important;
+}
+body.accessibility-mode .palette-section {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(12px, 3vw, 32px) !important;
+  margin: 0 !important;
+}
+
+body.accessibility-mode .palette-section .section-container {
+  position: static !important;
+  display: grid !important;
+  width: min(100%, 80rem) !important;
+  height: auto !important;
+  min-height: 0 !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: clamp(1.5rem, 4vw, 3rem) !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  align-items: start !important;
+}
+
+body.accessibility-mode .palette-section h2,
+body.accessibility-mode #palette-title {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: min(100%, 44rem) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--a11y-text) !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .palette-grid {
+  position: static !important;
+  inset: auto !important;
+  display: grid !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 12rem), 1fr)
+  ) !important;
+  gap: clamp(1.25rem, 3vw, 2rem) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: start !important;
+  justify-items: center !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .palette-card,
+body.accessibility-mode .palette-card:nth-child(n) {
+  position: static !important;
+  inset: auto !important;
+  display: grid !important;
+  width: 100% !important;
+  max-width: 14rem !important;
+  height: auto !important;
+  min-height: 0 !important;
+  grid-template-rows: auto auto !important;
+  gap: 0.75rem !important;
+  margin: 0 !important;
+  padding: 0.75rem !important;
+  align-items: start !important;
+  justify-items: center !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .palette-card img {
+  position: static !important;
+  width: 8rem !important;
+  max-width: 100% !important;
+  height: 8rem !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .palette-card p {
+  position: static !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  color: var(--a11y-text) !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+body.accessibility-mode .about-section {
+  position: relative !important;
+  display: grid !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: clamp(1.5rem, 4vw, 3rem) !important;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(12px, 3vw, 32px) !important;
+  margin: 0 !important;
+  overflow: visible !important;
+}
+
+body.accessibility-mode .about-section__content {
+  position: static !important;
+  inset: auto !important;
+  display: grid !important;
+  width: min(100%, 56rem) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  gap: 1.25rem !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
+  z-index: 2 !important;
+}
+
+body.accessibility-mode .about-section h2 {
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--a11y-text) !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .about-section h2 br {
+  display: none !important;
+}
+
+body.accessibility-mode .about-section__text {
+  position: static !important;
+  inset: auto !important;
+  display: grid !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  grid-template-columns: 3rem minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .about-section__text span {
+  width: 3rem !important;
+  height: 4px !important;
+  margin-top: 0.8em !important;
+  background: var(--a11y-border) !important;
+}
+
+body.accessibility-mode .about-section__text p {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  color: var(--a11y-text) !important;
+  overflow-wrap: break-word !important;
+}
+
+body.accessibility-mode .button--catalog {
+  position: static !important;
+  inset: auto !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 3.5rem !important;
+  margin: 0 !important;
+  transform: none !important;
+  z-index: 2 !important;
+}
+
+body.accessibility-mode .about-section__image {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  width: min(100%, 56rem) !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  border-radius: 0 !important;
+  transform: none !important;
+  z-index: 1 !important;
+}
+
+@media (max-width: 767px) {
+  body.accessibility-mode .about-section__text {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body.accessibility-mode .about-section__text span {
+    width: 3rem !important;
+    margin-top: 0 !important;
+  }
+
+  body.accessibility-mode .button--catalog {
+    width: 100% !important;
+  }
+}
+body.accessibility-mode .burger-button[aria-expanded="true"],
+body.accessibility-mode .burger-menu__close,
+body.accessibility-mode .mobile-menu-close {
+  position: relative !important;
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 60px !important;
+  min-height: 60px !important;
+  border: 2px solid var(--a11y-border) !important;
+  border-radius: 8px !important;
+  background: var(--a11y-surface) !important;
+  color: var(--a11y-text) !important;
+  cursor: pointer !important;
+}
+
+body.accessibility-mode .burger-button[aria-expanded="true"] span,
+body.accessibility-mode .burger-menu__close span,
+body.accessibility-mode .mobile-menu-close span {
+  opacity: 0 !important;
+}
+
+body.accessibility-mode .burger-button[aria-expanded="true"]::before,
+body.accessibility-mode .burger-menu__close::before,
+body.accessibility-mode .mobile-menu-close::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 32px !important;
+  height: 4px !important;
+  border-radius: 4px !important;
+  background: var(--a11y-text) !important;
+  transform: translate(-50%, -50%) rotate(45deg) !important;
+}
+
+body.accessibility-mode .burger-button[aria-expanded="true"]::after,
+body.accessibility-mode .burger-menu__close::after,
+body.accessibility-mode .mobile-menu-close::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 32px !important;
+  height: 4px !important;
+  border-radius: 4px !important;
+  background: var(--a11y-text) !important;
+  transform: translate(-50%, -50%) rotate(-45deg) !important;
+}
+
+body.accessibility-mode .mobile-menu__close,
+body.accessibility-mode .burger-menu__close,
+body.accessibility-mode .mobile-menu-close {
+  position: relative !important;
+  display: inline-flex !important;
+  width: 60px !important;
+  min-width: 60px !important;
+  height: 60px !important;
+  min-height: 60px !important;
+  padding: 0 !important;
+  border: 2px solid #000000 !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+}
+
+body.accessibility-mode .mobile-menu__close::before,
+body.accessibility-mode .mobile-menu__close::after,
+body.accessibility-mode .burger-menu__close::before,
+body.accessibility-mode .burger-menu__close::after,
+body.accessibility-mode .mobile-menu-close::before,
+body.accessibility-mode .mobile-menu-close::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 34px !important;
+  height: 4px !important;
+  border-radius: 4px !important;
+  background: #000000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform-origin: center !important;
+  z-index: 5 !important;
+}
+
+body.accessibility-mode .mobile-menu__close::before,
+body.accessibility-mode .burger-menu__close::before,
+body.accessibility-mode .mobile-menu-close::before {
+  transform: translate(-50%, -50%) rotate(45deg) !important;
+}
+
+body.accessibility-mode .mobile-menu__close::after,
+body.accessibility-mode .burger-menu__close::after,
+body.accessibility-mode .mobile-menu-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg) !important;
+}
+
+body.accessibility-mode .search-form button,
+body.accessibility-mode .search-form__button,
+body.accessibility-mode .search-button,
+body.accessibility-mode .header-search__button,
+body.accessibility-mode button[type="submit"][aria-label*="поиск" i],
+body.accessibility-mode button[aria-label*="поиск" i] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  color: #000000 !important;
+}
+
+body.accessibility-mode .cart-button,
+body.accessibility-mode .header-cart,
+body.accessibility-mode .header__cart,
+body.accessibility-mode .cart-toggle,
+body.accessibility-mode [data-cart-button],
+body.accessibility-mode button[aria-label*="корз" i],
+body.accessibility-mode a[aria-label*="корз" i] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  color: #000000 !important;
+}
+
+body.accessibility-mode .search-form button img,
+body.accessibility-mode .search-form__button img,
+body.accessibility-mode .search-button img,
+body.accessibility-mode .header-search__button img,
+body.accessibility-mode .cart-button img,
+body.accessibility-mode .header-cart img,
+body.accessibility-mode .header__cart img,
+body.accessibility-mode .cart-toggle img,
+body.accessibility-mode [data-cart-button] img {
+  opacity: 1 !important;
+  filter: brightness(0) !important;
+}
+
+body.accessibility-mode .search-form button svg,
+body.accessibility-mode .search-form button svg *,
+body.accessibility-mode .search-form__button svg,
+body.accessibility-mode .search-form__button svg *,
+body.accessibility-mode .search-button svg,
+body.accessibility-mode .search-button svg *,
+body.accessibility-mode .header-search__button svg,
+body.accessibility-mode .header-search__button svg *,
+body.accessibility-mode .cart-button svg,
+body.accessibility-mode .cart-button svg *,
+body.accessibility-mode .header-cart svg,
+body.accessibility-mode .header-cart svg *,
+body.accessibility-mode .header__cart svg,
+body.accessibility-mode .header__cart svg *,
+body.accessibility-mode .cart-toggle svg,
+body.accessibility-mode .cart-toggle svg *,
+body.accessibility-mode [data-cart-button] svg,
+body.accessibility-mode [data-cart-button] svg * {
+  fill: #000000 !important;
+  stroke: #000000 !important;
+  color: #000000 !important;
+}
+
+body.accessibility-mode .cart-count,
+body.accessibility-mode .cart-counter,
+body.accessibility-mode .cart-button__count,
+body.accessibility-mode [data-cart-count] {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+body.accessibility-mode form:has(input[type="search"]) button,
+body.accessibility-mode form:has(input[placeholder*="Поиск"]) button,
+body.accessibility-mode form:has(input[placeholder*="Search"]) button {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  color: #000000 !important;
+}
+
+body.accessibility-mode form:has(input[type="search"]) button img,
+body.accessibility-mode form:has(input[placeholder*="Поиск"]) button img,
+body.accessibility-mode form:has(input[placeholder*="Search"]) button img,
+body.accessibility-mode form:has(input[type="search"]) button svg,
+body.accessibility-mode form:has(input[placeholder*="Поиск"]) button svg,
+body.accessibility-mode form:has(input[placeholder*="Search"]) button svg,
+body.accessibility-mode form:has(input[type="search"]) button svg *,
+body.accessibility-mode form:has(input[placeholder*="Поиск"]) button svg *,
+body.accessibility-mode form:has(input[placeholder*="Search"]) button svg * {
+  filter: brightness(0) !important;
+  fill: #000000 !important;
+  stroke: #000000 !important;
+  color: #000000 !important;
+}
+
+body.accessibility-mode button:has(img[src*="cart"]),
+body.accessibility-mode a:has(img[src*="cart"]),
+body.accessibility-mode button:has(img[alt*="корз" i]),
+body.accessibility-mode a:has(img[alt*="корз" i]),
+body.accessibility-mode button:has(svg[class*="cart" i]),
+body.accessibility-mode a:has(svg[class*="cart" i]) {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 2px solid #000000 !important;
+  color: #000000 !important;
+}
+
+body.accessibility-mode button:has(img[src*="cart"]) img,
+body.accessibility-mode a:has(img[src*="cart"]) img,
+body.accessibility-mode button:has(img[alt*="корз" i]) img,
+body.accessibility-mode a:has(img[alt*="корз" i]) img {
+  filter: brightness(0) !important;
+  opacity: 1 !important;
+}
+
+body.accessibility-mode button:has(svg[class*="cart" i]) svg,
+body.accessibility-mode a:has(svg[class*="cart" i]) svg,
+body.accessibility-mode button:has(svg[class*="cart" i]) svg *,
+body.accessibility-mode a:has(svg[class*="cart" i]) svg * {
+  fill: #000000 !important;
+  stroke: #000000 !important;
+  color: #000000 !important;
+}
+
+body.accessibility-mode .cart-count,
+body.accessibility-mode .cart-counter,
+body.accessibility-mode [data-cart-count] {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+body.accessibility-mode form:has(input[type="search"]),
+body.accessibility-mode form:has(input[placeholder*="Поиск"]),
+body.accessibility-mode form:has(input[placeholder*="Search"]) {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+body.accessibility-mode form:has(input[type="search"]) input,
+body.accessibility-mode form:has(input[placeholder*="Поиск"]) input,
+body.accessibility-mode form:has(input[placeholder*="Search"]) input {
+  min-height: 58px !important;
+  border-right: none !important;
+  border-radius: 8px 0 0 8px !important;
+}
+
+body.accessibility-mode form:has(input[type="search"]) button,
+body.accessibility-mode form:has(input[placeholder*="Поиск"]) button,
+body.accessibility-mode form:has(input[placeholder*="Search"]) button {
+  width: 64px !important;
+  min-width: 64px !important;
+  height: 58px !important;
+  min-height: 58px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid #000000 !important;
+  border-left: 2px solid #000000 !important;
+  border-radius: 0 8px 8px 0 !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+body.accessibility-mode form:has(input[type="search"]) button img,
+body.accessibility-mode form:has(input[placeholder*="Поиск"]) button img,
+body.accessibility-mode form:has(input[placeholder*="Search"]) button img,
+body.accessibility-mode form:has(input[type="search"]) button svg,
+body.accessibility-mode form:has(input[placeholder*="Поиск"]) button svg,
+body.accessibility-mode form:has(input[placeholder*="Search"]) button svg {
+  width: 30px !important;
+  height: 30px !important;
+  display: block !important;
+  filter: brightness(0) !important;
+}
+
+body.accessibility-mode button:has(img[src*="cart"]),
+body.accessibility-mode a:has(img[src*="cart"]),
+body.accessibility-mode button:has(img[alt*="корз" i]),
+body.accessibility-mode a:has(img[alt*="корз" i]) {
+  position: relative !important;
+  width: 58px !important;
+  min-width: 58px !important;
+  height: 58px !important;
+  min-height: 58px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid #000000 !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  overflow: visible !important;
+}
+
+body.accessibility-mode button:has(img[src*="cart"]) img,
+body.accessibility-mode a:has(img[src*="cart"]) img,
+body.accessibility-mode button:has(img[alt*="корз" i]) img,
+body.accessibility-mode a:has(img[alt*="корз" i]) img {
+  width: 30px !important;
+  height: 30px !important;
+  display: block !important;
+  filter: brightness(0) !important;
+  opacity: 1 !important;
+}
+
+body.accessibility-mode button:has(img[src*="cart"]) *,
+body.accessibility-mode a:has(img[src*="cart"]) *,
+body.accessibility-mode button:has(img[alt*="корз" i]) *,
+body.accessibility-mode a:has(img[alt*="корз" i]) * {
+  box-shadow: none !important;
+}
+
+body.accessibility-mode .cart-count,
+body.accessibility-mode .cart-counter,
+body.accessibility-mode [data-cart-count] {
+  position: absolute !important;
+  top: -10px !important;
+  right: -10px !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  border: 2px solid #000000 !important;
+  border-radius: 50% !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+}
+
+body.accessibility-mode button:has(img[src*="cart"]),
+body.accessibility-mode a:has(img[src*="cart"]),
+body.accessibility-mode button:has(img[alt*="корз" i]),
+body.accessibility-mode a:has(img[alt*="корз" i]) {
+  position: relative !important;
+  width: 58px !important;
+  min-width: 58px !important;
+  height: 58px !important;
+  min-height: 58px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid #000000 !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+  outline: none !important;
+  overflow: visible !important;
+}
+
+body.accessibility-mode button:has(img[src*="cart"]) img,
+body.accessibility-mode a:has(img[src*="cart"]) img,
+body.accessibility-mode button:has(img[alt*="корз" i]) img,
+body.accessibility-mode a:has(img[alt*="корз" i]) img {
+  width: 30px !important;
+  height: 30px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  filter: brightness(0) !important;
+}
+
+body.accessibility-mode
+  button:has(img[src*="cart"])
+  > *:not(.cart-count):not(.cart-counter),
+body.accessibility-mode
+  a:has(img[src*="cart"])
+  > *:not(.cart-count):not(.cart-counter),
+body.accessibility-mode
+  button:has(img[alt*="корз" i])
+  > *:not(.cart-count):not(.cart-counter),
+body.accessibility-mode
+  a:has(img[alt*="корз" i])
+  > *:not(.cart-count):not(.cart-counter) {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+body.accessibility-mode .cart-count,
+body.accessibility-mode .cart-counter,
+body.accessibility-mode [data-cart-count] {
+  position: absolute !important;
+  top: -10px !important;
+  right: -10px !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  border: 2px solid #000000 !important;
+  border-radius: 50% !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.accessibility-mode [hidden],
+body.accessibility-mode .hidden,
+body.accessibility-mode .is-hidden,
+body.accessibility-mode .visually-hidden-force {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+@media (max-width: 480px) {
+  body.accessibility-mode .catalog-page,
+  body.accessibility-mode .catalog,
+  body.accessibility-mode .catalog-section,
+  body.accessibility-mode .catalog-content,
+  body.accessibility-mode .catalog-main {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  body.accessibility-mode .catalog-hero,
+  body.accessibility-mode .catalog-header,
+  body.accessibility-mode .catalog-intro {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 1rem !important;
+    margin: 0 0 1rem !important;
+    overflow: visible !important;
+  }
+
+  body.accessibility-mode .catalog-hero h1,
+  body.accessibility-mode .catalog-header h1,
+  body.accessibility-mode .catalog-intro h1 {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+    line-height: 1.25 !important;
+    overflow-wrap: break-word !important;
+  }
+
+  body.accessibility-mode .catalog-controls,
+  body.accessibility-mode .catalog-toolbar,
+  body.accessibility-mode .catalog-panel,
+  body.accessibility-mode .catalog-filters,
+  body.accessibility-mode .filters,
+  body.accessibility-mode .filter-form,
+  body.accessibility-mode .filter-panel {
+    position: static !important;
+    inset: auto !important;
+    display: grid !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem !important;
+    margin: 1rem 0 !important;
+    padding: 1rem !important;
+    border: 2px solid var(--a11y-border) !important;
+    border-radius: 8px !important;
+    background: var(--a11y-surface) !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  body.accessibility-mode .catalog-sort,
+  body.accessibility-mode .sort,
+  body.accessibility-mode .sort-control,
+  body.accessibility-mode .catalog__sort {
+    position: static !important;
+    display: grid !important;
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.5rem !important;
+    margin: 0 !important;
+  }
+
+  body.accessibility-mode .catalog-sort label,
+  body.accessibility-mode .sort label,
+  body.accessibility-mode .sort-control label,
+  body.accessibility-mode .catalog__sort label {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--a11y-text) !important;
+    font-size: 1rem !important;
+    line-height: 1.3 !important;
+  }
+
+  body.accessibility-mode .catalog-sort select,
+  body.accessibility-mode .sort select,
+  body.accessibility-mode .sort-control select,
+  body.accessibility-mode .catalog__sort select,
+  body.accessibility-mode select {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 3.5rem !important;
+    margin: 0 !important;
+    padding: 0.75rem 1rem !important;
+    border: 2px solid var(--a11y-border) !important;
+    border-radius: 8px !important;
+    background: var(--a11y-bg) !important;
+    color: var(--a11y-text) !important;
+    font: inherit !important;
+    line-height: 1.3 !important;
+  }
+
+  body.accessibility-mode select option {
+    background: var(--a11y-bg) !important;
+    color: var(--a11y-text) !important;
+  }
+
+  body.accessibility-mode .catalog-search,
+  body.accessibility-mode .search-filter,
+  body.accessibility-mode .filter-search {
+    position: static !important;
+    display: grid !important;
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.5rem !important;
+    margin: 0 !important;
+  }
+
+  body.accessibility-mode .catalog-search input,
+  body.accessibility-mode .search-filter input,
+  body.accessibility-mode .filter-search input {
+    width: 100% !important;
+    min-height: 3.5rem !important;
+    box-sizing: border-box !important;
+  }
+
+  body.accessibility-mode fieldset,
+  body.accessibility-mode .filter-group,
+  body.accessibility-mode .catalog-filter-group {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    border: 2px solid var(--a11y-border) !important;
+    border-radius: 8px !important;
+    overflow: visible !important;
+  }
+
+  body.accessibility-mode legend,
+  body.accessibility-mode .filter-title,
+  body.accessibility-mode .filter-group__title {
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    margin: 0 0 0.75rem !important;
+    padding: 0 !important;
+    color: var(--a11y-text) !important;
+  }
+
+  body.accessibility-mode .filter-options,
+  body.accessibility-mode .filter-list,
+  body.accessibility-mode .catalog-filter-options {
+    position: static !important;
+    display: grid !important;
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 0.75rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body.accessibility-mode .products-grid,
+  body.accessibility-mode .catalog-products,
+  body.accessibility-mode .catalog-list {
+    position: static !important;
+    display: grid !important;
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem !important;
+    margin-top: 1.5rem !important;
+  }
+}
+
+body.accessibility-mode .product-main .cart-visual,
+body.accessibility-mode .product-layout .cart-visual {
+  all: unset !important;
+  box-sizing: border-box !important;
+  position: static !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 1rem !important;
+  width: min(100%, 24rem) !important;
+  max-width: 100% !important;
+  margin: 1.5rem 0 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .product-main .cart-visual__quantity,
+body.accessibility-mode .product-layout .cart-visual__quantity {
+  all: unset !important;
+  box-sizing: border-box !important;
+  position: static !important;
+  display: grid !important;
+  grid-template-columns: 3.5rem 4rem 3.5rem !important;
+  gap: 0.5rem !important;
+  width: max-content !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .product-main .cart-visual__quantity button,
+body.accessibility-mode .product-main .cart-visual__quantity span,
+body.accessibility-mode .product-main .cart-visual__quantity input,
+body.accessibility-mode .product-layout .cart-visual__quantity button,
+body.accessibility-mode .product-layout .cart-visual__quantity span,
+body.accessibility-mode .product-layout .cart-visual__quantity input {
+  all: unset !important;
+  box-sizing: border-box !important;
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 3.5rem !important;
+  min-width: 3.5rem !important;
+  height: 3.5rem !important;
+  min-height: 3.5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 2px solid var(--a11y-border) !important;
+  border-radius: 8px !important;
+  background: var(--a11y-surface) !important;
+  color: var(--a11y-text) !important;
+  font-family: inherit !important;
+  font-size: var(--a11y-control-size) !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .product-main .cart-visual__quantity span,
+body.accessibility-mode .product-main .cart-visual__quantity input,
+body.accessibility-mode .product-layout .cart-visual__quantity span,
+body.accessibility-mode .product-layout .cart-visual__quantity input {
+  width: 4rem !important;
+  min-width: 4rem !important;
+  background: var(--a11y-bg) !important;
+  cursor: default !important;
+}
+
+body.accessibility-mode .product-main .cart-visual__button,
+body.accessibility-mode .product-layout .cart-visual__button {
+  all: unset !important;
+  box-sizing: border-box !important;
+  position: static !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: min(100%, 24rem) !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 4rem !important;
+  margin: 0 !important;
+  padding: 0.85rem 1.25rem !important;
+  border: 2px solid var(--a11y-border) !important;
+  border-radius: 8px !important;
+  background: var(--a11y-button-bg) !important;
+  color: var(--a11y-button-text) !important;
+  font-family: inherit !important;
+  font-size: var(--a11y-control-size) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  white-space: normal !important;
+  cursor: pointer !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+body.accessibility-mode .product-main .cart-visual__button *,
+body.accessibility-mode .product-layout .cart-visual__button * {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body.accessibility-mode .product-main .cart-visual__button::before,
+body.accessibility-mode .product-layout .cart-visual__button::before {
+  content: "Добавить в корзину" !important;
+  display: block !important;
+  width: 100% !important;
+  color: var(--a11y-button-text) !important;
+  font-family: inherit !important;
+  font-size: var(--a11y-control-size) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.08em !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+body.accessibility-mode .product-main .cart-visual__button::after,
+body.accessibility-mode .product-layout .cart-visual__button::after {
+  content: none !important;
+  display: none !important;
+}
+
+body.accessibility-mode .product-main .color-option__swatch,
+body.accessibility-mode .product-main .product-color__swatch,
+body.accessibility-mode .product-main .product-colors button,
+body.accessibility-mode .product-main .color-options button,
+body.accessibility-mode .product-main .color-swatches button,
+body.accessibility-mode .product-main .product-swatches button,
+body.accessibility-mode .product-main [data-color],
+body.accessibility-mode .product-layout .color-option__swatch,
+body.accessibility-mode .product-layout .product-color__swatch,
+body.accessibility-mode .product-layout .product-colors button,
+body.accessibility-mode .product-layout .color-options button,
+body.accessibility-mode .product-layout .color-swatches button,
+body.accessibility-mode .product-layout .product-swatches button,
+body.accessibility-mode .product-layout [data-color] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body.accessibility-mode .product-main .color-option__swatch,
+body.accessibility-mode .product-main .product-color__swatch,
+body.accessibility-mode .product-main .product-colors__swatch,
+body.accessibility-mode .product-main .color-swatch,
+body.accessibility-mode .product-main .swatch,
+body.accessibility-mode .product-layout .color-option__swatch,
+body.accessibility-mode .product-layout .product-color__swatch,
+body.accessibility-mode .product-layout .product-colors__swatch,
+body.accessibility-mode .product-layout .color-swatch,
+body.accessibility-mode .product-layout .swatch {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+body.accessibility-mode
+  .product-main
+  button[class*="color" i]:not(.cart-visual__quantity button):not(
+    .cart-visual__button
+  ),
+body.accessibility-mode
+  .product-main
+  button[class*="swatch" i]:not(.cart-visual__quantity button):not(
+    .cart-visual__button
+  ),
+body.accessibility-mode
+  .product-main
+  [data-color]:not(.cart-visual *):not(.product-gallery *),
+body.accessibility-mode
+  .product-layout
+  button[class*="color" i]:not(.cart-visual__quantity button):not(
+    .cart-visual__button
+  ),
+body.accessibility-mode
+  .product-layout
+  button[class*="swatch" i]:not(.cart-visual__quantity button):not(
+    .cart-visual__button
+  ),
+body.accessibility-mode
+  .product-layout
+  [data-color]:not(.cart-visual *):not(.product-gallery *) {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body.accessibility-mode.a11y-images-disabled .about-section__image,
+body.accessibility-mode.a11y-images-disabled .about-intro__image,
+body.accessibility-mode.a11y-images-disabled .hero-card__image,
+body.accessibility-mode.a11y-images-disabled .product-gallery__main img,
+body.accessibility-mode.a11y-images-disabled .product-gallery__thumbs img,
+body.accessibility-mode.a11y-images-disabled .product-card__image img,
+body.accessibility-mode.a11y-images-disabled .fabric-card img,
+body.accessibility-mode.a11y-images-disabled .quality-card img,
+body.accessibility-mode.a11y-images-disabled .delivery-card img,
+body.accessibility-mode.a11y-images-disabled .payment-card img {
+  display: none !important;
+  visibility: hidden !important;
+}
