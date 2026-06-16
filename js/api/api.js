@@ -18,8 +18,33 @@ function createRequestOptions(method, data) {
   };
 }
 
-async function getProducts() {
-  const response = await fetch(`${API_URL}/products`);
+async function getProducts(options = {}) {
+  const searchParams = new URLSearchParams();
+
+  if (options.category) {
+    searchParams.set("category", options.category);
+  }
+
+  if (options.quality) {
+    searchParams.set("quality", options.quality);
+  }
+
+  if (options.color) {
+    searchParams.set("color", options.color);
+  }
+
+  if (options.sort === "price-asc") {
+    searchParams.set("_sort", "price");
+  }
+
+  if (options.sort === "price-desc") {
+    searchParams.set("_sort", "-price");
+  }
+
+  const queryString = searchParams.toString();
+  const response = await fetch(
+    `${API_URL}/products${queryString ? `?${queryString}` : ""}`,
+  );
   return checkResponse(response);
 }
 
