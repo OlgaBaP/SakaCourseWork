@@ -212,9 +212,16 @@
                       name="name"
                       autocomplete="name"
                       placeholder="Ваше имя"
+                      minlength="2"
+                      required
+                      aria-describedby="delivery-name-error"
                       data-delivery-name
                     />
-                    <small data-error-name hidden></small>
+                    <small
+                      id="delivery-name-error"
+                      data-error-name
+                      hidden
+                    ></small>
                   </label>
 
                   <label class="delivery-form__field">
@@ -224,9 +231,61 @@
                       name="phone"
                       autocomplete="tel"
                       placeholder="+375 (__) ___-__-__"
+                      required
+                      aria-describedby="delivery-phone-error"
                       data-delivery-phone
                     />
-                    <small data-error-phone hidden></small>
+                    <small
+                      id="delivery-phone-error"
+                      data-error-phone
+                      hidden
+                    ></small>
+                  </label>
+
+                  <label class="delivery-form__field">
+                    <span>Тема вопроса</span>
+                    <select
+                      name="topic"
+                      required
+                      aria-describedby="delivery-topic-error"
+                      data-delivery-topic
+                    >
+                      <option value="">Выберите тему вопроса</option>
+                      <option value="Сроки доставки">Сроки доставки</option>
+                      <option value="Стоимость доставки">
+                        Стоимость доставки
+                      </option>
+                      <option value="Самовывоз">Самовывоз</option>
+                      <option value="Доставка в другой город">
+                        Доставка в другой город
+                      </option>
+                      <option value="Оплата заказа">Оплата заказа</option>
+                      <option value="Другое">Другое</option>
+                    </select>
+                    <small
+                      id="delivery-topic-error"
+                      data-error-topic
+                      hidden
+                    ></small>
+                  </label>
+
+                  <label class="delivery-form__field">
+                    <span>Текст вопроса</span>
+                    <textarea
+                      name="question"
+                      rows="4"
+                      minlength="10"
+                      maxlength="500"
+                      placeholder="Напишите ваш вопрос по доставке"
+                      required
+                      aria-describedby="delivery-question-error"
+                      data-delivery-question
+                    ></textarea>
+                    <small
+                      id="delivery-question-error"
+                      data-error-question
+                      hidden
+                    ></small>
                   </label>
 
                   <button class="delivery-form__button" type="submit">

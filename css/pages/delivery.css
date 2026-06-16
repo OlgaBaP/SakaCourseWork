@@ -37,7 +37,9 @@ a {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -553,9 +555,10 @@ button {
   clip: rect(0 0 0 0);
 }
 
-.delivery-form__field input {
+.delivery-form__field input,
+.delivery-form__field select,
+.delivery-form__field textarea {
   width: 100%;
-  height: 59px;
   padding: 0 40px;
   border: 1px solid transparent;
   border-radius: 16px;
@@ -567,16 +570,49 @@ button {
   letter-spacing: 0.28px;
 }
 
-.delivery-form__field input::placeholder {
+.delivery-form__field input,
+.delivery-form__field select {
+  height: 59px;
+}
+
+.delivery-form__field select {
+  appearance: none;
+  padding-right: 58px;
+  background:
+    linear-gradient(45deg, transparent 50%, var(--color-gold) 50%)
+      calc(100% - 29px) 26px / 7px 7px no-repeat,
+    linear-gradient(-45deg, transparent 50%, var(--color-gold) 50%)
+      calc(100% - 22px) 26px / 7px 7px no-repeat,
+    rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+.delivery-form__field select option {
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+.delivery-form__field textarea {
+  min-height: 118px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.delivery-form__field input::placeholder,
+.delivery-form__field textarea::placeholder {
   color: var(--color-white);
   opacity: 1;
 }
 
-.delivery-form__field input:focus {
+.delivery-form__field input:focus,
+.delivery-form__field select:focus,
+.delivery-form__field textarea:focus {
   border-color: rgba(219, 192, 141, 0.8);
 }
 
-.delivery-form__field input.input-error {
+.delivery-form__field .input-error {
   border-color: #e46b6b;
 }
 
@@ -1215,17 +1251,29 @@ button {
   }
 
   .delivery-question {
-    width: 620px;
-    min-height: 500px;
-    padding: 40px 60px 34px;
+    width: 100%;
+    min-height: 0;
+    padding: 40px clamp(35px, 9.7vw, 60px) 42px;
   }
 
   .delivery-question h2 {
     font-size: 26px;
   }
 
+  .delivery-form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .delivery-form__field textarea {
+    min-height: 130px;
+  }
+
   .delivery-form__agree {
-    width: 462px;
+    width: 100%;
+    max-width: 462px;
   }
 
   .payment-section {
@@ -1412,10 +1460,10 @@ button {
   }
 
   .delivery-question {
-    width: 360px;
-    min-height: 500px;
-    margin-left: -30px;
-    padding: 40px 30px 45px;
+    width: min(360px, calc(100vw - 30px));
+    min-height: 0;
+    margin-left: calc((300px - min(360px, calc(100vw - 30px))) / 2);
+    padding: 40px clamp(20px, 7.7vw, 30px) 45px;
     border-radius: 16px;
   }
 
@@ -1433,17 +1481,41 @@ button {
     letter-spacing: 0.28px;
   }
 
-  .delivery-form__field input {
-    height: 59px;
-    padding: 0 40px;
+  .delivery-form {
+    gap: 12px;
+  }
+
+  .delivery-form__field input,
+  .delivery-form__field select {
+    height: 56px;
+    padding-left: 24px;
+  }
+
+  .delivery-form__field select {
+    padding-right: 50px;
+    background-position:
+      calc(100% - 27px) 24px,
+      calc(100% - 20px) 24px,
+      0 0;
+  }
+
+  .delivery-form__field textarea {
+    min-height: 128px;
+    padding: 16px 24px;
+  }
+
+  .delivery-form__field small {
+    margin-left: 14px;
   }
 
   .delivery-form__button {
-    margin-top: 0;
+    height: 56px;
+    margin-top: 2px;
+    padding: 0 24px;
   }
 
   .delivery-form__agree {
-    width: 300px;
+    width: 100%;
     margin-top: 22px;
   }
 
