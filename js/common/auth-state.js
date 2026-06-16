@@ -143,16 +143,19 @@ function updateAuthLinks() {
 
   const currentUser = getCurrentUser();
   const accountHref = getPagePath("account.html");
-  const loginHref = getPagePath("login.html");
   const text = currentUser
     ? currentUser.nickname || currentUser.fullName || t("Личные данные")
     : t("Войти");
-  const href = currentUser ? accountHref : loginHref;
 
   document
     .querySelectorAll(".login-link, .mobile-menu__login")
     .forEach((link) => {
-      link.setAttribute("href", href);
+      link.setAttribute("href", currentUser ? accountHref : "#");
+      if (currentUser) {
+        link.removeAttribute("data-auth-open");
+      } else {
+        link.dataset.authOpen = "login";
+      }
       link.classList.toggle("login-link--authorized", Boolean(currentUser));
       const textElement = getAuthLabelElement(link);
 

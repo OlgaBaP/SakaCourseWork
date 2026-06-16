@@ -2,6 +2,7 @@ import { getUserById, updateUser } from "../api/api.js";
 import {
   clearCurrentUser,
   getCurrentUser,
+  openAuthModal,
   saveCurrentUser,
   updateAuthLinks,
 } from "../common/auth-state.js";
@@ -140,11 +141,13 @@ function renderUser(user) {
   }
 }
 
-function redirectToLogin() {
+function requestLogin() {
   currentUserData = null;
   cancelActiveEditor();
   profileSection.hidden = true;
-  window.location.replace("login.html");
+  openAuthModal("login", {
+    intent: "account",
+  });
 }
 
 function splitFullName(value) {
@@ -338,7 +341,7 @@ async function initAccount() {
   const currentUser = getCurrentUser();
 
   if (!currentUser) {
-    redirectToLogin();
+    requestLogin();
     return;
   }
 
@@ -352,7 +355,7 @@ async function initAccount() {
   } catch {
     clearCurrentUser();
     updateAuthLinks();
-    redirectToLogin();
+    requestLogin();
   }
 }
 

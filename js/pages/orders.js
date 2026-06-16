@@ -5,7 +5,7 @@ import {
   getUsers,
   updateOrder,
 } from "../api/api.js";
-import { getCurrentUser } from "../common/auth-state.js";
+import { getCurrentUser, openAuthModal } from "../common/auth-state.js";
 import { getLanguage, t, translateValue } from "../common/i18n.js";
 
 const ORDER_STATUSES = [
@@ -299,7 +299,9 @@ async function initOrders() {
 
   if (!currentUser) {
     ordersSection.hidden = true;
-    window.location.replace("login.html");
+    openAuthModal("login", {
+      intent: "orders",
+    });
     return;
   }
 
