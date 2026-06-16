@@ -31,11 +31,16 @@ const adminProductSelect = document.querySelector("[data-admin-product-select]")
 const adminDeleteButton = document.querySelector("[data-admin-delete]");
 const adminMessage = document.querySelector("[data-catalog-admin-message]");
 const params = new URLSearchParams(window.location.search);
-const ITEMS_PER_PAGE = 9;
+const DESKTOP_ITEMS_PER_PAGE = 9;
+const COMPACT_ITEMS_PER_PAGE = 4;
+const desktopCatalogMedia = window.matchMedia("(min-width: 1400px)");
 const ADMIN_MODAL_OPEN_CLASS = "catalog-admin-modal-opened";
 
 let products = [];
 let currentPage = 1;
+let itemsPerPage = desktopCatalogMedia.matches
+  ? DESKTOP_ITEMS_PER_PAGE
+  : COMPACT_ITEMS_PER_PAGE;
 
 const colorMap = {
   Бежевый: "#d8c0a2",
@@ -224,7 +229,7 @@ function updateFilterCount() {
 }
 
 function updatePagination(totalItems) {
-  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   pagination.hidden = totalPages <= 1;
 
@@ -238,12 +243,12 @@ function updatePagination(totalItems) {
 
 function renderProducts() {
   const filteredProducts = getFilteredProducts();
-  const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const safePage = totalPages === 0 ? 1 : Math.min(currentPage, totalPages);
-  const startIndex = (safePage - 1) * ITEMS_PER_PAGE;
+  const startIndex = (safePage - 1) * itemsPerPage;
   const paginatedProducts = filteredProducts.slice(
     startIndex,
-    startIndex + ITEMS_PER_PAGE,
+    startIndex + itemsPerPage,
   );
 
   currentPage = safePage;
@@ -442,13 +447,23 @@ function showPreviousPage() {
 }
 
 function showNextPage() {
-  const totalPages = Math.ceil(getFilteredProducts().length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(getFilteredProducts().length / itemsPerPage);
 
   if (currentPage < totalPages) {
     currentPage += 1;
     renderProducts();
     scrollToCatalogProducts();
   }
+}
+
+function handleCatalogBreakpointChange(event) {
+  const firstVisibleItemIndex = (currentPage - 1) * itemsPerPage;
+
+  itemsPerPage = event.matches
+    ? DESKTOP_ITEMS_PER_PAGE
+    : COMPACT_ITEMS_PER_PAGE;
+  currentPage = Math.floor(firstVisibleItemIndex / itemsPerPage) + 1;
+  renderProducts();
 }
 
 async function handleAdminSubmit(event) {
@@ -540,6 +555,7 @@ mobileColorSelect.addEventListener("change", resetPageAndRender);
 resetButton.addEventListener("click", resetFilters);
 paginationPrev.addEventListener("click", showPreviousPage);
 paginationNext.addEventListener("click", showNextPage);
+desktopCatalogMedia.addEventListener("change", handleCatalogBreakpointChange);
 adminOpenButton?.addEventListener("click", openAdminModal);
 adminModeSelect?.addEventListener("change", () => {
   setAdminMode(adminModeSelect.value);
