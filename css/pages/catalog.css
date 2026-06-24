@@ -353,13 +353,14 @@ button {
 }
 
 .nav-catalog span {
+  flex: 0 0 12px;
   width: 12px;
   height: 6px;
-  background:
-    linear-gradient(45deg, transparent 50%, var(--color-white) 50%) left / 6px
-      6px no-repeat,
-    linear-gradient(-45deg, transparent 50%, var(--color-white) 50%) right / 6px
-      6px no-repeat;
+  background: var(--color-white);
+  -webkit-mask: url("../../assets/images/icons/figma-nav-arrow.svg") center /
+    contain no-repeat;
+  mask: url("../../assets/images/icons/figma-nav-arrow.svg") center / contain
+    no-repeat;
 }
 
 .nav-catalog--active {
@@ -455,21 +456,11 @@ button {
   width: 16px;
   height: 16px;
   opacity: 0.5;
-  background:
-    linear-gradient(
-        45deg,
-        transparent 46%,
-        currentColor 47% 53%,
-        transparent 54%
-      )
-      center / 12px 12px no-repeat,
-    linear-gradient(
-        -45deg,
-        transparent 46%,
-        currentColor 47% 53%,
-        transparent 54%
-      )
-      center / 12px 12px no-repeat;
+  background: currentColor;
+  -webkit-mask: url("../../assets/images/icons/figma-reset-x.svg") center /
+    16px 16px no-repeat;
+  mask: url("../../assets/images/icons/figma-reset-x.svg") center / 16px 16px
+    no-repeat;
 }
 
 .sort-control {
@@ -489,22 +480,21 @@ button {
 }
 
 .sort-control select {
-  width: 143px;
+  width: 174px;
   height: 21px;
-  padding: 0 22px 0 0;
+  padding: 0 28px 0 0;
   border: 0;
+  -webkit-appearance: none;
   appearance: none;
   outline: none;
-  background:
-    linear-gradient(45deg, transparent 50%, var(--color-dark) 50%) right 7px
-      center / 6px 6px no-repeat,
-    linear-gradient(-45deg, transparent 50%, var(--color-dark) 50%) right 1px
-      center / 6px 6px no-repeat;
+  background: url("../../assets/images/icons/figma-select-arrow.png") right
+    center / 18px 21px no-repeat transparent;
   color: var(--color-dark);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.514;
   letter-spacing: 1.12px;
+  text-align: right;
 }
 
 .mobile-color-filter {
@@ -754,11 +744,14 @@ button {
 
 .product-card__button::after {
   content: "";
+  flex: 0 0 18px;
   width: 18px;
   height: 18px;
-  border-top: 2px solid var(--color-dark);
-  border-right: 2px solid var(--color-dark);
-  transform: rotate(45deg);
+  background: currentColor;
+  -webkit-mask: url("../../assets/images/icons/figma-arrow-right.svg") center /
+    18px 18px no-repeat;
+  mask: url("../../assets/images/icons/figma-arrow-right.svg") center / 18px
+    18px no-repeat;
 }
 
 .empty-message {
@@ -775,7 +768,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 42px;
   width: 100%;
   margin-top: 5px;
 }
@@ -801,15 +794,18 @@ button {
 }
 
 .catalog-pagination__button span {
-  width: 14px;
-  height: 14px;
-  border-bottom: 2px solid currentColor;
-  border-left: 2px solid currentColor;
-  transform: translateX(3px) rotate(45deg);
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  transform: rotate(180deg);
+  -webkit-mask: url("../../assets/images/icons/figma-arrow-right.svg") center /
+    18px 18px no-repeat;
+  mask: url("../../assets/images/icons/figma-arrow-right.svg") center / 18px
+    18px no-repeat;
 }
 
 .catalog-pagination__button--next span {
-  transform: translateX(-3px) rotate(225deg);
+  transform: none;
 }
 
 .catalog-pagination__button:hover:not(:disabled) {
@@ -1303,11 +1299,11 @@ button {
     width: 12px;
     height: 6px;
     margin-left: 5px;
-    background:
-      linear-gradient(45deg, transparent 50%, currentColor 50%) left / 6px 6px
-        no-repeat,
-      linear-gradient(-45deg, transparent 50%, currentColor 50%) right / 6px 6px
-        no-repeat;
+    background: currentColor;
+    -webkit-mask: url("../../assets/images/icons/figma-nav-arrow.svg") center /
+      contain no-repeat;
+    mask: url("../../assets/images/icons/figma-nav-arrow.svg") center / contain
+      no-repeat;
     vertical-align: 2px;
   }
 
@@ -1517,7 +1513,7 @@ button {
   }
 
   .product-card__button::after {
-    border-color: var(--color-dark);
+    background: currentColor;
   }
 
   .catalog-toolbar {
@@ -1536,8 +1532,10 @@ button {
   }
 
   .catalog-pagination__button span {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
+    -webkit-mask-size: 12px 12px;
+    mask-size: 12px 12px;
   }
 
   .filter-heading {
@@ -1573,21 +1571,20 @@ button {
   }
 
   .sort-control select {
-    width: auto;
-    max-width: 180px;
-    height: auto;
-    padding: 0 22px 0 0;
+    width: 187px;
+    max-width: none;
+    height: 21px;
+    padding: 0 28px 0 0;
     border: 0;
+    -webkit-appearance: none;
     appearance: none;
-    background:
-      linear-gradient(45deg, transparent 50%, var(--color-dark) 50%) right 7px
-        center / 6px 6px no-repeat,
-      linear-gradient(-45deg, transparent 50%, var(--color-dark) 50%) right 1px
-        center / 6px 6px no-repeat;
+    background: url("../../assets/images/icons/figma-select-arrow.png") right
+      center / 18px 21px no-repeat transparent;
     color: var(--color-dark);
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 1.12px;
+    text-align: right;
   }
 
   .mobile-color-filter {
@@ -1611,14 +1608,11 @@ button {
     padding: 0 38px 0 16px;
     border: 1px solid rgba(25, 36, 47, 0.14);
     border-radius: 12px;
+    -webkit-appearance: none;
     appearance: none;
     outline: none;
-    background:
-      linear-gradient(45deg, transparent 50%, var(--color-dark) 50%) right 19px
-        center / 6px 6px no-repeat,
-      linear-gradient(-45deg, transparent 50%, var(--color-dark) 50%) right 13px
-        center / 6px 6px no-repeat,
-      var(--color-white);
+    background: url("../../assets/images/icons/figma-select-arrow.png") right
+      16px center / 18px 21px no-repeat var(--color-white);
     color: var(--color-dark);
     font-size: 14px;
     font-weight: 500;
@@ -1662,7 +1656,7 @@ button {
   }
 
   .site-header__top {
-    padding: 28px 39px 0;
+    padding: 28px 39px 0 !important;
   }
 
   .site-header::after {
@@ -1695,7 +1689,8 @@ button {
   .sort-control {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -3px;
+    gap: 11px;
   }
 
   .filter-heading {
@@ -1721,9 +1716,7 @@ button {
     height: 36px;
     padding: 0 30px 0 12px;
     border-radius: 0;
-    background-position:
-      right 13px center,
-      right 7px center;
+    background-position: right 10px center;
   }
 
   .products-grid {
@@ -1749,13 +1742,22 @@ button {
   }
 
   .site-header__top {
-    padding: 37px 30px 0;
+    padding: 37px 30px 0 !important;
   }
 
-  .site-logo,
-  .site-logo img {
-    width: 86px;
-    height: 46px;
+  .page .site-logo--header {
+    flex: 0 0 86px !important;
+    width: 86px !important;
+    height: 46px !important;
+    overflow: hidden;
+  }
+
+  .page .site-logo--header img {
+    width: 128px !important;
+    height: 75px !important;
+    max-width: none;
+    object-fit: cover;
+    transform: translate(-23px, -14px) !important;
   }
 
   .brand-marks {
@@ -1776,10 +1778,12 @@ button {
   }
 
   .burger-button {
-    flex: 0 0 50px;
-    width: 50px;
-    height: 50px;
-    margin-top: 7px;
+    top: 35px !important;
+    right: 30px !important;
+    flex: 0 0 50px !important;
+    width: 50px !important;
+    height: 50px !important;
+    margin: 0;
     gap: 6px;
   }
 
@@ -1830,13 +1834,13 @@ button {
     top: 32px;
     left: 0;
     justify-content: flex-start;
-    width: 213px;
+    width: 280px;
     gap: 7px;
   }
 
   .sort-control select {
-    width: 121px;
-    max-width: 121px;
+    width: 188px;
+    max-width: 188px;
     text-align: right;
   }
 
