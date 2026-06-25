@@ -55,6 +55,7 @@ let currentUser = null;
 let isAdmin = false;
 let usersById = new Map();
 
+// форматирование цены и даты
 function formatPrice(value) {
   return new Intl.NumberFormat("ru-RU", {
     style: "currency",
@@ -63,14 +64,18 @@ function formatPrice(value) {
   }).format(Number(value) || 0);
 }
 
+// получение заказов и пользователей
 function formatDate(value) {
   if (!value) {
     return t("orders.noDate");
   }
 
-  return new Intl.DateTimeFormat(getLanguage() === "en" ? "en-US" : "ru-RU").format(new Date(value));
+  return new Intl.DateTimeFormat(
+    getLanguage() === "en" ? "en-US" : "ru-RU",
+  ).format(new Date(value));
 }
 
+// статус заказа, номер заказа, количество товаров, имя покупателя
 function getShipmentStatus(order) {
   return order.shipmentStatus || order.shippingStatus || "Ожидает обработки";
 }
@@ -104,11 +109,14 @@ function getItemsLabel(count) {
   return t("orders.itemMany", { count });
 }
 
+// получение имени покупателя
 function getCustomerName(order) {
   const user = usersById.get(String(order.userId));
   const name =
     user?.fullName ||
-    [user?.lastName, user?.firstName, user?.middleName].filter(Boolean).join(" ") ||
+    [user?.lastName, user?.firstName, user?.middleName]
+      .filter(Boolean)
+      .join(" ") ||
     user?.nickname ||
     user?.email ||
     t("orders.notFoundUser");
@@ -116,6 +124,7 @@ function getCustomerName(order) {
   return translateValue("person", name);
 }
 
+// создание для изменения статуса заказа и отгрузки и тд
 function createStatusSelect(value, options, action, orderId) {
   const select = document.createElement("select");
   select.className = "orders-status-select";
@@ -133,6 +142,7 @@ function createStatusSelect(value, options, action, orderId) {
   return select;
 }
 
+// создание статуса заказа и отгрузки только для чтения
 function createReadonlyStatus(value, type = "order") {
   const status = document.createElement("span");
   status.className = `orders-status orders-status--${type}`;
@@ -140,6 +150,7 @@ function createReadonlyStatus(value, type = "order") {
   return status;
 }
 
+// ячейка таблицы с заказами
 function createCell(label, content) {
   const cell = document.createElement("div");
   cell.className = "orders-list__cell";
@@ -154,6 +165,7 @@ function createCell(label, content) {
   return cell;
 }
 
+// создание текста с деталями заказа
 function createDetailsText(order) {
   return (
     (order.items || [])
@@ -164,10 +176,13 @@ function createDetailsText(order) {
   );
 }
 
+// рендер заголовка таблицы заказов
 function renderHeader() {
   ordersSection.classList.toggle("orders-section--admin", isAdmin);
   ordersSection.classList.toggle("orders-section--user", !isAdmin);
-  ordersTitle.textContent = isAdmin ? t("orders.allOrders") : t("orders.userOrders");
+  ordersTitle.textContent = isAdmin
+    ? t("orders.allOrders")
+    : t("orders.userOrders");
   roleBadge.textContent = isAdmin ? t("orders.admin") : t("orders.customer");
   ordersHeader.innerHTML = "";
 
@@ -178,6 +193,7 @@ function renderHeader() {
   });
 }
 
+// функция создания строки заказа в таблице
 function createOrderRow(order) {
   const row = document.createElement("article");
   row.className = "orders-list__row";
@@ -196,7 +212,12 @@ function createOrderRow(order) {
     createCell(
       t("Статус"),
       isAdmin
-        ? createStatusSelect(order.status || "Ожидает", ORDER_STATUSES, "status", order.id)
+        ? createStatusSelect(
+            order.status || "Ожидает",
+            ORDER_STATUSES,
+            "status",
+            order.id,
+          )
         : createReadonlyStatus(order.status || "Ожидает", "order"),
     ),
     createCell(t("Сумма"), formatPrice(order.total)),
@@ -232,6 +253,7 @@ function createOrderRow(order) {
   return row;
 }
 
+// рендер списка заказов
 function renderOrders(orders) {
   ordersList.innerHTML = "";
   emptyMessage.hidden = orders.length > 0;
@@ -246,6 +268,7 @@ function renderOrders(orders) {
     });
 }
 
+// загрузка заказов в зависимости от роли пользователя
 async function loadOrders() {
   if (isAdmin) {
     const [users, orders] = await Promise.all([getUsers(), getOrders()]);
@@ -258,6 +281,7 @@ async function loadOrders() {
   renderOrders(await getOrdersByUserId(currentUser.id));
 }
 
+// обработка действий с заказами
 async function handleOrderAction(event) {
   const target = event.target.closest("[data-order-action]");
 
@@ -294,6 +318,7 @@ async function handleOrderAction(event) {
   }
 }
 
+// инициализация страницы заказов
 async function initOrders() {
   currentUser = getCurrentUser();
 

@@ -19,6 +19,7 @@ function ensureStyles() {
     return;
   }
 
+  // стиль для модального окна запроса цены
   const style = document.createElement("style");
   style.dataset.priceRequestStyle = "";
   style.textContent = `
@@ -74,6 +75,7 @@ function ensureStyles() {
   document.head.append(style);
 }
 
+// поле для ввода данных в модальном окне
 function createField(name, type, placeholderKey, autocomplete) {
   return `
     <label class="price-request-modal__field" data-price-field="${name}">
@@ -88,6 +90,7 @@ function createModal() {
     return modal;
   }
 
+  // стиль модального окна
   ensureStyles();
   modal = document.createElement("div");
   modal.className = "price-request-modal";
@@ -147,6 +150,7 @@ function showFieldError(name, message) {
   error.hidden = false;
 }
 
+// очистка ошибок полей ввода в модальном окне
 function clearFieldErrors() {
   form.querySelectorAll("[data-price-input]").forEach((input) => {
     input.classList.remove("input-error");
@@ -212,6 +216,7 @@ function getFormValues() {
   };
 }
 
+// обработка отправки формы в модальном окне
 async function handleSubmit(event) {
   event.preventDefault();
 
@@ -259,6 +264,7 @@ async function handleSubmit(event) {
   }
 }
 
+// закрытие модального окна по нажатию клавиши
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && modal && !modal.hidden) {
     closePriceRequestModal();

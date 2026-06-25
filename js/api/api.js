@@ -8,6 +8,7 @@ async function checkResponse(response) {
   return response.json();
 }
 
+// создание опций запроса
 function createRequestOptions(method, data) {
   return {
     method,
@@ -18,6 +19,7 @@ function createRequestOptions(method, data) {
   };
 }
 
+// фильтрация и сортировка продуктов
 async function getProducts(options = {}) {
   const searchParams = new URLSearchParams();
 
@@ -25,6 +27,7 @@ async function getProducts(options = {}) {
     searchParams.set("category", options.category);
   }
 
+  // фильтрация по качеству
   if (options.quality) {
     searchParams.set("quality", options.quality);
   }
@@ -41,6 +44,7 @@ async function getProducts(options = {}) {
     searchParams.set("_sort", "-price");
   }
 
+  // формирование строки запроса
   const queryString = searchParams.toString();
   const response = await fetch(
     `${API_URL}/products${queryString ? `?${queryString}` : ""}`,
@@ -48,11 +52,13 @@ async function getProducts(options = {}) {
   return checkResponse(response);
 }
 
+// получение продукта по ID
 async function getProductById(id) {
   const response = await fetch(`${API_URL}/products/${id}`);
   return checkResponse(response);
 }
 
+// Добавление нового продукта
 async function createProduct(productData) {
   const response = await fetch(
     `${API_URL}/products`,
@@ -62,6 +68,7 @@ async function createProduct(productData) {
   return checkResponse(response);
 }
 
+// обновление товара
 async function updateProduct(id, productData) {
   const response = await fetch(
     `${API_URL}/products/${id}`,
@@ -71,6 +78,7 @@ async function updateProduct(id, productData) {
   return checkResponse(response);
 }
 
+// удаление товара
 async function deleteProduct(id) {
   const response = await fetch(`${API_URL}/products/${id}`, {
     method: "DELETE",
@@ -84,21 +92,25 @@ async function getCategories() {
   return checkResponse(response);
 }
 
+// получение отзывов
 async function getReviews() {
   const response = await fetch(`${API_URL}/reviews`);
   return checkResponse(response);
 }
 
+// получение всех пользователей
 async function getUsers() {
   const response = await fetch(`${API_URL}/users`);
   return checkResponse(response);
 }
 
+// получение пользователя
 async function getUserById(id) {
   const response = await fetch(`${API_URL}/users/${id}`);
   return checkResponse(response);
 }
 
+// обновление пользователя
 async function updateUser(id, data) {
   const response = await fetch(
     `${API_URL}/users/${id}`,
@@ -136,6 +148,7 @@ async function getUserByPhone(phone) {
   );
 }
 
+// получение списка заказов
 async function getOrders() {
   const response = await fetch(`${API_URL}/orders`);
   return checkResponse(response);
@@ -149,6 +162,7 @@ async function getOrdersByUserId(userId) {
   });
 }
 
+// добавление нового заказа
 async function createOrder(orderData) {
   const response = await fetch(
     `${API_URL}/orders`,
@@ -158,6 +172,7 @@ async function createOrder(orderData) {
   return checkResponse(response);
 }
 
+// изменение данных
 async function updateOrder(id, data) {
   const response = await fetch(
     `${API_URL}/orders/${id}`,
@@ -167,6 +182,7 @@ async function updateOrder(id, data) {
   return checkResponse(response);
 }
 
+// удаление заказа
 async function deleteOrder(id) {
   const response = await fetch(`${API_URL}/orders/${id}`, {
     method: "DELETE",
@@ -175,6 +191,7 @@ async function deleteOrder(id) {
   return checkResponse(response);
 }
 
+// Добавление заявки на получение прайс-листа
 async function createPriceRequest(requestData) {
   const response = await fetch(
     `${API_URL}/priceRequests`,
@@ -184,6 +201,7 @@ async function createPriceRequest(requestData) {
   return checkResponse(response);
 }
 
+// добавление вопроса по доставке
 async function createDeliveryQuestion(questionData) {
   const response = await fetch(
     `${API_URL}/deliveryQuestions`,
@@ -193,6 +211,7 @@ async function createDeliveryQuestion(questionData) {
   return checkResponse(response);
 }
 
+// добавление заявки на консультацию
 async function createContactRequest(requestData) {
   const response = await fetch(
     `${API_URL}/contactRequests`,
@@ -202,6 +221,7 @@ async function createContactRequest(requestData) {
   return checkResponse(response);
 }
 
+// создание отзыва
 async function createReview(reviewData) {
   const response = await fetch(
     `${API_URL}/reviews`,
@@ -211,6 +231,7 @@ async function createReview(reviewData) {
   return checkResponse(response);
 }
 
+// регистрация
 async function registerUser(userData) {
   const response = await fetch(
     `${API_URL}/users`,
@@ -220,10 +241,12 @@ async function registerUser(userData) {
   return checkResponse(response);
 }
 
+// создание пользователя через регистрацию
 async function createUser(userData) {
   return registerUser(userData);
 }
 
+// авторизация пользователя
 async function loginUser(email, password) {
   const users = await getUsers();
   const user = users.find((item) => {

@@ -673,7 +673,6 @@
   }
 }
 
-/* Promotions and fabric shortcuts belong only to the home page header strip. */
 .mobile-menu__sale,
 .mobile-menu__categories {
   display: none;

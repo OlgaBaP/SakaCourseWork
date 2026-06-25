@@ -7,6 +7,7 @@ const REQUEST_ERROR_MESSAGES = {
   address: "validation.address",
 };
 
+
 function normalizePhone(phone) {
   return String(phone || "")
     .trim()

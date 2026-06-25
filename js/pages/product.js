@@ -69,6 +69,7 @@ const colorMap = {
   Коричневый: "#7a5038",
 };
 
+// цены в рублях, форматирование
 function formatPrice(price) {
   return new Intl.NumberFormat("ru-RU", {
     style: "currency",
@@ -90,6 +91,7 @@ function getNumericProductId(id) {
   return Number.isNaN(numberId) ? id : numberId;
 }
 
+// сообщение продукт не найден
 function showProductNotFound() {
   productContent.hidden = true;
   productMessage.hidden = false;
@@ -98,11 +100,13 @@ function showProductNotFound() {
   document.title = `${t("product.notFound")} | Saka Tekstil`;
 }
 
+//изображение главного продукта
 function setMainImage(product) {
   productImage.src = getImagePath(product.image);
   productImage.alt = `${translateValue("product", product.title)} ${translateValue("color", product.color)}`;
 }
 
+// функция для отображения миниатюр продуктов
 function renderThumbnails(thumbnails) {
   thumbnailsList.innerHTML = "";
 
@@ -113,7 +117,10 @@ function renderThumbnails(thumbnails) {
     button.className = "product-thumb";
     button.type = "button";
     button.dataset.productVariantId = String(product.id);
-    button.setAttribute("aria-label", `${translateValue("product", product.title)} ${translateValue("color", product.color)}`);
+    button.setAttribute(
+      "aria-label",
+      `${translateValue("product", product.title)} ${translateValue("color", product.color)}`,
+    );
 
     if (String(product.id) === String(currentProduct.id)) {
       button.classList.add("product-thumb--active");
@@ -132,6 +139,7 @@ function renderThumbnails(thumbnails) {
   });
 }
 
+// функция для отображения цветовых вариантов продукта
 function renderColorSwatches(products) {
   productColors.innerHTML = "";
 
@@ -160,6 +168,7 @@ function renderColorSwatches(products) {
   });
 }
 
+// отображение характеристик продукта
 function renderSpecs(product) {
   const specs = [
     [t("Материал:"), translateValue("product", product.category)],
@@ -184,11 +193,13 @@ function renderSpecs(product) {
   });
 }
 
+// функция для получения положительного целого числа из значения
 function getPositiveInteger(value) {
   const number = Math.floor(Number(value));
   return Number.isFinite(number) && number > 0 ? number : 0;
 }
 
+// обновление калькулятора
 function updateCalculator() {
   if (!currentProduct) {
     return;
@@ -213,6 +224,7 @@ function getProductVariants(product, products) {
   return variants.length > 0 ? variants : [product];
 }
 
+// функция для отображения выбранного варианта продукта
 function renderSelectedVariant() {
   const thumbnails = [
     currentProduct,
@@ -248,12 +260,14 @@ function renderSelectedVariant() {
   updateCalculator();
 }
 
+// функция для выбора варианта продукта
 function selectProductVariant(product) {
   currentProduct = product;
   addToCartMessage.hidden = true;
   renderSelectedVariant();
 }
 
+// функция для отображения продукта и его вариантов
 function renderProduct(product, products) {
   currentProduct = product;
   currentProducts = products;
@@ -263,11 +277,9 @@ function renderProduct(product, products) {
   productContent.hidden = false;
 }
 
+// обновление количества продукта
 function updateProductQuantity(nextQuantity) {
-  selectedQuantity = Math.min(
-    MAX_PRODUCT_QUANTITY,
-    Math.max(1, nextQuantity),
-  );
+  selectedQuantity = Math.min(MAX_PRODUCT_QUANTITY, Math.max(1, nextQuantity));
   productQuantity.textContent = String(selectedQuantity);
 
   productQuantityControls.forEach((button) => {
@@ -278,11 +290,13 @@ function updateProductQuantity(nextQuantity) {
   });
 }
 
+// обработчик изменения количества продукта
 function handleProductQuantityStep(event) {
   const direction = Number(event.currentTarget.dataset.productQuantityStep);
   updateProductQuantity(selectedQuantity + direction);
 }
 
+// нормализация значения калькулятора
 function normalizeCounterValue(input) {
   if (input.value === "") {
     return;
@@ -290,12 +304,12 @@ function normalizeCounterValue(input) {
 
   input.value = String(getPositiveInteger(input.value));
 }
-
+// обработчик ввода калькулятора
 function handleCalculatorInput(event) {
   normalizeCounterValue(event.target);
   updateCalculator();
 }
-
+// обработчик изменения шага калькулятора
 function handleCalculatorStep(event) {
   const button = event.target.closest("[data-calculator-step]");
 
@@ -320,14 +334,17 @@ function showAddToCartMessage(text, isError = false) {
   addToCartMessage.classList.toggle("is-error", isError);
 }
 
+// добавление продукта в корзину
 async function handleAddToCart() {
   if (!currentProduct) {
     return;
   }
 
+  // блокировка кнопки и скрытие сообщения
   addToCartButton.disabled = true;
   addToCartMessage.hidden = true;
 
+  // добавление продукта в корзину 
   try {
     const isAdded = await addProductToCart(currentProduct, selectedQuantity);
 
@@ -344,6 +361,7 @@ async function handleAddToCart() {
   }
 }
 
+// обработчик отправки формы запроса цены
 function handleRequestSubmit(event) {
   event.preventDefault();
 
@@ -363,6 +381,7 @@ function handleRequestSubmit(event) {
   });
 }
 
+// если продукт не найден
 async function initProductPage() {
   if (!productId) {
     showProductNotFound();
@@ -385,6 +404,7 @@ async function initProductPage() {
   }
 }
 
+// назначение обработчиков событий
 addToCartButton.addEventListener("click", handleAddToCart);
 productQuantityControls.forEach((button) => {
   button.addEventListener("click", handleProductQuantityStep);

@@ -23,7 +23,7 @@ const MESSAGES = {
   "admin.added": "Товар добавлен",
   "admin.chooseDelete": "Выберите товар для удаления",
   "admin.chooseEdit": "Выберите товар для редактирования",
-  "admin.confirmDelete": "Удалить товар \"{title}\"?",
+  "admin.confirmDelete": 'Удалить товар "{title}"?',
   "admin.deleted": "Товар удален",
   "admin.deleteFailed": "Не удалось удалить товар",
   "admin.noProducts": "Товары не найдены",
@@ -67,9 +67,11 @@ const MESSAGES = {
   "common.requestFailed": "Не удалось отправить заявку. Попробуйте позже.",
   "common.requestSuccess": "Заявка успешно отправлена",
   "common.submitRequired": "Заполните обязательные поля",
-  "delivery.success": "Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время",
+  "delivery.success":
+    "Ваш вопрос отправлен. Мы свяжемся с вами в ближайшее время",
   "delivery.validationName": "Введите имя длиной не менее 2 символов",
-  "delivery.validationQuestionLength": "Текст вопроса должен содержать от 10 до 500 символов",
+  "delivery.validationQuestionLength":
+    "Текст вопроса должен содержать от 10 до 500 символов",
   "delivery.validationQuestionRequired": "Введите текст вопроса",
   "delivery.validationTopic": "Выберите тему вопроса",
   "catalog.allColors": "Все цвета",
@@ -90,12 +92,14 @@ const MESSAGES = {
   "notFound.documentTitle": "404 — Страница не найдена | Saka Tekstil",
   "notFound.kicker": "Ошибка 404",
   "notFound.title": "Страница не найдена",
-  "notFound.description": "Возможно, страница была перемещена или адрес указан неверно. Вернитесь на главную страницу или перейдите в каталог тканей.",
+  "notFound.description":
+    "Возможно, страница была перемещена или адрес указан неверно. Вернитесь на главную страницу или перейдите в каталог тканей.",
   "notFound.home": "На главную",
   "notFound.catalog": "Перейти в каталог",
   "notFound.copyright": "© 2023 Сака Текстиль. Все права защищены.",
   "price.address": "Адрес",
-  "price.agree": "Нажимая на кнопку вы даете свое согласие на обработку персональных данных. Гарантируем! Спама не будет!",
+  "price.agree":
+    "Нажимая на кнопку вы даете свое согласие на обработку персональных данных. Гарантируем! Спама не будет!",
   "price.lead": "Оставьте заявку и получите образцы",
   "price.name": "Имя",
   "price.source": "Прайс-лист и каталог",
@@ -115,7 +119,8 @@ const MESSAGES = {
 
 const EN_MESSAGES = {
   "account.avatarSaved": "Avatar has been saved",
-  "account.avatarSaveFailed": "Could not save the avatar. Please try again later.",
+  "account.avatarSaveFailed":
+    "Could not save the avatar. Please try again later.",
   "account.chooseImage": "Choose an image",
   "account.dataSaved": "Data has been saved",
   "account.defaultValue": "Not specified",
@@ -132,7 +137,7 @@ const EN_MESSAGES = {
   "admin.added": "Product has been added",
   "admin.chooseDelete": "Choose a product to delete",
   "admin.chooseEdit": "Choose a product to edit",
-  "admin.confirmDelete": "Delete product \"{title}\"?",
+  "admin.confirmDelete": 'Delete product "{title}"?',
   "admin.deleted": "Product has been deleted",
   "admin.deleteFailed": "Could not delete product",
   "admin.noProducts": "Products not found",
@@ -144,7 +149,8 @@ const EN_MESSAGES = {
   "auth.invalidFirstName": "Enter first name",
   "auth.invalidLastName": "Enter last name",
   "auth.invalidMiddleName": "Enter a valid middle name",
-  "auth.invalidPassword": "Password must be 8-20 characters: letters, a digit, and a special character",
+  "auth.invalidPassword":
+    "Password must be 8-20 characters: letters, a digit, and a special character",
   "auth.invalidPhone": "Enter a Belarusian phone number",
   "auth.loginFailed": "Could not sign in. Please try again later.",
   "auth.nicknameExists": "This nickname already exists",
@@ -176,9 +182,11 @@ const EN_MESSAGES = {
   "common.requestFailed": "Could not send request. Please try again later.",
   "common.requestSuccess": "Request has been sent",
   "common.submitRequired": "Fill in the required fields",
-  "delivery.success": "Your question has been sent. We will contact you shortly",
+  "delivery.success":
+    "Your question has been sent. We will contact you shortly",
   "delivery.validationName": "Enter a name at least 2 characters long",
-  "delivery.validationQuestionLength": "The question must be between 10 and 500 characters",
+  "delivery.validationQuestionLength":
+    "The question must be between 10 and 500 characters",
   "delivery.validationQuestionRequired": "Enter your question",
   "delivery.validationTopic": "Choose a question topic",
   "catalog.allColors": "All colors",
@@ -199,12 +207,14 @@ const EN_MESSAGES = {
   "notFound.documentTitle": "404 — Page not found | Saka Tekstil",
   "notFound.kicker": "Error 404",
   "notFound.title": "Page not found",
-  "notFound.description": "The page may have been moved or the address may be incorrect. Return to the home page or browse the fabric catalog.",
+  "notFound.description":
+    "The page may have been moved or the address may be incorrect. Return to the home page or browse the fabric catalog.",
   "notFound.home": "Go home",
   "notFound.catalog": "Browse catalog",
   "notFound.copyright": "© 2023 Saka Tekstil. All rights reserved.",
   "price.address": "Address",
-  "price.agree": "By clicking the button, you consent to personal data processing. We guarantee no spam.",
+  "price.agree":
+    "By clicking the button, you consent to personal data processing. We guarantee no spam.",
   "price.lead": "Send a request and get samples",
   "price.name": "Name",
   "price.source": "Price list and catalog",
@@ -226,122 +236,149 @@ const TEXT = {
   ...MESSAGES,
   "Saka Holding": "Saka Holding",
   "Saka Tekstil": "Saka Tekstil",
-  "Производитель турецкого трикотажного полотна": "Turkish knit fabric manufacturer",
+  "Производитель турецкого трикотажного полотна":
+    "Turkish knit fabric manufacturer",
   "Партнерские логотипы": "Partner logos",
-  "Поиск": "Search",
-  "Найти": "Search",
-  "Корзина": "Cart",
-  "Войти": "Sign in",
-  "Выйти": "Sign out",
-  "Главная": "Home",
-  "Каталог": "Catalog",
+  Поиск: "Search",
+  Найти: "Search",
+  Корзина: "Cart",
+  Войти: "Sign in",
+  Выйти: "Sign out",
+  Главная: "Home",
+  Каталог: "Catalog",
   "О компании": "About",
   "Доставка и оплата": "Delivery and payment",
-  "Контакты": "Contacts",
-  "Акции": "Sale",
-  "АКЦИИ": "SALE",
+  Контакты: "Contacts",
+  Акции: "Sale",
+  АКЦИИ: "SALE",
   "Кулинарная гладь": "Cotton jersey",
-  "Футер": "French terry",
+  Футер: "French terry",
   "Кашкорсе, рибана": "Kashkorse, rib knit",
-  "Пике": "Pique",
-  "Интерлок": "Interlock",
-  "Капитоний": "Capiton",
+  Пике: "Pique",
+  Интерлок: "Interlock",
+  Капитоний: "Capiton",
   "Версия для слабовидящих": "Accessibility version",
   "Открыть меню": "Open menu",
   "Закрыть меню": "Close menu",
   "Основная навигация": "Main navigation",
   "Мобильная навигация": "Mobile navigation",
   "Навигация в подвале": "Footer navigation",
-  "Навигация": "Navigation",
+  Навигация: "Navigation",
   "Напишите нам,": "Message us,",
   "мы онлайн:": "we are online:",
-  "Copyright © 2023 Сака Текстиль. Все права защищены.": "Copyright © 2023 Saka Tekstil. All rights reserved.",
+  "Copyright © 2023 Сака Текстиль. Все права защищены.":
+    "Copyright © 2023 Saka Tekstil. All rights reserved.",
   "Сака Текстиль. Все права защищены.": "Saka Tekstil. All rights reserved.",
   "Ткани для вашего бизнеса": "Fabrics for your business",
-  "Большой выбор качественных тканей для производства и пошива одежды": "A wide choice of quality fabrics for apparel production and tailoring",
-  "Лёгкие ткани для стильных и воздушных коллекций": "Light fabrics for stylish, airy collections",
-  "Качественные полотна для летней и повседневной одежды": "Quality fabrics for summer and everyday clothing",
-  "Пастельная палитра тканей для уютных изделий": "A pastel fabric palette for cozy garments",
-  "Подберите ткань под цвет и стиль вашего бренда": "Choose fabric for your brand color and style",
-  "Мягкие оттенки для современных коллекций одежды": "Soft shades for modern clothing collections",
+  "Большой выбор качественных тканей для производства и пошива одежды":
+    "A wide choice of quality fabrics for apparel production and tailoring",
+  "Лёгкие ткани для стильных и воздушных коллекций":
+    "Light fabrics for stylish, airy collections",
+  "Качественные полотна для летней и повседневной одежды":
+    "Quality fabrics for summer and everyday clothing",
+  "Пастельная палитра тканей для уютных изделий":
+    "A pastel fabric palette for cozy garments",
+  "Подберите ткань под цвет и стиль вашего бренда":
+    "Choose fabric for your brand color and style",
+  "Мягкие оттенки для современных коллекций одежды":
+    "Soft shades for modern clothing collections",
   "Перейти в каталог": "Go to catalog",
-  "Подробнее": "Details",
+  Подробнее: "Details",
   "Трикотажное полотно": "Knitted fabric",
-  "Выбирайте из множества разновидностей тканей": "Choose from many fabric varieties",
+  "Выбирайте из множества разновидностей тканей":
+    "Choose from many fabric varieties",
   "Футер 3-х Нитка": "3-thread french terry",
   "Френч Терри": "French terry",
-  "Вискоза": "Viscose",
-  "Бифлекс": "Biflex",
-  "Saka Tekstil – для тех, кто хочет быстро": "Saka Tekstil is for those who want to quickly",
-  "и комфортно получать текстильную продукцию": "and comfortably receive textile products",
-  "высокого качества по адекватной стоимости": "of high quality at a fair price",
-  "Предоставляем возможность закупки широкого ассортимента: футер, кулирка, джакарт, флис, рибана и многое другое…": "We offer purchasing across a wide range: french terry, cotton jersey, jacquard, fleece, rib knit, and much more...",
-  "Наша компания является надежным поставщиком и производителем турецкого трикотажного полотна по всему миру": "Our company is a reliable supplier and manufacturer of Turkish knitted fabric worldwide",
+  Вискоза: "Viscose",
+  Бифлекс: "Biflex",
+  "Saka Tekstil – для тех, кто хочет быстро":
+    "Saka Tekstil is for those who want to quickly",
+  "и комфортно получать текстильную продукцию":
+    "and comfortably receive textile products",
+  "высокого качества по адекватной стоимости":
+    "of high quality at a fair price",
+  "Предоставляем возможность закупки широкого ассортимента: футер, кулирка, джакарт, флис, рибана и многое другое…":
+    "We offer purchasing across a wide range: french terry, cotton jersey, jacquard, fleece, rib knit, and much more...",
+  "Наша компания является надежным поставщиком и производителем турецкого трикотажного полотна по всему миру":
+    "Our company is a reliable supplier and manufacturer of Turkish knitted fabric worldwide",
   "Смотреть каталог": "View catalog",
-  "Актуальная палитра “Saka Tekstil” из 45+ цветов – поможет решить любые задачи, стоящие перед вами": "The current Saka Tekstil palette of 45+ colors will help solve any task in front of you",
+  "Актуальная палитра “Saka Tekstil” из 45+ цветов – поможет решить любые задачи, стоящие перед вами":
+    "The current Saka Tekstil palette of 45+ colors will help solve any task in front of you",
   "Актуальная палитра “Saka Tekstil”": "The current Saka Tekstil palette",
-  "из 45+ цветов – поможет решить любые задачи, стоящие перед вами": "of 45+ colors will help solve any task in front of you",
-  "Фабрика «Saka Tekstil» осуществляет прокрас текстиля на заказ на самых выгодных условиях": "The Saka Tekstil factory provides custom textile dyeing on the most favorable terms",
-  "Просто оставьте заявку на сайте и мы свяжемся с вами в ближайшее время": "Just leave a request on the site and we will contact you shortly",
+  "из 45+ цветов – поможет решить любые задачи, стоящие перед вами":
+    "of 45+ colors will help solve any task in front of you",
+  "Фабрика «Saka Tekstil» осуществляет прокрас текстиля на заказ на самых выгодных условиях":
+    "The Saka Tekstil factory provides custom textile dyeing on the most favorable terms",
+  "Просто оставьте заявку на сайте и мы свяжемся с вами в ближайшее время":
+    "Just leave a request on the site and we will contact you shortly",
   "Требуется закупка ткани от 500кг?": "Need to purchase fabric from 500 kg?",
-  "Оставьте заявку на сайте и мы свяжемся с вами в ближайшее время": "Leave a request on the site and we will contact you shortly",
-  "Телефон вводите в формате +375 (__) ___-__-__": "Enter the phone number in the format +375 (__) ___-__-__",
-  "E-mail вводите в формате example@gmail.com": "Enter E-mail in the format example@gmail.com",
+  "Оставьте заявку на сайте и мы свяжемся с вами в ближайшее время":
+    "Leave a request on the site and we will contact you shortly",
+  "Телефон вводите в формате +375 (__) ___-__-__":
+    "Enter the phone number in the format +375 (__) ___-__-__",
+  "E-mail вводите в формате example@gmail.com":
+    "Enter E-mail in the format example@gmail.com",
   "Нам доверяют производство": "Manufacturers trust us",
   "трикотажных полотен": "with knitted fabrics",
-  "Более 15 лет Saka Tekstil поставляет ткани для фабрик, брендов одежды и ателье. Мы контролируем качество сырья, окрашивания и упаковки на каждом этапе.": "For more than 15 years, Saka Tekstil has supplied fabrics for factories, clothing brands, and studios. We control the quality of raw materials, dyeing, and packaging at every stage.",
-  "В каталоге представлены востребованные виды полотен: кулирная гладь, футер, рибана, кашкорсе, пике и другие материалы для массового и капсульного производства.": "The catalog includes popular fabric types: cotton jersey, french terry, rib knit, kashkorse, pique, and other materials for mass and capsule production.",
+  "Более 15 лет Saka Tekstil поставляет ткани для фабрик, брендов одежды и ателье. Мы контролируем качество сырья, окрашивания и упаковки на каждом этапе.":
+    "For more than 15 years, Saka Tekstil has supplied fabrics for factories, clothing brands, and studios. We control the quality of raw materials, dyeing, and packaging at every stage.",
+  "В каталоге представлены востребованные виды полотен: кулирная гладь, футер, рибана, кашкорсе, пике и другие материалы для массового и капсульного производства.":
+    "The catalog includes popular fabric types: cotton jersey, french terry, rib knit, kashkorse, pique, and other materials for mass and capsule production.",
   "Оставить заявку": "Send request",
   "Все цвета": "All colors",
   "Оставьте заявку": "Send a request",
   "и наш менеджер свяжется с вами": "and our manager will contact you",
   "Ваше имя": "Your name",
-  "Телефон": "Phone",
+  Телефон: "Phone",
   "Ваш E-mail": "Your E-mail",
   "example@gmail.com": "example@gmail.com",
-  "Отправить": "Send",
-  "Нажимая на кнопку вы даете свое согласие на обработку персональных данных. Гарантируем! Спама не будет!": "By clicking the button, you consent to personal data processing. We guarantee no spam.",
+  Отправить: "Send",
+  "Нажимая на кнопку вы даете свое согласие на обработку персональных данных. Гарантируем! Спама не будет!":
+    "By clicking the button, you consent to personal data processing. We guarantee no spam.",
   "Личные данные": "Personal data",
   "Изменить аватар": "Change avatar",
-  "ФИО": "Full name",
-  "Город": "City",
+  ФИО: "Full name",
+  Город: "City",
   "Ваши заказы": "Your orders",
   "Все заказы": "All orders",
   "Сбросить настройки": "Reset settings",
-  "Регистрация": "Registration",
-  "Фамилия": "Last name",
-  "Имя": "First name",
-  "Отчество": "Middle name",
+  Регистрация: "Registration",
+  Фамилия: "Last name",
+  Имя: "First name",
+  Отчество: "Middle name",
   "Дата рождения": "Date of birth",
   "Пароль вручную": "Manual password",
   "Автоматический пароль": "Automatic password",
   "Придумать пароль": "Create a password",
   "Сгенерировать пароль": "Generate a password",
-  "Пароль": "Password",
+  Пароль: "Password",
   "Повтор пароля": "Repeat password",
   "Повторите пароль": "Repeat password",
-  "Никнейм": "Nickname",
+  Никнейм: "Nickname",
   "Сгенерировать ещё": "Generate again",
-  "Согласен с условиями обработки данных": "I agree to the data processing terms",
+  "Согласен с условиями обработки данных":
+    "I agree to the data processing terms",
   "Я согласен с пользовательским соглашением": "I agree to the user agreement",
   "Открыть соглашение": "Open agreement",
-  "Нажимая кнопку регистрации, вы соглашаетесь на обработку данных для создания аккаунта и оформления заказов Saka Tekstil.": "By clicking the registration button, you agree to data processing for creating an account and placing orders with Saka Tekstil.",
-  "Зарегистрироваться": "Register",
+  "Нажимая кнопку регистрации, вы соглашаетесь на обработку данных для создания аккаунта и оформления заказов Saka Tekstil.":
+    "By clicking the registration button, you agree to data processing for creating an account and placing orders with Saka Tekstil.",
+  Зарегистрироваться: "Register",
   "Уже есть аккаунт? Войти": "Already have an account? Sign in",
   "Уже есть аккаунт": "Already have an account",
   "Email или телефон": "Email or phone",
   "E-mail или телефон": "E-mail or phone",
-  "Вход": "Sign in",
+  Вход: "Sign in",
   "Забыли пароль?": "Forgot password?",
   "Еще нет аккаунта? Зарегистрироваться": "No account yet? Register",
   "Хлебные крошки": "Breadcrumbs",
-  "Товар": "Product",
+  Товар: "Product",
   "Товар не найден": "Product not found",
   "Изображения товара": "Product images",
-  "Цвет": "Color",
+  Цвет: "Color",
   "Добавить в корзину": "Add to cart",
-  "Характеристики": "Specifications",
-  "Рассчитайте стоимость ткани, ответив на три вопроса": "Calculate fabric cost by answering three questions",
+  Характеристики: "Specifications",
+  "Рассчитайте стоимость ткани, ответив на три вопроса":
+    "Calculate fabric cost by answering three questions",
   "1. Выберите необходимую ткань": "1. Choose the fabric",
   "2. Введите общее количество рулонов": "2. Enter the total number of rolls",
   "3. Введите общее количество пачек": "3. Enter the total number of packs",
@@ -362,71 +399,90 @@ const TEXT = {
   "Материал:": "Material:",
   "Качество:": "Quality:",
   "Состав:": "Composition:",
-  "Состав": "Composition",
+  Состав: "Composition",
   "Цвет:": "Color:",
   "Плотность:": "Density:",
   "Ширина рулона:": "Roll width:",
   "Производство:": "Production:",
   "Доставка и оплата": "Delivery and payment",
   "Способы доставки товара": "Product delivery methods",
-  "Самовывоз": "Pickup",
+  Самовывоз: "Pickup",
   "Со склада по адресу:": "From warehouse at:",
-  "г. Могилев, ул. Верхние поля, д.48а, стр. 1": "Mogilev, Verkhnie Polya St., 48a, building 1",
+  "г. Могилев, ул. Верхние поля, д.48а, стр. 1":
+    "Mogilev, Verkhnie Polya St., 48a, building 1",
   "График работы:": "Working hours:",
   "Доставка до транспортной компании": "Delivery to a transport company",
-  "Бесплатная доставка до терминала ТК Деловые Линии, Байкал-Сервис, ПЭК, GTD, БСД, Мейджик Транс*": "Free delivery to terminals of Delovye Linii, Baikal Service, PEK, GTD, BSD, Magic Trans*",
-  "Перевозка от терминала ТК до пункта назначения оплачивается по тарифам ТК": "Transportation from the terminal to the destination is paid according to the carrier rates",
-  "* Действует только для крупных заказов от 5000 кг": "* Applies only to large orders from 5000 kg",
+  "Бесплатная доставка до терминала ТК Деловые Линии, Байкал-Сервис, ПЭК, GTD, БСД, Мейджик Транс*":
+    "Free delivery to terminals of Delovye Linii, Baikal Service, PEK, GTD, BSD, Magic Trans*",
+  "Перевозка от терминала ТК до пункта назначения оплачивается по тарифам ТК":
+    "Transportation from the terminal to the destination is paid according to the carrier rates",
+  "* Действует только для крупных заказов от 5000 кг":
+    "* Applies only to large orders from 5000 kg",
   "Доставка по Могилеву": "Delivery in Mogilev",
-  "Стоимость доставки уточняйте у менеджера": "Ask the manager for delivery cost",
+  "Стоимость доставки уточняйте у менеджера":
+    "Ask the manager for delivery cost",
   "Возникли вопросы по доставке?": "Questions about delivery?",
-  "Оставьте заявку и мы свяжемся с вами в ближайшее время": "Send a request and we will contact you shortly",
+  "Оставьте заявку и мы свяжемся с вами в ближайшее время":
+    "Send a request and we will contact you shortly",
   "Тема вопроса": "Question topic",
   "Выберите тему вопроса": "Choose a question topic",
   "Сроки доставки": "Delivery times",
   "Стоимость доставки": "Delivery cost",
-  "Самовывоз": "Pickup",
+  Самовывоз: "Pickup",
   "Доставка в другой город": "Delivery to another city",
   "Оплата заказа": "Order payment",
-  "Другое": "Other",
+  Другое: "Other",
   "Текст вопроса": "Question",
   "Напишите ваш вопрос по доставке": "Enter your delivery question",
   "Оплата товара": "Payment",
-  "Наиболее удобный для вас способ оплаты товара вы можете согласовать с менеджером": "You can agree on the most convenient payment method with the manager",
+  "Наиболее удобный для вас способ оплаты товара вы можете согласовать с менеджером":
+    "You can agree on the most convenient payment method with the manager",
   "Безналичный расчет": "Bank transfer",
-  "Безналичный расчет осуществляется для юридических лиц": "Bank transfer is available for legal entities",
-  "Более подробную информацию можно уточнить по телефону": "More detailed information is available by phone",
+  "Безналичный расчет осуществляется для юридических лиц":
+    "Bank transfer is available for legal entities",
+  "Более подробную информацию можно уточнить по телефону":
+    "More detailed information is available by phone",
   "Звоните сейчас:": "Call now:",
   "Или напишите нашему менеджеру напрямую:": "Or message our manager directly:",
   "Среднее время ответа": "Average response time",
   "5 минут": "5 minutes",
   "Контактная информация": "Contact information",
-  "Контакты": "Contacts",
+  Контакты: "Contacts",
   "Адрес:": "Address:",
   "Телефон:": "Phone:",
   "Почта:": "Email:",
   "График работы:": "Working hours:",
-  "г.Могилев, МКР Котельники, ул. Яничкин проезд 7": "Mogilev, Kotel'niki district, Yanichkin proezd 7",
+  "г.Могилев, МКР Котельники, ул. Яничкин проезд 7":
+    "Mogilev, Kotel'niki district, Yanichkin proezd 7",
   "ПН-ПТ 09:00-18:00": "Mon-Fri 09:00-18:00",
   "ПН-ПТ 9:30-17:00": "Mon-Fri 9:30-17:00",
   "СБ 10:00-17:00": "Sat 10:00-17:00",
   "СБ 10:30-16:00": "Sat 10:30-16:00",
   "ВС Выходной": "Sun closed",
-  "Карта": "Map",
+  Карта: "Map",
   "Карта Saka Tekstil": "Saka Tekstil map",
   "Получите консультацию": "Get a consultation",
-  "Получите бесплатную консультацию от нашего специалиста": "Get a free consultation from our specialist",
+  "Получите бесплатную консультацию от нашего специалиста":
+    "Get a free consultation from our specialist",
   "Получите бесплатную консультацию": "Get a free consultation",
   "от нашего специалиста": "from our specialist",
-  "Заполните форму ниже и мы свяжемся с вами в ближайшее время": "Fill in the form below and we will contact you shortly",
-  "Оставьте контакты, и мы поможем подобрать ткань под вашу задачу": "Leave your contacts and we will help choose fabric for your task",
+  "Заполните форму ниже и мы свяжемся с вами в ближайшее время":
+    "Fill in the form below and we will contact you shortly",
+  "Оставьте контакты, и мы поможем подобрать ткань под вашу задачу":
+    "Leave your contacts and we will help choose fabric for your task",
   "О компании": "About",
-  "Здание и флаги компании Saka Tekstil": "Saka Tekstil building and company flags",
-  "Saka Tekstil - производство и продажа турецкого трикотажного полотна": "Saka Tekstil - production and sale of Turkish knitted fabric",
-  "Мы осуществляем продажу ткани от рулона и нарезку кашкорсе от 5%-20%.": "We sell fabric by the roll and cut kashkorse from 5%-20%.",
-  "Наша команда следит за трендами, новыми материалами, и предлагает ассортимент, который позволяет брендам быстро запускать новые коллекции.": "Our team follows trends and new materials, offering a range that helps brands launch new collections quickly.",
-  "Наша команда следит за трендами в мире трикотажа, мы постоянно обновляем наш ассортимент и регулярно контролируем наличие ткани на складе.": "Our team follows trends in knitwear, constantly updates the assortment, and regularly controls fabric availability in stock.",
-  "Мы предлагаем клиентам различные виды трикотажных полотен высокого качества более, чем в 45 цветовых вариациях.": "We offer customers different types of high-quality knitted fabrics in more than 45 color variations.",
+  "Здание и флаги компании Saka Tekstil":
+    "Saka Tekstil building and company flags",
+  "Saka Tekstil - производство и продажа турецкого трикотажного полотна":
+    "Saka Tekstil - production and sale of Turkish knitted fabric",
+  "Мы осуществляем продажу ткани от рулона и нарезку кашкорсе от 5%-20%.":
+    "We sell fabric by the roll and cut kashkorse from 5%-20%.",
+  "Наша команда следит за трендами, новыми материалами, и предлагает ассортимент, который позволяет брендам быстро запускать новые коллекции.":
+    "Our team follows trends and new materials, offering a range that helps brands launch new collections quickly.",
+  "Наша команда следит за трендами в мире трикотажа, мы постоянно обновляем наш ассортимент и регулярно контролируем наличие ткани на складе.":
+    "Our team follows trends in knitwear, constantly updates the assortment, and regularly controls fabric availability in stock.",
+  "Мы предлагаем клиентам различные виды трикотажных полотен высокого качества более, чем в 45 цветовых вариациях.":
+    "We offer customers different types of high-quality knitted fabrics in more than 45 color variations.",
   "Показатели компании": "Company indicators",
   "Лет на рынке текстиля": "Years in the textile market",
   "Ассортимент товаров в наличии": "Product range in stock",
@@ -438,49 +494,72 @@ const TEXT = {
   "Зеленая трикотажная ткань": "Green knitted fabric",
   "Зеленый капитоний": "Green capiton fabric",
   "Бежевая рибана": "Beige rib knit",
-  "Saka Tekstil работает с трикотажными полотнами разного качества:": "Saka Tekstil works with knitted fabrics of different quality:",
-  "Бюджетный трикотаж для повседневных изделий и базовых коллекций.": "Budget knit fabric for everyday items and basic collections.",
-  "Бюджетный трикотаж, имеет ворсистую и шероховатую поверхность из-за коротких волокон.": "Budget knit fabric with a fleecy, slightly rough surface due to short fibers.",
-  "Высшее качество полотна из длинноволокнистого хлопка.": "Top-quality fabric made from long-staple cotton.",
-  "Высшее качество трикотажной ткани, имеет гладкую поверхность без ворсинок.": "Top-quality knitted fabric with a smooth, lint-free surface.",
-  "Полотно вяжется только из лучшего сырья без аналогов на рынке.": "The fabric is knitted only from the best raw materials with no market analogues.",
-  "Полотно вяжется американскими нитями и окрашено немецкими красками высшего качества.": "The fabric is knitted with American yarns and dyed with top-quality German dyes.",
+  "Saka Tekstil работает с трикотажными полотнами разного качества:":
+    "Saka Tekstil works with knitted fabrics of different quality:",
+  "Бюджетный трикотаж для повседневных изделий и базовых коллекций.":
+    "Budget knit fabric for everyday items and basic collections.",
+  "Бюджетный трикотаж, имеет ворсистую и шероховатую поверхность из-за коротких волокон.":
+    "Budget knit fabric with a fleecy, slightly rough surface due to short fibers.",
+  "Высшее качество полотна из длинноволокнистого хлопка.":
+    "Top-quality fabric made from long-staple cotton.",
+  "Высшее качество трикотажной ткани, имеет гладкую поверхность без ворсинок.":
+    "Top-quality knitted fabric with a smooth, lint-free surface.",
+  "Полотно вяжется только из лучшего сырья без аналогов на рынке.":
+    "The fabric is knitted only from the best raw materials with no market analogues.",
+  "Полотно вяжется американскими нитями и окрашено немецкими красками высшего качества.":
+    "The fabric is knitted with American yarns and dyed with top-quality German dyes.",
   "Пенье компакт": "Compact combed",
   "Пенье компакт Плюс-EXCLUSIVE": "Compact combed Plus-EXCLUSIVE",
-  "Наша главная задача - не просто предоставить качественную ткань, но и оказать каждому заказчику высокий уровень клиентского сервиса": "Our main task is not only to provide quality fabric, but also to give every customer a high level of service",
-  "Логистика": "Logistics",
-  "Весь ассортимент в наличии и готов к быстрой отгрузке.": "The full range is in stock and ready for fast shipment.",
-  "Весь ассортимент в наличии на складе в Москве. Вам не потребуется тратить свои ресурсы на доставку ткани из Турции.": "The full range is in stock at the Moscow warehouse, so you do not need to spend resources shipping fabric from Turkey.",
-  "Производство": "Production",
-  "Регулярное наличие ткани на складе позволяет планировать закупки заранее.": "Regular stock availability helps you plan purchases in advance.",
-  "Регулярное наличие ткани позволяет не останавливать процесс вашего производства и минимизирует финансовые потери.": "Regular fabric availability helps keep your production running and minimizes financial losses.",
+  "Наша главная задача - не просто предоставить качественную ткань, но и оказать каждому заказчику высокий уровень клиентского сервиса":
+    "Our main task is not only to provide quality fabric, but also to give every customer a high level of service",
+  Логистика: "Logistics",
+  "Весь ассортимент в наличии и готов к быстрой отгрузке.":
+    "The full range is in stock and ready for fast shipment.",
+  "Весь ассортимент в наличии на складе в Москве. Вам не потребуется тратить свои ресурсы на доставку ткани из Турции.":
+    "The full range is in stock at the Moscow warehouse, so you do not need to spend resources shipping fabric from Turkey.",
+  Производство: "Production",
+  "Регулярное наличие ткани на складе позволяет планировать закупки заранее.":
+    "Regular stock availability helps you plan purchases in advance.",
+  "Регулярное наличие ткани позволяет не останавливать процесс вашего производства и минимизирует финансовые потери.":
+    "Regular fabric availability helps keep your production running and minimizes financial losses.",
   "Дополнительные материалы": "Additional materials",
-  "Вместе с товаром предоставляем сопроводительные документы и рекомендации.": "We provide supporting documents and recommendations together with the goods.",
-  "Вместе с товаром мы предоставляем полиэтиленовую упаковку, бесплатную загрузку товара со склада и бесплатные образцы.": "Together with the goods, we provide polyethylene packaging, free warehouse loading, and free samples.",
-  "Лояльность": "Loyalty",
-  "Наш трикотаж закупают производители одежды, ателье и дизайнерские бренды.": "Our knit fabrics are purchased by clothing manufacturers, studios, and designer brands.",
-  "Наш трикотаж закупают известные бренды. Это позволит вам создать собственный качественный бренд одежды.": "Well-known brands purchase our knit fabrics, helping you create your own quality clothing brand.",
-  "Уникальность": "Uniqueness",
-  "Мы предоставляем клиентам разные виды полотен и актуальные цвета.": "We provide customers with different fabric types and current colors.",
-  "Мы предоставляем клиентам широкую палитру цветов, что позволяет создавать уникальные коллекции одежды.": "We provide customers with a wide color palette, making it possible to create unique clothing collections.",
-  "Качество": "Quality",
-  "Наша ткань обрабатывается по стандартам, которые помогают сохранить форму и цвет изделия.": "Our fabric is processed to standards that help preserve the garment's shape and color.",
-  "Наша ткань обрабатывается специальным силиконовым составом, что позволяет ей не терять свои свойства с течением времени.": "Our fabric is treated with a special silicone composition, helping it retain its properties over time.",
+  "Вместе с товаром предоставляем сопроводительные документы и рекомендации.":
+    "We provide supporting documents and recommendations together with the goods.",
+  "Вместе с товаром мы предоставляем полиэтиленовую упаковку, бесплатную загрузку товара со склада и бесплатные образцы.":
+    "Together with the goods, we provide polyethylene packaging, free warehouse loading, and free samples.",
+  Лояльность: "Loyalty",
+  "Наш трикотаж закупают производители одежды, ателье и дизайнерские бренды.":
+    "Our knit fabrics are purchased by clothing manufacturers, studios, and designer brands.",
+  "Наш трикотаж закупают известные бренды. Это позволит вам создать собственный качественный бренд одежды.":
+    "Well-known brands purchase our knit fabrics, helping you create your own quality clothing brand.",
+  Уникальность: "Uniqueness",
+  "Мы предоставляем клиентам разные виды полотен и актуальные цвета.":
+    "We provide customers with different fabric types and current colors.",
+  "Мы предоставляем клиентам широкую палитру цветов, что позволяет создавать уникальные коллекции одежды.":
+    "We provide customers with a wide color palette, making it possible to create unique clothing collections.",
+  Качество: "Quality",
+  "Наша ткань обрабатывается по стандартам, которые помогают сохранить форму и цвет изделия.":
+    "Our fabric is processed to standards that help preserve the garment's shape and color.",
+  "Наша ткань обрабатывается специальным силиконовым составом, что позволяет ей не терять свои свойства с течением времени.":
+    "Our fabric is treated with a special silicone composition, helping it retain its properties over time.",
   "Отзывы клиентов": "Customer reviews",
-  "Делаем все для того, чтобы вы остались довольны нашей тканью": "We do everything to make sure you are satisfied with our fabric",
+  "Делаем все для того, чтобы вы остались довольны нашей тканью":
+    "We do everything to make sure you are satisfied with our fabric",
   "Предыдущие отзывы": "Previous reviews",
   "Следующие отзывы": "Next reviews",
   "Отзывы пока не добавлены": "No reviews yet",
-  "Не удалось загрузить отзывы. Обновите страницу.": "Could not load reviews. Refresh the page.",
+  "Не удалось загрузить отзывы. Обновите страницу.":
+    "Could not load reviews. Refresh the page.",
   "Оставить отзыв": "Leave a review",
   "Закрыть форму": "Close form",
   "Ваш отзыв": "Your review",
-  "Фильтры": "Filters",
-  "Позаботьтесь о себе и своих близких, выбирайте качественные ткани": "Take care of yourself and your loved ones: choose quality fabrics",
-  "Категория": "Category",
-  "Цвета": "Colors",
-  "Сбросить": "Reset",
-  "Сортировка": "Sorting",
+  Фильтры: "Filters",
+  "Позаботьтесь о себе и своих близких, выбирайте качественные ткани":
+    "Take care of yourself and your loved ones: choose quality fabrics",
+  Категория: "Category",
+  Цвета: "Colors",
+  Сбросить: "Reset",
+  Сортировка: "Sorting",
   "Сортировка:": "Sorting:",
   "По умолчанию": "Default",
   "Цена по возрастанию": "Price ascending",
@@ -494,47 +573,47 @@ const TEXT = {
   "Товары каталога": "Catalog products",
   "Ничего не найдено": "Nothing found",
   "Товары не найдены": "Products not found",
-  "Назад": "Back",
-  "Вперед": "Forward",
+  Назад: "Back",
+  Вперед: "Forward",
   "Предыдущая страница": "Previous page",
   "Следующая страница": "Next page",
   "Админ-панель": "Admin panel",
-  "Администратор": "Administrator",
+  Администратор: "Administrator",
   "Управление товарами": "Product management",
-  "Режим": "Mode",
+  Режим: "Mode",
   "Добавить товар": "Add product",
   "Редактировать товар": "Edit product",
   "Выберите товар": "Choose product",
-  "Название": "Name",
+  Название: "Name",
   "ID категории": "Category ID",
-  "Цена": "Price",
-  "Изображение": "Image",
-  "Описание": "Description",
-  "Ширина": "Width",
-  "Плотность": "Density",
+  Цена: "Price",
+  Изображение: "Image",
+  Описание: "Description",
+  Ширина: "Width",
+  Плотность: "Density",
   "В наличии": "In stock",
-  "Сохранить": "Save",
-  "Отмена": "Cancel",
+  Сохранить: "Save",
+  Отмена: "Cancel",
   "Удалить товар": "Delete product",
-  "Заказы": "Orders",
+  Заказы: "Orders",
   "№ заказа": "Order no.",
   "Дата заказа": "Order date",
-  "Покупатель": "Customer",
-  "Статус": "Status",
-  "Сумма": "Amount",
-  "Отгрузка": "Shipment",
-  "Товары": "Products",
-  "Детали": "Details",
-  "Действия": "Actions",
-  "Ожидает": "Pending",
-  "Принят": "Accepted",
+  Покупатель: "Customer",
+  Статус: "Status",
+  Сумма: "Amount",
+  Отгрузка: "Shipment",
+  Товары: "Products",
+  Детали: "Details",
+  Действия: "Actions",
+  Ожидает: "Pending",
+  Принят: "Accepted",
   "В обработке": "Processing",
-  "Отправлен": "Shipped",
-  "Доставлен": "Delivered",
-  "Получен": "Received",
-  "Отменён": "Canceled",
+  Отправлен: "Shipped",
+  Доставлен: "Delivered",
+  Получен: "Received",
+  Отменён: "Canceled",
   "Ожидает обработки": "Awaiting processing",
-  "Готовится": "Preparing",
+  Готовится: "Preparing",
 };
 
 const EN_TEXT = {
@@ -545,55 +624,55 @@ const EN_TEXT = {
 const VALUE_TRANSLATIONS = {
   product: {
     "Кулинарная гладь": "Cotton jersey",
-    "Вискоза": "Viscose",
-    "Бифлекс": "Biflex",
-    "Флис": "Fleece",
-    "Футер": "French terry",
+    Вискоза: "Viscose",
+    Бифлекс: "Biflex",
+    Флис: "Fleece",
+    Футер: "French terry",
     "Футер диагональ": "Diagonal french terry",
     "Футер 3-х нитка": "3-thread french terry",
     "Футер 3-х нитка начес": "Brushed 3-thread french terry",
     "Футер петля": "Loop french terry",
     "Футер 2-х нитка": "2-thread french terry",
-    "Интерлок": "Interlock",
-    "Капитоний": "Capiton",
-    "Кашкорсе": "Kashkorse",
-    "Рибана": "Rib knit",
-    "Пике": "Pique",
-    "Селаник": "Selanik",
-    "Велюр": "Velour",
-    "Махра": "Terry cloth",
-    "Лапша": "Ribbed knit",
-    "Лакоста": "Lacoste",
-    "Супрем": "Supreme",
-    "Джерси": "Jersey",
+    Интерлок: "Interlock",
+    Капитоний: "Capiton",
+    Кашкорсе: "Kashkorse",
+    Рибана: "Rib knit",
+    Пике: "Pique",
+    Селаник: "Selanik",
+    Велюр: "Velour",
+    Махра: "Terry cloth",
+    Лапша: "Ribbed knit",
+    Лакоста: "Lacoste",
+    Супрем: "Supreme",
+    Джерси: "Jersey",
     "Френч Терри": "French terry",
   },
   color: {
-    "Бежевый": "Beige",
-    "Белый": "White",
-    "Зеленый": "Green",
-    "Красный": "Red",
-    "Коричневый": "Brown",
-    "Оранжевый": "Orange",
-    "Розовый": "Pink",
+    Бежевый: "Beige",
+    Белый: "White",
+    Зеленый: "Green",
+    Красный: "Red",
+    Коричневый: "Brown",
+    Оранжевый: "Orange",
+    Розовый: "Pink",
     "Светло-серый": "Light grey",
-    "Серый": "Grey",
-    "Синий": "Blue",
-    "Фиолетовый": "Purple",
-    "Черный": "Black",
+    Серый: "Grey",
+    Синий: "Blue",
+    Фиолетовый: "Purple",
+    Черный: "Black",
   },
   quality: {
-    "Антипиллинг": "Anti-pilling",
+    Антипиллинг: "Anti-pilling",
     "Компакт пенье": "Compact combed",
     "Open end": "Open end",
-    "Карде": "Carded",
-    "Пенье": "Combed",
-    "Премиум": "Premium",
+    Карде: "Carded",
+    Пенье: "Combed",
+    Премиум: "Premium",
   },
   person: {
-    "Ольга": "Olga",
-    "Анастасия": "Anastasia",
-    "Екатерина": "Ekaterina",
+    Ольга: "Olga",
+    Анастасия: "Anastasia",
+    Екатерина: "Ekaterina",
     "Бекетов Никита": "Nikita Beketov",
     "Гуринович Максим Александрович": "Maksim Gurinovich",
     "Савицкая Екатерина Олеговна": "Ekaterina Savitskaya",
@@ -605,14 +684,19 @@ const VALUE_TRANSLATIONS = {
     "Стрелаков Андрей": "Andrey Strelakov",
   },
   review: {
-    "Очень довольна качеством тканей, которые заказывала у вас. Материал оказался именно таким, как был представлен на сайте. Цвет полностью соответствует фотографиям и не отличается вживую. Ткань приятная на ощупь, мягкая и плотная одновременно. После стирки материал не сел и не потерял форму. Заказ пришёл быстро и был аккуратно упакован. Отдельно хочу отметить удобство выбора товаров в каталоге. Все характеристики указаны подробно и понятно. Уже использовала ткань для пошива нескольких изделий и осталась довольна результатом. Обязательно буду заказывать ещё и рекомендовать ваш магазин знакомым": "I am very satisfied with the quality of the fabrics I ordered from you. The material was exactly as shown on the site. The color fully matches the photos and looks the same in person. The fabric feels pleasant, soft, and dense at the same time. After washing, it did not shrink or lose its shape. The order arrived quickly and was neatly packed. I also want to note how convenient it is to choose products in the catalog. All characteristics are detailed and clear. I have already used the fabric to sew several items and am very happy with the result. I will definitely order again and recommend your store to friends.",
-    "Недавно впервые оформила заказ и осталась очень довольна покупкой. Ассортимент тканей большой, поэтому легко подобрать подходящий вариант. Менеджер быстро ответил на все мои вопросы и помог с выбором. Качество ткани оказалось даже лучше, чем я ожидала. Материал хорошо держит форму и выглядит дорого. Цвет насыщенный и красивый, без каких-либо дефектов. Доставка была выполнена точно в обещанные сроки. Особенно понравилось, что ткань пришла без повреждений и заломов. Работать с таким материалом одно удовольствие. Спасибо за отличный сервис и качественную продукцию": "I recently placed my first order and was very happy with the purchase. The fabric assortment is large, so it is easy to find a suitable option. The manager quickly answered all my questions and helped me choose. The fabric quality turned out even better than I expected. The material holds its shape well and looks premium. The color is rich and beautiful, with no defects. Delivery arrived exactly within the promised time. I especially liked that the fabric came without damage or creases. Working with this material is a pleasure. Thank you for the excellent service and quality products.",
-    "Заказывала несколько видов трикотажного полотна для пошива одежды. Все ткани пришли качественные и полностью соответствовали описанию. Материал хорошо тянется и при этом не теряет форму. После нескольких стирок изделия выглядят как новые. Очень понравилось качество окрашивания ткани, цвет остаётся ярким. Сайт удобный и понятный даже для первого заказа. Быстро нашла нужный товар благодаря фильтрам и поиску. Порадовали доступные цены и большой выбор расцветок. Видно, что компания внимательно относится к своим клиентам. Буду обращаться к вам снова": "I ordered several types of knitted fabric for sewing clothes. All fabrics arrived in good quality and fully matched the descriptions. The material stretches well while keeping its shape. After several washes, the garments look like new. I really liked the dyeing quality: the color stays bright. The site is convenient and easy to understand even for a first order. I quickly found the product I needed using filters and search. The affordable prices and large choice of colors were a pleasant surprise. It is clear that the company treats its customers with care. I will order from you again.",
+    "Очень довольна качеством тканей, которые заказывала у вас. Материал оказался именно таким, как был представлен на сайте. Цвет полностью соответствует фотографиям и не отличается вживую. Ткань приятная на ощупь, мягкая и плотная одновременно. После стирки материал не сел и не потерял форму. Заказ пришёл быстро и был аккуратно упакован. Отдельно хочу отметить удобство выбора товаров в каталоге. Все характеристики указаны подробно и понятно. Уже использовала ткань для пошива нескольких изделий и осталась довольна результатом. Обязательно буду заказывать ещё и рекомендовать ваш магазин знакомым":
+      "I am very satisfied with the quality of the fabrics I ordered from you. The material was exactly as shown on the site. The color fully matches the photos and looks the same in person. The fabric feels pleasant, soft, and dense at the same time. After washing, it did not shrink or lose its shape. The order arrived quickly and was neatly packed. I also want to note how convenient it is to choose products in the catalog. All characteristics are detailed and clear. I have already used the fabric to sew several items and am very happy with the result. I will definitely order again and recommend your store to friends.",
+    "Недавно впервые оформила заказ и осталась очень довольна покупкой. Ассортимент тканей большой, поэтому легко подобрать подходящий вариант. Менеджер быстро ответил на все мои вопросы и помог с выбором. Качество ткани оказалось даже лучше, чем я ожидала. Материал хорошо держит форму и выглядит дорого. Цвет насыщенный и красивый, без каких-либо дефектов. Доставка была выполнена точно в обещанные сроки. Особенно понравилось, что ткань пришла без повреждений и заломов. Работать с таким материалом одно удовольствие. Спасибо за отличный сервис и качественную продукцию":
+      "I recently placed my first order and was very happy with the purchase. The fabric assortment is large, so it is easy to find a suitable option. The manager quickly answered all my questions and helped me choose. The fabric quality turned out even better than I expected. The material holds its shape well and looks premium. The color is rich and beautiful, with no defects. Delivery arrived exactly within the promised time. I especially liked that the fabric came without damage or creases. Working with this material is a pleasure. Thank you for the excellent service and quality products.",
+    "Заказывала несколько видов трикотажного полотна для пошива одежды. Все ткани пришли качественные и полностью соответствовали описанию. Материал хорошо тянется и при этом не теряет форму. После нескольких стирок изделия выглядят как новые. Очень понравилось качество окрашивания ткани, цвет остаётся ярким. Сайт удобный и понятный даже для первого заказа. Быстро нашла нужный товар благодаря фильтрам и поиску. Порадовали доступные цены и большой выбор расцветок. Видно, что компания внимательно относится к своим клиентам. Буду обращаться к вам снова":
+      "I ordered several types of knitted fabric for sewing clothes. All fabrics arrived in good quality and fully matched the descriptions. The material stretches well while keeping its shape. After several washes, the garments look like new. I really liked the dyeing quality: the color stays bright. The site is convenient and easy to understand even for a first order. I quickly found the product I needed using filters and search. The affordable prices and large choice of colors were a pleasant surprise. It is clear that the company treats its customers with care. I will order from you again.",
   },
 };
 
 function normalize(value) {
-  return String(value || "").replace(/\s+/g, " ").trim();
+  return String(value || "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function interpolate(value, replacements = {}) {
@@ -621,6 +705,7 @@ function interpolate(value, replacements = {}) {
   }, value);
 }
 
+// текущий язык
 function getLanguage() {
   try {
     const savedLanguage = localStorage.getItem(LANGUAGE_KEY);
@@ -630,6 +715,7 @@ function getLanguage() {
   }
 }
 
+// сохранение выбранного языка
 function saveLanguage(language) {
   try {
     localStorage.setItem(LANGUAGE_KEY, language);
@@ -638,10 +724,12 @@ function saveLanguage(language) {
   }
 }
 
+// получение словаря для текущего языка
 function getDictionary() {
   return getLanguage() === "en" ? EN_TEXT : TEXT;
 }
 
+// перевод текста по ключу с возможностью подстановки значений
 function t(key, replacements = {}) {
   if (getLanguage() === "ru") {
     return interpolate(MESSAGES[key] || key, replacements);
@@ -688,7 +776,8 @@ function translateString(value) {
     return text;
   }
 
-  const translation = getDictionary()[normalized] || translateValue("product", normalized);
+  const translation =
+    getDictionary()[normalized] || translateValue("product", normalized);
 
   if (!translation || translation === normalized) {
     return text;
@@ -735,7 +824,8 @@ function translateTextNodes(root = document.body) {
         return NodeFilter.FILTER_REJECT;
       }
 
-      return originalTextNodes.has(node) || /[\u0400-\u04ff]/.test(node.nodeValue || "")
+      return originalTextNodes.has(node) ||
+        /[\u0400-\u04ff]/.test(node.nodeValue || "")
         ? NodeFilter.FILTER_ACCEPT
         : NodeFilter.FILTER_SKIP;
     },
@@ -747,12 +837,16 @@ function translateTextNodes(root = document.body) {
   }
 
   nodes.forEach((node) => {
-    if (!originalTextNodes.has(node) && /[\u0400-\u04ff]/.test(node.nodeValue || "")) {
+    if (
+      !originalTextNodes.has(node) &&
+      /[\u0400-\u04ff]/.test(node.nodeValue || "")
+    ) {
       originalTextNodes.set(node, node.nodeValue);
     }
 
     const originalValue = originalTextNodes.get(node) || node.nodeValue;
-    node.nodeValue = getLanguage() === "ru" ? originalValue : translateString(originalValue);
+    node.nodeValue =
+      getLanguage() === "ru" ? originalValue : translateString(originalValue);
   });
 }
 
@@ -774,7 +868,9 @@ function translateAttributes(root = document) {
       if (attributes[attribute]) {
         element.setAttribute(
           attribute,
-          getLanguage() === "ru" ? attributes[attribute] : translateString(attributes[attribute]),
+          getLanguage() === "ru"
+            ? attributes[attribute]
+            : translateString(attributes[attribute]),
         );
       }
     });
@@ -785,23 +881,36 @@ function updateLanguageControls() {
   document.querySelectorAll("[data-language-toggle]").forEach((control) => {
     const language = getLanguage();
     control.innerHTML = language === "en" ? "RU / <b>EN</b>" : "<b>RU</b> / EN";
-    control.setAttribute("aria-label", language === "en" ? "Switch language to Russian" : "Переключить язык на английский");
+    control.setAttribute(
+      "aria-label",
+      language === "en"
+        ? "Switch language to Russian"
+        : "Переключить язык на английский",
+    );
   });
 }
 
 function translatePage(root = document) {
   document.documentElement.lang = getLanguage();
-  root.querySelectorAll("[data-i18n], [data-i18n-placeholder], [data-i18n-aria-label], [data-i18n-title]").forEach(translateElement);
+  root
+    .querySelectorAll(
+      "[data-i18n], [data-i18n-placeholder], [data-i18n-aria-label], [data-i18n-title]",
+    )
+    .forEach(translateElement);
   translateTextNodes(root.body || root);
   translateAttributes(root);
   updateLanguageControls();
 }
 
 function setLanguage(language) {
-  const nextLanguage = LANGUAGES.includes(language) ? language : DEFAULT_LANGUAGE;
+  const nextLanguage = LANGUAGES.includes(language)
+    ? language
+    : DEFAULT_LANGUAGE;
   saveLanguage(nextLanguage);
   translatePage();
-  window.dispatchEvent(new CustomEvent("i18n:changed", { detail: { language: nextLanguage } }));
+  window.dispatchEvent(
+    new CustomEvent("i18n:changed", { detail: { language: nextLanguage } }),
+  );
 }
 
 function toggleLanguage() {

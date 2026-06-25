@@ -37,7 +37,9 @@ function normalizePhone(phone) {
 function getFullName(user = {}) {
   return (
     user.fullName ||
-    [user.lastName, user.firstName, user.middleName].filter(Boolean).join(" ") ||
+    [user.lastName, user.firstName, user.middleName]
+      .filter(Boolean)
+      .join(" ") ||
     user.name ||
     user.nickname ||
     ""
@@ -137,7 +139,10 @@ function renderUser(user) {
   setDisplayValue("email", user.email || "");
   setDisplayValue("city", user.city || t("account.defaultValue"));
   if (ordersLink) {
-    ordersLink.textContent = user.role === "admin" ? t("account.ordersAdmin") : t("account.ordersUser");
+    ordersLink.textContent =
+      user.role === "admin"
+        ? t("account.ordersAdmin")
+        : t("account.ordersUser");
   }
 }
 
@@ -392,7 +397,10 @@ async function compressAvatar(file) {
   }
 
   const image = await loadImageFromFile(file);
-  const scale = Math.min(1, MAX_AVATAR_SIDE / Math.max(image.naturalWidth, image.naturalHeight));
+  const scale = Math.min(
+    1,
+    MAX_AVATAR_SIDE / Math.max(image.naturalWidth, image.naturalHeight),
+  );
   const width = Math.max(1, Math.round(image.naturalWidth * scale));
   const height = Math.max(1, Math.round(image.naturalHeight * scale));
   const canvas = document.createElement("canvas");
@@ -417,6 +425,7 @@ async function compressAvatar(file) {
   return dataUrl;
 }
 
+// загрузка аватара пользователя, сжатие изображения, Base64
 async function handleAvatarChange() {
   const file = avatarInput.files?.[0];
 

@@ -15,6 +15,7 @@ const DEFAULT_SETTINGS = {
   imagesDisabled: false,
 };
 
+// темы из css
 const FONT_SIZES = ["normal", "large", "xlarge"];
 const COLOR_SCHEMES = ["black-white", "black-green", "white-black"];
 const BODY_CLASSES = [
@@ -28,6 +29,7 @@ const BODY_CLASSES = [
   "a11y-images-disabled",
 ];
 
+// панель
 const PANEL_OPEN_CLASS = "a11y-panel-opened";
 const PLACEHOLDER_CLASS = "a11y-image-placeholder";
 const PLACEHOLDER_MODE_CLASSES = [
@@ -59,12 +61,14 @@ const SILENT_MEDIA_CONTEXT_SELECTOR = [
   "[data-modal-close]",
 ].join(", ");
 
+// работа с медиа
 function getMediaSource(element) {
   return (element.getAttribute("src") || "")
     .replaceAll("\\", "/")
     .toLowerCase();
 }
 
+// получение текста для медиа
 function getMediaLabel(element, fallback) {
   return (
     element.getAttribute("alt")?.trim() ||
@@ -119,6 +123,7 @@ const LABELS = {
   },
 };
 
+// получение текста для текущего языка
 function getLabels() {
   return LABELS[getLanguage()] || LABELS.ru;
 }
@@ -143,6 +148,7 @@ function getStoredValue(key) {
   }
 }
 
+// сохранение значения в localStorage
 function setStoredValue(key, value) {
   try {
     localStorage.setItem(key, String(value));
@@ -151,6 +157,7 @@ function setStoredValue(key, value) {
   }
 }
 
+// удаление значения из localStorage
 function removeStoredValue(key) {
   try {
     localStorage.removeItem(key);
@@ -159,11 +166,13 @@ function removeStoredValue(key) {
   }
 }
 
+// чтение настроек из localStorage
 function readSettings() {
   const savedFontSize = getStoredValue(STORAGE_KEYS.fontSize);
   const savedColorScheme = getStoredValue(STORAGE_KEYS.colorScheme);
 
   return {
+    // включение режима доступности
     enabled: parseBoolean(
       getStoredValue(STORAGE_KEYS.enabled),
       DEFAULT_SETTINGS.enabled,
@@ -181,6 +190,7 @@ function readSettings() {
   };
 }
 
+// сохранение настроек в localStorage
 function saveSettings(nextSettings = settings) {
   setStoredValue(STORAGE_KEYS.enabled, nextSettings.enabled);
   setStoredValue(STORAGE_KEYS.fontSize, nextSettings.fontSize);
@@ -188,10 +198,12 @@ function saveSettings(nextSettings = settings) {
   setStoredValue(STORAGE_KEYS.imagesDisabled, nextSettings.imagesDisabled);
 }
 
+// очистка настроек
 function clearAccessibilityStorage() {
   Object.values(STORAGE_KEYS).forEach(removeStoredValue);
 }
 
+// применение классов в зависимости от настроек
 function applyBodyClasses() {
   document.body.classList.remove(...BODY_CLASSES);
 
@@ -210,6 +222,7 @@ function applyBodyClasses() {
   }
 }
 
+// синхронизация формы поиска в шапке сайта
 function syncAccessibilityHeader() {
   const searchForm = document.querySelector("[data-header-search-form]");
 
@@ -218,6 +231,7 @@ function syncAccessibilityHeader() {
   }
 }
 
+// режим отображения медиа-элементов
 function getMediaPresentation(element) {
   if (element.closest(TOGGLE_SELECTOR)) {
     return {
@@ -268,6 +282,7 @@ function getMediaPresentation(element) {
   };
 }
 
+// создание плейсхолдера для медиа-элемента
 function createPlaceholder(element) {
   const placeholder = document.createElement(
     ["IFRAME", "VIDEO", "CANVAS"].includes(element.tagName) ? "div" : "span",
@@ -293,6 +308,7 @@ function ensureMediaPlaceholder(element) {
   return placeholder;
 }
 
+// обновление плейсхолдера для медиа-элемента
 function updateMediaPlaceholder(element) {
   if (element.closest(".a11y-panel")) {
     return;
@@ -301,6 +317,7 @@ function updateMediaPlaceholder(element) {
   const presentation = getMediaPresentation(element);
   const currentPlaceholder = element.nextElementSibling;
 
+  //сохраняем режим отображения медиа-элемента в data-атрибуте
   element.dataset.a11yMediaMode = presentation.mode;
 
   if (["keep", "silent"].includes(presentation.mode)) {
@@ -324,6 +341,7 @@ function updateMediaPlaceholder(element) {
   }
 }
 
+// подготовка плейсхолдеров для медиа-элементов в корневом элементе
 function prepareMediaPlaceholders(root = document) {
   if (
     root.nodeType !== Node.ELEMENT_NODE &&
@@ -349,6 +367,7 @@ function updateToggleButtons() {
   });
 }
 
+// синхронизация элементов управления панели
 function syncPanelControls() {
   if (!panel) {
     return;
@@ -389,6 +408,7 @@ function syncPanelControls() {
     labels.schemeWhiteBlack;
 }
 
+// настройка и применение настроек
 function applySettings({ persist = true } = {}) {
   applyBodyClasses();
   syncAccessibilityHeader();
@@ -410,6 +430,7 @@ function applySettings({ persist = true } = {}) {
   );
 }
 
+// установка новых настроек и их применение
 function setSettings(partialSettings) {
   settings = {
     ...settings,
@@ -438,6 +459,7 @@ function closePanel() {
   lastToggleButton?.focus();
 }
 
+// переключение панели
 function togglePanel() {
   if (panel && !panel.hidden) {
     closePanel();
@@ -447,6 +469,7 @@ function togglePanel() {
   openPanel();
 }
 
+// уведомление о сбросе настроек
 function showResetNotice() {
   const labels = getLabels();
   let notice = document.querySelector("[data-a11y-notice]");
@@ -468,6 +491,7 @@ function showResetNotice() {
   }, 2600);
 }
 
+// значение по умолчанию для настроек
 function resetAccessibilitySettings({ notify = true } = {}) {
   clearAccessibilityStorage();
   settings = {
@@ -484,12 +508,14 @@ function resetAccessibilitySettings({ notify = true } = {}) {
   return t("account.settingsReset");
 }
 
+// сброс настроек сайта (язык, тема, доступность)
 function resetSiteSettings({ notify = true } = {}) {
   resetLanguage();
   resetTheme();
   return resetAccessibilitySettings({ notify });
 }
 
+// создание панели
 function createPanel() {
   if (panel) {
     return panel;
@@ -534,6 +560,7 @@ function createPanel() {
   return panel;
 }
 
+// привязка событий панели
 function bindPanelEvents() {
   panel.addEventListener("click", (event) => {
     const closeButton = event.target.closest("[data-a11y-close]");
@@ -586,6 +613,7 @@ function bindPanelEvents() {
   });
 }
 
+// привязка событий кнопок переключения панели
 function bindToggleButtons() {
   document.addEventListener("click", (event) => {
     const toggleButton = event.target.closest(TOGGLE_SELECTOR);
@@ -615,6 +643,7 @@ function bindToggleButtons() {
   });
 }
 
+// привязка обновления текста при смене языка
 function bindLanguageUpdates() {
   window.addEventListener("i18n:changed", () => {
     syncPanelControls();
@@ -709,4 +738,3 @@ window.SakaAccessibility = {
 };
 
 export { resetAccessibilitySettings, resetSiteSettings };
-

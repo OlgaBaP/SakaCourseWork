@@ -17,8 +17,7 @@ const heroLines = document.querySelectorAll("[data-hero-slide]");
 
 const heroSlides = [
   {
-    title:
-      "Большой выбор качественных тканей для производства и пошива одежды",
+    title: "Большой выбор качественных тканей для производства и пошива одежды",
     image: "assets/images/banners/hero-fabrics.png",
   },
   {
@@ -26,8 +25,7 @@ const heroSlides = [
     image: "assets/images/banners/hero-white-fabric-model.png",
   },
   {
-    title:
-      "Качественные полотна для летней и повседневной одежды",
+    title: "Качественные полотна для летней и повседневной одежды",
     image: "assets/images/banners/hero-white-fabric-outdoor.png",
   },
   {
@@ -74,11 +72,13 @@ function showNextHeroSlide() {
   renderHeroSlide((activeHeroSlide + 1) % heroSlides.length);
 }
 
+// слайдер
 function restartHeroSlider() {
   window.clearInterval(heroSliderTimer);
   heroSliderTimer = window.setInterval(showNextHeroSlide, 5000);
 }
 
+// инициализация слайдера
 function initHeroSlider() {
   if (!heroTitle || !heroImage || heroLines.length === 0) {
     return;
@@ -95,6 +95,7 @@ function initHeroSlider() {
   restartHeroSlider();
 }
 
+// загрузка продуктов
 async function loadProducts() {
   try {
     await getProducts();
@@ -103,6 +104,7 @@ async function loadProducts() {
   }
 }
 
+// вспомогательные функции для отображения ошибок и сообщений
 function showFieldError(input, errorElement, message) {
   input.classList.add("input-error");
   errorElement.textContent = message;
@@ -115,18 +117,21 @@ function clearFieldError(input, errorElement) {
   errorElement.hidden = true;
 }
 
+// вспомогательные функции для отображения сообщений о запросах
 function showRequestMessage(text, isError = false) {
   requestMessage.textContent = text;
   requestMessage.hidden = false;
   requestMessage.classList.toggle("is-error", isError);
 }
 
+// очистка сообщений о запросах
 function clearRequestMessage() {
   requestMessage.textContent = "";
   requestMessage.hidden = true;
   requestMessage.classList.remove("is-error");
 }
 
+// валидация формы запроса
 function validateForm() {
   const validation = validateRequestFields({
     name: nameInput.value,
@@ -154,6 +159,7 @@ function validateForm() {
   return validation;
 }
 
+// обработка отправки формы запроса
 async function handleRequestSubmit(event) {
   event.preventDefault();
 

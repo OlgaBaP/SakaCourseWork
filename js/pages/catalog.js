@@ -10,10 +10,12 @@ import { openPriceRequestModal } from "../common/price-request-modal.js";
 
 const productsList = document.querySelector("[data-products-list]");
 const emptyMessage = document.querySelector("[data-empty-message]");
+// поле поиска, фильтры, сортировка и кнопки
 const searchInput = document.querySelector("[data-search-input]");
 const categoryFilters = document.querySelector("[data-category-filters]");
 const qualityFilters = document.querySelector("[data-quality-filters]");
 const colorFilters = document.querySelector("[data-color-filters]");
+// выбор сортировки, фильтр цвета на телефоне, кнопка сброса фильтров
 const sortSelect = document.querySelector("[data-sort-select]");
 const mobileColorSelect = document.querySelector("[data-mobile-color-select]");
 const resetButton = document.querySelector("[data-reset-button]");
@@ -27,7 +29,9 @@ const adminModal = document.querySelector("[data-catalog-admin-modal]");
 const adminForm = document.querySelector("[data-catalog-admin-form]");
 const adminModeSelect = document.querySelector("[data-admin-mode]");
 const adminProductField = document.querySelector("[data-admin-product-field]");
-const adminProductSelect = document.querySelector("[data-admin-product-select]");
+const adminProductSelect = document.querySelector(
+  "[data-admin-product-select]",
+);
 const adminDeleteButton = document.querySelector("[data-admin-delete]");
 const adminMessage = document.querySelector("[data-catalog-admin-message]");
 const params = new URLSearchParams(window.location.search);
@@ -58,6 +62,7 @@ const colorMap = {
   Коричневый: "#7a4c34",
 };
 
+// админские функции
 function isAdmin() {
   return getCurrentUser()?.role === "admin";
 }
@@ -82,6 +87,7 @@ function formatPrice(price) {
   return `${String(price).replace(".", ",")} P`;
 }
 
+// сброс фильтров
 function keepSingleCheckedValue(input) {
   if (!input.checked) {
     return;
@@ -94,6 +100,7 @@ function keepSingleCheckedValue(input) {
   });
 }
 
+// функции для фильтрации и сортировки каталога
 function getCatalogRequestOptions() {
   return {
     category: getCheckedValue("category"),
@@ -103,10 +110,13 @@ function getCatalogRequestOptions() {
   };
 }
 
+// загрузка продуктов каталога с учетом фильтров и сортировки
 async function loadCatalogProducts() {
+  // если фильтры не выбраны, используем все продукты
   catalogProducts = await getProducts(getCatalogRequestOptions());
 }
 
+// сброс страницы и загрузка продуктов каталога с учетом фильтров и сортировки
 async function resetPageAndLoadProducts() {
   currentPage = 1;
 
@@ -119,11 +129,13 @@ async function resetPageAndLoadProducts() {
   }
 }
 
+// пользователь изменяет фильтры, сортировку или поиск
 function handleFilterChange(event) {
   keepSingleCheckedValue(event.target);
   resetPageAndLoadProducts();
 }
 
+// обработка изменения фильтра цвета
 function handleColorFilterChange(event) {
   keepSingleCheckedValue(event.target);
 
@@ -134,6 +146,7 @@ function handleColorFilterChange(event) {
   resetPageAndLoadProducts();
 }
 
+// обработка изменения фильтра цвета на телефоне
 function handleMobileColorChange() {
   if (mobileColorSelect.value) {
     document.querySelectorAll('input[name="color"]').forEach((input) => {
@@ -144,6 +157,7 @@ function handleMobileColorChange() {
   resetPageAndLoadProducts();
 }
 
+// сброс страницы и рендеринг продуктов каталога с учетом фильтров и сортировки
 function createFilterOption(name, value) {
   const label = document.createElement("label");
   label.className = "filter-option";
@@ -158,7 +172,7 @@ function createFilterOption(name, value) {
 
   return label;
 }
-
+// создание опции фильтра цвета
 function createColorOption(color) {
   const label = document.createElement("label");
   label.className = "color-option";
@@ -171,11 +185,14 @@ function createColorOption(color) {
 
   const swatch = label.querySelector(".color-option__swatch");
   swatch.style.setProperty("--swatch-color", colorMap[color] || "#ffffff");
-  label.querySelector("input").addEventListener("change", handleColorFilterChange);
+  label
+    .querySelector("input")
+    .addEventListener("change", handleColorFilterChange);
 
   return label;
 }
 
+// функция для рендеринга фильтров каталога
 function renderFilters() {
   const categories = getUniqueValues(products, "category");
   const qualities = getUniqueValues(products, "quality");
@@ -204,6 +221,7 @@ function renderFilters() {
   });
 }
 
+// поиск продуктов каталога с учетом фильтров и сортировки
 function getFilteredProducts() {
   const searchValue = searchInput.value.trim().toLowerCase();
 
@@ -226,6 +244,7 @@ function getFilteredProducts() {
   });
 }
 
+// карточка продукта
 function renderProductCard(product) {
   const card = document.createElement("article");
   const imageSrc = `../${product.image}`;
@@ -250,6 +269,7 @@ function renderProductCard(product) {
   return card;
 }
 
+// обновление счетчика фильтров
 function updateFilterCount() {
   const checkedFilters = document.querySelectorAll(
     '.catalog-filters input[type="checkbox"]:checked',
@@ -261,6 +281,7 @@ function updateFilterCount() {
     checkedFilters + (hasSearch ? 1 : 0) + (hasMobileColor ? 1 : 0);
 }
 
+// обновление пагинации
 function updatePagination(totalItems) {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -296,6 +317,7 @@ function renderProducts() {
   updateFilterCount();
 }
 
+// кнопки и модальные окна для админки
 function updateAdminButton() {
   if (!adminOpenButton) {
     return;
@@ -309,18 +331,21 @@ function updateAdminButton() {
   }
 }
 
+// работа с сообщениями в админке
 function showAdminMessage(text, type = "error") {
   adminMessage.textContent = text;
   adminMessage.dataset.messageType = type;
   adminMessage.hidden = false;
 }
 
+// скрытие сообщения в админке
 function hideAdminMessage() {
   adminMessage.hidden = true;
   adminMessage.textContent = "";
   adminMessage.removeAttribute("data-message-type");
 }
 
+// работа с формой в админке
 function getSelectedAdminProduct() {
   return (
     products.find((product) => {
@@ -329,6 +354,7 @@ function getSelectedAdminProduct() {
   );
 }
 
+// функция для заполнения формы в админке данными продукта
 function fillAdminForm(product = null) {
   const elements = adminForm.elements;
 
@@ -346,7 +372,10 @@ function fillAdminForm(product = null) {
   elements.inStock.checked = product?.inStock ?? true;
 }
 
-function renderAdminProductOptions(preferredProductId = adminProductSelect.value) {
+// функция для рендеринга опций продуктов в админке
+function renderAdminProductOptions(
+  preferredProductId = adminProductSelect.value,
+) {
   adminProductSelect.innerHTML = "";
 
   products.forEach((product) => {
@@ -367,12 +396,15 @@ function renderAdminProductOptions(preferredProductId = adminProductSelect.value
 
   if (
     preferredProductId &&
-    products.some((product) => String(product.id) === String(preferredProductId))
+    products.some(
+      (product) => String(product.id) === String(preferredProductId),
+    )
   ) {
     adminProductSelect.value = preferredProductId;
   }
 }
 
+// функция для установки режима админки, редактирования или добавления
 function setAdminMode(mode) {
   const isEditMode = mode === "edit";
   adminModeSelect.value = isEditMode ? "edit" : "add";
@@ -389,6 +421,7 @@ function setAdminMode(mode) {
   fillAdminForm();
 }
 
+// получение данных из формы админки
 function getAdminFormData() {
   const elements = adminForm.elements;
 
@@ -408,6 +441,7 @@ function getAdminFormData() {
   };
 }
 
+// перезагрузка каталога после изменения
 async function reloadCatalogAfterAdminChange(preferredProductId = "") {
   products = await getProducts();
   renderFilters();
@@ -449,6 +483,7 @@ function resetPageAndRender() {
   renderProducts();
 }
 
+// сброс фильтров
 function resetFilters() {
   searchInput.value = "";
   sortSelect.value = "default";
@@ -472,6 +507,7 @@ function scrollToCatalogProducts() {
   });
 }
 
+// пагинация
 function showPreviousPage() {
   if (currentPage > 1) {
     currentPage -= 1;
@@ -480,6 +516,7 @@ function showPreviousPage() {
   }
 }
 
+// показ следующей страницы
 function showNextPage() {
   const totalPages = Math.ceil(getFilteredProducts().length / itemsPerPage);
 
@@ -490,6 +527,7 @@ function showNextPage() {
   }
 }
 
+// изменение количества отображаемых продуктов при изменении ширины экрана
 function handleCatalogBreakpointChange(event) {
   const firstVisibleItemIndex = (currentPage - 1) * itemsPerPage;
 
@@ -500,6 +538,7 @@ function handleCatalogBreakpointChange(event) {
   renderProducts();
 }
 
+// функции для обработки действий в админке
 async function handleAdminSubmit(event) {
   event.preventDefault();
 
@@ -519,7 +558,10 @@ async function handleAdminSubmit(event) {
         return;
       }
 
-      const updatedProduct = await updateProduct(selectedProduct.id, productData);
+      const updatedProduct = await updateProduct(
+        selectedProduct.id,
+        productData,
+      );
       await reloadCatalogAfterAdminChange(updatedProduct.id);
       showAdminMessage(t("admin.updated"), "success");
       return;
@@ -536,6 +578,7 @@ async function handleAdminSubmit(event) {
   }
 }
 
+// функция для удаления продукта в админке
 async function handleAdminDelete() {
   if (!isAdmin()) {
     closeAdminModal();
@@ -550,7 +593,9 @@ async function handleAdminDelete() {
   }
 
   const isConfirmed = window.confirm(
-    t("admin.confirmDelete", { title: translateValue("product", selectedProduct.title) }),
+    t("admin.confirmDelete", {
+      title: translateValue("product", selectedProduct.title),
+    }),
   );
 
   if (!isConfirmed) {
@@ -567,6 +612,7 @@ async function handleAdminDelete() {
   }
 }
 
+// инициализация каталога
 async function initCatalog() {
   try {
     products = await getProducts();
@@ -584,7 +630,9 @@ async function initCatalog() {
   }
 }
 
+// пользователь взаимодействует с фильтрами, сортировкой, поиском, пагинацией и админкой
 searchInput.addEventListener("input", resetPageAndRender);
+// изменение сортировки
 sortSelect.addEventListener("change", resetPageAndLoadProducts);
 mobileColorSelect.addEventListener("change", handleMobileColorChange);
 resetButton.addEventListener("click", resetFilters);

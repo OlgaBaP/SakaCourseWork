@@ -17,6 +17,7 @@ let reviews = [];
 let activeReviewIndex = 0;
 const reviewsPerPage = 3;
 
+// создание карточки отзыва
 function createReviewCard(review) {
   const card = document.createElement("article");
   const text = document.createElement("p");
@@ -34,6 +35,7 @@ function createReviewCard(review) {
   return card;
 }
 
+// изображение отзывов на странице
 function renderReviews() {
   const visibleReviews = reviews.slice(
     activeReviewIndex,
@@ -49,6 +51,7 @@ function renderReviews() {
   updateReviewsControls();
 }
 
+// обновление состояния кнопок навигации по отзывам
 function updateReviewsControls() {
   const hasExtraReviews = reviews.length > reviewsPerPage;
 
@@ -59,11 +62,13 @@ function updateReviewsControls() {
     activeReviewIndex + reviewsPerPage >= reviews.length;
 }
 
+// пагинация отзывов
 function showPrevReviews() {
   activeReviewIndex = Math.max(activeReviewIndex - reviewsPerPage, 0);
   renderReviews();
 }
 
+// следующая страница отзывов
 function showNextReviews() {
   const lastPageIndex =
     Math.floor((reviews.length - 1) / reviewsPerPage) * reviewsPerPage;
@@ -75,6 +80,7 @@ function showNextReviews() {
   renderReviews();
 }
 
+// сообщение об ошибке или успешной отправке отзыва
 function showMessage(text) {
   message.textContent = text;
   message.hidden = false;
@@ -97,6 +103,7 @@ function closeModal() {
   clearMessage();
 }
 
+// обработка отправки формы отзыва
 async function handleReviewSubmit(event) {
   event.preventDefault();
 
@@ -109,12 +116,12 @@ async function handleReviewSubmit(event) {
   }
 
   if (author.length < 3) {
-    showMessage("Имя должно содержать не менее 3 символов.");
+    showMessage("Имя должно содержать не менее 3 символов");
     return;
   }
 
   if (text.split(/\s+/).length < 5) {
-    showMessage("Отзыв должен содержать не менее 5 слов.");
+    showMessage("Отзыв должен содержать не менее 5 слов");
     return;
   }
 
@@ -134,6 +141,7 @@ async function handleReviewSubmit(event) {
   }
 }
 
+// получение отзывов и их отображение при загрузке страницы
 async function initReviews() {
   try {
     reviews = await getReviews();

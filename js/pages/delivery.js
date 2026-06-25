@@ -1,6 +1,7 @@
 import { createDeliveryQuestion } from "../api/api.js";
 import { t } from "../common/i18n.js";
 
+// доставка форма, поля, ошибки, сообщение и кнопка
 const deliveryForm = document.querySelector("[data-delivery-form]");
 const nameInput = document.querySelector("[data-delivery-name]");
 const phoneInput = document.querySelector("[data-delivery-phone]");
@@ -27,6 +28,7 @@ function normalizePhone(phone) {
     .replace(/[\s()-]/g, "")
     .replace(/^\+/, "");
 }
+
 
 function showFieldError(input, errorElement, message) {
   input.classList.add("input-error");
